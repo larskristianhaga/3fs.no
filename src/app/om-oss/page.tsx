@@ -1,11 +1,10 @@
-// src/app/about/page.tsx
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Header from "@/components/Header";
 import type {Metadata} from 'next'
 
 export const metadata: Metadata = {
-    title: 'About Us - Professional Tree Service Company',
+    title: 'Om oss | Trefellingsspesialisten AS',
     description: 'Learn about GreenCut Tree Services - over 15 years of professional tree care experience. Licensed, insured arborists committed to safety and excellence.',
     keywords: 'about tree service company, professional arborists, licensed tree service, experienced tree care, tree service history',
     openGraph: {

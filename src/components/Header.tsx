@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
+import Image from "next/image";
 
 export default function Header() {
     const pathname = usePathname()
@@ -13,9 +14,9 @@ export default function Header() {
     }
 
     const navLinks = [
-        {href: '/', label: 'Home'},
-        {href: '/services', label: 'Services'},
-        {href: '/about', label: 'About Us'},
+        {href: '/', label: 'Forside'},
+        {href: '/tjenester', label: 'Tjenester'},
+        {href: '/om-oss', label: 'Om oss'},
     ]
 
     return (
@@ -24,7 +25,13 @@ export default function Header() {
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
                         <Link href="/" className="text-2xl font-bold text-green-800">
-                            GreenCut Tree Services
+                            <Image
+                                src="/images/logo.png"
+                                alt="TODO"
+                                width={100}
+                                height={100}
+                                priority
+                            />
                         </Link>
                     </div>
 
@@ -44,14 +51,14 @@ export default function Header() {
                                 </Link>
                             ))}
                             <Link
-                                href="/contact"
+                                href="/kontakt-oss"
                                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                                    isActive('/contact')
+                                    isActive('/kontakt-oss')
                                         ? 'bg-green-700 text-white'
                                         : 'bg-green-600 text-white hover:bg-green-700'
                                 }`}
                             >
-                                Contact
+                                Kontakt oss
                             </Link>
                         </div>
                     </div>
