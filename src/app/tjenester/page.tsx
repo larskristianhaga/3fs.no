@@ -52,7 +52,7 @@ export default function ServicesPage() {
         <div className="min-h-screen bg-white">
             <Header/>
 
-            <section className="relative bg-green-50 py-16">
+            <section className="relative  py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">

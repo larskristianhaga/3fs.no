@@ -42,7 +42,7 @@ export default function AboutPage() {
         <div className="min-h-screen bg-white">
             <Header/>
 
-            <section className="relative bg-green-50 py-16">
+            <section className="relative  py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
                         <div className="mb-8 lg:mb-0">
@@ -86,15 +86,6 @@ export default function AboutPage() {
 
             <section className="py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-                            Meet Our Team
-                        </h2>
-                        <p className="mt-4 text-xl text-gray-600">
-                            Experienced professionals dedicated to excellence in tree care
-                        </p>
-                    </div>
-
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         {teamMembers.map((member, index) => (
                             <div key={index} className="text-center">
