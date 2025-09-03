@@ -73,7 +73,7 @@ export default function AboutPage() {
                         </div>
                         <div className="relative">
                             <Image
-                                src="/images/about/fugleperspektiv-maskiner-fra-tre.jpeg"
+                                src="/images/about/fugleperspektiv-maskiner-fra-tre.jpg"
                                 alt="GreenCut Tree Services team at work"
                                 width={600}
                                 height={400}
