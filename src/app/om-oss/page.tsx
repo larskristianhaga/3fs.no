@@ -18,22 +18,22 @@ const teamMembers = [
     {
         name: 'Pål-Erik Engedahl',
         role: 'Eier, klatrer og trefeller',
-        image: '/images/about/portrett-pe.jpg',
+        image: '/images/om-oss/portrett-pe.jpg',
     },
     {
         name: 'Ruud van der Ven',
         role: 'Trefeller og maskinfører',
-        image: '/images/about/portrett-ruud.jpg',
+        image: '/images/om-oss/portrett-ruud.jpg',
     },
     {
         name: 'Oleksandr Khokhlyuk',
         role: 'Trefeller og oppryddnings-ansvarlig',
-        image: '/images/about/portrett-olli.jpg',
+        image: '/images/om-oss/portrett-olli.jpg',
     },
     {
         name: 'Bobby',
         role: 'Maskot',
-        image: '/images/about/portrett-bobby.jpg',
+        image: '/images/om-oss/portrett-bobby.jpg',
     }
 ]
 
@@ -72,7 +72,7 @@ export default function AboutPage() {
                         </div>
                         <div className="relative">
                             <Image
-                                src="/images/about/fugleperspektiv-maskiner-fra-tre.jpg"
+                                src="/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg"
                                 alt="GreenCut Tree Services team at work"
                                 width={600}
                                 height={400}
