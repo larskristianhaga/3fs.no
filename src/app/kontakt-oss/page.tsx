@@ -54,8 +54,7 @@ export default function ContactPage() {
                             uforpliktende samtale eller avtale om en gratis befaring.
                         </p>
                         <p className="mt-4 text-xl text-gray-600">
-                            Ikke nøl med å ta kontakt med oss om du har noen spørsmål knyttet til vårt arbeid eller
-                            tjenester.
+                            Ikke nøl med å ta kontakt med oss om du har noen spørsmål knyttet til vårt arbeid eller tjenester!
                         </p>
                     </div>
                 </div>
