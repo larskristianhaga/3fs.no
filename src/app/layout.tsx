@@ -8,8 +8,8 @@ const inter = Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
     title: {
-        template: '%s | GreenCut Tree Services',
-        default: 'Professional Tree Services & Woodcutting | GreenCut Tree Services'
+        template: '%s | Trefellingsspesialisten AS',
+        default: 'Professional Tree Services & Woodcutting | Trefellingsspesialisten AS'
     },
     description: 'Professional tree cutting, removal, and arborist services. Licensed, insured, and experienced.',
 }

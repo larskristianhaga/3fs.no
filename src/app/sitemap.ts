@@ -11,19 +11,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
-            url: `${baseUrl}/services`,
+            url: `${baseUrl}/tjenester`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.9,
         },
         {
-            url: `${baseUrl}/about`,
+            url: `${baseUrl}/om-oss`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.6,
         },
         {
-            url: `${baseUrl}/contact`,
+            url: `${baseUrl}/kontakt-oss`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
