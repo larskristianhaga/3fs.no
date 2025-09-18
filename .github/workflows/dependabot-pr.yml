@@ -1,4 +1,4 @@
-name: "Auto-merge Dependabot PRs if tests pass"
+name: "Auto-merge Dependabot PRs if Vercel build and tests pass"
 
 on: pull_request
 
@@ -7,10 +7,32 @@ permissions:
   pull-requests: write
 
 jobs:
+  wait-for-vercel-build:
+    name: "Wait for Vercel build to complete"
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    outputs:
+      build-status: ${{ steps.wait-for-build.outputs.conclusion }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Wait for Vercel deployment
+        id: wait-for-build
+        uses: fountainhead/action-wait-for-check@5a908a24814494009c4bb27c242ea38c93c593be # 1.2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: "Vercel"
+          ref: ${{ github.event.pull_request.head.sha }}
+          timeoutSeconds: 600
+          intervalSeconds: 10
+
   approve-and-merge-pr:
     name: "Approve and merge Dependabot PR"
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    needs: wait-for-vercel-build
+    if: ${{ github.actor == 'dependabot[bot]' && needs.wait-for-vercel-build.outputs.build-status == 'success' }}
 
     steps:
       - name: Checkout
