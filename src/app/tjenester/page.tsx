@@ -74,6 +74,10 @@ export default function ServicesPage() {
                                         fill
                                         className="object-cover"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        priority={index < 2}
+                                        quality={50}
+                                        placeholder="blur"
+                                        blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMzInIGhlaWdodD0nMjQnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PC9zdmc+"
                                     />
                                 </div>
                                 <div className="p-8">
