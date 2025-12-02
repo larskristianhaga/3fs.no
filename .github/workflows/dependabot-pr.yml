@@ -25,8 +25,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: "Vercel"
           ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 600
-          intervalSeconds: 10
+          timeoutSeconds: 300
+          intervalSeconds: 60
 
   approve-and-merge-pr:
     name: "Approve and merge Dependabot PR"
