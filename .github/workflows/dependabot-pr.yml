@@ -25,7 +25,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: "Vercel"
           ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 300
+          timeoutSeconds: 1500
           intervalSeconds: 60
 
   approve-and-merge-pr:
