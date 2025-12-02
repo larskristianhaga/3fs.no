@@ -17,4 +17,7 @@ jobs:
         env:
           INPUT_URL: https://www.3fs.no
           INPUT_CMD_PARAMS: '--buffer-size=8192 --max-connections=1 --color=always --header="User-Agent:muffet" --skip-tls-verification --timeout=30 --verbose'  # --skip-tls-verification is mandatory parameter when using https and "PAGES_PATH"
+          INPUT_DEBUG: true
+          INPUT_PAGES_PATH: ./public/
         run: wget -qO- https://raw.githubusercontent.com/ruzickap/action-my-broken-link-checker/v2/entrypoint.sh | bash
+
