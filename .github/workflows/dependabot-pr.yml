@@ -7,32 +7,10 @@ permissions:
   pull-requests: write
 
 jobs:
-  wait-for-vercel-build:
-    name: "Wait for Vercel build to complete"
-    runs-on: ubuntu-latest
+  approve-and-set-auto-merge:
+    name: "Approve and set PR to auto merge Dependabot PR"
+    runs-on: ubuntu-24.04-arm
     if: ${{ github.actor == 'dependabot[bot]' }}
-    outputs:
-      build-status: ${{ steps.wait-for-build.outputs.conclusion }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Wait for Vercel deployment
-        id: wait-for-build
-        uses: fountainhead/action-wait-for-check@5a908a24814494009c4bb27c242ea38c93c593be # 1.2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "Vercel"
-          ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 1500
-          intervalSeconds: 60
-
-  approve-and-merge-pr:
-    name: "Approve and merge Dependabot PR"
-    runs-on: ubuntu-latest
-    needs: wait-for-vercel-build
-    if: ${{ github.actor == 'dependabot[bot]' && needs.wait-for-vercel-build.outputs.build-status == 'success' }}
 
     steps:
       - name: Checkout
@@ -53,8 +31,8 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "Merge the PR"
-        run: gh pr merge --squash "$PR_NUMBER"
+      - name: "Set PR to auto merge with squash"
+        run: gh pr merge --auto --squash "$PR_NUMBER"
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
