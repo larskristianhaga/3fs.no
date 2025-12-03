@@ -11,10 +11,10 @@ permissions:
 jobs:
   link-checker:
     name: "Check broken links"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     steps:
       - name: Check for broken links
-        uses: ruzickap/action-my-broken-link-checker@df42b59637dfd06c247a8a95db0ab38708ea83d2 # 2.9.0
+        uses: ruzickap/action-my-broken-link-checker@main
         with:
           url: https://www.3fs.no
           cmd_params: "--max-connections=1 --buffer-size=8192 --header='User-Agent:muffet' --timeout=30 --verbose --color=always"
