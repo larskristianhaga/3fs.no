@@ -2,7 +2,6 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import {Analytics} from '@vercel/analytics/react'
 import {SpeedInsights} from '@vercel/speed-insights/next'
-import { Lit } from "litlyx-js"
 import './globals.css'
 
 const inter = Inter({subsets: ['latin']})
@@ -20,7 +19,6 @@ export default function RootLayout({
                                    }: {
     children: React.ReactNode
 }) {
-    Lit.init("693bd40401bb6e74320b74f9");
     return (
         <html lang="no">
         <body className={inter.className}>
