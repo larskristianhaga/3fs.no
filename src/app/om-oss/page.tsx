@@ -23,12 +23,6 @@ export const metadata: Metadata = {
         type: 'website',
         locale: 'nb_NO',
     },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
-        description: 'Over 15 års erfaring med profesjonell trepleie. Holder til i Ås, betjener Oslo-området.',
-        images: ['/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg'],
-    },
 }
 
 const teamMembers = [
