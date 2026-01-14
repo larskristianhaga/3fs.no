@@ -1,0 +1,137 @@
+# 3fs.no - Trefellingsspesialisten AS
+
+## Project Overview
+This is a professional tree service company website for Trefellingsspesialisten AS, based in Ås, Norway. The company provides tree felling, pruning, stump grinding, and related services across Oslo, Akershus, Østfold, and Buskerud regions.
+
+## Tech Stack
+- **Framework**: Next.js 16.1.1 (with Turbopack)
+- **React**: 19.1.1
+- **TypeScript**: 5+ (strict mode enabled)
+- **Styling**: Tailwind CSS 4
+- **Forms**: react-hook-form 7.71.1
+- **Email**: Resend 6.7.0 with @react-email/render
+- **Analytics**: Vercel Analytics & Speed Insights
+- **Language**: Norwegian (Bokmål) for all user-facing content
+
+## Development Commands
+```bash
+npm install      # Install dependencies
+npm run dev      # Start development server (with Turbopack)
+npm run build    # Build for production (with Turbopack)
+npm start        # Start production server
+```
+
+## Code Style & Conventions
+
+### Language
+- **UI Content**: All user-facing content MUST be in Norwegian (Bokmål)
+- **Code**: Use English for variable names, function names, comments, and code documentation
+- **Examples**: 
+  - ✅ `const contactFormTitle = "Kontakt oss"`
+  - ❌ `const kontaktFormTittel = "Kontakt oss"`
+
+### TypeScript
+- Strict mode is enabled - ensure type safety
+- Use explicit types for component props
+- Prefer interfaces over types for object shapes
+- Use `Metadata` from Next.js for page metadata
+
+### React/Next.js Patterns
+- Use App Router (not Pages Router)
+- Server Components by default, add `'use client'` only when needed
+- Use Next.js `Image` component for all images (with appropriate width/height)
+- Use Next.js `Link` component for internal navigation
+- Use Next.js `Metadata` API for SEO
+
+### Styling
+- Tailwind CSS 4 is configured - use utility classes
+- Follow mobile-first responsive design principles
+- Color scheme: Green (#10b981, #16a34a, #059669) as primary brand color
+- Use consistent spacing: `py-16` for section padding
+- Common breakpoints: `sm:`, `md:`, `lg:` for responsive design
+
+### File Structure
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── page.tsx           # Homepage
+│   ├── layout.tsx         # Root layout
+│   ├── tjenester/         # Services page
+│   ├── om-oss/            # About page
+│   ├── kontakt-oss/       # Contact page
+│   └── api/               # API routes
+│       └── contact/       # Contact form endpoint
+└── components/            # Reusable React components
+    ├── Header.tsx
+    ├── Footer.tsx
+    ├── ContactForm.tsx
+    └── StructuredData.tsx
+```
+
+### Path Aliases
+- Use `@/` for imports from `src/` directory
+- Example: `import Header from "@/components/Header"`
+
+## Key Features
+
+### Services Offered
+1. Trefelling (Tree Felling)
+2. Stubbefresing (Stump Grinding)
+3. Beskjæring (Pruning)
+4. Tomterydding (Land Clearing)
+5. Flishugging (Wood Chipping)
+6. Bortkjøring (Hauling)
+
+### Contact Information
+- Phone: 47 64 29 70
+- Email: rs3felling@gmail.com
+- Service Area: Oslo, Akershus, Østfold, Buskerud
+
+### Form Handling
+- Contact form uses react-hook-form for validation
+- Supports file attachments (converted to base64)
+- Sends emails via Resend API
+- API endpoint: `/api/contact`
+
+## SEO & Analytics
+- Structured data (JSON-LD) for local business
+- OpenGraph tags for social media sharing
+- Vercel Analytics for page views
+- Speed Insights for performance monitoring
+- Sitemap and robots.txt configured
+
+## Best Practices
+
+### When Adding Features
+1. Maintain Norwegian language for all user-facing content
+2. Follow existing component patterns and structure
+3. Use TypeScript with proper typing
+4. Ensure responsive design (mobile-first)
+5. Test on multiple screen sizes
+6. Keep accessibility in mind (semantic HTML, ARIA labels)
+
+### When Modifying Styling
+1. Use Tailwind utility classes (avoid custom CSS when possible)
+2. Maintain consistent green color scheme
+3. Follow existing spacing patterns
+4. Test dark mode compatibility (if relevant)
+
+### When Working with Forms
+1. Use react-hook-form for validation
+2. Provide Norwegian error messages
+3. Show loading states during submission
+4. Handle errors gracefully with user-friendly messages
+
+### When Adding Images
+1. Place in `/public/images/` directory
+2. Use Next.js `Image` component with `width` and `height`
+3. Provide descriptive Norwegian alt text
+4. Optimize images before adding (WebP preferred)
+
+## Common Pitfalls to Avoid
+- Don't mix Norwegian and English in user-facing content
+- Don't use inline styles - prefer Tailwind utilities
+- Don't forget `'use client'` directive when using React hooks
+- Don't hardcode URLs - use Next.js `Link` component
+- Don't forget to add proper TypeScript types
+- Don't skip responsive design testing
