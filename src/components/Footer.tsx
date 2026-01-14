@@ -2,7 +2,7 @@ export default function Footer() {
     return (
         <footer className="flex flex-row justify-around items-center text-gray-300 py-8">
             <p>
-                © 2025 by Trefellingsspesialisten AS
+                © 2026 by Trefellingsspesialisten AS
             </p>
             <div className="flex flex-col items-start">
                 <p>
