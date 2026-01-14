@@ -2,32 +2,46 @@ export default function StructuredData() {
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "[Business Name]",
-        "description": "Professional tree cutting and removal services",
-        "url": "https://yourdomain.com",
-        "telephone": "+1-XXX-XXX-XXXX",
+        "name": "Trefellingsspesialisten AS",
+        "description": "Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring med trefelling, beskjæring, stubbefresing og tomterydding. Forsikret og sertifisert.",
+        "url": "https://3fs.no",
+        "telephone": "+4747642970",
+        "email": "rs3felling@gmail.com",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "[Street Address]",
-            "addressLocality": "[City]",
-            "addressRegion": "[State]",
-            "postalCode": "[ZIP]"
+            "addressLocality": "Ås",
+            "addressRegion": "Akershus",
+            "addressCountry": "NO"
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": "XX.XXXXX",
-            "longitude": "-XX.XXXXX"
+            "latitude": 59.6606,
+            "longitude": 10.7819
         },
         "openingHours": "Mo-Fr 08:00-17:00",
         "priceRange": "$$",
-        "serviceArea": {
-            "@type": "GeoCircle",
-            "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "XX.XXXXX",
-                "longitude": "-XX.XXXXX"
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Oslo"
             },
-            "geoRadius": "50000"
+            {
+                "@type": "AdministrativeArea",
+                "name": "Akershus"
+            },
+            {
+                "@type": "AdministrativeArea",
+                "name": "Østfold"
+            },
+            {
+                "@type": "AdministrativeArea",
+                "name": "Buskerud"
+            }
+        ],
+        "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Org.nr",
+            "value": "819 545 782"
         }
     }
 
