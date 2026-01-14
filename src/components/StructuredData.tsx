@@ -22,24 +22,10 @@ export default function StructuredData() {
         },
         "openingHours": "Mo-Fr 08:00-17:00",
         "priceRange": "$$",
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "Oslo"
-            },
-            {
-                "@type": "AdministrativeArea",
-                "name": "Akershus"
-            },
-            {
-                "@type": "AdministrativeArea",
-                "name": "Østfold"
-            },
-            {
-                "@type": "AdministrativeArea",
-                "name": "Buskerud"
-            }
-        ],
+        "areaServed": companyData.serviceArea.regions.map(region => ({
+            "@type": region.type,
+            "name": region.name
+        })),
         "identifier": {
             "@type": "PropertyValue",
             "propertyID": "Org.nr",

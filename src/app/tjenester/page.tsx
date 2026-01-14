@@ -6,8 +6,8 @@ import { companyData } from '@/config/company';
 
 export const metadata: Metadata = {
     title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing',
-    description: `Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister som betjener privatkunder, bedrifter og kommuner i ${companyData.serviceArea.regions.join(', ')}.`,
-    keywords: `trefelling, beskjæring, stubbefresing, tomterydding, flishugging, bortkjøring, arborist, treklatring, trepleie, ${companyData.serviceArea.regions.join(', ')}`,
+    description: `Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister som betjener privatkunder, bedrifter og kommuner i ${companyData.serviceArea.regions.map(r => r.name).join(', ')}.`,
+    keywords: `trefelling, beskjæring, stubbefresing, tomterydding, flishugging, bortkjøring, arborist, treklatring, trepleie, ${companyData.serviceArea.regions.map(r => r.name).join(', ')}`,
     alternates: {
         canonical: '/tjenester',
     },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: `Tjenester - Trefelling, Beskjæring og Stubbefresing | ${companyData.name}`,
-        description: `Komplette trefellingstjenester i ${companyData.serviceArea.regions.join(', ')}.`,
+        description: `Komplette trefellingstjenester i ${companyData.serviceArea.regions.map(r => r.name).join(', ')}.`,
         images: ['/images/tjenester/trefelling.jpg'],
     },
 }

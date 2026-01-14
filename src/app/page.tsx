@@ -6,9 +6,9 @@ import Header from "@/components/Header";
 import { companyData } from '@/config/company';
 
 export const metadata: Metadata = {
-    title: `${companyData.name} | Trefelling, Beskjæring, Tomteryddning, stubbefresing | ${companyData.serviceArea.regions.join(', ')}`,
+    title: `${companyData.name} | Trefelling, Beskjæring, Tomteryddning, stubbefresing | ${companyData.serviceArea.regions.map(r => r.name).join(', ')}`,
     description: `${companyData.description} Erfarne fagfolk med over 15 års erfaring. Forsikret og sertifisert. Gratis befaring og konkurransedyktige priser.`,
-    keywords: `trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, klatring, ${companyData.serviceArea.regions.join(', ')}, ${companyData.location.municipality}`,
+    keywords: `trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, klatring, ${companyData.serviceArea.regions.map(r => r.name).join(', ')}, ${companyData.location.municipality}`,
     alternates: {
         canonical: '/',
     },
@@ -142,7 +142,7 @@ export default function HomePage() {
                             </h2>
                             <div className="space-y-4 text-gray-600">
                                 <p>
-                                    {companyData.name} holder til i {companyData.location.municipality} kommune, og vi tar på oss oppdrag i {companyData.serviceArea.regions.join(', ')}.
+                                    {companyData.name} holder til i {companyData.location.municipality} kommune, og vi tar på oss oppdrag i {companyData.serviceArea.regions.map(r => r.name).join(', ')}.
                                 </p>
                                 <p>
                                     Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en

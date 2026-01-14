@@ -7,13 +7,13 @@ import { companyData } from '@/config/company';
 export const metadata: Metadata = {
     title: 'Kontakt oss - Gratis befaring og pristilbud',
     description: `Kontakt ${companyData.name} for profesjonell trefelling, beskjæring og arboriststjenester. Gratis befaring og uforpliktende pristilbud. Ring ${companyData.phone.formatted} eller send oss en melding.`,
-    keywords: `kontakt trefelling, gratis befaring, pristilbud trefelling, nødtjeneste trefelling, trefelling telefonnummer, ${companyData.serviceArea.regions.join(', ')}`,
+    keywords: `kontakt trefelling, gratis befaring, pristilbud trefelling, nødtjeneste trefelling, trefelling telefonnummer, ${companyData.serviceArea.regions.map(r => r.name).join(', ')}`,
     alternates: {
         canonical: '/kontakt-oss',
     },
     openGraph: {
         title: `Kontakt oss - Gratis befaring og pristilbud | ${companyData.name}`,
-        description: `Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Vi betjener ${companyData.serviceArea.regions.join(', ')}. Ring ${companyData.phone.formatted}.`,
+        description: `Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Vi betjener ${companyData.serviceArea.regions.map(r => r.name).join(', ')}. Ring ${companyData.phone.formatted}.`,
         images: [{
             url: '/images/beskjaert-tre.jpg',
             width: 1200,

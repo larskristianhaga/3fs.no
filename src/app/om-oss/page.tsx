@@ -6,14 +6,14 @@ import { companyData } from '@/config/company';
 
 export const metadata: Metadata = {
     title: 'Om oss - Over 15 års erfaring med trefelling',
-    description: `Lær mer om ${companyData.name} - Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i ${companyData.location.municipality} og betjener ${companyData.serviceArea.regions.join(', ')}. Fullt forsikret og sertifiserte arborister.`,
-    keywords: `om trefellingsfirma, profesjonelle arborister, sertifisert trefelling, erfaren trepleie, ${companyData.location.municipality}, ${companyData.serviceArea.regions.join(', ')}, trefellingshistorie`,
+    description: `Lær mer om ${companyData.name} - Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i ${companyData.location.municipality} og betjener ${companyData.serviceArea.regions.map(r => r.name).join(', ')}. Fullt forsikret og sertifiserte arborister.`,
+    keywords: `om trefellingsfirma, profesjonelle arborister, sertifisert trefelling, erfaren trepleie, ${companyData.location.municipality}, ${companyData.serviceArea.regions.map(r => r.name).join(', ')}, trefellingshistorie`,
     alternates: {
         canonical: '/om-oss',
     },
     openGraph: {
         title: `Om oss - Over 15 års erfaring med trefelling | ${companyData.name}`,
-        description: `Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i ${companyData.location.municipality} og betjener ${companyData.serviceArea.regions.join(', ')}. Fullt forsikret og sertifiserte arborister.`,
+        description: `Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i ${companyData.location.municipality} og betjener ${companyData.serviceArea.regions.map(r => r.name).join(', ')}. Fullt forsikret og sertifiserte arborister.`,
         images: [{
             url: '/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg',
             width: 1200,
@@ -68,7 +68,7 @@ export default function AboutPage() {
                                 Om oss
                             </h1>
                             <p className="mt-4 text-xl text-gray-600">
-                                {companyData.name} holder til i {companyData.location.municipality} kommune, og vi tar på oss oppdrag i {companyData.serviceArea.regions.join(', ')}. Vi tilbyr alt innen trefelling,
+                                {companyData.name} holder til i {companyData.location.municipality} kommune, og vi tar på oss oppdrag i {companyData.serviceArea.regions.map(r => r.name).join(', ')}. Vi tilbyr alt innen trefelling,
                                 beskjæring, stubbefresing, flishugging, bortkjøring og oppryddning. Vi har oppdrag for
                                 stat og kommune, bedrifter og borettslag, privat- og ferie eiendommer. Vi tilbyr alltid
                                 en gratis befaring og uforpliktende pristilbud.

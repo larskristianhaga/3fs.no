@@ -14,7 +14,12 @@ export const companyData = {
         domain: '3fs.no',
     },
     serviceArea: {
-        regions: ['Oslo', 'Akershus', 'Østfold', 'Buskerud'],
+        regions: [
+            { name: 'Oslo', type: 'City' as const },
+            { name: 'Akershus', type: 'AdministrativeArea' as const },
+            { name: 'Østfold', type: 'AdministrativeArea' as const },
+            { name: 'Buskerud', type: 'AdministrativeArea' as const },
+        ],
         description: 'Dekker Oslo, Akershus, Østfold og Buskerud',
     },
     location: {

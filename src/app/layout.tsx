@@ -14,7 +14,7 @@ export const metadata: Metadata = {
         default: `Profesjonell Trefelling og Trepleie | ${companyData.name}`
     },
     description: `${companyData.description} Over 15 års erfaring med trefelling, beskjæring, stubbefresing og tomterydding. Forsikret og sertifisert.`,
-    keywords: `trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, ${companyData.serviceArea.regions.join(', ')}`,
+    keywords: `trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, ${companyData.serviceArea.regions.map(r => r.name).join(', ')}`,
     authors: [{name: companyData.name}],
     creator: companyData.name,
     publisher: companyData.name,
