@@ -1,4 +1,14 @@
 import Link from 'next/link'
+import type {Metadata} from 'next'
+
+export const metadata: Metadata = {
+    title: 'Siden ble ikke funnet - 404',
+    description: 'Siden du leter etter finnes ikke. Gå tilbake til forsiden for å finne informasjon om våre trefellingstjenester i Oslo, Akershus, Østfold og Buskerud.',
+    robots: {
+        index: false,
+        follow: true,
+    },
+}
 
 export default function NotFound() {
     return (
