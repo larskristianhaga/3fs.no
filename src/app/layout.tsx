@@ -2,6 +2,7 @@ import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import {Analytics} from '@vercel/analytics/react'
 import {SpeedInsights} from '@vercel/speed-insights/next'
+import StructuredData from '@/components/StructuredData'
 import './globals.css'
 import { companyData } from '@/config/company'
 
@@ -51,6 +52,7 @@ export default function RootLayout({
     return (
         <html lang="no">
         <body className={inter.className}>
+        <StructuredData/>
         {children}
         <Analytics/>
         <SpeedInsights/>

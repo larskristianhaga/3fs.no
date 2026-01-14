@@ -20,7 +20,12 @@ export const companyData = {
     location: {
         municipality: 'Ås',
         county: 'Akershus',
+        coordinates: {
+            latitude: 59.6606,
+            longitude: 10.7819,
+        },
     },
     description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud.',
+    descriptionLong: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring med trefelling, beskjæring, stubbefresing og tomterydding. Forsikret og sertifisert.',
     tagline: 'Med erfarne trefellere, maskiner, og riktig utstyr kan du være sikker på at jobben blir gjennomført på en trygg, effektiv måte, og til konkurransedyktige priser.',
 } as const;

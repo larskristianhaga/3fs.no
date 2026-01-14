@@ -5,7 +5,7 @@ export default function StructuredData() {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": companyData.name,
-        "description": companyData.description,
+        "description": companyData.descriptionLong,
         "url": companyData.website.url,
         "telephone": companyData.phone.link,
         "email": companyData.email.address,
@@ -15,12 +15,36 @@ export default function StructuredData() {
             "addressRegion": companyData.location.county,
             "addressCountry": "NO"
         },
-        "areaServed": companyData.serviceArea.regions.map(region => ({
-            "@type": "City",
-            "name": region
-        })),
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": companyData.location.coordinates.latitude,
+            "longitude": companyData.location.coordinates.longitude
+        },
         "openingHours": "Mo-Fr 08:00-17:00",
-        "priceRange": "$$"
+        "priceRange": "$$",
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Oslo"
+            },
+            {
+                "@type": "AdministrativeArea",
+                "name": "Akershus"
+            },
+            {
+                "@type": "AdministrativeArea",
+                "name": "Østfold"
+            },
+            {
+                "@type": "AdministrativeArea",
+                "name": "Buskerud"
+            }
+        ],
+        "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "Org.nr",
+            "value": companyData.organizationNumber
+        }
     }
 
     return (
