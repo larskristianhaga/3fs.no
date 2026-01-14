@@ -9,7 +9,9 @@ This is a professional tree service company website for Trefellingsspesialisten 
 - **TypeScript**: 5+ (strict mode enabled)
 - **Styling**: Tailwind CSS 4
 - **Forms**: react-hook-form 7.71.1
-- **Email**: Resend 6.7.0, @react-email/render 2.0.2
+- **Email**: 
+  - Resend 6.7.0
+  - @react-email/render 2.0.2
 - **Analytics**: Vercel Analytics & Speed Insights
 - **Language**: Norwegian (Bokmål) for all user-facing content
 
