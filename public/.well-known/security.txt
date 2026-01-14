@@ -1,0 +1,11 @@
+# Our security address
+Contact: mailto:rs3felling@gmail.com
+
+# Our security policy
+Canonical: https://3fs.no/.well-known/security.txt
+
+# Languages we speak
+Preferred-Languages: no, en
+
+# Expiration date (1 year from 2026-01-14)
+Expires: 2027-01-14T23:59:59Z
