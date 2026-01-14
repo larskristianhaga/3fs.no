@@ -93,7 +93,7 @@ export default function ServicesPage() {
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         priority={index < 2}
                                         quality={85}
-                                        loading={index < 2 ? undefined : "lazy"}
+                                        {...(index >= 2 && { loading: "lazy" as const })}
                                     />
                                 </div>
                                 <div className="p-8">
