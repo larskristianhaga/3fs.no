@@ -1,47 +1,35 @@
+import { companyInfo } from '@/config/company'
+
 export default function StructuredData() {
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "name": "Trefellingsspesialisten AS",
-        "description": "Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring med trefelling, beskjæring, stubbefresing og tomterydding. Forsikret og sertifisert.",
-        "url": "https://3fs.no",
-        "telephone": "+4747642970",
-        "email": "rs3felling@gmail.com",
+        "name": companyInfo.name,
+        "description": companyInfo.description,
+        "url": companyInfo.website,
+        "telephone": companyInfo.contact.phone.href,
+        "email": companyInfo.contact.email,
         "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Ås",
-            "addressRegion": "Akershus",
-            "addressCountry": "NO"
+            "addressLocality": companyInfo.address.locality,
+            "addressRegion": companyInfo.address.region,
+            "addressCountry": companyInfo.address.country
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 59.6606,
-            "longitude": 10.7819
+            "latitude": companyInfo.geo.latitude,
+            "longitude": companyInfo.geo.longitude
         },
-        "openingHours": "Mo-Fr 08:00-17:00",
-        "priceRange": "$$",
-        "areaServed": [
-            {
-                "@type": "City",
-                "name": "Oslo"
-            },
-            {
-                "@type": "AdministrativeArea",
-                "name": "Akershus"
-            },
-            {
-                "@type": "AdministrativeArea",
-                "name": "Østfold"
-            },
-            {
-                "@type": "AdministrativeArea",
-                "name": "Buskerud"
-            }
-        ],
+        "openingHours": companyInfo.openingHours,
+        "priceRange": companyInfo.priceRange,
+        "areaServed": companyInfo.serviceAreas.map(area => ({
+            "@type": area.type,
+            "name": area.name
+        })),
         "identifier": {
             "@type": "PropertyValue",
             "propertyID": "Org.nr",
-            "value": "819 545 782"
+            "value": companyInfo.organization.number
         }
     }
 

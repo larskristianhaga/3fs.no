@@ -2,31 +2,32 @@ import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
+import { companyInfo } from '@/config/company'
 
 export const metadata: Metadata = {
     title: 'Kontakt oss - Gratis befaring og pristilbud',
-    description: 'Kontakt Trefellingsspesialisten AS for profesjonell trefelling, beskjæring og arboriststjenester. Gratis befaring og uforpliktende pristilbud. Ring 47 64 29 70 eller send oss en melding.',
-    keywords: 'kontakt trefelling, gratis befaring, pristilbud trefelling, nødtjeneste trefelling, trefelling telefonnummer, Oslo, Akershus, Østfold, Buskerud',
+    description: `Kontakt ${companyInfo.name} for profesjonell trefelling, beskjæring og arboriststjenester. Gratis befaring og uforpliktende pristilbud. Ring ${companyInfo.contact.phone.display} eller send oss en melding.`,
+    keywords: `kontakt trefelling, gratis befaring, pristilbud trefelling, nødtjeneste trefelling, trefelling telefonnummer, ${companyInfo.serviceAreasText}`,
     alternates: {
         canonical: '/kontakt-oss',
     },
     openGraph: {
-        title: 'Kontakt oss - Gratis befaring og pristilbud | Trefellingsspesialisten AS',
-        description: 'Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Vi betjener Oslo, Akershus, Østfold og Buskerud. Ring 47 64 29 70.',
+        title: `Kontakt oss - Gratis befaring og pristilbud | ${companyInfo.name}`,
+        description: `Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Vi betjener ${companyInfo.serviceAreasText}. Ring ${companyInfo.contact.phone.display}.`,
         images: [{
             url: '/images/beskjaert-tre.jpg',
             width: 1200,
             height: 630,
-            alt: 'Kontakt Trefellingsspesialisten AS',
+            alt: `Kontakt ${companyInfo.name}`,
         }],
-        url: 'https://3fs.no/kontakt-oss',
+        url: `${companyInfo.website}/kontakt-oss`,
         type: 'website',
         locale: 'nb_NO',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Kontakt oss - Gratis befaring og pristilbud | Trefellingsspesialisten AS',
-        description: 'Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Ring 47 64 29 70.',
+        title: `Kontakt oss - Gratis befaring og pristilbud | ${companyInfo.name}`,
+        description: `Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Ring ${companyInfo.contact.phone.display}.`,
         images: ['/images/beskjaert-tre.jpg'],
     },
 }
