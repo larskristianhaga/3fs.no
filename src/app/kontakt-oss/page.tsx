@@ -2,7 +2,7 @@ import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
-import { companyInfo } from '@/config/company'
+import {companyInfo} from '@/config/company'
 
 export const metadata: Metadata = {
     title: 'Kontakt oss - Gratis befaring og pristilbud',
@@ -23,12 +23,6 @@ export const metadata: Metadata = {
         url: `${companyInfo.website}/kontakt-oss`,
         type: 'website',
         locale: 'nb_NO',
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: `Kontakt oss - Gratis befaring og pristilbud | ${companyInfo.name}`,
-        description: `Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Ring ${companyInfo.contact.phone.display}.`,
-        images: ['/images/beskjaert-tre.jpg'],
     },
 }
 
@@ -61,7 +55,8 @@ export default function ContactPage() {
                             uforpliktende samtale eller avtale om en gratis befaring.
                         </p>
                         <p className="mt-4 text-xl text-gray-600">
-                            Ikke nøl med å ta kontakt med oss om du har noen spørsmål knyttet til vårt arbeid eller tjenester!
+                            Ikke nøl med å ta kontakt med oss om du har noen spørsmål knyttet til vårt arbeid eller
+                            tjenester!
                         </p>
                     </div>
                 </div>

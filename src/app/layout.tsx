@@ -35,12 +35,6 @@ export const metadata: Metadata = {
             alt: 'Trefellingsspesialisten AS - Profesjonell trefelling',
         }],
     },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Profesjonell Trefelling og Trepleie | Trefellingsspesialisten AS',
-        description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring.',
-        images: ['/images/beskjaert-tre.jpg'],
-    },
 }
 
 export default function RootLayout({

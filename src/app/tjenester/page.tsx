@@ -23,12 +23,6 @@ export const metadata: Metadata = {
         type: 'website',
         locale: 'nb_NO',
     },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing | Trefellingsspesialisten AS',
-        description: 'Komplette trefellingstjenester i Oslo, Akershus, Østfold og Buskerud.',
-        images: ['/images/tjenester/trefelling.jpg'],
-    },
 }
 
 const services = [
