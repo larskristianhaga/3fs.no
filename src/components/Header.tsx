@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
 import Image from "next/image"
+import PreloadLink from './PreloadLink'
 
 interface NavLink {
     href: string
@@ -29,7 +29,7 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
-                        <Link href="/" className="text-2xl font-bold text-green-800"
+                        <PreloadLink href="/" className="text-2xl font-bold text-green-800"
                               aria-label="Trefellingsspesialisten AS hjem">
                             <Image
                                 src="/images/logo.png"
@@ -40,13 +40,13 @@ export default function Header() {
                                 quality={90}
                                 sizes="100px"
                             />
-                        </Link>
+                        </PreloadLink>
                     </div>
 
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
                             {navLinks.map((link) => (
-                                <Link
+                                <PreloadLink
                                     key={link.href}
                                     href={link.href}
                                     className={`px-3 py-2 text-sm font-medium transition-colors ${
@@ -56,9 +56,9 @@ export default function Header() {
                                     }`}
                                 >
                                     {link.label}
-                                </Link>
+                                </PreloadLink>
                             ))}
-                            <Link
+                            <PreloadLink
                                 href="/kontakt-oss"
                                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                                     isActive('/kontakt-oss')
@@ -67,7 +67,7 @@ export default function Header() {
                                 }`}
                             >
                                 Kontakt oss
-                            </Link>
+                            </PreloadLink>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@ export default function Header() {
                     <div className="md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
                             {navLinks.map((link) => (
-                                <Link
+                                <PreloadLink
                                     key={link.href}
                                     href={link.href}
                                     className={`block px-3 py-2 text-base font-medium transition-colors ${
@@ -111,9 +111,9 @@ export default function Header() {
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.label}
-                                </Link>
+                                </PreloadLink>
                             ))}
-                            <Link
+                            <PreloadLink
                                 href="/kontakt-oss"
                                 className={`block px-3 py-2 text-base font-medium transition-colors ${
                                     isActive('/kontakt-oss')
@@ -123,7 +123,7 @@ export default function Header() {
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Kontakt oss
-                            </Link>
+                            </PreloadLink>
                         </div>
                     </div>
                 )}

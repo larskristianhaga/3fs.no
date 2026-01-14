@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import PreloadLink from './PreloadLink'
 import { companyInfo } from '@/config/company'
 
 export default function Footer() {
@@ -25,30 +25,30 @@ export default function Footer() {
                             Hurtiglenker
                         </h3>
                         <nav className="flex flex-col space-y-2">
-                            <Link
+                            <PreloadLink
                                 href="/"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
                                 Forside
-                            </Link>
-                            <Link
+                            </PreloadLink>
+                            <PreloadLink
                                 href="/tjenester"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
                                 Tjenester
-                            </Link>
-                            <Link
+                            </PreloadLink>
+                            <PreloadLink
                                 href="/om-oss"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
                                 Om oss
-                            </Link>
-                            <Link
+                            </PreloadLink>
+                            <PreloadLink
                                 href="/kontakt-oss"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
                                 Kontakt oss
-                            </Link>
+                            </PreloadLink>
                         </nav>
                     </div>
 
@@ -57,30 +57,30 @@ export default function Footer() {
                             Tjenester
                         </h3>
                         <nav className="flex flex-col space-y-2">
-                            <Link
+                            <PreloadLink
                                 href="/tjenester#trefelling"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
                                 Trefelling
-                            </Link>
-                            <Link
+                            </PreloadLink>
+                            <PreloadLink
                                 href="/tjenester#stubbefresing"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
                                 Stubbefresing
-                            </Link>
-                            <Link
+                            </PreloadLink>
+                            <PreloadLink
                                 href="/tjenester#beskjaering"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
                                 Beskjæring
-                            </Link>
-                            <Link
+                            </PreloadLink>
+                            <PreloadLink
                                 href="/tjenester#tomterydding"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
                                 Tomterydding
-                            </Link>
+                            </PreloadLink>
                         </nav>
                     </div>
 

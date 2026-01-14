@@ -1,8 +1,8 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import PreloadLink from "@/components/PreloadLink";
 import {companyInfo} from '@/config/company'
 
 export const metadata: Metadata = {
@@ -45,12 +45,12 @@ export default function HomePage() {
                                 gjennomført på en trygg, effektiv måte, og til konkurransedyktige priser.
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                                <Link
+                                <PreloadLink
                                     href="/kontakt-oss"
                                     className="border-2 border-green-600 text-green-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-50 transition-colors text-center"
                                 >
                                     Ta kontakt med oss i dag
-                                </Link>
+                                </PreloadLink>
                             </div>
                         </div>
                         <div className="relative">
@@ -204,10 +204,10 @@ export default function HomePage() {
                                 Vi utfører felling av alle typer trær, både små og store. Med erfarne fagfolk og riktig
                                 utstyr håndterer vi selv de mest utfordrende situasjoner.
                             </p>
-                            <Link href="/tjenester#trefelling"
+                            <PreloadLink href="/tjenester#trefelling"
                                   className="text-green-600 hover:text-green-700 font-medium">
                                 Les mer →
-                            </Link>
+                            </PreloadLink>
                         </div>
                         <div
                             className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -216,10 +216,10 @@ export default function HomePage() {
                                 Den mest skånsomme og effektive måten å fjerne stubber på. Vi freser ca. 20-30 cm under
                                 bakken for å fjerne alle spor.
                             </p>
-                            <Link href="/tjenester#stubbefresing"
+                            <PreloadLink href="/tjenester#stubbefresing"
                                   className="text-green-600 hover:text-green-700 font-medium">
                                 Les mer →
-                            </Link>
+                            </PreloadLink>
                         </div>
                         <div
                             className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -228,10 +228,10 @@ export default function HomePage() {
                                 Store trær kan beskjæres, reduseres, formes eller toppes. Våre dyktige trefellere har
                                 gjennomført beskjæringskurs.
                             </p>
-                            <Link href="/tjenester#beskjaering"
+                            <PreloadLink href="/tjenester#beskjaering"
                                   className="text-green-600 hover:text-green-700 font-medium">
                                 Les mer →
-                            </Link>
+                            </PreloadLink>
                         </div>
                         <div
                             className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -240,10 +240,10 @@ export default function HomePage() {
                                 Vi har alt vi trenger for å effektivt klargjøre og rydde en eiendom for trær, busker og
                                 annen vegetasjon.
                             </p>
-                            <Link href="/tjenester#tomterydding"
+                            <PreloadLink href="/tjenester#tomterydding"
                                   className="text-green-600 hover:text-green-700 font-medium">
                                 Les mer →
-                            </Link>
+                            </PreloadLink>
                         </div>
                         <div
                             className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -253,10 +253,10 @@ export default function HomePage() {
                                 egner
                                 seg godt som dekkbark.
                             </p>
-                            <Link href="/tjenester#flishugging"
+                            <PreloadLink href="/tjenester#flishugging"
                                   className="text-green-600 hover:text-green-700 font-medium">
                                 Les mer →
-                            </Link>
+                            </PreloadLink>
                         </div>
                         <div
                             className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
@@ -265,19 +265,19 @@ export default function HomePage() {
                                 Vi hjelper gjerne med bortkjøring av flis, greiner og trestammer etter gjennomført
                                 arbeid.
                             </p>
-                            <Link href="/tjenester#bortkjoring"
+                            <PreloadLink href="/tjenester#bortkjoring"
                                   className="text-green-600 hover:text-green-700 font-medium">
                                 Les mer →
-                            </Link>
+                            </PreloadLink>
                         </div>
                     </div>
                     <div className="text-center mt-10">
-                        <Link
+                        <PreloadLink
                             href="/tjenester"
                             className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors"
                         >
                             Se alle tjenester
-                        </Link>
+                        </PreloadLink>
                     </div>
                 </div>
             </section>
@@ -437,12 +437,12 @@ export default function HomePage() {
                                         </span>
                                     </div>
                                 </div>
-                                <Link
+                                <PreloadLink
                                     href="/kontakt-oss"
                                     className="inline-block bg-white text-green-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors"
                                 >
                                     Send oss en melding
-                                </Link>
+                                </PreloadLink>
                             </div>
                             <div className="relative h-64 lg:h-auto">
                                 <Image

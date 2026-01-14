@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import PreloadLink from '@/components/PreloadLink'
 import type {Metadata} from 'next'
 
 export const metadata: Metadata = {
@@ -15,12 +15,12 @@ export default function NotFound() {
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
             <div className="text-center">
                 <h2 className="text-2xl font-semibold text-gray-700 mt-4">Du er kommet til en side som ikke finnes</h2>
-                <Link
+                <PreloadLink
                     href="/"
                     className="mt-6 inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors"
                 >
                     Gå tilbake
-                </Link>
+                </PreloadLink>
             </div>
         </div>
     )
