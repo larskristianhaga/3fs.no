@@ -4,13 +4,30 @@ import Header from "@/components/Header";
 import type {Metadata} from 'next'
 
 export const metadata: Metadata = {
-    title: 'Om oss | Trefellingsspesialisten AS',
-    description: 'Learn about GreenCut Tree Services - over 15 years of professional tree care experience. Licensed, insured arborists committed to safety and excellence.',
-    keywords: 'about tree service company, professional arborists, licensed tree service, experienced tree care, tree service history',
+    title: 'Om oss - Over 15 års erfaring med trefelling',
+    description: 'Lær mer om Trefellingsspesialisten AS - Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
+    keywords: 'om trefellingsfirma, profesjonelle arborister, sertifisert trefelling, erfaren trepleie, Ås, Oslo, Akershus, trefellingshistorie',
+    alternates: {
+        canonical: '/om-oss',
+    },
     openGraph: {
-        title: 'About GreenCut Tree Services - Professional Arborists',
-        description: 'Over 15 years of professional tree care experience. Licensed, insured arborists committed to safety and excellence.',
-        images: ['/images/about-hero.jpg'],
+        title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
+        description: 'Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
+        images: [{
+            url: '/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg',
+            width: 1200,
+            height: 630,
+            alt: 'Trefellingsspesialisten AS i arbeid',
+        }],
+        url: 'https://3fs.no/om-oss',
+        type: 'website',
+        locale: 'nb_NO',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
+        description: 'Over 15 års erfaring med profesjonell trepleie. Holder til i Ås, betjener Oslo-området.',
+        images: ['/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg'],
     },
 }
 

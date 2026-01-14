@@ -6,11 +6,29 @@ import Header from "@/components/Header";
 
 export const metadata: Metadata = {
     title: 'Trefellingsspesialisten AS | Trefelling, Beskjæring, Tomteryddning, stubbefresing | Oslo, Akershus, Østfold, og Buskerud',
-    description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Erfarne fagfolk med over 15 års erfaring. Forsikret og sertifisert.',
-    keywords: 'trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, klatring',
+    description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Erfarne fagfolk med over 15 års erfaring. Forsikret og sertifisert. Gratis befaring og konkurransedyktige priser.',
+    keywords: 'trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, klatring, Oslo, Akershus, Østfold, Buskerud, Ås',
+    alternates: {
+        canonical: '/',
+    },
     openGraph: {
         title: 'Trefellingsspesialisten AS | Profesjonelle Trefellingstjenester',
-        description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Erfarne fagfolk med over 15 års erfaring.',
+        description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Erfarne fagfolk med over 15 års erfaring. Gratis befaring og konkurransedyktige priser.',
+        images: [{
+            url: '/images/beskjaert-tre.jpg',
+            width: 1200,
+            height: 630,
+            alt: 'Trefellingsspesialisten AS - Profesjonell trefelling og beskjæring',
+        }],
+        url: 'https://3fs.no',
+        type: 'website',
+        locale: 'nb_NO',
+        siteName: 'Trefellingsspesialisten AS',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Trefellingsspesialisten AS | Profesjonelle Trefellingstjenester',
+        description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring.',
         images: ['/images/beskjaert-tre.jpg'],
     },
 }

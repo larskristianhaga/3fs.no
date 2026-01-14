@@ -4,13 +4,30 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-    title: 'Tjenester | Trefellingsspesialisten AS',
-    description: 'Complete tree services including tree removal, cutting, pruning, stump grinding, and emergency services. Professional arborists serving residential and commercial properties.',
-    keywords: 'tree removal, tree cutting, tree pruning, stump grinding, arborist, emergency tree service, tree trimming, tree care',
+    title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing',
+    description: 'Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister som betjener privatkunder, bedrifter og kommuner i Oslo, Akershus, Østfold og Buskerud.',
+    keywords: 'trefelling, beskjæring, stubbefresing, tomterydding, flishugging, bortkjøring, arborist, treklatring, trepleie, Oslo, Akershus, Østfold, Buskerud',
+    alternates: {
+        canonical: '/tjenester',
+    },
     openGraph: {
-        title: 'Professional Tree Services | GreenCut Tree Services',
-        description: 'Complete tree services including removal, cutting, pruning, and emergency services. Licensed and insured arborists.',
-        images: ['/images/services-hero.jpg'],
+        title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing | Trefellingsspesialisten AS',
+        description: 'Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister i Oslo-området.',
+        images: [{
+            url: '/images/tjenester/trefelling.jpg',
+            width: 1200,
+            height: 630,
+            alt: 'Trefellingsspesialisten AS - Trefellingstjenester',
+        }],
+        url: 'https://3fs.no/tjenester',
+        type: 'website',
+        locale: 'nb_NO',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing | Trefellingsspesialisten AS',
+        description: 'Komplette trefellingstjenester i Oslo, Akershus, Østfold og Buskerud.',
+        images: ['/images/tjenester/trefelling.jpg'],
     },
 }
 

@@ -4,26 +4,32 @@ import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-    title: 'Kontakt oss | Trefellingsspesialisten AS',
-    description: 'Contact GreenCut Tree Services for professional tree removal, cutting, and arborist services. Free quotes, emergency services available. Call (123) 456-7890.',
-    keywords: 'contact tree service, free tree quote, tree removal quote, emergency tree service, tree service phone number',
+    title: 'Kontakt oss - Gratis befaring og pristilbud',
+    description: 'Kontakt Trefellingsspesialisten AS for profesjonell trefelling, beskjæring og arboriststjenester. Gratis befaring og uforpliktende pristilbud. Ring 47 64 29 70 eller send oss en melding.',
+    keywords: 'kontakt trefelling, gratis befaring, pristilbud trefelling, nødtjeneste trefelling, trefelling telefonnummer, Oslo, Akershus, Østfold, Buskerud',
+    alternates: {
+        canonical: '/kontakt-oss',
+    },
     openGraph: {
-        title: 'Contact GreenCut Tree Services - Free Quote',
-        description: 'Get your free quote for professional tree services. Emergency services available 24/7.',
-        images: ['/images/contact-hero.jpg'],
+        title: 'Kontakt oss - Gratis befaring og pristilbud | Trefellingsspesialisten AS',
+        description: 'Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Vi betjener Oslo, Akershus, Østfold og Buskerud. Ring 47 64 29 70.',
+        images: [{
+            url: '/images/beskjaert-tre.jpg',
+            width: 1200,
+            height: 630,
+            alt: 'Kontakt Trefellingsspesialisten AS',
+        }],
+        url: 'https://3fs.no/kontakt-oss',
+        type: 'website',
+        locale: 'nb_NO',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Kontakt oss - Gratis befaring og pristilbud | Trefellingsspesialisten AS',
+        description: 'Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Ring 47 64 29 70.',
+        images: ['/images/beskjaert-tre.jpg'],
     },
 }
-
-const serviceAreas = [
-    'Downtown District',
-    'Riverside Heights',
-    'Oak Valley',
-    'Pine Ridge',
-    'Maple Grove',
-    'Cedar Hills',
-    'Willow Creek',
-    'Birch Park'
-]
 
 export default function ContactPage() {
     return (
