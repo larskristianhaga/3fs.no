@@ -3,7 +3,12 @@
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
-import Image from "next/image";
+import Image from "next/image"
+
+interface NavLink {
+    href: string
+    label: string
+}
 
 export default function Header() {
     const pathname = usePathname()
@@ -13,7 +18,7 @@ export default function Header() {
         return pathname === path
     }
 
-    const navLinks = [
+    const navLinks: NavLink[] = [
         {href: '/', label: 'Forside'},
         {href: '/tjenester', label: 'Tjenester'},
         {href: '/om-oss', label: 'Om oss'},
@@ -24,10 +29,10 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
-                        <Link href="/" className="text-2xl font-bold text-green-800">
+                        <Link href="/" className="text-2xl font-bold text-green-800" aria-label="Trefellingsspesialisten AS hjem">
                             <Image
                                 src="/images/logo.png"
-                                alt="TODO"
+                                alt="Trefellingsspesialisten AS logo"
                                 width={100}
                                 height={100}
                                 priority
@@ -67,9 +72,10 @@ export default function Header() {
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-green-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
-                            aria-expanded="false"
+                            aria-expanded={isMobileMenuOpen}
+                            aria-label="Åpne hovedmeny"
                         >
-                            <span className="sr-only">Open main menu</span>
+                            <span className="sr-only">{isMobileMenuOpen ? 'Lukk meny' : 'Åpne meny'}</span>
                             {!isMobileMenuOpen ? (
                                 <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -105,15 +111,15 @@ export default function Header() {
                                 </Link>
                             ))}
                             <Link
-                                href="/contact"
+                                href="/kontakt-oss"
                                 className={`block px-3 py-2 text-base font-medium transition-colors ${
-                                    isActive('/contact')
+                                    isActive('/kontakt-oss')
                                         ? 'text-green-800 bg-green-50'
                                         : 'text-gray-700 hover:text-green-600 hover:bg-gray-50'
                                 }`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                Contact
+                                Kontakt oss
                             </Link>
                         </div>
                     </div>
