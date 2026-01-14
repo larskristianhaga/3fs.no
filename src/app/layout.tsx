@@ -50,10 +50,8 @@ export default function RootLayout({
 }) {
     return (
         <html lang="no">
-        <head>
-            <StructuredData/>
-        </head>
         <body className={inter.className}>
+        <StructuredData/>
         {children}
         <Analytics/>
         <SpeedInsights/>

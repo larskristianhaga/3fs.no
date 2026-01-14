@@ -15,8 +15,8 @@ export default function StructuredData() {
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": "59.6606",
-            "longitude": "10.7819"
+            "latitude": 59.6606,
+            "longitude": 10.7819
         },
         "openingHours": "Mo-Fr 08:00-17:00",
         "priceRange": "$$",
