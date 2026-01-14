@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { companyData } from '@/config/company'
 
 export default function Footer() {
     const currentYear = new Date().getFullYear()
@@ -10,13 +11,13 @@ export default function Footer() {
                     {/* Company Info */}
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
-                            Trefellingsspesialisten AS
+                            {companyData.name}
                         </h3>
                         <p className="text-sm">
-                            Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud.
+                            {companyData.description}
                         </p>
                         <div className="text-sm">
-                            <p>Org.nr: 819 545 782</p>
+                            <p>Org.nr: {companyData.organizationNumber}</p>
                         </div>
                     </div>
 
@@ -107,10 +108,10 @@ export default function Footer() {
                                     />
                                 </svg>
                                 <a 
-                                    href="tel:+4747642970" 
+                                    href={companyData.phone.link} 
                                     className="hover:text-green-400 transition-colors"
                                 >
-                                    47 64 29 70
+                                    {companyData.phone.formatted}
                                 </a>
                             </div>
                             <div className="flex items-start">
@@ -128,10 +129,10 @@ export default function Footer() {
                                     />
                                 </svg>
                                 <a 
-                                    href="mailto:rs3felling@gmail.com" 
+                                    href={companyData.email.link} 
                                     className="hover:text-green-400 transition-colors"
                                 >
-                                    rs3felling@gmail.com
+                                    {companyData.email.address}
                                 </a>
                             </div>
                         </div>
@@ -142,7 +143,7 @@ export default function Footer() {
                 <div className="mt-12 pt-8 border-t border-gray-800">
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <p className="text-sm text-gray-400">
-                            © {currentYear} Trefellingsspesialisten AS. Alle rettigheter reservert.
+                            © {currentYear} {companyData.name}. Alle rettigheter reservert.
                         </p>
                         <div className="flex space-x-6 text-sm text-gray-400">
                             <span>Laget med ❤️ i Norge</span>

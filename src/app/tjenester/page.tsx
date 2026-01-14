@@ -2,31 +2,32 @@ import Image from 'next/image'
 import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { companyData } from '@/config/company';
 
 export const metadata: Metadata = {
     title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing',
-    description: 'Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister som betjener privatkunder, bedrifter og kommuner i Oslo, Akershus, Østfold og Buskerud.',
-    keywords: 'trefelling, beskjæring, stubbefresing, tomterydding, flishugging, bortkjøring, arborist, treklatring, trepleie, Oslo, Akershus, Østfold, Buskerud',
+    description: `Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister som betjener privatkunder, bedrifter og kommuner i ${companyData.serviceArea.regions.join(', ')}.`,
+    keywords: `trefelling, beskjæring, stubbefresing, tomterydding, flishugging, bortkjøring, arborist, treklatring, trepleie, ${companyData.serviceArea.regions.join(', ')}`,
     alternates: {
         canonical: '/tjenester',
     },
     openGraph: {
-        title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing | Trefellingsspesialisten AS',
+        title: `Tjenester - Trefelling, Beskjæring og Stubbefresing | ${companyData.name}`,
         description: 'Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister i Oslo-området.',
         images: [{
             url: '/images/tjenester/trefelling.jpg',
             width: 1200,
             height: 630,
-            alt: 'Trefellingsspesialisten AS - Trefellingstjenester',
+            alt: `${companyData.name} - Trefellingstjenester`,
         }],
-        url: 'https://3fs.no/tjenester',
+        url: `${companyData.website.url}/tjenester`,
         type: 'website',
         locale: 'nb_NO',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing | Trefellingsspesialisten AS',
-        description: 'Komplette trefellingstjenester i Oslo, Akershus, Østfold og Buskerud.',
+        title: `Tjenester - Trefelling, Beskjæring og Stubbefresing | ${companyData.name}`,
+        description: `Komplette trefellingstjenester i ${companyData.serviceArea.regions.join(', ')}.`,
         images: ['/images/tjenester/trefelling.jpg'],
     },
 }

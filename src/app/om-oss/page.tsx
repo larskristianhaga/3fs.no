@@ -2,31 +2,32 @@ import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Header from "@/components/Header";
 import type {Metadata} from 'next'
+import { companyData } from '@/config/company';
 
 export const metadata: Metadata = {
     title: 'Om oss - Over 15 års erfaring med trefelling',
-    description: 'Lær mer om Trefellingsspesialisten AS - Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
-    keywords: 'om trefellingsfirma, profesjonelle arborister, sertifisert trefelling, erfaren trepleie, Ås, Oslo, Akershus, trefellingshistorie',
+    description: `Lær mer om ${companyData.name} - Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i ${companyData.location.municipality} og betjener ${companyData.serviceArea.regions.join(', ')}. Fullt forsikret og sertifiserte arborister.`,
+    keywords: `om trefellingsfirma, profesjonelle arborister, sertifisert trefelling, erfaren trepleie, ${companyData.location.municipality}, ${companyData.serviceArea.regions.join(', ')}, trefellingshistorie`,
     alternates: {
         canonical: '/om-oss',
     },
     openGraph: {
-        title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
-        description: 'Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
+        title: `Om oss - Over 15 års erfaring med trefelling | ${companyData.name}`,
+        description: `Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i ${companyData.location.municipality} og betjener ${companyData.serviceArea.regions.join(', ')}. Fullt forsikret og sertifiserte arborister.`,
         images: [{
             url: '/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg',
             width: 1200,
             height: 630,
-            alt: 'Trefellingsspesialisten AS i arbeid',
+            alt: `${companyData.name} i arbeid`,
         }],
-        url: 'https://3fs.no/om-oss',
+        url: `${companyData.website.url}/om-oss`,
         type: 'website',
         locale: 'nb_NO',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
-        description: 'Over 15 års erfaring med profesjonell trepleie. Holder til i Ås, betjener Oslo-området.',
+        title: `Om oss - Over 15 års erfaring med trefelling | ${companyData.name}`,
+        description: `Over 15 års erfaring med profesjonell trepleie. Holder til i ${companyData.location.municipality}, betjener Oslo-området.`,
         images: ['/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg'],
     },
 }
@@ -67,9 +68,7 @@ export default function AboutPage() {
                                 Om oss
                             </h1>
                             <p className="mt-4 text-xl text-gray-600">
-                                Om oss
-                                Trefellingsspesialisten holder til i Ås kommune, og vi tar på oss oppdrag i Oslo,
-                                Akershus, Østfold og store deler av Buskerud. Vi tilbyr alt innen trefelling,
+                                {companyData.name} holder til i {companyData.location.municipality} kommune, og vi tar på oss oppdrag i {companyData.serviceArea.regions.join(', ')}. Vi tilbyr alt innen trefelling,
                                 beskjæring, stubbefresing, flishugging, bortkjøring og oppryddning. Vi har oppdrag for
                                 stat og kommune, bedrifter og borettslag, privat- og ferie eiendommer. Vi tilbyr alltid
                                 en gratis befaring og uforpliktende pristilbud.

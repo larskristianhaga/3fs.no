@@ -3,32 +3,33 @@ import Link from 'next/link'
 import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { companyData } from '@/config/company';
 
 export const metadata: Metadata = {
-    title: 'Trefellingsspesialisten AS | Trefelling, Beskjæring, Tomteryddning, stubbefresing | Oslo, Akershus, Østfold, og Buskerud',
-    description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Erfarne fagfolk med over 15 års erfaring. Forsikret og sertifisert. Gratis befaring og konkurransedyktige priser.',
-    keywords: 'trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, klatring, Oslo, Akershus, Østfold, Buskerud, Ås',
+    title: `${companyData.name} | Trefelling, Beskjæring, Tomteryddning, stubbefresing | ${companyData.serviceArea.regions.join(', ')}`,
+    description: `${companyData.description} Erfarne fagfolk med over 15 års erfaring. Forsikret og sertifisert. Gratis befaring og konkurransedyktige priser.`,
+    keywords: `trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, klatring, ${companyData.serviceArea.regions.join(', ')}, ${companyData.location.municipality}`,
     alternates: {
         canonical: '/',
     },
     openGraph: {
-        title: 'Trefellingsspesialisten AS | Profesjonelle Trefellingstjenester',
-        description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Erfarne fagfolk med over 15 års erfaring. Gratis befaring og konkurransedyktige priser.',
+        title: `${companyData.name} | Profesjonelle Trefellingstjenester`,
+        description: `${companyData.description} Erfarne fagfolk med over 15 års erfaring. Gratis befaring og konkurransedyktige priser.`,
         images: [{
             url: '/images/beskjaert-tre.jpg',
             width: 1200,
             height: 630,
-            alt: 'Trefellingsspesialisten AS - Profesjonell trefelling og beskjæring',
+            alt: `${companyData.name} - Profesjonell trefelling og beskjæring`,
         }],
-        url: 'https://3fs.no',
+        url: companyData.website.url,
         type: 'website',
         locale: 'nb_NO',
-        siteName: 'Trefellingsspesialisten AS',
+        siteName: companyData.name,
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Trefellingsspesialisten AS | Profesjonelle Trefellingstjenester',
-        description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring.',
+        title: `${companyData.name} | Profesjonelle Trefellingstjenester`,
+        description: `${companyData.description} Over 15 års erfaring.`,
         images: ['/images/beskjaert-tre.jpg'],
     },
 }
@@ -47,8 +48,7 @@ export default function HomePage() {
                                 Trefellingsspesialisten
                             </h1>
                             <p className="mt-6 text-xl text-gray-600 max-w-3xl">
-                                Med erfarne trefellere, maskiner, og riktig utstyr kan du være sikker på at jobben blir
-                                gjennomført på en trygg, effektiv måte, og til konkurransedyktige priser.
+                                {companyData.tagline}
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                 <Link
@@ -140,8 +140,7 @@ export default function HomePage() {
                             </h2>
                             <div className="space-y-4 text-gray-600">
                                 <p>
-                                    Trefellingsspesialisten AS holder til i Ås kommune, og vi tar på oss oppdrag i Oslo,
-                                    Akershus, Østfold og store deler av Buskerud.
+                                    {companyData.name} holder til i {companyData.location.municipality} kommune, og vi tar på oss oppdrag i {companyData.serviceArea.regions.join(', ')}.
                                 </p>
                                 <p>
                                     Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en
@@ -366,16 +365,16 @@ export default function HomePage() {
                                         <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                         </svg>
-                                        <a href="tel:+4747642970" className="text-lg hover:underline">
-                                            47 64 29 70
+                                        <a href={companyData.phone.link} className="text-lg hover:underline">
+                                            {companyData.phone.formatted}
                                         </a>
                                     </div>
                                     <div className="flex items-center text-white">
                                         <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
-                                        <a href="mailto:rs3felling@gmail.com" className="text-lg hover:underline">
-                                            rs3felling@gmail.com
+                                        <a href={companyData.email.link} className="text-lg hover:underline">
+                                            {companyData.email.address}
                                         </a>
                                     </div>
                                     <div className="flex items-start text-white">
@@ -384,7 +383,7 @@ export default function HomePage() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
                                         <span className="text-lg">
-                                            Dekker Oslo, Akershus, Østfold og Buskerud
+                                            {companyData.serviceArea.description}
                                         </span>
                                     </div>
                                 </div>

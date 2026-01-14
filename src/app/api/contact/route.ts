@@ -1,5 +1,6 @@
 import {NextRequest, NextResponse} from 'next/server'
 import {Resend} from 'resend'
+import { companyData } from '@/config/company'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -23,8 +24,8 @@ export async function POST(request: NextRequest) {
         await resend.emails.send({
             from: '3fs@paal-erik.no',
             to: ['larskhaga@gmail.com'],
-            // to: ['rs3felling@gmail.com'],
-            subject: `Ny innsending fra ${name} | 3fs.no`,
+            // to: [companyData.email.address],
+            subject: `Ny innsending fra ${name} | ${companyData.website.domain}`,
             html: `
         <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px;">
           <h3>Kontaktinformasjon</h3>
@@ -42,7 +43,7 @@ export async function POST(request: NextRequest) {
 
         <hr style="margin: 30px 0;">
         <p style="color: #6b7280; font-size: 14px;">
-          Denne meldingen er sendt fra 3fs.no, kontakt oss skjema.
+          Denne meldingen er sendt fra ${companyData.website.domain}, kontakt oss skjema.
         </p>
       `,
             attachments,
