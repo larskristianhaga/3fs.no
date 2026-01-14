@@ -143,7 +143,7 @@ export default function HomePage() {
                             </h2>
                             <div className="space-y-4 text-gray-600">
                                 <p>
-                                    {companyInfo.name} holder til i {companyInfo.address.locality} kommune, og vi tar på oss oppdrag i {companyInfo.serviceAreasText.split(',').slice(0, 3).join(',')}, og store deler av {companyInfo.serviceAreasText.split(', ').slice(-1)[0]}.
+                                    {companyInfo.name} holder til i {companyInfo.address.locality} kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.
                                 </p>
                                 <p>
                                     Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en
