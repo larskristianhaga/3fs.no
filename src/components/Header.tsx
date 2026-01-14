@@ -36,6 +36,8 @@ export default function Header() {
                                 width={100}
                                 height={100}
                                 priority
+                                quality={90}
+                                sizes="100px"
                             />
                         </Link>
                     </div>

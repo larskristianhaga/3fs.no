@@ -67,6 +67,8 @@ export default function HomePage() {
                                 height={500}
                                 className="rounded-lg shadow-xl"
                                 priority
+                                quality={85}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 370px"
                             />
                         </div>
                     </div>
@@ -166,6 +168,9 @@ export default function HomePage() {
                                 alt="Trefellingsspesialisten i arbeid"
                                 fill
                                 className="rounded-lg shadow-xl object-cover"
+                                quality={85}
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -401,6 +406,9 @@ export default function HomePage() {
                                     alt="Kontakt Trefellingsspesialisten"
                                     fill
                                     className="object-cover"
+                                    quality={85}
+                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                    loading="lazy"
                                 />
                             </div>
                         </div>
