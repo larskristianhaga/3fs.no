@@ -7,5 +7,5 @@ Canonical: https://3fs.no/.well-known/security.txt
 # Languages we speak
 Preferred-Languages: no, en
 
-# Expiration date (1 year from 2026-01-14)
+# Expiration date (created 2026-01-14, expires in 1 year)
 Expires: 2027-01-14T23:59:59Z
