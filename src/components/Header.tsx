@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
 import Image from "next/image"
+import { companyData } from '@/config/company'
 
 interface NavLink {
     href: string
@@ -29,10 +30,10 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
-                        <Link href="/" className="text-2xl font-bold text-green-800" aria-label="Trefellingsspesialisten AS hjem">
+                        <Link href="/" className="text-2xl font-bold text-green-800" aria-label={`${companyData.name} hjem`}>
                             <Image
                                 src="/images/logo.png"
-                                alt="Trefellingsspesialisten AS logo"
+                                alt={`${companyData.name} logo`}
                                 width={100}
                                 height={100}
                                 priority
