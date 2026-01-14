@@ -1,8 +1,3 @@
-/**
- * Centralized company information configuration
- * All company data like phone number, org number, address, etc. in one place
- */
-
 export const companyInfo = {
   name: "Trefellingsspesialisten AS",
   description: "Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring med trefelling, beskjæring, stubbefresing og tomterydding. Forsikret og sertifisert.",

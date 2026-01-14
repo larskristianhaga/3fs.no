@@ -1,20 +1,20 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import type {NextRequest} from 'next/server'
+import {NextResponse} from 'next/server'
 
 export function middleware(request: NextRequest) {
-  const response = NextResponse.next()
+    const response = NextResponse.next()
 
-  // Add cache headers for static images
-  if (request.nextUrl.pathname.startsWith('/images/')) {
-    response.headers.set(
-      'Cache-Control',
-      'public, max-age=31536000, immutable'
-    )
-  }
+    // Add cache headers for static images
+    if (request.nextUrl.pathname.startsWith('/images/')) {
+        response.headers.set(
+            'Cache-Control',
+            'public, max-age=31536000, immutable'
+        )
+    }
 
-  return response
+    return response
 }
 
 export const config = {
-  matcher: ['/images/:path*'],
+    matcher: ['/images/:path*'],
 }

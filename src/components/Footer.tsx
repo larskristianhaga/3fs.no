@@ -8,7 +8,6 @@ export default function Footer() {
         <footer className="bg-gray-900 text-gray-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Company Info */}
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
                             {companyInfo.name}
@@ -21,7 +20,6 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
                             Hurtiglenker
@@ -54,7 +52,6 @@ export default function Footer() {
                         </nav>
                     </div>
 
-                    {/* Services */}
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
                             Tjenester
@@ -87,7 +84,6 @@ export default function Footer() {
                         </nav>
                     </div>
 
-                    {/* Contact Info */}
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
                             Kontakt
@@ -139,7 +135,6 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
                 <div className="mt-12 pt-8 border-t border-gray-800">
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <p className="text-sm text-gray-400">

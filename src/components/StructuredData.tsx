@@ -1,4 +1,4 @@
-import { companyInfo } from '@/config/company'
+import {companyInfo} from '@/config/company'
 
 export default function StructuredData() {
     const structuredData = {
@@ -36,7 +36,7 @@ export default function StructuredData() {
     return (
         <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+            dangerouslySetInnerHTML={{__html: JSON.stringify(structuredData)}}
         />
     )
 }
