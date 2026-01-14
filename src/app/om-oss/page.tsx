@@ -94,6 +94,8 @@ export default function AboutPage() {
                                 height={400}
                                 className="rounded-lg shadow-xl"
                                 priority
+                                quality={85}
+                                sizes="(max-width: 768px) 100vw, 600px"
                             />
                         </div>
                     </div>
@@ -111,6 +113,9 @@ export default function AboutPage() {
                                         alt={`Portrett av ${member.name}`}
                                         fill
                                         className="rounded-full object-cover shadow-lg"
+                                        quality={85}
+                                        sizes="192px"
+                                        loading="lazy"
                                     />
                                 </div>
                                 <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
