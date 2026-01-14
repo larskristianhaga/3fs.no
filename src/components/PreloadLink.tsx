@@ -22,5 +22,5 @@ export default function PreloadLink({ href, onMouseEnter, ...props }: PreloadLin
         [href, onMouseEnter, router]
     )
 
-    return <Link href={href} onMouseEnter={handleMouseEnter} prefetch={true} {...props} />
+    return <Link href={href} onMouseEnter={handleMouseEnter} prefetch={false} {...props} />
 }
