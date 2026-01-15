@@ -143,7 +143,7 @@ export default function HomePage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
                         <div className="mb-8 lg:mb-0">
-                            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 sm:text-4xl mb-6">
+                            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-6">
                                 Vår historie
                             </h2>
                             <div className="space-y-4 text-sm sm:text-base text-gray-600 leading-relaxed">
@@ -190,7 +190,7 @@ export default function HomePage() {
             <section className="py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 sm:text-4xl">
+                        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
                             Tjenester vi tilbyr
                         </h2>
                         <p className="mt-4 text-base sm:text-xl text-gray-600">
@@ -315,7 +315,7 @@ export default function HomePage() {
             <section className="py-16 bg-green-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 sm:text-4xl">
+                        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
                             Hva våre kunder sier
                         </h2>
                         <p className="mt-4 text-base sm:text-xl text-gray-600">
@@ -425,7 +425,7 @@ export default function HomePage() {
                     <div className="bg-green-600 rounded-2xl shadow-xl overflow-hidden">
                         <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                             <div className="p-6 sm:p-8 lg:p-12">
-                                <h2 className="text-2xl sm:text-3xl font-bold text-white sm:text-4xl mb-4">
+                                <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">
                                     Kontakt oss i dag
                                 </h2>
                                 <p className="text-green-100 text-base sm:text-lg mb-6 leading-relaxed">
@@ -450,7 +450,7 @@ export default function HomePage() {
                                                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                         </svg>
                                         <a href={`mailto:${companyInfo.contact.email}`}
-                                           className="text-base sm:text-lg hover:underline break-all">
+                                           className="text-base sm:text-lg hover:underline break-words">
                                             {companyInfo.contact.email}
                                         </a>
                                     </div>

@@ -156,7 +156,7 @@ export default function ContactForm() {
                 className="w-full text-base py-6"
                 size="lg"
             >
-                {isSubmitting ? 'Sender...' : 'Melding sent'}
+                {isSubmitting ? 'Sender...' : 'Send melding'}
             </Button>
 
             {message && (
