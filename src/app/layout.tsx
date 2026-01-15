@@ -1,8 +1,14 @@
-import type {Metadata} from 'next'
+import type {Metadata, Viewport} from 'next'
 import {Analytics} from '@vercel/analytics/react'
 import {SpeedInsights} from '@vercel/speed-insights/next'
 import StructuredData from '@/components/StructuredData'
 import './globals.css'
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+}
 
 export const metadata: Metadata = {
     title: {
@@ -15,11 +21,6 @@ export const metadata: Metadata = {
     creator: 'Trefellingsspesialisten AS',
     publisher: 'Trefellingsspesialisten AS',
     metadataBase: new URL('https://3fs.no'),
-    viewport: {
-        width: 'device-width',
-        initialScale: 1,
-        maximumScale: 5,
-    },
     alternates: {
         canonical: '/',
     },
