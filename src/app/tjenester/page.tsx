@@ -66,7 +66,7 @@ export default function ServicesPage() {
             <section className="relative  py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
+                        <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">
                             Tjenester
                         </h1>
                     </div>
@@ -90,15 +90,15 @@ export default function ServicesPage() {
                                         {...(index >= 2 && { loading: "lazy" as const })}
                                     />
                                 </div>
-                                <div className="p-8">
+                                <div className="p-6 sm:p-8">
                                     <div className="flex justify-between items-start mb-4">
-                                        <h2 className="text-2xl font-bold text-gray-900">
+                                        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
                                             {service.title}
                                         </h2>
                                         <span className="text-green-600 font-semibold text-lg">
                     </span>
                                     </div>
-                                    <p className="text-gray-600 mb-6">
+                                    <p className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed">
                                         {service.description}
                                     </p>
                                 </div>

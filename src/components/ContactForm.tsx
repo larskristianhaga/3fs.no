@@ -62,7 +62,7 @@ export default function ContactForm() {
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-                <Label htmlFor="name">
+                <Label htmlFor="name" className="text-base">
                     Navn *
                 </Label>
                 <Input
@@ -70,11 +70,12 @@ export default function ContactForm() {
                     id="name"
                     name="name"
                     required
+                    className="text-base py-3"
                 />
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="email">
+                <Label htmlFor="email" className="text-base">
                     E-post *
                 </Label>
                 <Input
@@ -82,11 +83,12 @@ export default function ContactForm() {
                     id="email"
                     name="email"
                     required
+                    className="text-base py-3"
                 />
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="phone">
+                <Label htmlFor="phone" className="text-base">
                     Telefon *
                 </Label>
                 <Input
@@ -94,22 +96,24 @@ export default function ContactForm() {
                     id="phone"
                     name="phone"
                     required
+                    className="text-base py-3"
                 />
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="address">
+                <Label htmlFor="address" className="text-base">
                     Adresse
                 </Label>
                 <Input
                     type="text"
                     id="address"
                     name="address"
+                    className="text-base py-3"
                 />
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="postCodeAndLocation">
+                <Label htmlFor="postCodeAndLocation" className="text-base">
                     Postnummer og poststed *
                 </Label>
                 <Input
@@ -117,11 +121,12 @@ export default function ContactForm() {
                     id="postCodeAndLocation"
                     name="postCodeAndLocation"
                     required
+                    className="text-base py-3"
                 />
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="message">
+                <Label htmlFor="message" className="text-base">
                     Melding *
                 </Label>
                 <Textarea
@@ -129,24 +134,26 @@ export default function ContactForm() {
                     name="message"
                     rows={4}
                     required
+                    className="text-base py-3"
                 />
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="attachment">
+                <Label htmlFor="attachment" className="text-base">
                     Vedlegg
                 </Label>
                 <Input
                     type="file"
                     id="attachment"
                     name="attachment"
+                    className="text-base py-3"
                 />
             </div>
 
             <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full"
+                className="w-full text-base py-6"
                 size="lg"
             >
                 {isSubmitting ? 'Sender...' : 'Melding sent'}
@@ -154,7 +161,7 @@ export default function ContactForm() {
 
             {message && (
                 <div
-                    className={`p-4 rounded-md ${message.includes('error') ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
+                    className={`p-4 rounded-md text-base ${message.includes('error') ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
                     {message}
                 </div>
             )}
