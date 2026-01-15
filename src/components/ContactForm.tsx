@@ -1,6 +1,10 @@
 'use client'
 
 import {useState} from 'react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Label } from '@/components/ui/label'
 
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -57,102 +61,96 @@ export default function ContactForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="space-y-2">
+                <Label htmlFor="name">
                     Navn *
-                </label>
-                <input
+                </Label>
+                <Input
                     type="text"
                     id="name"
                     name="name"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
             </div>
 
-            <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="space-y-2">
+                <Label htmlFor="email">
                     E-post *
-                </label>
-                <input
+                </Label>
+                <Input
                     type="email"
                     id="email"
                     name="email"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
             </div>
 
-            <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="space-y-2">
+                <Label htmlFor="phone">
                     Telefon *
-                </label>
-                <input
+                </Label>
+                <Input
                     type="tel"
                     id="phone"
                     name="phone"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
             </div>
 
-            <div>
-                <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="space-y-2">
+                <Label htmlFor="address">
                     Adresse
-                </label>
-                <input
+                </Label>
+                <Input
                     type="text"
                     id="address"
                     name="address"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
             </div>
 
-            <div>
-                <label htmlFor="postCodeAndLocation" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="space-y-2">
+                <Label htmlFor="postCodeAndLocation">
                     Postnummer og poststed *
-                </label>
-                <input
+                </Label>
+                <Input
                     type="text"
                     id="postCodeAndLocation"
                     name="postCodeAndLocation"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
             </div>
 
-            <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="space-y-2">
+                <Label htmlFor="message">
                     Melding *
-                </label>
-                <textarea
+                </Label>
+                <Textarea
                     id="message"
                     name="message"
                     rows={4}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
             </div>
 
-            <div>
-                <label htmlFor="attachment" className="block text-sm font-medium text-gray-700 mb-1">
+            <div className="space-y-2">
+                <Label htmlFor="attachment">
                     Vedlegg
-                </label>
-                <input
+                </Label>
+                <Input
                     type="file"
                     id="attachment"
                     name="attachment"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
             </div>
 
-            <button
+            <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+                className="w-full"
+                size="lg"
             >
                 {isSubmitting ? 'Sender...' : 'Melding sent'}
-            </button>
+            </Button>
 
             {message && (
                 <div

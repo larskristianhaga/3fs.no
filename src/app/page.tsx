@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PreloadLink from "@/components/PreloadLink";
 import {companyInfo} from '@/config/company'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const metadata: Metadata = {
     title: 'Trefellingsspesialisten AS | Trefelling, Beskjæring, Tomteryddning, stubbefresing | Oslo, Akershus, Østfold, og Buskerud',
@@ -45,12 +47,11 @@ export default function HomePage() {
                                 gjennomført på en trygg, effektiv måte, og til konkurransedyktige priser.
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                                <PreloadLink
-                                    href="/kontakt-oss"
-                                    className="border-2 border-green-600 text-green-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-50 transition-colors text-center"
-                                >
-                                    Ta kontakt med oss i dag
-                                </PreloadLink>
+                                <Button asChild variant="outline" size="lg">
+                                    <PreloadLink href="/kontakt-oss">
+                                        Ta kontakt med oss i dag
+                                    </PreloadLink>
+                                </Button>
                             </div>
                         </div>
                         <div className="relative">
@@ -197,87 +198,116 @@ export default function HomePage() {
                         </p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div
-                            className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-3">Trefelling</h3>
-                            <p className="text-gray-600 mb-4">
-                                Vi utfører felling av alle typer trær, både små og store. Med erfarne fagfolk og riktig
-                                utstyr håndterer vi selv de mest utfordrende situasjoner.
-                            </p>
-                            <PreloadLink href="/tjenester#trefelling"
-                                  className="text-green-600 hover:text-green-700 font-medium">
-                                Les mer →
-                            </PreloadLink>
-                        </div>
-                        <div
-                            className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-3">Stubbefresing</h3>
-                            <p className="text-gray-600 mb-4">
-                                Den mest skånsomme og effektive måten å fjerne stubber på. Vi freser ca. 20-30 cm under
-                                bakken for å fjerne alle spor.
-                            </p>
-                            <PreloadLink href="/tjenester#stubbefresing"
-                                  className="text-green-600 hover:text-green-700 font-medium">
-                                Les mer →
-                            </PreloadLink>
-                        </div>
-                        <div
-                            className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-3">Beskjæring</h3>
-                            <p className="text-gray-600 mb-4">
-                                Store trær kan beskjæres, reduseres, formes eller toppes. Våre dyktige trefellere har
-                                gjennomført beskjæringskurs.
-                            </p>
-                            <PreloadLink href="/tjenester#beskjaering"
-                                  className="text-green-600 hover:text-green-700 font-medium">
-                                Les mer →
-                            </PreloadLink>
-                        </div>
-                        <div
-                            className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-3">Tomterydding</h3>
-                            <p className="text-gray-600 mb-4">
-                                Vi har alt vi trenger for å effektivt klargjøre og rydde en eiendom for trær, busker og
-                                annen vegetasjon.
-                            </p>
-                            <PreloadLink href="/tjenester#tomterydding"
-                                  className="text-green-600 hover:text-green-700 font-medium">
-                                Les mer →
-                            </PreloadLink>
-                        </div>
-                        <div
-                            className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-3">Flishugging</h3>
-                            <p className="text-gray-600 mb-4">
-                                Miljøvennlig og effektiv måte å rydde kvist, greiner og mindre trestammer på. Flisen
-                                egner
-                                seg godt som dekkbark.
-                            </p>
-                            <PreloadLink href="/tjenester#flishugging"
-                                  className="text-green-600 hover:text-green-700 font-medium">
-                                Les mer →
-                            </PreloadLink>
-                        </div>
-                        <div
-                            className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-                            <h3 className="text-xl font-semibold text-gray-900 mb-3">Bortkjøring</h3>
-                            <p className="text-gray-600 mb-4">
-                                Vi hjelper gjerne med bortkjøring av flis, greiner og trestammer etter gjennomført
-                                arbeid.
-                            </p>
-                            <PreloadLink href="/tjenester#bortkjoring"
-                                  className="text-green-600 hover:text-green-700 font-medium">
-                                Les mer →
-                            </PreloadLink>
-                        </div>
+                        <Card className="hover:shadow-lg transition-shadow">
+                            <CardHeader>
+                                <CardTitle>Trefelling</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription className="text-base">
+                                    Vi utfører felling av alle typer trær, både små og store. Med erfarne fagfolk og riktig
+                                    utstyr håndterer vi selv de mest utfordrende situasjoner.
+                                </CardDescription>
+                            </CardContent>
+                            <CardFooter>
+                                <PreloadLink href="/tjenester#trefelling"
+                                      className="text-green-600 hover:underline font-medium">
+                                    Les mer →
+                                </PreloadLink>
+                            </CardFooter>
+                        </Card>
+                        <Card className="hover:shadow-lg transition-shadow">
+                            <CardHeader>
+                                <CardTitle>Stubbefresing</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription className="text-base">
+                                    Den mest skånsomme og effektive måten å fjerne stubber på. Vi freser ca. 20-30 cm under
+                                    bakken for å fjerne alle spor.
+                                </CardDescription>
+                            </CardContent>
+                            <CardFooter>
+                                <PreloadLink href="/tjenester#stubbefresing"
+                                      className="text-green-600 hover:underline font-medium">
+                                    Les mer →
+                                </PreloadLink>
+                            </CardFooter>
+                        </Card>
+                        <Card className="hover:shadow-lg transition-shadow">
+                            <CardHeader>
+                                <CardTitle>Beskjæring</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription className="text-base">
+                                    Store trær kan beskjæres, reduseres, formes eller toppes. Våre dyktige trefellere har
+                                    gjennomført beskjæringskurs.
+                                </CardDescription>
+                            </CardContent>
+                            <CardFooter>
+                                <PreloadLink href="/tjenester#beskjaering"
+                                      className="text-green-600 hover:underline font-medium">
+                                    Les mer →
+                                </PreloadLink>
+                            </CardFooter>
+                        </Card>
+                        <Card className="hover:shadow-lg transition-shadow">
+                            <CardHeader>
+                                <CardTitle>Tomterydding</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription className="text-base">
+                                    Vi har alt vi trenger for å effektivt klargjøre og rydde en eiendom for trær, busker og
+                                    annen vegetasjon.
+                                </CardDescription>
+                            </CardContent>
+                            <CardFooter>
+                                <PreloadLink href="/tjenester#tomterydding"
+                                      className="text-green-600 hover:underline font-medium">
+                                    Les mer →
+                                </PreloadLink>
+                            </CardFooter>
+                        </Card>
+                        <Card className="hover:shadow-lg transition-shadow">
+                            <CardHeader>
+                                <CardTitle>Flishugging</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription className="text-base">
+                                    Miljøvennlig og effektiv måte å rydde kvist, greiner og mindre trestammer på. Flisen
+                                    egner
+                                    seg godt som dekkbark.
+                                </CardDescription>
+                            </CardContent>
+                            <CardFooter>
+                                <PreloadLink href="/tjenester#flishugging"
+                                      className="text-green-600 hover:underline font-medium">
+                                    Les mer →
+                                </PreloadLink>
+                            </CardFooter>
+                        </Card>
+                        <Card className="hover:shadow-lg transition-shadow">
+                            <CardHeader>
+                                <CardTitle>Bortkjøring</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <CardDescription className="text-base">
+                                    Vi hjelper gjerne med bortkjøring av flis, greiner og trestammer etter gjennomført
+                                    arbeid.
+                                </CardDescription>
+                            </CardContent>
+                            <CardFooter>
+                                <PreloadLink href="/tjenester#bortkjoring"
+                                      className="text-green-600 hover:underline font-medium">
+                                    Les mer →
+                                </PreloadLink>
+                            </CardFooter>
+                        </Card>
                     </div>
                     <div className="text-center mt-10">
-                        <PreloadLink
-                            href="/tjenester"
-                            className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors"
-                        >
-                            Se alle tjenester
-                        </PreloadLink>
+                        <Button asChild size="lg">
+                            <PreloadLink href="/tjenester">
+                                Se alle tjenester
+                            </PreloadLink>
+                        </Button>
                     </div>
                 </div>
             </section>
@@ -437,12 +467,11 @@ export default function HomePage() {
                                         </span>
                                     </div>
                                 </div>
-                                <PreloadLink
-                                    href="/kontakt-oss"
-                                    className="inline-block bg-white text-green-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors"
-                                >
-                                    Send oss en melding
-                                </PreloadLink>
+                                <Button asChild variant="secondary" size="lg">
+                                    <PreloadLink href="/kontakt-oss">
+                                        Send oss en melding
+                                    </PreloadLink>
+                                </Button>
                             </div>
                             <div className="relative h-64 lg:h-auto">
                                 <Image
