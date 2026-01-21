@@ -6,6 +6,7 @@ import PreloadLink from "@/components/PreloadLink";
 import {companyInfo} from '@/config/company'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { siteText } from '@/content/text'
 
 export const metadata: Metadata = {
     title: 'Trefellingsspesialisten AS | Trefelling, Beskjæring, Tomteryddning, stubbefresing | Oslo, Akershus, Østfold, og Buskerud',
@@ -40,16 +41,15 @@ export default function HomePage() {
                     <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
                         <div className="mb-8 lg:mb-0">
                             <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl lg:text-6xl break-words">
-                                Trefellingsspesialisten
+                                {siteText.home.hero.title}
                             </h1>
                             <p className="mt-6 text-base sm:text-xl text-gray-600 max-w-3xl leading-relaxed">
-                                Med erfarne trefellere, maskiner, og riktig utstyr kan du være sikker på at jobben blir
-                                gjennomført på en trygg, effektiv måte, og til konkurransedyktige priser.
+                                {siteText.home.hero.description}
                             </p>
                             <div className="mt-8 flex flex-col sm:flex-row gap-4">
                                 <Button asChild variant="outline" size="lg">
                                     <PreloadLink href="/kontakt-oss">
-                                        Ta kontakt med oss i dag
+                                        {siteText.home.hero.cta}
                                     </PreloadLink>
                                 </Button>
                             </div>
@@ -74,7 +74,7 @@ export default function HomePage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-                            Hvorfor velge oss?
+                            {siteText.home.whyChooseUs.title}
                         </h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -87,10 +87,9 @@ export default function HomePage() {
                                           d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                             </div>
-                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Over 15 års erfaring</h3>
+                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{siteText.home.whyChooseUs.experience.title}</h3>
                             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                Vår erfarne klatrer har mer enn 15 års erfaring med klatring og trefelling av vanskelige
-                                trær.
+                                {siteText.home.whyChooseUs.experience.description}
                             </p>
                         </div>
                         <div className="text-center p-6">
@@ -102,9 +101,9 @@ export default function HomePage() {
                                           d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                                 </svg>
                             </div>
-                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Fullt forsikret</h3>
+                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{siteText.home.whyChooseUs.insured.title}</h3>
                             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                Vi har full ansvarsforsikring som dekker eventuelle skader. Trygghet for deg som kunde.
+                                {siteText.home.whyChooseUs.insured.description}
                             </p>
                         </div>
                         <div className="text-center p-6">
@@ -116,9 +115,9 @@ export default function HomePage() {
                                           d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                 </svg>
                             </div>
-                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Raskt og effektivt</h3>
+                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{siteText.home.whyChooseUs.fast.title}</h3>
                             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                Med moderne utstyr og erfarne fagfolk leverer vi raske og effektive løsninger.
+                                {siteText.home.whyChooseUs.fast.description}
                             </p>
                         </div>
                         <div className="text-center p-6">
@@ -130,9 +129,9 @@ export default function HomePage() {
                                           d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                             </div>
-                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Konkurransedyktige priser</h3>
+                            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{siteText.home.whyChooseUs.competitive.title}</h3>
                             <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                                Gratis befaring og uforpliktende pristilbud. Vi gir deg en rettferdig pris for jobben.
+                                {siteText.home.whyChooseUs.competitive.description}
                             </p>
                         </div>
                     </div>
@@ -144,38 +143,27 @@ export default function HomePage() {
                     <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
                         <div className="mb-8 lg:mb-0">
                             <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-6">
-                                Vår historie
+                                {siteText.home.ourStory.title}
                             </h2>
                             <div className="space-y-4 text-sm sm:text-base text-gray-600 leading-relaxed">
                                 <p>
-                                    {companyInfo.name} holder til i {companyInfo.address.locality} kommune, og vi tar på
-                                    oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.
+                                    {companyInfo.name} {siteText.home.ourStory.paragraph1}
                                 </p>
                                 <p>
-                                    Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en
-                                    skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring er vant med
-                                    å
-                                    håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt
-                                    vanskelige trær.
+                                    {siteText.home.ourStory.paragraph2}
                                 </p>
                                 <p>
-                                    Trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier
-                                    eller
-                                    andre hindringer er ikke noe problem - vi tar jobben!
+                                    {siteText.home.ourStory.paragraph3}
                                 </p>
                                 <p>
-                                    Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben
-                                    som
-                                    du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger vi alltid for
-                                    å
-                                    rydde opp, og forlater stedet like fint som vi fant det.
+                                    {siteText.home.ourStory.paragraph4}
                                 </p>
                             </div>
                         </div>
                         <div className="relative h-96">
                             <Image
                                 src="/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg"
-                                alt="Trefellingsspesialisten i arbeid"
+                                alt={siteText.home.ourStory.imageAlt}
                                 fill
                                 className="rounded-lg shadow-xl object-cover"
                                 quality={85}
@@ -191,113 +179,106 @@ export default function HomePage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
-                            Tjenester vi tilbyr
+                            {siteText.home.servicesSection.title}
                         </h2>
                         <p className="mt-4 text-base sm:text-xl text-gray-600">
-                            Vi tilbyr et komplett spekter av trefellingstjenester
+                            {siteText.home.servicesSection.subtitle}
                         </p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <Card className="hover:shadow-lg transition-shadow">
                             <CardHeader>
-                                <CardTitle>Trefelling</CardTitle>
+                                <CardTitle>{siteText.home.servicesSection.treeFelling.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <CardDescription className="text-base">
-                                    Vi utfører felling av alle typer trær, både små og store. Med erfarne fagfolk og riktig
-                                    utstyr håndterer vi selv de mest utfordrende situasjoner.
+                                    {siteText.home.servicesSection.treeFelling.description}
                                 </CardDescription>
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#trefelling"
                                       className="text-green-600 hover:underline font-medium">
-                                    Les mer →
+                                    {siteText.home.servicesSection.treeFelling.linkText}
                                 </PreloadLink>
                             </CardFooter>
                         </Card>
                         <Card className="hover:shadow-lg transition-shadow">
                             <CardHeader>
-                                <CardTitle>Stubbefresing</CardTitle>
+                                <CardTitle>{siteText.home.servicesSection.stumpGrinding.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <CardDescription className="text-base">
-                                    Den mest skånsomme og effektive måten å fjerne stubber på. Vi freser ca. 20-30 cm under
-                                    bakken for å fjerne alle spor.
+                                    {siteText.home.servicesSection.stumpGrinding.description}
                                 </CardDescription>
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#stubbefresing"
                                       className="text-green-600 hover:underline font-medium">
-                                    Les mer →
+                                    {siteText.home.servicesSection.stumpGrinding.linkText}
                                 </PreloadLink>
                             </CardFooter>
                         </Card>
                         <Card className="hover:shadow-lg transition-shadow">
                             <CardHeader>
-                                <CardTitle>Beskjæring</CardTitle>
+                                <CardTitle>{siteText.home.servicesSection.pruning.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <CardDescription className="text-base">
-                                    Store trær kan beskjæres, reduseres, formes eller toppes. Våre dyktige trefellere har
-                                    gjennomført beskjæringskurs.
+                                    {siteText.home.servicesSection.pruning.description}
                                 </CardDescription>
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#beskjaering"
                                       className="text-green-600 hover:underline font-medium">
-                                    Les mer →
+                                    {siteText.home.servicesSection.pruning.linkText}
                                 </PreloadLink>
                             </CardFooter>
                         </Card>
                         <Card className="hover:shadow-lg transition-shadow">
                             <CardHeader>
-                                <CardTitle>Tomterydding</CardTitle>
+                                <CardTitle>{siteText.home.servicesSection.siteClearance.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <CardDescription className="text-base">
-                                    Vi har alt vi trenger for å effektivt klargjøre og rydde en eiendom for trær, busker og
-                                    annen vegetasjon.
+                                    {siteText.home.servicesSection.siteClearance.description}
                                 </CardDescription>
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#tomterydding"
                                       className="text-green-600 hover:underline font-medium">
-                                    Les mer →
+                                    {siteText.home.servicesSection.siteClearance.linkText}
                                 </PreloadLink>
                             </CardFooter>
                         </Card>
                         <Card className="hover:shadow-lg transition-shadow">
                             <CardHeader>
-                                <CardTitle>Flishugging</CardTitle>
+                                <CardTitle>{siteText.home.servicesSection.chipping.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <CardDescription className="text-base">
-                                    Miljøvennlig og effektiv måte å rydde kvist, greiner og mindre trestammer på. Flisen
-                                    egner
-                                    seg godt som dekkbark.
+                                    {siteText.home.servicesSection.chipping.description}
                                 </CardDescription>
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#flishugging"
                                       className="text-green-600 hover:underline font-medium">
-                                    Les mer →
+                                    {siteText.home.servicesSection.chipping.linkText}
                                 </PreloadLink>
                             </CardFooter>
                         </Card>
                         <Card className="hover:shadow-lg transition-shadow">
                             <CardHeader>
-                                <CardTitle>Bortkjøring</CardTitle>
+                                <CardTitle>{siteText.home.servicesSection.removal.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <CardDescription className="text-base">
-                                    Vi hjelper gjerne med bortkjøring av flis, greiner og trestammer etter gjennomført
-                                    arbeid.
+                                    {siteText.home.servicesSection.removal.description}
                                 </CardDescription>
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#bortkjoring"
                                       className="text-green-600 hover:underline font-medium">
-                                    Les mer →
+                                    {siteText.home.servicesSection.removal.linkText}
                                 </PreloadLink>
                             </CardFooter>
                         </Card>
@@ -305,7 +286,7 @@ export default function HomePage() {
                     <div className="text-center mt-10">
                         <Button asChild size="lg">
                             <PreloadLink href="/tjenester">
-                                Se alle tjenester
+                                {siteText.home.servicesSection.allServicesButton}
                             </PreloadLink>
                         </Button>
                     </div>
@@ -316,10 +297,10 @@ export default function HomePage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
                         <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
-                            Hva våre kunder sier
+                            {siteText.home.testimonials.title}
                         </h2>
                         <p className="mt-4 text-base sm:text-xl text-gray-600">
-                            Vi er stolte av tilbakemeldingene vi får fra fornøyde kunder
+                            {siteText.home.testimonials.subtitle}
                         </p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -349,10 +330,9 @@ export default function HomePage() {
                                 </div>
                             </div>
                             <p className="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
-                                "Meget fornøyd med jobben! Profesjonelt utført, ryddig og til en god pris. Ville
-                                anbefale Trefellingsspesialisten til alle som trenger hjelp med trefelling."
+                                {siteText.home.testimonials.testimonial1.text}
                             </p>
-                            <p className="font-semibold text-gray-900 text-sm sm:text-base">- Knut Hansen, Oslo</p>
+                            <p className="font-semibold text-gray-900 text-sm sm:text-base">{siteText.home.testimonials.testimonial1.author}</p>
                         </div>
                         <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
                             <div className="flex items-center mb-4">
@@ -380,10 +360,9 @@ export default function HomePage() {
                                 </div>
                             </div>
                             <p className="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
-                                "Fantastisk service! De kom raskt, gjorde en grundig jobb og ryddet opp perfekt etterpå.
-                                Treet sto veldig vanskelig til, men de fikste det uten problemer."
+                                {siteText.home.testimonials.testimonial2.text}
                             </p>
-                            <p className="font-semibold text-gray-900 text-sm sm:text-base">- Line Johansen, Ski</p>
+                            <p className="font-semibold text-gray-900 text-sm sm:text-base">{siteText.home.testimonials.testimonial2.author}</p>
                         </div>
                         <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
                             <div className="flex items-center mb-4">
@@ -411,10 +390,9 @@ export default function HomePage() {
                                 </div>
                             </div>
                             <p className="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
-                                "Hyggelige folk som gjorde en utmerket jobb. God kommunikasjon fra start til slutt.
-                                Anbefales på det sterkeste!"
+                                {siteText.home.testimonials.testimonial3.text}
                             </p>
-                            <p className="font-semibold text-gray-900 text-sm sm:text-base">- Erik Olsen, Ås</p>
+                            <p className="font-semibold text-gray-900 text-sm sm:text-base">{siteText.home.testimonials.testimonial3.author}</p>
                         </div>
                     </div>
                 </div>

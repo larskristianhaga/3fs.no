@@ -1,5 +1,6 @@
 import PreloadLink from './PreloadLink'
 import { companyInfo } from '@/config/company'
+import { siteText } from '@/content/text'
 
 export default function Footer() {
     const currentYear = new Date().getFullYear()
@@ -22,71 +23,71 @@ export default function Footer() {
 
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
-                            Hurtiglenker
+                            {siteText.footer.quickLinks.title}
                         </h3>
                         <nav className="flex flex-col space-y-2">
                             <PreloadLink
                                 href="/"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
-                                Forside
+                                {siteText.footer.quickLinks.home}
                             </PreloadLink>
                             <PreloadLink
                                 href="/tjenester"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
-                                Tjenester
+                                {siteText.footer.quickLinks.services}
                             </PreloadLink>
                             <PreloadLink
                                 href="/om-oss"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
-                                Om oss
+                                {siteText.footer.quickLinks.about}
                             </PreloadLink>
                             <PreloadLink
                                 href="/kontakt-oss"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
-                                Kontakt oss
+                                {siteText.footer.quickLinks.contact}
                             </PreloadLink>
                         </nav>
                     </div>
 
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
-                            Tjenester
+                            {siteText.footer.services.title}
                         </h3>
                         <nav className="flex flex-col space-y-2">
                             <PreloadLink
                                 href="/tjenester#trefelling"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
-                                Trefelling
+                                {siteText.footer.services.treeFelling}
                             </PreloadLink>
                             <PreloadLink
                                 href="/tjenester#stubbefresing"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
-                                Stubbefresing
+                                {siteText.footer.services.stumpGrinding}
                             </PreloadLink>
                             <PreloadLink
                                 href="/tjenester#beskjaering"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
-                                Beskjæring
+                                {siteText.footer.services.pruning}
                             </PreloadLink>
                             <PreloadLink
                                 href="/tjenester#tomterydding"
                                 className="text-sm hover:text-green-400 transition-colors"
                             >
-                                Tomterydding
+                                {siteText.footer.services.siteClearance}
                             </PreloadLink>
                         </nav>
                     </div>
 
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
-                            Kontakt
+                            {siteText.footer.contactSection.title}
                         </h3>
                         <div className="space-y-3 text-sm">
                             <div className="flex items-start">
@@ -138,10 +139,10 @@ export default function Footer() {
                 <div className="mt-12 pt-8 border-t border-gray-800">
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <p className="text-sm text-gray-400">
-                            © {currentYear} {companyInfo.name}. Alle rettigheter reservert.
+                            © {currentYear} {companyInfo.name}. {siteText.footer.legal.rightsReserved}
                         </p>
                         <div className="flex space-x-6 text-sm text-gray-400">
-                            <span>Laget med ❤️ i Norge</span>
+                            <span>{siteText.footer.legal.madeWithLove}</span>
                         </div>
                     </div>
                 </div>

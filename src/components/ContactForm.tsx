@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
+import { siteText } from '@/content/text'
 
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -47,13 +48,13 @@ export default function ContactForm() {
             })
 
             if (response.ok) {
-                setMessage('Takk for din henvendelse!')
+                setMessage(siteText.contact.form.successMessage)
             } else {
-                setMessage('Beklager noe gikk galt, ta kontakt direkte via e-post.')
+                setMessage(siteText.contact.form.errorMessage)
             }
         } catch (error) {
             console.error('Error:', error)
-            setMessage('Beklager noe gikk galt, ta kontakt direkte via e-post.')
+            setMessage(siteText.contact.form.errorMessage)
         } finally {
             setIsSubmitting(false)
         }
@@ -63,7 +64,7 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
                 <Label htmlFor="name" className="text-base">
-                    Navn *
+                    {siteText.contact.form.name} {siteText.contact.form.required}
                 </Label>
                 <Input
                     type="text"
@@ -76,7 +77,7 @@ export default function ContactForm() {
 
             <div className="space-y-2">
                 <Label htmlFor="email" className="text-base">
-                    E-post *
+                    {siteText.contact.form.email} {siteText.contact.form.required}
                 </Label>
                 <Input
                     type="email"
@@ -89,7 +90,7 @@ export default function ContactForm() {
 
             <div className="space-y-2">
                 <Label htmlFor="phone" className="text-base">
-                    Telefon *
+                    {siteText.contact.form.phone} {siteText.contact.form.required}
                 </Label>
                 <Input
                     type="tel"
@@ -102,7 +103,7 @@ export default function ContactForm() {
 
             <div className="space-y-2">
                 <Label htmlFor="address" className="text-base">
-                    Adresse
+                    {siteText.contact.form.address}
                 </Label>
                 <Input
                     type="text"
@@ -114,7 +115,7 @@ export default function ContactForm() {
 
             <div className="space-y-2">
                 <Label htmlFor="postCodeAndLocation" className="text-base">
-                    Postnummer og poststed *
+                    {siteText.contact.form.postCodeAndLocation} {siteText.contact.form.required}
                 </Label>
                 <Input
                     type="text"
@@ -127,7 +128,7 @@ export default function ContactForm() {
 
             <div className="space-y-2">
                 <Label htmlFor="message" className="text-base">
-                    Melding *
+                    {siteText.contact.form.message} {siteText.contact.form.required}
                 </Label>
                 <Textarea
                     id="message"
@@ -140,7 +141,7 @@ export default function ContactForm() {
 
             <div className="space-y-2">
                 <Label htmlFor="attachment" className="text-base">
-                    Vedlegg
+                    {siteText.contact.form.attachment}
                 </Label>
                 <Input
                     type="file"
@@ -156,7 +157,7 @@ export default function ContactForm() {
                 className="w-full text-base py-6"
                 size="lg"
             >
-                {isSubmitting ? 'Sender...' : 'Send melding'}
+                {isSubmitting ? siteText.contact.form.submitting : siteText.contact.form.submitButton}
             </Button>
 
             {message && (

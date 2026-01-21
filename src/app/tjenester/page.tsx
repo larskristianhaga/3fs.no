@@ -2,6 +2,7 @@ import Image from 'next/image'
 import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { siteText } from '@/content/text'
 
 export const metadata: Metadata = {
     title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing',
@@ -25,38 +26,12 @@ export const metadata: Metadata = {
     },
 }
 
-const services = [
-    {
-        id: 'trefelling', title: 'Trefelling',
-        description: 'Vi utfører felling av alle typer trær, både små og store. Hvert tre er unikt med tanke på størrelse, tilstand og plassering, og det kreves derfor ulike fellingsmetoder, for å ta ned treet på en sikker og skånsom måte. Vår erfaren klatrer med mer enn 15 års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.',
-        image: '/images/tjenester/trefelling.jpg',
-    },
-    {
-        id: 'stubbefresing', title: 'Stubbefresing',
-        description: 'Stubbefresing er den mest skånsomme og effektive måten å fjerne stubber på som står i veien eller som du ønsker å fjerne. Vi freser bort alle synlige røtter, og ca. 20-30 cm under bakken for å frese hovedroten under stubben, slik at alle spor etter stubben og røttene er fjernet. Maskinen har belter, så vi unngår skade på plen og hage, og du sitter igjen med et flott resultat.',
-        image: '/images/tjenester/stubbefresing.jpg',
-    },
-    {
-        id: 'bortkjoring', title: 'Bortkjøring',
-        description: 'Bortkjøring av flis, greiner og trestammer etter gjennomført arbeid er noe vi gjerne hjelper med. Etter felling kan det være mye som skal ryddes, og fjernes, noe som kan være tidskrevende å gjøre selv. Vi har et stort utvalg av kjøretøy, og hengere som gjør bortkjøringen av alt trevirke effektivt og enkelt.',
-        image: '/images/tjenester/bortkjoring.jpg',
-    },
-    {
-        id: 'flishugging', title: 'Flishugging',
-        description: 'Flishugging er en miljøvennlig og effektiv måte å rydde kvist, greiner og mindre trestammer på. Maskinen kverner trevirke til flis, og kan ta trestammer inntil 30 cm i diameter. Dette reduserer volumet av trevirke etter et trefellingsoppdrag og sparer tid på bortkjøring. Flisen fra vår flishugger egner seg godt som dekkbark i bed eller skråninger og som fyllmasse for å jevne terreng.',
-        image: '/images/tjenester/flishugging.jpg',
-    },
-    {
-        id: 'Beskjaering', title: 'Beskjæring',
-        description: 'Beskjæring kan være en fin løsning om treet er større eller høyere enn du ønsker, eller hvis det hindrer utsikt eller sol. Store trær kan beskjæres, reduseres, formes eller toppes, alt ettersom hva du som kunde ønsker. Våre dyktige trefellere har alle gjennomført beskjæringskurs, og har kompetanse innen beskjæring av alle typer trær, hekker og andre buskvekster.',
-        image: '/images/tjenester/beskjaering.jpg',
-    },
-    {
-        id: 'tomterydding', title: 'Tomterydding',
-        description: 'I vår maskin- og utstyrspark har vi alt vi trenger for å effektivt klargjøre og rydde en eiendom for trær, busker og annen vegetasjon. Vi har lang erfaring med tomterydding for både private kunder, entreprenører og kommuner. Våre maskiner og utstyr er beregnet på både små og store områder, og vi kan håndtere arbeid i krevende og vanskelig terreng.',
-        image: '/images/tjenester/tomterydding.jpg',
-    }
-]
+const services = siteText.services.items.map((item) => ({
+    id: item.id,
+    title: item.title,
+    description: item.description,
+    image: `/images/tjenester/${item.id}.jpg`,
+}))
 
 export default function ServicesPage() {
     return (
@@ -67,7 +42,7 @@ export default function ServicesPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">
-                            Tjenester
+                            {siteText.services.title}
                         </h1>
                     </div>
                 </div>
@@ -81,7 +56,7 @@ export default function ServicesPage() {
                                 <div className="relative h-64">
                                     <Image
                                         src={service.image}
-                                        alt={`${service.title} - Professional tree service`}
+                                        alt={siteText.services.items.find(s => s.id === service.id)?.imageAlt || service.title}
                                         fill
                                         className="object-cover"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
