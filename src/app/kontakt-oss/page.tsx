@@ -31,7 +31,7 @@ export default function ContactPage() {
         <div className="min-h-screen bg-white">
             <Header/>
 
-            <section className="relative py-16">
+            <section className="relative py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">
@@ -41,7 +41,7 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            <section className="relative py-16">
+            <section className="relative py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center text-gray-900">
                         <p className="mt-4 text-base sm:text-xl text-gray-600 leading-relaxed">
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            <section className="py-16">
+            <section className="py-12">
                 <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
                     <ContactForm/>
                 </div>
