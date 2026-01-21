@@ -8,6 +8,7 @@ import {Button} from '@/components/ui/button'
 import {Sheet, SheetContent, SheetTrigger} from '@/components/ui/sheet'
 import {Menu} from 'lucide-react'
 import {siteText} from '@/content/text'
+import {colors} from '@/config/colors'
 
 interface NavLink {
     href: string
@@ -28,11 +29,11 @@ export default function Header() {
     ]
 
     return (
-        <nav className="bg-white shadow-sm border-b">
+        <nav className={`${colors.background.white} shadow-sm border-b`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
-                        <PreloadLink href="/" className="text-2xl font-bold text-green-800"
+                        <PreloadLink href="/" className={`text-2xl font-bold ${colors.text.primary[800]}`}
                                      aria-label={siteText.header.aria.logo}>
                             <Image
                                 src="/images/logo.png"
@@ -55,8 +56,8 @@ export default function Header() {
                                     href={link.href}
                                     className={`px-3 py-2 text-sm font-medium transition-colors ${
                                         isActive(link.href)
-                                            ? 'text-green-800'
-                                            : 'text-gray-700 hover:text-green-600'
+                                            ? colors.text.primary[800]
+                                            : `${colors.text.gray[700]} ${colors.hover.text.primary[600]}`
                                     }`}
                                 >
                                     {link.label}
@@ -85,8 +86,8 @@ export default function Header() {
                                             href={link.href}
                                             className={`px-3 py-2 text-base font-medium transition-colors rounded-md ${
                                                 isActive(link.href)
-                                                    ? 'text-green-800 bg-green-50'
-                                                    : 'text-gray-700 hover:text-green-600 hover:bg-gray-50'
+                                                    ? `${colors.text.primary[800]} ${colors.background.primary[50]}`
+                                                    : `${colors.text.gray[700]} ${colors.hover.text.primary[600]} ${colors.hover.background.gray[50]}`
                                             }`}
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >

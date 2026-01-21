@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { siteText } from '@/content/text'
+import { colors } from '@/config/colors'
 
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -162,7 +163,7 @@ export default function ContactForm() {
 
             {message && (
                 <div
-                    className={`p-4 rounded-md text-base ${message.includes('error') ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
+                    className={`p-4 rounded-md text-base ${message.includes('error') ? `${colors.background.red[50]} ${colors.text.red[700]}` : `${colors.background.primary[50]} ${colors.text.primary[700]}`}`}>
                     {message}
                 </div>
             )}
