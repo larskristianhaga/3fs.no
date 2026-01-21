@@ -4,10 +4,10 @@ import {usePathname} from 'next/navigation'
 import {useState} from 'react'
 import Image from "next/image"
 import PreloadLink from './PreloadLink'
-import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu } from 'lucide-react'
-import { siteText } from '@/content/text'
+import {Button} from '@/components/ui/button'
+import {Sheet, SheetContent, SheetTrigger} from '@/components/ui/sheet'
+import {Menu} from 'lucide-react'
+import {siteText} from '@/content/text'
 
 interface NavLink {
     href: string
@@ -23,7 +23,6 @@ export default function Header() {
     }
 
     const navLinks: NavLink[] = [
-        {href: '/', label: siteText.header.nav.home},
         {href: '/tjenester', label: siteText.header.nav.services},
         {href: '/om-oss', label: siteText.header.nav.about},
     ]
@@ -34,7 +33,7 @@ export default function Header() {
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
                         <PreloadLink href="/" className="text-2xl font-bold text-green-800"
-                              aria-label={siteText.header.aria.logo}>
+                                     aria-label={siteText.header.aria.logo}>
                             <Image
                                 src="/images/logo.png"
                                 alt="Trefellingsspesialisten AS logo"
@@ -75,7 +74,7 @@ export default function Header() {
                         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                             <SheetTrigger asChild>
                                 <Button variant="ghost" size="icon" aria-label={siteText.header.aria.menuOpen}>
-                                    <Menu className="h-6 w-6" />
+                                    <Menu className="h-6 w-6"/>
                                 </Button>
                             </SheetTrigger>
                             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
