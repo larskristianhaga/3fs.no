@@ -21,7 +21,6 @@ export default function StructuredData() {
             "longitude": companyInfo.geo.longitude
         },
         "openingHours": companyInfo.openingHours,
-        "priceRange": companyInfo.priceRange,
         "areaServed": companyInfo.serviceAreas.map(area => ({
             "@type": area.type,
             "name": area.name
