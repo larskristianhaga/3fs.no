@@ -61,7 +61,6 @@ export default function AboutPage() {
                                 Om oss
                             </h1>
                             <p className="mt-4 text-xl text-gray-600">
-                                Om oss
                                 Trefellingsspesialisten holder til i Ås kommune, og vi tar på oss oppdrag i Oslo,
                                 Akershus, Østfold og store deler av Buskerud. Vi tilbyr alt innen trefelling,
                                 beskjæring, stubbefresing, flishugging, bortkjøring og oppryddning. Vi har oppdrag for

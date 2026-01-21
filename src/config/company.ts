@@ -48,7 +48,5 @@ export const companyInfo = {
   
   openingHours: "Mo-Fr 08:00-17:00",
   
-  priceRange: "$$",
-  
   website: "https://3fs.no"
 } as const
