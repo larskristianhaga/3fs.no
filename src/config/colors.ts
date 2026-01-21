@@ -4,14 +4,6 @@
  */
 
 export const colors = {
-  // Primary brand colors
-  primary: {
-    50: 'bg-green-50',
-    100: 'bg-green-100',
-    600: 'bg-green-600',
-    700: 'bg-green-700',
-  },
-  
   // Text colors
   text: {
     primary: {
@@ -87,6 +79,9 @@ export const colors = {
       gray: {
         50: 'hover:bg-gray-50',
         100: 'hover:bg-gray-100',
+      },
+      red: {
+        700: 'hover:bg-red-700',
       },
     },
   },

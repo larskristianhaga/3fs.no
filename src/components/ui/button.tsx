@@ -12,7 +12,7 @@ const buttonVariants = cva(
       variant: {
         default: `${colors.background.primary[600]} ${colors.text.white} ${colors.hover.background.primary[700]}`,
         destructive:
-          `${colors.background.red[600]} ${colors.text.white} hover:${colors.background.red[700]}`,
+          `${colors.background.red[600]} ${colors.text.white} ${colors.hover.background.red[700]}`,
         outline:
           `border-2 ${colors.border.primary[600]} ${colors.text.primary[600]} ${colors.background.transparent} ${colors.hover.background.primary[50]}`,
         secondary:
