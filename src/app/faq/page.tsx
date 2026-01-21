@@ -6,10 +6,10 @@ import Footer from '@/components/Footer'
 import { siteText } from '@/content/text'
 
 export default function FAQPage() {
-    const [openIndex, setOpenIndex] = useState<number | null>(null)
+    const [openQuestion, setOpenQuestion] = useState<string | null>(null)
 
-    const toggleQuestion = (index: number) => {
-        setOpenIndex(openIndex === index ? null : index)
+    const toggleQuestion = (question: string) => {
+        setOpenQuestion(openQuestion === question ? null : question)
     }
 
     return (
@@ -28,22 +28,22 @@ export default function FAQPage() {
                     </div>
 
                     <div className="space-y-4">
-                        {siteText.faq.questions.map((item, index) => (
+                        {siteText.faq.questions.map((item) => (
                             <div
-                                key={index}
+                                key={item.question}
                                 className="border border-gray-200 rounded-lg overflow-hidden"
                             >
                                 <button
-                                    onClick={() => toggleQuestion(index)}
+                                    onClick={() => toggleQuestion(item.question)}
                                     className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors flex justify-between items-center"
-                                    aria-expanded={openIndex === index}
+                                    aria-expanded={openQuestion === item.question}
                                 >
                                     <span className="text-lg font-semibold text-gray-900">
                                         {item.question}
                                     </span>
                                     <svg
                                         className={`w-6 h-6 text-green-600 transition-transform ${
-                                            openIndex === index ? 'rotate-180' : ''
+                                            openQuestion === item.question ? 'rotate-180' : ''
                                         }`}
                                         fill="none"
                                         stroke="currentColor"
@@ -57,7 +57,7 @@ export default function FAQPage() {
                                         />
                                     </svg>
                                 </button>
-                                {openIndex === index && (
+                                {openQuestion === item.question && (
                                     <div className="px-6 py-4 bg-gray-50">
                                         <p className="text-gray-700 leading-relaxed">
                                             {item.answer}

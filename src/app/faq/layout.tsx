@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
     title: 'Ofte stilte spørsmål - Svar på dine spørsmål om trefelling',
     description: 'Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over 15 års erfaring med profesjonell trepleie i Oslo, Akershus, Østfold og Buskerud.',
-    keywords: 'FAQ trefelling, spørsmål trefelling, pris trefelling, tillatelse trefelling, stubbefresing info, trefelling Oslo',
     alternates: {
         canonical: '/faq',
     },
