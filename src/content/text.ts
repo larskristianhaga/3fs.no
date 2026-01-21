@@ -199,9 +199,9 @@ export const siteText = {
       paragraph1:
         'Trefellingsspesialisten holder til i Ås kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud. Vi tilbyr alt innen trefelling, beskjæring, stubbefresing, flishugging, bortkjøring og oppryddning. Vi har oppdrag for stat og kommune, bedrifter og borettslag, privat- og ferie eiendommer. Vi tilbyr alltid en gratis befaring og uforpliktende pristilbud.',
       paragraph2:
-        'Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typertrær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær. Så trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier eller andre hindringer er ikke noe problem, vi tar jobben!',
+        'Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær. Så trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier eller andre hindringer er ikke noe problem, vi tar jobben!',
       paragraph3:
-        'Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben som du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger alltid for å rydde opp, og forlater stedet like fint som vi fant det.',
+        'Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben som du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger vi alltid for å rydde opp, og forlater stedet like fint som vi fant det.',
       imageAlt: 'GreenCut Tree Services team at work',
     },
     team: [
