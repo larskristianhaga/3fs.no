@@ -139,14 +139,14 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className="py-16 bg-green-50">
+            <section className={`py-16 ${colors.background.primary[50]}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
                         <div className="mb-8 lg:mb-0">
-                            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-6">
+                            <h2 className={`text-2xl sm:text-4xl font-bold ${colors.text.gray[900]} mb-6`}>
                                 {siteText.home.ourStory.title}
                             </h2>
-                            <div className="space-y-4 text-sm sm:text-base text-gray-600 leading-relaxed">
+                            <div className={`space-y-4 text-sm sm:text-base ${colors.text.gray[600]} leading-relaxed`}>
                                 <p>
                                     {companyInfo.name} {siteText.home.ourStory.paragraph1}
                                 </p>
@@ -176,13 +176,13 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className="py-16 bg-white">
+            <section className={`py-16 ${colors.background.white}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
+                        <h2 className={`text-2xl sm:text-4xl font-bold ${colors.text.gray[900]}`}>
                             {siteText.home.servicesSection.title}
                         </h2>
-                        <p className="mt-4 text-base sm:text-xl text-gray-600">
+                        <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]}`}>
                             {siteText.home.servicesSection.subtitle}
                         </p>
                     </div>
@@ -198,7 +198,7 @@ export default function HomePage() {
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#trefelling"
-                                      className="text-green-600 hover:underline font-medium">
+                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
                                     {siteText.home.servicesSection.treeFelling.linkText}
                                 </PreloadLink>
                             </CardFooter>
@@ -214,7 +214,7 @@ export default function HomePage() {
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#stubbefresing"
-                                      className="text-green-600 hover:underline font-medium">
+                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
                                     {siteText.home.servicesSection.stumpGrinding.linkText}
                                 </PreloadLink>
                             </CardFooter>
@@ -230,7 +230,7 @@ export default function HomePage() {
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#beskjaering"
-                                      className="text-green-600 hover:underline font-medium">
+                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
                                     {siteText.home.servicesSection.pruning.linkText}
                                 </PreloadLink>
                             </CardFooter>
@@ -246,7 +246,7 @@ export default function HomePage() {
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#tomterydding"
-                                      className="text-green-600 hover:underline font-medium">
+                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
                                     {siteText.home.servicesSection.siteClearance.linkText}
                                 </PreloadLink>
                             </CardFooter>
@@ -262,7 +262,7 @@ export default function HomePage() {
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#flishugging"
-                                      className="text-green-600 hover:underline font-medium">
+                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
                                     {siteText.home.servicesSection.chipping.linkText}
                                 </PreloadLink>
                             </CardFooter>
@@ -278,7 +278,7 @@ export default function HomePage() {
                             </CardContent>
                             <CardFooter>
                                 <PreloadLink href="/tjenester#bortkjoring"
-                                      className="text-green-600 hover:underline font-medium">
+                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
                                     {siteText.home.servicesSection.removal.linkText}
                                 </PreloadLink>
                             </CardFooter>
@@ -294,18 +294,18 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className="py-16 bg-green-50">
+            <section className={`py-16 ${colors.background.primary[50]}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">
+                        <h2 className={`text-2xl sm:text-4xl font-bold ${colors.text.gray[900]}`}>
                             {siteText.home.testimonials.title}
                         </h2>
-                        <p className="mt-4 text-base sm:text-xl text-gray-600">
+                        <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]}`}>
                             {siteText.home.testimonials.subtitle}
                         </p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
+                        <div className={`${colors.background.white} rounded-lg shadow-lg p-6 sm:p-8`}>
                             <div className="flex items-center mb-4">
                                 <div className="flex text-yellow-400">
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -330,12 +330,12 @@ export default function HomePage() {
                                     </svg>
                                 </div>
                             </div>
-                            <p className="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
+                            <p className={`text-sm sm:text-base ${colors.text.gray[600]} mb-4 leading-relaxed`}>
                                 {siteText.home.testimonials.testimonial1.text}
                             </p>
-                            <p className="font-semibold text-gray-900 text-sm sm:text-base">{siteText.home.testimonials.testimonial1.author}</p>
+                            <p className={`font-semibold ${colors.text.gray[900]} text-sm sm:text-base`}>{siteText.home.testimonials.testimonial1.author}</p>
                         </div>
-                        <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
+                        <div className={`${colors.background.white} rounded-lg shadow-lg p-6 sm:p-8`}>
                             <div className="flex items-center mb-4">
                                 <div className="flex text-yellow-400">
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -360,12 +360,12 @@ export default function HomePage() {
                                     </svg>
                                 </div>
                             </div>
-                            <p className="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
+                            <p className={`text-sm sm:text-base ${colors.text.gray[600]} mb-4 leading-relaxed`}>
                                 {siteText.home.testimonials.testimonial2.text}
                             </p>
-                            <p className="font-semibold text-gray-900 text-sm sm:text-base">{siteText.home.testimonials.testimonial2.author}</p>
+                            <p className={`font-semibold ${colors.text.gray[900]} text-sm sm:text-base`}>{siteText.home.testimonials.testimonial2.author}</p>
                         </div>
-                        <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
+                        <div className={`${colors.background.white} rounded-lg shadow-lg p-6 sm:p-8`}>
                             <div className="flex items-center mb-4">
                                 <div className="flex text-yellow-400">
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -390,24 +390,24 @@ export default function HomePage() {
                                     </svg>
                                 </div>
                             </div>
-                            <p className="text-sm sm:text-base text-gray-600 mb-4 leading-relaxed">
+                            <p className={`text-sm sm:text-base ${colors.text.gray[600]} mb-4 leading-relaxed`}>
                                 {siteText.home.testimonials.testimonial3.text}
                             </p>
-                            <p className="font-semibold text-gray-900 text-sm sm:text-base">{siteText.home.testimonials.testimonial3.author}</p>
+                            <p className={`font-semibold ${colors.text.gray[900]} text-sm sm:text-base`}>{siteText.home.testimonials.testimonial3.author}</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className="py-16 bg-white">
+            <section className={`py-16 ${colors.background.white}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-green-600 rounded-2xl shadow-xl overflow-hidden">
+                    <div className={`${colors.background.primary[600]} rounded-2xl shadow-xl overflow-hidden`}>
                         <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                             <div className="p-6 sm:p-8 lg:p-12">
-                                <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">
+                                <h2 className={`text-2xl sm:text-4xl font-bold ${colors.text.white} mb-4`}>
                                     Kontakt oss i dag
                                 </h2>
-                                <p className="text-green-100 text-base sm:text-lg mb-6 leading-relaxed">
+                                <p className={`${colors.text.primary[100]} text-base sm:text-lg mb-6 leading-relaxed`}>
                                     Vi tilbyr gratis befaring og uforpliktende pristilbud. Ta kontakt så hjelper vi deg!
                                 </p>
                                 <div className="space-y-4 mb-8">
