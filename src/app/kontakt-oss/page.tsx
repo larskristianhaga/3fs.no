@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import {companyInfo} from '@/config/company'
+import { siteText } from '@/content/text'
 
 export const metadata: Metadata = {
     title: 'Kontakt oss - Gratis befaring og pristilbud',
@@ -35,7 +36,7 @@ export default function ContactPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">
-                            Kontakt oss
+                            {siteText.contact.title}
                         </h1>
                     </div>
                 </div>
@@ -45,18 +46,13 @@ export default function ContactPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center text-gray-900">
                         <p className="mt-4 text-base sm:text-xl text-gray-600 leading-relaxed">
-                            Alle oppdrag er ulike, og det kan være vanskelig å gi en konkret pris før vi vet litt mer.
-                            I noen tilfeller kan vi gi en fastpris ved å se på bilder du kan legge ved i
-                            kontaktskjemaet.
-                            I andre tilfeller er det hensiktsmessig at vi møter opp på en uforpliktende befaring.
+                            {siteText.contact.intro.paragraph1}
                         </p>
                         <p className="mt-4 text-base sm:text-xl text-gray-600 leading-relaxed">
-                            Vi hjelper deg gjerne, send oss en e-post i dag, så vi du bli kontaktet fortløpende for en
-                            uforpliktende samtale eller avtale om en gratis befaring.
+                            {siteText.contact.intro.paragraph2}
                         </p>
                         <p className="mt-4 text-base sm:text-xl text-gray-600 leading-relaxed">
-                            Ikke nøl med å ta kontakt med oss om du har noen spørsmål knyttet til vårt arbeid eller
-                            tjenester!
+                            {siteText.contact.intro.paragraph3}
                         </p>
                     </div>
                 </div>

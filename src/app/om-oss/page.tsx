@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Header from "@/components/Header";
 import type {Metadata} from 'next'
+import { siteText } from '@/content/text'
 
 export const metadata: Metadata = {
     title: 'Om oss - Over 15 års erfaring med trefelling',
@@ -25,28 +26,11 @@ export const metadata: Metadata = {
     },
 }
 
-const teamMembers = [
-    {
-        name: 'Pål-Erik Engedahl',
-        role: 'Eier, klatrer og trefeller',
-        image: '/images/om-oss/portrett-pe.jpg',
-    },
-    {
-        name: 'Ruud van der Ven',
-        role: 'Trefeller og maskinfører',
-        image: '/images/om-oss/portrett-ruud.jpg',
-    },
-    {
-        name: 'Oleksandr Khokhlyuk',
-        role: 'Trefeller og oppryddnings-ansvarlig',
-        image: '/images/om-oss/portrett-olli.jpg',
-    },
-    {
-        name: 'Bobby',
-        role: 'Maskot',
-        image: '/images/om-oss/portrett-bobby.jpg',
-    }
-]
+const teamMembers = siteText.about.team.map((member, index) => ({
+    name: member.name,
+    role: member.role,
+    image: `/images/om-oss/portrett-${index === 0 ? 'pe' : index === 1 ? 'ruud' : index === 2 ? 'olli' : 'bobby'}.jpg`,
+}))
 
 export default function AboutPage() {
     return (
@@ -58,32 +42,22 @@ export default function AboutPage() {
                     <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
                         <div className="mb-8 lg:mb-0">
                             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-                                Om oss
+                                {siteText.about.title}
                             </h1>
                             <p className="mt-4 text-xl text-gray-600">
-                                Trefellingsspesialisten holder til i Ås kommune, og vi tar på oss oppdrag i Oslo,
-                                Akershus, Østfold og store deler av Buskerud. Vi tilbyr alt innen trefelling,
-                                beskjæring, stubbefresing, flishugging, bortkjøring og oppryddning. Vi har oppdrag for
-                                stat og kommune, bedrifter og borettslag, privat- og ferie eiendommer. Vi tilbyr alltid
-                                en gratis befaring og uforpliktende pristilbud.
+                                {siteText.about.intro.paragraph1}
                             </p>
                             <p className="mt-4 text-xl text-gray-600">
-                                Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typertrær på en
-                                skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring, er vant med å
-                                håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt
-                                vanskelige trær. Så trær som står litt vrient til i hagen, inneklemt mellom hus,
-                                ledningsnett, veier eller andre hindringer er ikke noe problem, vi tar jobben!
+                                {siteText.about.intro.paragraph2}
                             </p>
                             <p className="mt-4 text-xl text-gray-600">
-                                Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben som
-                                du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger alltid for å
-                                rydde opp, og forlater stedet like fint som vi fant det.
+                                {siteText.about.intro.paragraph3}
                             </p>
                         </div>
                         <div className="relative">
                             <Image
                                 src="/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg"
-                                alt="GreenCut Tree Services team at work"
+                                alt={siteText.about.intro.imageAlt}
                                 width={600}
                                 height={400}
                                 className="rounded-lg shadow-xl"
@@ -129,7 +103,7 @@ export default function AboutPage() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold"
                         >
-                            Se forsikringsbevis
+                            {siteText.about.insurance.buttonText}
                         </a>
                     </div>
                 </div>
