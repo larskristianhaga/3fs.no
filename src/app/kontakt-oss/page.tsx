@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import {companyInfo} from '@/config/company'
 import {siteText} from '@/content/text'
+import { colors } from '@/config/colors'
 
 export const metadata: Metadata = {
     title: 'Kontakt oss - Gratis befaring og pristilbud',
@@ -29,13 +30,13 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className={`min-h-screen ${colors.background.white}`}>
             <Header/>
 
             <section className="relative py-4">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">
+                        <h1 className={`text-3xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
                             {siteText.contact.title}
                         </h1>
                     </div>
@@ -44,14 +45,14 @@ export default function ContactPage() {
 
             <section className="relative py-4">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center text-gray-900">
-                        <p className="mt-4 text-base sm:text-xl text-gray-600 leading-relaxed">
+                    <div className={`text-center ${colors.text.gray[900]}`}>
+                        <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
                             {siteText.contact.intro.paragraph1}
                         </p>
-                        <p className="mt-4 text-base sm:text-xl text-gray-600 leading-relaxed">
+                        <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
                             {siteText.contact.intro.paragraph2}
                         </p>
-                        <p className="mt-4 text-base sm:text-xl text-gray-600 leading-relaxed">
+                        <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
                             {siteText.contact.intro.paragraph3}
                         </p>
                     </div>

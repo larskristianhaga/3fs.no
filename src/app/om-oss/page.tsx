@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import Header from "@/components/Header";
 import type {Metadata} from 'next'
 import { siteText } from '@/content/text'
+import { colors } from '@/config/colors'
 
 export const metadata: Metadata = {
     title: 'Om oss - Over 15 års erfaring med trefelling',
@@ -34,23 +35,23 @@ const teamMembers = siteText.about.team.map((member, index) => ({
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className={`min-h-screen ${colors.background.white}`}>
             <Header/>
 
             <section className="relative  py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
                         <div className="mb-8 lg:mb-0">
-                            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
+                            <h1 className={`text-4xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
                                 {siteText.about.title}
                             </h1>
-                            <p className="mt-4 text-xl text-gray-600">
+                            <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
                                 {siteText.about.intro.paragraph1}
                             </p>
-                            <p className="mt-4 text-xl text-gray-600">
+                            <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
                                 {siteText.about.intro.paragraph2}
                             </p>
-                            <p className="mt-4 text-xl text-gray-600">
+                            <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
                                 {siteText.about.intro.paragraph3}
                             </p>
                         </div>
@@ -70,7 +71,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            <section className="py-16 bg-white">
+            <section className={`py-16 ${colors.background.white}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         {teamMembers.map((member, index) => (
@@ -86,8 +87,8 @@ export default function AboutPage() {
                                         loading="lazy"
                                     />
                                 </div>
-                                <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
-                                <p className="text-green-600 font-medium">{member.role}</p>
+                                <h3 className={`text-xl font-semibold ${colors.text.gray[900]}`}>{member.name}</h3>
+                                <p className={`${colors.text.primary[600]} font-medium`}>{member.role}</p>
                             </div>
                         ))}
                     </div>
@@ -101,7 +102,7 @@ export default function AboutPage() {
                             href="documents/forsikringssertifikat-ansvar-2025-2026.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                            className={`inline-flex items-center ${colors.background.primary[600]} ${colors.text.white} px-6 py-3 rounded-lg ${colors.hover.background.primary[700]} transition-colors font-semibold`}
                         >
                             {siteText.about.insurance.buttonText}
                         </a>

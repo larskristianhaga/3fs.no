@@ -3,6 +3,7 @@ import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { siteText } from '@/content/text'
+import { colors } from '@/config/colors'
 
 export const metadata: Metadata = {
     title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing',
@@ -35,13 +36,13 @@ const services = siteText.services.items.map((item) => ({
 
 export default function ServicesPage() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className={`min-h-screen ${colors.background.white}`}>
             <Header/>
 
             <section className="relative  py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        <h1 className="text-3xl font-bold text-gray-900 sm:text-5xl">
+                        <h1 className={`text-3xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
                             {siteText.services.title}
                         </h1>
                     </div>
@@ -67,13 +68,13 @@ export default function ServicesPage() {
                                 </div>
                                 <div className="p-6 sm:p-8">
                                     <div className="flex justify-between items-start mb-4">
-                                        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
+                                        <h2 className={`text-xl sm:text-2xl font-bold ${colors.text.gray[900]}`}>
                                             {service.title}
                                         </h2>
-                                        <span className="text-green-600 font-semibold text-lg">
+                                        <span className={`${colors.text.primary[600]} font-semibold text-lg`}>
                     </span>
                                     </div>
-                                    <p className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed">
+                                    <p className={`text-sm sm:text-base ${colors.text.gray[600]} mb-6 leading-relaxed`}>
                                         {service.description}
                                     </p>
                                 </div>
