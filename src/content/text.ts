@@ -4,6 +4,7 @@ export const siteText = {
             home: 'Forside',
             services: 'Tjenester',
             about: 'Om oss',
+            faq: 'Ofte stilte spørsmål',
             contact: 'Kontakt oss',
         },
         aria: {
@@ -18,6 +19,7 @@ export const siteText = {
             home: 'Forside',
             services: 'Tjenester',
             about: 'Om oss',
+            faq: 'Ofte stilte spørsmål',
             contact: 'Kontakt oss',
         },
         services: {
@@ -239,5 +241,52 @@ export const siteText = {
             successMessage: 'Takk for din henvendelse!',
             errorMessage: 'Beklager noe gikk galt, ta kontakt direkte via e-post.',
         },
+    },
+
+    faq: {
+        title: 'Ofte stilte spørsmål',
+        subtitle: 'Her finner du svar på de mest stilte spørsmålene om våre tjenester',
+        questions: [
+            {
+                question: 'Hva koster trefelling?',
+                answer: 'Prisen varierer avhengig av treets størrelse, plassering og tilgjengelighet. Vi tilbyr alltid gratis befaring og uforpliktende pristilbud. Kontakt oss for å få en prissetting basert på ditt spesifikke oppdrag.',
+            },
+            {
+                question: 'Hvor lang tid tar det å felle et tre?',
+                answer: 'Tiden det tar å felle et tre avhenger av flere faktorer som treets størrelse, plassering, og om det er hindringer i nærheten. Et enkelt tre kan ta fra noen timer til en hel dag. Vi gir deg et tidsestimat ved befaring.',
+            },
+            {
+                question: 'Trenger jeg tillatelse for å felle trær?',
+                answer: 'I noen kommuner kreves det tillatelse for å felle trær, spesielt for større trær eller trær i vernede områder. Vi anbefaler at du sjekker med din kommune før du bestiller trefelling. Vi kan også hjelpe deg med å finne informasjon om lokale reguleringer.',
+            },
+            {
+                question: 'Rydder dere opp etter trefelling?',
+                answer: 'Ja, vi sørger alltid for å rydde opp grundig etter endt arbeid. Dette inkluderer bortkjøring av trevirke, kvist og flis hvis ønskelig. Vi forlater stedet like fint som vi fant det.',
+            },
+            {
+                question: 'Kan dere felle trær som står vanskelig til?',
+                answer: 'Ja, vår erfarne klatrer med over 15 års erfaring er vant med å håndtere utfordrende situasjoner. Vi har spesialutstyr for å ta ned trær som står inneklemt mellom hus, nær ledninger, eller i andre vanskelige plasseringer.',
+            },
+            {
+                question: 'Er dere forsikret?',
+                answer: 'Ja, vi har full ansvarsforsikring som dekker eventuelle skader som måtte oppstå under arbeidet. Dette gir trygghet for deg som kunde. Du kan se vårt forsikringsbevis på "Om oss"-siden.',
+            },
+            {
+                question: 'Hvilke områder betjener dere?',
+                answer: 'Vi holder til i Ås kommune og tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud. Kontakt oss gjerne for å høre om vi kan ta oppdraget i ditt område.',
+            },
+            {
+                question: 'Hva er stubbefresing?',
+                answer: 'Stubbefresing er den mest skånsomme og effektive måten å fjerne stubber på. Vi freser ca. 20-30 cm under bakken for å fjerne hovedroten og alle synlige røtter, slik at ingen spor etter stubben er igjen. Maskinen har belter som unngår skade på plen og hage.',
+            },
+            {
+                question: 'Kan jeg få treet fliset?',
+                answer: 'Ja, vi tilbyr flishugging som en miljøvennlig måte å håndtere kvist, greiner og mindre trestammer på. Flisen egner seg godt som dekkbark i bed eller skråninger. Dette reduserer også volumet og sparer tid på bortkjøring.',
+            },
+            {
+                question: 'Hvordan bestiller jeg tjenester?',
+                answer: 'Du kan kontakte oss via kontaktskjemaet på nettsiden, ringe oss direkte, eller sende en e-post. Vi tilbyr alltid gratis befaring og uforpliktende pristilbud, så du vet nøyaktig hva du kan forvente før arbeidet starter.',
+            },
+        ],
     },
 } as const
