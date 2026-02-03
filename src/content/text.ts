@@ -258,7 +258,59 @@ export const siteText = {
                 id: 'treet-er-syk',
                 title: 'Treet er syk - må det fellas?',
                 excerpt: 'Hvordan identifisiere om treet ditt er syk og når det er tiden for felling versus behandling.',
-                content: 'Trær kan bli syke av ulike årsaker. I denne artikkelen lærer du kjenne tegn på sykdom, behandlingsmuligheter, og når det er best å felle treet. Vi dekker vanlige tresykdommer i Østlandet og hva du kan gjøre.',
+                content: `Å ha et syk tre i hagen er frustrerende. Du er usikker på om du bør behandle det, kutte det eller felle det helt. Som erfarne trefellere med over 15 års erfaring, har vi sett mange tilfeller av syke trær. I denne guiden lærer du hvordan du gjenkjenner tegn på sykdom, hva behandlingsalternativene er, og når det er tid for felling.
+
+TEGN PÅ AT TREET DITT ER SIKT
+
+Det første steget er å identifisere om treet ditt virkelig er sikt. Her er de vanligste tegnene:
+
+- Kvist som ikke springer ut om våren
+- Løv som er misfarget, brunt eller visnet
+- Bark som blir av treet
+- Dårlig trådannelse (treet har få grener)
+- Svamp eller insekter på stammen
+- Røtter som stikker opp fra bakken
+- Treet som heller eller er ustabilt
+
+VANLIGE TRESYKDOMMER I ØSTLANDET
+
+Vi på Trefellingsspesialisten har erfaring med å håndtere mange tresykdommer i Oslo, Akershus, Østfold og Buskerud:
+
+Fukttresykdommen: Denne er vanlig i vårt område og gjør at treet mister vitalen. Du vil merke at barken blir fuktig, og det kommer ofte slimstrenger fra stammen.
+
+Honningsopp: En alvorlig svampesykdom som angriper røttene. Treet svekkes gradvis og kan falle plutselig.
+
+Askeskuddbarkebille: Har dessverre kommet til Norge og dreper asketrær. Hvis du har asketrær, anbefaler vi å kontrollere dem regelmessig.
+
+Frostekrekk: Oppstår i vintermånedene når barken utvides og krymper. Kan gjøre treet sårbart for andre sykdommer.
+
+BEHANDLING VERSUS FELLING
+
+Ikke alle syke trær må fellas. Her er noen alternativer:
+
+Avventing: Noen trær kan komme seg selv. Vi anbefaler å vente hvis treet ellers er friskt og bare har menor symptomer.
+
+Beskjæring: Hvis bare deler av treet er sikt, kan beskjæring av de syke grenene hjelpe.
+
+Behandling: For visse typer sykdommer finnes det behandlinger. En arborist kan vurdere om dette er aktuelt.
+
+Felling: Hvis treet er dødsdømt, er det beste å felle det før det blir farlig.
+
+NÅR DU SKAL FELLE TREET
+
+Det er tid for felling når:
+
+- Treet er helt dødt og utgjør en fare
+- Sykdommen er så alvorlig at behandling ikke hjelper
+- Treet er så ustabilt at det kan falle
+- Du ønsker det fjernet av estetiske årsaker
+- Treet står i veien for byggeprosjekter
+
+GRATIS BEFARING
+
+Hvis du er usikker, kan du kontakte oss for en gratis befaring. Vi vurderer treet ditt, foreslår løsninger, og gir deg et uforpliktende pristilbud. Med over 15 års erfaring kan vi si deg raskt hva som er best for din situasjon.
+
+Ikke venter for lenge - syke trær kan bli farlige. Ta kontakt med oss i dag!`,
                 category: 'Trepleie',
                 readTime: '5 min',
                 publishedDate: '2024-01-15',
@@ -268,7 +320,72 @@ export const siteText = {
                 id: 'kostnad-trefelling-2026',
                 title: 'Kostnad for trefelling i 2026 - Komplett guide',
                 excerpt: 'Hvor mye koster det egentlig å felle et tre? Vi bryter ned alle kostnader.',
-                content: 'Trefelling er en investering som avhenger av mange faktorer. Lær om prisnivåer, hva som påvirker kostnaden, og hvordan du får best verdi for pengene dine. Inkludert priseksempler fra våre prosjekter.',
+                content: `En av de første spørsmålene folk stiller når de kontakter oss er: "Hva koster trefelling?" Svaret er komplisert fordi det avhenger av mange faktorer. I denne guiden bryter vi ned all kostnader slik at du forstår hva du betaler for.
+
+GJENNOMSNITTLIG PRIS FOR TREFELLING I 2026
+
+For små trær (4-6 meter høyt):
+Fra 3000-5000 kr. Enkle forhold og lett tilgang = lavere pris.
+
+For medium trær (6-10 meter høyt):
+Fra 5000-10000 kr. Krever mer utstyr og arbeid.
+
+For store trær (10+ meter høyt):
+Fra 10000-20000+ kr. Kan kreve spesialutstyr og flere timers arbeid.
+
+Disse er gjennomsnittsestimater. Din pris kan være høyere eller lavere basert på faktorene nedenfor.
+
+FAKTORER SOM PÅVIRKER PRISEN
+
+Treets størrelse og høyde
+Et større tre tar lengre tid og krever mer utstyr. Høyden påvirker risiko og hvor komplisert jobben er.
+
+Treets tilstand
+Et dårlig tre er lettere å felle enn et sunt. Et sikt tre har kanskje svakere struktur.
+
+Plassering
+Et tre som står langt fra huset og veien er lettere å felle. Et tre inneklemt mellom hus, ledninger og gjerde krever spesialistferdigheter og sikkerhetstiltak. Dette kan øke prisen betydelig.
+
+Tilgjengelighet
+Hvis vi kan kjøre maskiner helt fram til treet, sparer vi tid. Hvis vi må bære utstyr gjennom hagen, tar det lengre.
+
+Grener som må kuttes først
+Et tre med mange store grener som skal kuttes av før felling, tar lenger tid.
+
+Kvisthåndtering og opprydding
+Vil du at vi skal frese kubben? Frakte bort alt materialet? Dette påvirker prisen.
+
+KOSTNADSEKSEMPLER FRA VÅRE PROSJEKTER
+
+Eksempel 1: Småhustomt i Ås
+Et 6-meter grantre midt på tomten. Lett tilgang, ingen hindringer. Tid: 2-3 timer. Pris: 4500 kr.
+
+Eksempel 2: Oslo, boligstrøk
+Et 8-meter birketreet nær hus og ledninger. Krevde spesialt utstyr og klatring. Tid: 5 timer. Pris: 8000 kr.
+
+Eksempel 3: Akershus, vanskelig plassering
+Et 12-meter furutre inneklemt mellom hus og vei. Klatring, seilkving av grener. Tid: Full dag (8 timer). Pris: 15000 kr.
+
+SPARING MED GRATIS BEFARING
+
+Vi tilbyr alltid gratis befaring. Under befaringen vurderer vi jobben, foreslår den beste metoden, og gir deg et nøyaktig og uforpliktende pristilbud.
+
+Du er ikke forpliktet til noe. Vi gir deg informasjonen du trenger for å ta en god beslutning.
+
+HVORFOR PRISENE VARIERER
+
+Trefelling er ikke som en standardtjeneste. Hver jobb er unik. En billig pris kan bety at jobben blir gjort dårlig eller farlig. Vi prioriterer sikkerhet og kvalitet, som reflekteres i prisene.
+
+Vi er også forsikret, noe som gir deg trygghet hvis noe skulle skje.
+
+TIPS FOR Å SPARE PENGER
+
+- Vent til vinter når vi har mer kapasitet
+- Samle flere trær som skal fellas - rabatt på flere jobber
+- La oss handle oppryddingen (vi bruker mindre tid på dette)
+- Spør om flishugger - kan spare på bortkjøring
+
+Kontakt oss i dag for en gratis befaring og exactt pristilbud!`,
                 category: 'Prising',
                 readTime: '7 min',
                 publishedDate: '2024-01-10',
@@ -278,7 +395,88 @@ export const siteText = {
                 id: 'sikkerhet-trefelling',
                 title: 'Sikkerhet ved trefelling - Hva du må vite',
                 excerpt: 'Trefelling er farlig arbeid. Lær om sikkerhetstiltak og hvorfor profesjonell hjelp er viktig.',
-                content: 'Profesjonell trefelling krever spesialisert utstyr, trening og erfaring. Vi forklarer de viktigste sikkerhetstiltakene, faremomentene, og hvorfor du bør hyre eksperter i stedet for DIY.',
+                content: `Trefelling er en av de farligste aktivitetene en privatperson kan gjøre. Hvert år er det dødsfalls- og alvorlige skadetilfeller relatert til trefelling. I denne artikkelen forklarer vi hvorfor fag mennesker er avgjørende for sikkerhet.
+
+HVORFOR TREFELLING ER FARLIG
+
+Et stort tre veier mange tonn. Når det faller, har det enorm kraft. Små feil i planlegging eller utføring kan føre til:
+
+- Treet faller i gal retning
+- Grener eller hele treet deler seg under felling
+- Trevirket eller grener faller og treffer mennesker eller hus
+- Treet får dårlig balanse under felling
+- Maskiner veltes
+- Klatrer faller fra høyde
+
+DIY-FELLING: IKKE GJØR DET
+
+Jeg hører ofte: "Jeg kan felle treet selv med motorsag." Her er hvorfor det er risikabelt:
+
+Du har sannsynligvis ikke erfaring med å bedømme hvordan treet vil falle. Små vinkler kan avgjøre hvor treet faller - ofte ikke der du tror.
+
+Motorsagen er dødelig i uerfarne hender. Motorsagulykker resulterer ofte i alvorlige kutt og blødninger.
+
+Du mangler sikkerhetsutstyr som arbeidsbukse med forbygde lommer, kaskje og ørebeskyttelse.
+
+Hvis treet treffer huset ditt eller nabo huset, er du ansvarlig for all skade.
+
+Du kan ikke klatre sikkert. De fleste ulykker med treklatring skjer med personer uten trening.
+
+PROFESJONELT SIKKERHETSUTSTYR
+
+Når vi feller trær, bruker vi:
+
+Sertifisert sikkerhetsutstyr: Arbeidsbukse med kevlarforing (motstand mot motorsag), stålhjelm, ørebeskyttelse, hansker, støvler med stålhette.
+
+Tau og seil: For å sikre grener og kontrollere fallet.
+
+Motorsager av høy kvalitet: Vedlikeholdt og brukt av erfarne operatører.
+
+Moderne maskiner: For grunnarbeid, hvis nødvendig.
+
+Førstehjelpsutstyr: I tilfelle ulykkestilfeller.
+
+TRENING OG ERFARING
+
+Vår erfarne klatrer har over 15 års erfaring. Han har:
+
+- Gjennomført sertifiseringskurser
+- Trenet med eksperter
+- Håndtert hundrevis av klatring- og fellinger
+- Erfaring med nødløsninger når ting blir komplisert
+
+Denne erfaringen kan ikke erstattes av videoer på YouTube.
+
+VI ER FULLT FORSIKRET
+
+Trefellingsspesialisten har full ansvarsforsikring. Hvis noe skjer under arbeidet:
+
+- Din eiendom er dekket
+- Skader på nabo eiendom er dekket
+- Personskader er dekket
+
+Når du hirer en ikke-forsikret person og noe skjer, er det DU som betaler.
+
+TEGN PÅ UPROFESJONELL TREFELLING
+
+Vær forsiktig hvis:
+
+- Personen har ingen forsikring
+- De har ikke sikkerthetseutstyr
+- De kan ikke forklare hvordan treet vil felle
+- De vil ikke ta tid til planlegging
+- De har ikke referanser
+
+SIKKERT VALG
+
+Å hyre en profesjonell trefeller er den smarteste investeringen du kan gjøre. Du sparer:
+
+- Dine egne skader
+- Risiko for skade på eiendom
+- Juridiske problemer
+- Forsikringskrav
+
+Kontakt oss i dag for en gratis og sikker befaring!`,
                 category: 'Sikkerhet',
                 readTime: '6 min',
                 publishedDate: '2024-01-05',
@@ -288,7 +486,88 @@ export const siteText = {
                 id: 'beste-tid-trefelling',
                 title: 'Beste tid for trefelling - Sesonger og timing',
                 excerpt: 'Når bør du felle treet ditt? Lær om optimal timing basert på tretyper og vær.',
-                content: 'Trefelling på riktig tid av året kan påvirke resultatet betydelig. Vi forklarer sommerkvistnering, vinterfelling, og hvorfor sesongen betyr noe. Inkludert kalender for Østlandet.',
+                content: `Når du planlegger å felle et tre, spørsmål er ofte: "Når bør jeg gjøre det?" Svaret er: Det avhenger. Ulike sesonger har fordeler og ulemper. Som erfarne trefellere i Oslo-området, hjelper vi deg å velge riktig tid.
+
+HØST (SEPTEMBER - OKTOBER)
+
+Fordeler:
+- Trær er i dvale
+- Mindre blad/nål gjør det lettere å se strukturen
+- Vær er vanligvis stabilt
+- Treet er tørrere inne, mer forutsigbart ved felling
+
+Ulemper:
+- Bakken kan være våt og lett
+- Høytrykkssystem kan gjøre treet sprøtt
+
+Best for: De fleste fellinger.
+
+VINTER (NOVEMBER - FEBRUAR)
+
+Fordeler:
+- Trær er helt i dvale
+- Minst risiko for stress på treet
+- Bakken kan være frossen og lettere å jobbe på
+- Mindre ublåst løv og mindre rottenende materiale
+- Beste tiden for større fellinger
+
+Ulemper:
+- Kaldt for klatrere
+- Mindre synlighet i snø
+- Vanskelig vær kan stoppe jobben
+- Veldig kort dagslys
+
+Best for: Større trær, kritiske fellinger, når det er kaldt og stabilt.
+
+VÅR (MARS - MAI)
+
+Fordeler:
+- Lengre dager, mer lys
+- Generelt tørrere forhold
+- Blomstrende trær (mindre viktig for fellinger)
+- Ideelt for planlegging av sommerjobber
+
+Ulemper:
+- Trær begynner å få sap
+- Bakken blir våt og mudrete
+- Insekter vekkes opp
+- Mer risiko for at treet "bløder"
+
+Best for: Mindre trær, planlegging av større prosjekter.
+
+SOMMER (JUNI - AUGUST)
+
+Fordeler:
+- Langt dagslys
+- Tørt vær normalt
+- God visuell kontroll
+
+Ulemper:
+- Trær har fullt løv - tung og vanskelig å se gjennom
+- Varmt for arbeidere
+- Mer usikkerhet i hvordan treet faller med fullt løv
+- Busker og vegetasjon på bakken gjør oppryddingen vanskeligere
+
+Best for: Mindre urgente jobber, når du ikke kan vente.
+
+TIDSPLAN FOR ØSTLANDET (2026)
+
+Januar - Februar: Utmerket. Stillt vær og trær er helt i dvale.
+Mars - April: OK. Våt bakke, men trær er fortsatt i dvale.
+Mai - Juni: Minst ideelt. Trær får sap, varmt.
+Juli - August: Minst ideelt. Fullt løv, varmt.
+September - Oktober: Utmerket. Høstfellinger er perfekt.
+November - Desember: Utmerket. Vinterfellinger er sikre.
+
+PLANLEGGING TIPS
+
+Planlegg større fellinger om høsten eller vinteren for sikkerhet.
+
+For mindre trær eller mindre prioritert arbeid, kan sommerfelling OK hvis det er tørt.
+
+Hvis treet er farlig (risiko for å falle selv), venter ikke - fells den når treet og værforhold tillater det.
+
+Kontakt oss tidlig. Vi kan planlegge jobben din for optimal timing!`,
                 category: 'Planlegging',
                 readTime: '5 min',
                 publishedDate: '2023-12-28',
@@ -298,7 +577,117 @@ export const siteText = {
                 id: 'tomterydding-guide',
                 title: 'Tomterydding - Steg for steg guide',
                 excerpt: 'Planlegger å rydde tomten din? Her er din komplette guide.',
-                content: 'Fra planlegging til gjennomføring. Vi går gjennom hele prosessen med tomterydding, fra innledende befaring til sluttresultat. Inkludert tips for å maksimere verdien av eiendommen din.',
+                content: `Tomterydding kan virke som en overvelmende oppgave. Du har kanskje arvet en eiendal som trenger rydding, eller du planlegger et byggprosjekt. Her er en komplett guide til prosessen.
+
+STEG 1: VURDERING OG PLANLEGGING
+
+Før du starter, trenger du å forstå omfanget:
+
+Hva skal ryddes?
+- Store trær
+- Busker og mindre vegetasjon
+- Gamle strukturer eller ruiner
+- Steiner og prydblokkinger
+- Jordmasser som skal flyttes
+
+Hva med jorden?
+- Skal det fylles på med ny jord?
+- Skal terreng endres?
+- Skal det graves ut?
+
+Hvor skal alt materialet?
+- Skal det fraktekses bort?
+- Kan noe brukes (brennved, flis)?
+- Er det miljøgifter som krever spesiell håndtering?
+
+GRATIS BEFARING
+
+Dette er hvor vi kommer inn. Vi besøker tomten, vurderer alt som må gjøres, og gir deg en detaljert plan og pristilbud.
+
+STEG 2: FORBEREDELSE
+
+Hvis det er elektriske ledninger: Kontakt før du starter.
+Hvis det er underjordiske rør: Sjekk hvor de ligger.
+Naboer: Fortell dem hva du gjør.
+
+STEG 3: HOVEDFELLING
+
+Større trær blir felt først. Vi bruker:
+- Motorsag for felling
+- Klatring for vanskelige trær
+- Kran hvis nødvendig
+
+STEG 4: KVISTHÅNDTERING
+
+Etter felling, håndterer vi kvisten:
+- Maskinell hacking til flis (miljøvennlig)
+- Brennved hvis det er eik eller annet godt brennematerial
+- Bortkjøring av resten
+
+STEG 5: STUBBEFRESING
+
+Stubber blir fjernet med spesialisert utstyr:
+- Vi freser 20-30 cm under bakken
+- Fjerner hovedrøtter
+- Etterlater flat terreng
+
+STEG 6: VEGETASJON OG BUSKER
+
+Mindre vegetasjon blir fjernet:
+- Hånd eller maskinell fjerning
+- Rydding av rester
+- Noen ganger bruk av herbisider (om nødvendig)
+
+STEG 7: OPPRYDDING OG FINALISERING
+
+Vi sørger for at alt blir ryddet:
+- Hele tomten blir feiet
+- Løse steiner og prydblokkinger blir fjernet eller oppbevart
+- Området er klart for neste steg (bygning, plantning, etc.)
+
+TIPS FOR Å MAKSIMERE VERDIEN
+
+Rydd før salg: En ryddig tomt øker eiendomsverdien betydelig.
+Bevar gode trær: Hvis det er vakre trær som er sunne, behold dem.
+Lag enkel landskapsplan: Flat terreng er enklere å bygge på.
+Planlegg drenering: Vann skal kunne drenere bort fra områder.
+
+KOSTNAD FOR TOMTERYDDING
+
+Små tomter (under 1000 m2):
+Fra 15000-30000 kr avhengig av vegetasjon.
+
+Medium tomter (1000-3000 m2):
+Fra 30000-60000 kr.
+
+Store tomter eller kompleks rydding:
+Individuell pris etter befaring.
+
+TIDSRAMME
+
+En liten tomt: 1-2 dager
+En medium tomt: 3-5 dager
+En stor tomt: 1-2 uker
+
+Mange faktorer påvirker dette:
+- Mengde vegetasjon
+- Terrengtype
+- Værforhold
+- Bortkjøring av materialer
+
+VÅRE MASKINER OG RESSURSER
+
+Vi har:
+- Stor maskinpark for effektiv rydding
+- Flere medarbeidere for raskere gjennomføring
+- Biler og hengere for bortkjøring
+- Spesialutstyr for stubber og rotting
+
+KONTAKT OSS I DAG
+
+Tomterydding er vår spesialitet. Med over 15 års erfaring har vi gjennomført hundrevis av tomteprosjekter i Oslo, Akershus, Østfold og Buskerud.
+
+Få en gratis befaring i dag!`,
                 category: 'Tomterydding',
                 readTime: '8 min',
                 publishedDate: '2023-12-20',
