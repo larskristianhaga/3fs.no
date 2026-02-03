@@ -2,8 +2,8 @@ import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Header from "@/components/Header";
 import type {Metadata} from 'next'
-import { siteText } from '@/content/text'
-import { colors } from '@/config/colors'
+import {siteText} from '@/content/text'
+import {colors} from '@/config/colors'
 
 export const metadata: Metadata = {
     title: 'Om oss - Over 15 års erfaring med trefelling',
@@ -45,20 +45,16 @@ export default function AboutPage() {
                             <h1 className={`text-4xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
                                 {siteText.about.title}
                             </h1>
-                            <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
-                                {siteText.about.intro.paragraph1}
-                            </p>
-                            <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
-                                {siteText.about.intro.paragraph2}
-                            </p>
-                            <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
-                                {siteText.about.intro.paragraph3}
-                            </p>
+                            {siteText.about.intro.map((item) => (
+                                <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
+                                    {item.paragraph}
+                                </p>
+                            ))}
                         </div>
                         <div className="relative">
                             <Image
                                 src="/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg"
-                                alt={siteText.about.intro.imageAlt}
+                                alt={siteText.about.imageAlt}
                                 width={600}
                                 height={400}
                                 className="rounded-lg shadow-xl"

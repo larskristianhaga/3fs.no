@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import {companyInfo} from '@/config/company'
 import {siteText} from '@/content/text'
-import { colors } from '@/config/colors'
+import {colors} from '@/config/colors'
 
 export const metadata: Metadata = {
     title: 'Kontakt oss - Gratis befaring og pristilbud',
@@ -46,15 +46,13 @@ export default function ContactPage() {
             <section className="relative py-4">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className={`text-center ${colors.text.gray[900]}`}>
-                        <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
-                            {siteText.contact.intro.paragraph1}
-                        </p>
-                        <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
-                            {siteText.contact.intro.paragraph2}
-                        </p>
-                        <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
-                            {siteText.contact.intro.paragraph3}
-                        </p>
+                        {siteText.contact.intro.map((item) => (
+                            <div>
+                                <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
+                                    {item.paragraph}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
