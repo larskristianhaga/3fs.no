@@ -151,18 +151,11 @@ export default function HomePage() {
                                 {siteText.home.ourStory.title}
                             </h2>
                             <div className={`space-y-4 text-base sm:text-lg ${colors.text.gray[700]} leading-relaxed`}>
-                                <p>
-                                    {companyInfo.name} {siteText.home.ourStory.paragraph1}
-                                </p>
-                                <p>
-                                    {siteText.home.ourStory.paragraph2}
-                                </p>
-                                <p>
-                                    {siteText.home.ourStory.paragraph3}
-                                </p>
-                                <p>
-                                    {siteText.home.ourStory.paragraph4}
-                                </p>
+                                {siteText.home.ourStory.content.map((item, index) => (
+                                    <p key={index}>
+                                        {index === 0 ? `${companyInfo.name} ${item.paragraph}` : item.paragraph}
+                                    </p>
+                                ))}
                             </div>
                         </div>
                         <div className="relative h-96 lg:h-[500px]">

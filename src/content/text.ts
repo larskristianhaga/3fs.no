@@ -61,10 +61,20 @@ export const siteText = {
         },
         ourStory: {
             title: 'Vår historie',
-            paragraph1: 'holder til i kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.',
-            paragraph2: 'Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.',
-            paragraph3: 'Trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier eller andre hindringer er ikke noe problem - vi tar jobben!',
-            paragraph4: 'Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben som du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger vi alltid for å rydde opp, og forlater stedet like fint som vi fant det.',
+            content: [
+                {
+                    paragraph: 'holder til i kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.',
+                },
+                {
+                    paragraph: 'Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.',
+                },
+                {
+                    paragraph: 'Trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier eller andre hindringer er ikke noe problem - vi tar jobben!',
+                },
+                {
+                    paragraph: 'Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben som du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger vi alltid for å rydde opp, og forlater stedet like fint som vi fant det.',
+                },
+            ],
             imageAlt: 'Trefellingsspesialisten i arbeid',
         },
         servicesSection: {
