@@ -30,7 +30,7 @@ export default function Header() {
     ]
 
     return (
-        <nav className={`${colors.background.white} shadow-sm border-b`}>
+        <nav className={`${colors.background.white} shadow-md border-b ${colors.border.gray[200]} sticky top-0 z-50 backdrop-blur-sm bg-white/95`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
@@ -55,10 +55,10 @@ export default function Header() {
                                 <PreloadLink
                                     key={link.href}
                                     href={link.href}
-                                    className={`px-3 py-2 text-sm font-medium transition-colors ${
+                                    className={`px-3 py-2 text-sm font-semibold transition-all duration-200 rounded-md ${
                                         isActive(link.href)
-                                            ? colors.text.primary[800]
-                                            : `${colors.text.gray[700]} ${colors.hover.text.primary[600]}`
+                                            ? `${colors.text.primary[800]} ${colors.background.primary[50]}`
+                                            : `${colors.text.gray[700]} ${colors.hover.text.primary[700]} ${colors.hover.background.primary[50]}`
                                     }`}
                                 >
                                     {link.label}
