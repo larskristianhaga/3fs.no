@@ -50,6 +50,8 @@ export default function ContactForm() {
 
             if (response.ok) {
                 setMessage(siteText.contact.form.successMessage)
+                // Reset form
+                e.currentTarget.reset()
             } else {
                 setMessage(siteText.contact.form.errorMessage)
             }
@@ -78,14 +80,14 @@ export default function ContactForm() {
 
             <div className="space-y-2">
                 <Label htmlFor="email" className="text-base">
-                    {siteText.contact.form.email} {siteText.contact.form.required}
+                    {siteText.contact.form.email}
                 </Label>
                 <Input
                     type="email"
                     id="email"
                     name="email"
-                    required
                     className="text-base py-3"
+                    placeholder="din@epost.no (valgfritt)"
                 />
             </div>
 

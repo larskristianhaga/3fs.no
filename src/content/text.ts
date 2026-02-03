@@ -37,8 +37,13 @@ export const siteText = {
     home: {
         hero: {
             title: 'Trefellingsspesialisten',
-            description: 'Med erfarne trefellere, maskiner, og riktig utstyr kan du være sikker på at jobben blir gjennomført på en trygg, effektiv måte, og til konkurransedyktige priser.',
-            cta: 'Ta kontakt med oss i dag',
+            description: 'Treet står vrient til? Vi håndterer de vanskeligste trefelling-jobber. Gratis befaring, ingen overraskelser i prisen – svar innen 24 timer.',
+            cta: 'Gratis befaring – Ring eller send melding',
+            trustBadges: [
+                'Svar innen 24 timer',
+                'Fullt forsikret',
+                'Gratis befaring og pristilbud',
+            ],
         },
         whyChooseUs: {
             title: 'Hvorfor velge oss?',
@@ -76,6 +81,27 @@ export const siteText = {
                 },
             ],
             imageAlt: 'Trefellingsspesialisten i arbeid',
+        },
+        testimonials: {
+            title: 'Hva våre kunder sier',
+            subtitle: 'Over 15 år med fornøyde kunder',
+            items: [
+                {
+                    text: 'Utrolig profesjonelt arbeid. De håndterte det kompliserte treet vårt uten problemer. Anbefalte dem straks til naboene.',
+                    author: 'Ole Hansen',
+                    location: 'Ås',
+                },
+                {
+                    text: 'Rask respons, fair pris, og grundig opprydding. Vi er veldig fornøyd og bruker dem når som helst vi trenger trefelling.',
+                    author: 'Kari Nilsen',
+                    location: 'Oslo',
+                },
+                {
+                    text: 'Treet var nær huset og vi var nervøs, men de var helt professjonelle. Jobben var gjort på dagen som avtalt.',
+                    author: 'Erik Johansen',
+                    location: 'Akershus',
+                },
+            ],
         },
         servicesSection: {
             title: 'Tjenester vi tilbyr',
@@ -210,15 +236,16 @@ export const siteText = {
             name: 'Navn',
             email: 'E-post',
             phone: 'Telefon',
-            address: 'Adresse',
+            address: 'Adresse (valgfritt)',
             postCodeAndLocation: 'Postnummer og poststed',
-            message: 'Melding',
-            attachment: 'Vedlegg',
+            message: 'Beskriv jobben (f.eks. størrelse på tre, plassering)',
+            attachment: 'Vedlegg (bilde av treet)',
             required: '*',
             submitButton: 'Send melding',
             submitting: 'Sender...',
-            successMessage: 'Takk for din henvendelse!',
-            errorMessage: 'Beklager noe gikk galt, ta kontakt direkte via e-post.',
+            successMessage: 'Takk! Vi ringer deg innen 24 timer med pristilbud.',
+            errorMessage: 'Noe gikk galt. Ring oss direkte: 47 64 29 70',
+            exitMessage: 'Før du går - du kan også ringe oss nå: 47 64 29 70',
         },
     },
 
@@ -265,6 +292,26 @@ export const siteText = {
             {
                 question: 'Hvordan bestiller jeg tjenester?',
                 answer: 'Du kan kontakte oss via kontaktskjemaet på nettsiden, ringe oss direkte, eller sende en e-post. Vi tilbyr alltid gratis befaring og uforpliktende pristilbud, så du vet nøyaktig hva du kan forvente før arbeidet starter.',
+            },
+            {
+                question: 'Kan dere felle tre nær huset mitt uten skade?',
+                answer: 'Ja, vi er spesialisert i treffelling i trange områder. Med erfaring og spesialutstyr kan vi felle trær helt nær hus, veier, og andre strukturer uten skade. Vi planlegger hver jobb nøye for å sikre sikkerheten for deg og dine omgivelser.',
+            },
+            {
+                question: 'Hvor raskt kan dere komme?',
+                answer: 'Vi prøver å tilby fleksibel tidsbestilling. For akutte tilfeller kan vi ofte komme innen kort tid. Kontakt oss direkte på 47 64 29 70 så diskuterer vi tilgjengelig tid for ditt oppdrag.',
+            },
+            {
+                question: 'Hva skjer hvis noe går galt under arbeidet?',
+                answer: 'Vi har full ansvarsforsikring som dekker eventuelle skader som måtte oppstå under arbeidet. Vår erfarne team arbeider etter strenge sikkerhetsprotokoller for å minimalisere risiko. Se forsikringsbevis på "Om oss"-siden.',
+            },
+            {
+                question: 'Er alt materialet fullt bortfraktet?',
+                answer: 'Ja, vi sørger alltid for å rydde opp grundig og fjerne alt trevirke, kvist og flis hvis ønskelig. Du kan også velge å beholde noe av materialet, for eksempel flis til bruk som dekkbark eller brennved.',
+            },
+            {
+                question: 'Kan jeg få referanser og før/etter bilder?',
+                answer: 'Ja, vi har gjennomført hundrevis av oppgaver de siste 15 årene. Vi kan gjerne vise deg eksempler på vårt tidligere arbeid og gi deg referanser fra fornøyde kunder. Kontakt oss for mer informasjon.',
             },
         ],
     },

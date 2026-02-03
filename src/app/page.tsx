@@ -3,6 +3,7 @@ import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PreloadLink from "@/components/PreloadLink";
+import Testimonials from "@/components/Testimonials";
 import {companyInfo} from '@/config/company'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -50,11 +51,29 @@ export default function HomePage() {
                             <p className={`mt-6 text-lg sm:text-xl ${colors.text.gray[700]} max-w-3xl leading-relaxed`}>
                                 {siteText.home.hero.description}
                             </p>
+
+                            {/* Trust badges */}
+                            <div className="mt-8 flex flex-wrap gap-4">
+                                {siteText.home.hero.trustBadges.map((badge, index) => (
+                                    <div key={index} className={`flex items-center gap-2 ${colors.text.primary[700]} font-medium text-sm sm:text-base`}>
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                        </svg>
+                                        {badge}
+                                    </div>
+                                ))}
+                            </div>
+
                             <div className="mt-10 flex flex-col sm:flex-row gap-4">
                                 <Button asChild variant="default" size="lg">
                                     <PreloadLink href="/kontakt-oss">
                                         {siteText.home.hero.cta}
                                     </PreloadLink>
+                                </Button>
+                                <Button asChild variant="outline" size="lg">
+                                    <a href={`tel:${companyInfo.contact.phone.href}`}>
+                                        📞 {companyInfo.contact.phone.display}
+                                    </a>
                                 </Button>
                             </div>
                         </div>
@@ -291,6 +310,12 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+
+            <Testimonials
+                title={siteText.home.testimonials.title}
+                subtitle={siteText.home.testimonials.subtitle}
+                items={siteText.home.testimonials.items}
+            />
 
             <section className={`py-20 ${colors.background.white}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
