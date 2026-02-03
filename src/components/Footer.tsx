@@ -21,6 +21,24 @@ export default function Footer() {
 
                     <div className="space-y-4">
                         <h3 className="text-white text-lg font-semibold mb-4">
+                            {siteText.footer.services.title}
+                        </h3>
+                        <ul className="text-sm space-y-2">
+                            {siteText.services.items.map((service) => (
+                                <li key={service.id}>
+                                    <a
+                                        href={`/tjenester#${service.id}`}
+                                        className={`${colors.hover.text.primary[400]} transition-colors`}
+                                    >
+                                        {service.title}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="space-y-4">
+                        <h3 className="text-white text-lg font-semibold mb-4">
                             {siteText.footer.contactSection.title}
                         </h3>
                         <div className="space-y-3 text-sm">
