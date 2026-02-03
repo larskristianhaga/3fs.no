@@ -313,6 +313,22 @@ export const siteText = {
                 question: 'Kan jeg få referanser og før/etter bilder?',
                 answer: 'Ja, vi har gjennomført hundrevis av oppgaver de siste 15 årene. Vi kan gjerne vise deg eksempler på vårt tidligere arbeid og gi deg referanser fra fornøyde kunder. Kontakt oss for mer informasjon.',
             },
+            {
+                question: 'Trenger jeg tillatelse for trefelling i Ås kommune?',
+                answer: 'I Ås kommune kreves det tillatelse for trefelling av større trær. Vi anbefaler at du sjekker med kommunen din eller så kan vi hjelpe deg med informasjonen. Vi er kjent med lokale reguleringer og kan veilede deg gjennom prosessen.',
+            },
+            {
+                question: 'Hva er gjennomsnittskostnaden for trefelling i Oslo?',
+                answer: 'Prisene for trefelling i Oslo varierer fra 3000-15000 kr avhengig av treets størrelse, plassering og kompleksitet. Vi tilbyr alltid gratis befaring og uforpliktende pristilbud slik at du vet nøyaktig hva jobben vil koste før vi starter.',
+            },
+            {
+                question: 'Hva er beste tid for trefelling og beskjæring?',
+                answer: 'Beste tid for trefelling og beskjæring er vanligvis vinter og tidlig vår når treet er i dvale. Dette reduserer stresset på treet og gjør arbeidet enklere. Vi kan imidlertid håndtere trefelling hele året ved behov.',
+            },
+            {
+                question: 'Opererer dere i hele Akershus og Østfold?',
+                answer: 'Ja, vi opererer i hele Akershus og Østfold regioner, samt Oslo og deler av Buskerud. Vi holder til i Ås og har erfaring med alle områdene vi betjener. Kontakt oss for å bekrefte at vi kan hjelpe med ditt oppdrag.',
+            },
         ],
     },
 } as const

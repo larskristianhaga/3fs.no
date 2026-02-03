@@ -2,13 +2,14 @@ import Image from 'next/image'
 import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ServiceSchema from "@/components/ServiceSchema";
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
 export const metadata: Metadata = {
-    title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing',
-    description: 'Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister som betjener privatkunder, bedrifter og kommuner i Oslo, Akershus, Østfold og Buskerud.',
-    keywords: 'trefelling, beskjæring, stubbefresing, tomterydding, flishugging, bortkjøring, arborist, treklatring, trepleie, Oslo, Akershus, Østfold, Buskerud',
+    title: 'Trefelling & Trepleie Tjenester | Trefellingsspesialisten AS',
+    description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Trefelling, stubbefresing, beskjæring, tomterydding og flishugging. Gratis befaring, fullt forsikret. Over 15 års erfaring.',
+    keywords: 'trefelling, stubbefresing, beskjæring, tomterydding, flishugging, bortkjøring, trefelling oslo, trefelling ås, stubbefresing akershus, trepleie, arborist, treklatring, trefeller, trepleie norge',
     alternates: {
         canonical: '/tjenester',
     },
@@ -37,6 +38,13 @@ const services = siteText.services.items.map((item) => ({
 export default function ServicesPage() {
     return (
         <div className={`min-h-screen ${colors.background.white}`}>
+            {siteText.services.items.map((service) => (
+                <ServiceSchema
+                    key={service.id}
+                    serviceName={service.title}
+                    serviceDescription={service.description}
+                />
+            ))}
             <Header/>
 
             <section className="relative  py-16">
