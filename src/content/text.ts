@@ -167,8 +167,8 @@ export const siteText = {
                 imageAlt: 'Flishugging - Professional tree service',
             },
             {
-                id: 'Beskjaering',
-                title: 'Beskjæring',
+                id: 'beskjaering',
+                title: 'beskjaering',
                 description:
                     'Beskjæring kan være en fin løsning om treet er større eller høyere enn du ønsker, eller hvis det hindrer utsikt eller sol. Store trær kan beskjæres, reduseres, formes eller toppes, alt ettersom hva du som kunde ønsker. Våre dyktige trefellere har alle gjennomført beskjæringskurs, og har kompetanse innen beskjæring av alle typer trær, hekker og andre buskvekster.',
                 imageAlt: 'Beskjæring - Professional tree service',
