@@ -63,7 +63,7 @@ export const siteText = {
             title: 'Vår historie',
             content: [
                 {
-                    paragraph: 'holder til i kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.',
+                    paragraph: 'holder til i Ås kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.',
                 },
                 {
                     paragraph: 'Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.',
@@ -121,37 +121,37 @@ export const siteText = {
                 id: 'trefelling',
                 title: 'Trefelling',
                 description: 'Vi utfører felling av alle typer trær, både små og store. Hvert tre er unikt med tanke på størrelse, tilstand og plassering, og det kreves derfor ulike fellingsmetoder, for å ta ned treet på en sikker og skånsom måte. Vår erfaren klatrer med mer enn 15 års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.',
-                imageAlt: 'Trefelling - Professional tree service',
+                imageAlt: 'Profesjonell trefelling med spesialistutstyr',
             },
             {
                 id: 'stubbefresing',
                 title: 'Stubbefresing',
                 description: 'Stubbefresing er den mest skånsomme og effektive måten å fjerne stubber på som står i veien eller som du ønsker å fjerne. Vi freser bort alle synlige røtter, og ca. 20-30 cm under bakken for å frese hovedroten under stubben, slik at alle spor etter stubben og røttene er fjernet. Maskinen har belter, så vi unngår skade på plen og hage, og du sitter igjen med et flott resultat.',
-                imageAlt: 'Stubbefresing - Professional tree service',
+                imageAlt: 'Stubbefresing med dyktig maskinoperatør',
             },
             {
                 id: 'bortkjoring',
                 title: 'Bortkjøring',
                 description: 'Bortkjøring av flis, greiner og trestammer etter gjennomført arbeid er noe vi gjerne hjelper med. Etter felling kan det være mye som skal ryddes, og fjernes, noe som kan være tidskrevende å gjøre selv. Vi har et stort utvalg av kjøretøy, og hengere som gjør bortkjøringen av alt trevirke effektivt og enkelt.',
-                imageAlt: 'Bortkjøring - Professional tree service',
+                imageAlt: 'Effektiv bortkjøring av trevirke',
             },
             {
                 id: 'flishugging',
                 title: 'Flishugging',
                 description: 'Flishugging er en miljøvennlig og effektiv måte å rydde kvist, greiner og mindre trestammer på. Maskinen kverner trevirke til flis, og kan ta trestammer inntil 30 cm i diameter. Dette reduserer volumet av trevirke etter et trefellingsoppdrag og sparer tid på bortkjøring. Flisen fra vår flishugger egner seg godt som dekkbark i bed eller skråninger og som fyllmasse for å jevne terreng.',
-                imageAlt: 'Flishugging - Professional tree service',
+                imageAlt: 'Flishugging av trestammer og greiner',
             },
             {
                 id: 'beskjaering',
-                title: 'beskjaering',
+                title: 'Beskjæring',
                 description: 'Beskjæring kan være en fin løsning om treet er større eller høyere enn du ønsker, eller hvis det hindrer utsikt eller sol. Store trær kan beskjæres, reduseres, formes eller toppes, alt ettersom hva du som kunde ønsker. Våre dyktige trefellere har alle gjennomført beskjæringskurs, og har kompetanse innen beskjæring av alle typer trær, hekker og andre buskvekster.',
-                imageAlt: 'Beskjæring - Professional tree service',
+                imageAlt: 'Profesjonell beskjæring av tre',
             },
             {
                 id: 'tomterydding',
                 title: 'Tomterydding',
                 description: 'I vår maskin- og utstyrspark har vi alt vi trenger for å effektivt klargjøre og rydde en eiendom for trær, busker og annen vegetasjon. Vi har lang erfaring med tomterydding for både private kunder, entreprenører og kommuner. Våre maskiner og utstyr er beregnet på både små og store områder, og vi kan håndtere arbeid i krevende og vanskelig terreng.',
-                imageAlt: 'Tomterydding - Professional tree service',
+                imageAlt: 'Tomterydding med moderne maskiner',
             },
         ],
     },
@@ -169,7 +169,7 @@ export const siteText = {
                 paragraph: 'Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben som du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger vi alltid for å rydde opp, og forlater stedet like fint som vi fant det.',
             }
         ],
-        imageAlt: 'GreenCut Tree Services team at work',
+        imageAlt: 'Trefellingsspesialisten team i arbeid',
         team: [
             {
                 name: 'Pål-Erik Engedahl',
@@ -200,7 +200,7 @@ export const siteText = {
                 paragraph: 'Alle oppdrag er ulike, og det kan være vanskelig å gi en konkret pris før vi vet litt mer. I noen tilfeller kan vi gi en fastpris ved å se på bilder du kan legge ved i kontaktskjemaet. I andre tilfeller er det hensiktsmessig at vi møter opp på en uforpliktende befaring.',
             },
             {
-                paragraph: 'Vi hjelper deg gjerne, send oss en e-post i dag, så vi du bli kontaktet fortløpende for en uforpliktende samtale eller avtale om en gratis befaring.',
+                paragraph: 'Vi hjelper deg gjerne, send oss en e-post i dag, så vil du bli kontaktet fortløpende for en uforpliktende samtale eller avtale om en gratis befaring.',
             },
             {
                 paragraph: 'Ikke nøl med å ta kontakt med oss om du har noen spørsmål knyttet til vårt arbeid eller tjenester!',

@@ -1,7 +1,9 @@
+export const yearsOfExperience = 15
+
 export const companyInfo = {
   name: "Trefellingsspesialisten AS",
-  description: "Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring med trefelling, beskjæring, stubbefresing og tomterydding. Forsikret og sertifisert.",
-  
+  description: `Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over ${yearsOfExperience} års erfaring med trefelling, beskjæring, stubbefresing og tomterydding. Forsikret og sertifisert.`,
+
   contact: {
     phone: {
       display: "47 64 29 70",
