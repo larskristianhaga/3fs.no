@@ -49,8 +49,8 @@ export default function AboutPage() {
                                     {siteText.about.title}
                                 </h1>
                             </div>
-                            {siteText.about.intro.map((item) => (
-                                <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
+                            {siteText.about.intro.map((item, index) => (
+                                <p key={index} className={`mt-4 text-xl ${colors.text.gray[600]}`}>
                                     {item.paragraph}
                                 </p>
                             ))}
