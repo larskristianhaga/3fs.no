@@ -1,0 +1,73 @@
+import React from 'react'
+
+interface TreeSpecialistCharacterProps {
+  className?: string
+  width?: number
+  height?: number
+}
+
+export default function TreeSpecialistCharacter({ 
+  className = '', 
+  width = 200, 
+  height = 200 
+}: TreeSpecialistCharacterProps) {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 200 200" 
+      width={width} 
+      height={height}
+      className={className}
+      aria-label="Trefellingsspesialist karakter"
+    >
+      {/* Background circle */}
+      <circle cx="100" cy="100" r="95" fill="#10B981" opacity="0.1"/>
+      
+      {/* Character body */}
+      <g id="character">
+        {/* Head */}
+        <circle cx="100" cy="70" r="25" fill="#FCD34D"/>
+        
+        {/* Safety helmet */}
+        <ellipse cx="100" cy="55" rx="28" ry="18" fill="#EF4444"/>
+        <ellipse cx="100" cy="54" rx="28" ry="5" fill="#DC2626"/>
+        <rect x="72" y="50" width="56" height="8" fill="#FBBF24" rx="2"/>
+        
+        {/* Face details */}
+        <circle cx="92" cy="68" r="3" fill="#374151"/>
+        <circle cx="108" cy="68" r="3" fill="#374151"/>
+        <path d="M 95 78 Q 100 82 105 78" stroke="#374151" strokeWidth="2" fill="none" strokeLinecap="round"/>
+        
+        {/* Body/Safety vest */}
+        <rect x="75" y="95" width="50" height="55" fill="#FBBF24" rx="5"/>
+        <rect x="77" y="97" width="46" height="10" fill="#F59E0B"/>
+        <rect x="77" y="137" width="46" height="10" fill="#F59E0B"/>
+        
+        {/* Arms */}
+        <rect x="60" y="100" width="15" height="40" fill="#FCD34D" rx="7"/>
+        <rect x="125" y="100" width="15" height="40" fill="#FCD34D" rx="7"/>
+        
+        {/* Tool in hand (chainsaw handle) */}
+        <g id="chainsaw">
+          <rect x="135" y="130" width="25" height="8" fill="#6B7280" rx="2"/>
+          <rect x="155" y="125" width="5" height="18" fill="#374151" rx="1"/>
+          <circle cx="157.5" cy="134" r="3" fill="#DC2626"/>
+        </g>
+        
+        {/* Legs/Pants */}
+        <rect x="82" y="150" width="15" height="35" fill="#1F2937" rx="3"/>
+        <rect x="103" y="150" width="15" height="35" fill="#1F2937" rx="3"/>
+        
+        {/* Boots */}
+        <ellipse cx="89.5" cy="185" rx="10" ry="6" fill="#374151"/>
+        <ellipse cx="110.5" cy="185" rx="10" ry="6" fill="#374151"/>
+      </g>
+      
+      {/* Tree symbol behind */}
+      <g id="tree-symbol" opacity="0.3">
+        <path d="M 35 140 L 45 100 L 40 100 L 50 70 L 45 70 L 55 40 L 65 70 L 60 70 L 70 100 L 65 100 L 75 140 Z" fill="#10B981"/>
+        <rect x="52" y="140" width="6" height="20" fill="#78350F"/>
+      </g>
+    </svg>
+  )
+}

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Header from "@/components/Header";
+import TreeSpecialistCharacter from '@/components/TreeSpecialistCharacter'
 import type {Metadata} from 'next'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
@@ -42,9 +43,12 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
                         <div className="mb-8 lg:mb-0">
-                            <h1 className={`text-4xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
-                                {siteText.about.title}
-                            </h1>
+                            <div className="flex items-center gap-4 mb-6">
+                                <TreeSpecialistCharacter width={80} height={80} />
+                                <h1 className={`text-4xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
+                                    {siteText.about.title}
+                                </h1>
+                            </div>
                             {siteText.about.intro.map((item) => (
                                 <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
                                     {item.paragraph}
