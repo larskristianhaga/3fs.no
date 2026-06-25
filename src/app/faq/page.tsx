@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import FAQSchema from '@/components/FAQSchema'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
@@ -15,6 +16,7 @@ export default function FAQPage() {
 
     return (
         <div className={`min-h-screen ${colors.background.white}`}>
+            <FAQSchema questions={siteText.faq.questions} />
             <Header />
 
             <section className="py-16">
