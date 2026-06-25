@@ -5,6 +5,9 @@ export async function GET() {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || companyInfo.website
 
     const serviceList = siteText.services.items.map((service) => `- ${service.title}`).join('\n')
+    const areaList = siteText.locations.areas
+        .map((area) => `- ${area.name}: ${baseUrl}/${area.slug}`)
+        .join('\n')
 
     const content = [
         `# ${companyInfo.name}`,
@@ -28,6 +31,9 @@ export async function GET() {
         `- FAQ: ${baseUrl}/faq`,
         `- Blog: ${baseUrl}/blogg`,
         `- Contact: ${baseUrl}/kontakt-oss`,
+        '',
+        '## Location pages',
+        areaList,
     ].join('\n')
 
     return new Response(content, {

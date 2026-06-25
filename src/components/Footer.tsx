@@ -86,6 +86,34 @@ export default function Footer() {
                             </div>
                         </div>
                     </div>
+
+                    <div className="space-y-4">
+                        <h3 className="text-white text-lg font-semibold mb-4">
+                            {siteText.footer.locations.title}
+                        </h3>
+                        <ul className="text-sm space-y-2">
+                            <li>
+                                <a href="/oslo" className={`${colors.hover.text.primary[400]} transition-colors`}>
+                                    {siteText.footer.locations.oslo}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/akershus" className={`${colors.hover.text.primary[400]} transition-colors`}>
+                                    {siteText.footer.locations.akershus}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ostfold" className={`${colors.hover.text.primary[400]} transition-colors`}>
+                                    {siteText.footer.locations.ostfold}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/buskerud" className={`${colors.hover.text.primary[400]} transition-colors`}>
+                                    {siteText.footer.locations.buskerud}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </footer>

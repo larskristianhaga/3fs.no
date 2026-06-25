@@ -63,6 +63,30 @@ export default function ContactPage() {
                 </div>
             </section>
 
+            <section className="pb-12">
+                <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className={`${colors.background.primary[50]} rounded-lg p-6`}>
+                        <h2 className={`text-xl font-bold ${colors.text.gray[900]} mb-2`}>
+                            Vi dekker disse områdene
+                        </h2>
+                        <p className={`${colors.text.gray[700]} mb-4`}>
+                            Les mer om tjenester i ditt nærområde:
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                            {siteText.locations.areas.map((area) => (
+                                <a
+                                    key={area.slug}
+                                    href={`/${area.slug}`}
+                                    className={`inline-block px-3 py-2 rounded-md ${colors.background.white} ${colors.text.primary[700]} border ${colors.border.primary[200]} ${colors.hover.background.primary[100]} transition-colors`}
+                                >
+                                    {area.name}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <Footer/>
         </div>
     )

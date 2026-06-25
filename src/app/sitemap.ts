@@ -10,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'monthly' as const,
         priority: 0.6,
     }))
+    const areaPages = siteText.locations.areas.map((area) => ({
+        url: `${baseUrl}/${area.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }))
 
     return [
         {
@@ -43,6 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
         },
         ...blogPosts,
+        ...areaPages,
         {
             url: `${baseUrl}/kontakt-oss`,
             lastModified: new Date(),

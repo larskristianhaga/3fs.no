@@ -33,6 +33,13 @@ export const siteText = {
         contactSection: {
             title: 'Kontakt',
         },
+        locations: {
+            title: 'Områder',
+            oslo: 'Oslo',
+            akershus: 'Akershus',
+            ostfold: 'Østfold',
+            buskerud: 'Buskerud',
+        },
     },
 
     home: {
@@ -775,6 +782,58 @@ Få en gratis befaring i dag!`,
             {
                 question: 'Opererer dere i hele Akershus og Østfold?',
                 answer: 'Ja, vi opererer i hele Akershus og Østfold regioner, samt Oslo og deler av Buskerud. Vi holder til i Ås og har erfaring med alle områdene vi betjener. Kontakt oss for å bekrefte at vi kan hjelpe med ditt oppdrag.',
+            },
+        ],
+    },
+    locations: {
+        title: 'Trefelling i',
+        subtitle: 'Vi tilbyr gratis befaring, trygg gjennomføring og grundig opprydding.',
+        ctaTitle: 'Trenger du hjelp i ditt område?',
+        ctaText: 'Kontakt oss for gratis befaring og uforpliktende pristilbud.',
+        areas: [
+            {
+                slug: 'oslo',
+                name: 'Oslo',
+                description: 'Trefelling i Oslo for private, borettslag og bedrifter. Vi hjelper med trygg trefelling, beskjæring og stubbefresing i tettbebygde områder.',
+                intro: 'I Oslo utfører vi ofte oppdrag der trær står tett på hus, gjerder, veier og ledningsnett. Vi planlegger hvert oppdrag slik at arbeidet blir sikkert og effektivt.',
+                highlights: [
+                    'Trygg trefelling i trange forhold',
+                    'Beskjæring for bedre lys og utsikt',
+                    'Stubbefresing og komplett opprydding'
+                ],
+            },
+            {
+                slug: 'akershus',
+                name: 'Akershus',
+                description: 'Trefelling i Akershus med erfarne trefellere og moderne utstyr. Vi tilbyr gratis befaring for villaområder, gårdstun og større tomter.',
+                intro: 'I Akershus dekker vi alt fra mindre hageoppdrag til større tomterydding. Vi tilpasser metode og utstyr etter terreng, tilgang og sikkerhetsbehov.',
+                highlights: [
+                    'Trefelling og trepleie for alle tomtestørrelser',
+                    'Effektiv tomterydding for privat og næring',
+                    'Bortkjøring av kvist, stammer og flis'
+                ],
+            },
+            {
+                slug: 'ostfold',
+                name: 'Østfold',
+                description: 'Profesjonell trefelling i Østfold med fokus på sikkerhet, kvalitet og ryddighet. Vi hjelper med felling, flishugging og stubbefresing.',
+                intro: 'I Østfold tar vi oppdrag gjennom hele året. Enten du trenger felling av et risikotre eller rydding av vegetasjon, løser vi jobben trygt.',
+                highlights: [
+                    'Sikker felling av store og krevende trær',
+                    'Flishugging og praktisk håndtering av trevirke',
+                    'Gratis befaring og tydelig pristilbud'
+                ],
+            },
+            {
+                slug: 'buskerud',
+                name: 'Buskerud',
+                description: 'Trefelling i Buskerud for boligeiere, borettslag og entreprenører. Vi leverer trygg trefelling, beskjæring og rydding av tomt.',
+                intro: 'I Buskerud har vi erfaring med krevende terreng og varierende tilgang. Vi setter sikkerhet først og finner en løsning som passer eiendommen din.',
+                highlights: [
+                    'Erfarne fagfolk med over 15 års praksis',
+                    'Beskjæring, stubbefresing og tomterydding',
+                    'Effektiv gjennomføring med full forsikring'
+                ],
             },
         ],
     },

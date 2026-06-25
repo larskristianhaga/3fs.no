@@ -3,6 +3,8 @@ import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ServiceSchema from "@/components/ServiceSchema";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
+import { companyInfo } from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
@@ -38,6 +40,12 @@ const services = siteText.services.items.map((item) => ({
 export default function ServicesPage() {
     return (
         <div className={`min-h-screen ${colors.background.white}`}>
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Forside', url: companyInfo.website },
+                    { name: 'Tjenester', url: `${companyInfo.website}/tjenester` }
+                ]}
+            />
             {siteText.services.items.map((service) => (
                 <ServiceSchema
                     key={service.id}
@@ -61,7 +69,7 @@ export default function ServicesPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         {services.map((service, index) => (
-                            <div key={service.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div id={service.id} key={service.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
                                 <div className="relative h-64">
                                     <Image
                                         src={service.image}
@@ -88,6 +96,30 @@ export default function ServicesPage() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className={`${colors.background.primary[50]} rounded-lg p-6`}>
+                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-2`}>
+                            Tjenester i ditt område
+                        </h2>
+                        <p className={`${colors.text.gray[700]} mb-4`}>
+                            Les mer om hvor vi tilbyr trefelling og trepleie.
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                            {siteText.locations.areas.map((area) => (
+                                <a
+                                    key={area.slug}
+                                    href={`/${area.slug}`}
+                                    className={`inline-block px-4 py-2 rounded-md ${colors.background.white} ${colors.text.primary[700]} border ${colors.border.primary[200]} ${colors.hover.background.primary[100]} transition-colors`}
+                                >
+                                    {area.name}
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>

@@ -2,6 +2,8 @@ import type {Metadata} from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BlogCard from '@/components/BlogCard'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import { companyInfo } from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
@@ -24,6 +26,12 @@ export const metadata: Metadata = {
 export default function BlogPage() {
     return (
         <div className={`min-h-screen ${colors.background.white}`}>
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Forside', url: companyInfo.website },
+                    { name: 'Blogg', url: `${companyInfo.website}/blogg` }
+                ]}
+            />
             <Header />
 
             {/* Hero Section */}

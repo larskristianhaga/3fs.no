@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PreloadLink from '@/components/PreloadLink'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import ArticleSchema from '@/components/ArticleSchema'
+import { companyInfo } from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
@@ -63,6 +66,20 @@ export default function BlogPostPage({ params }: PageProps) {
 
     return (
         <div className={`min-h-screen ${colors.background.white}`}>
+            <ArticleSchema
+                title={post.title}
+                description={post.excerpt}
+                url={`${companyInfo.website}/blogg/${post.id}`}
+                datePublished={post.publishedDate}
+                category={post.category}
+            />
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Forside', url: companyInfo.website },
+                    { name: 'Blogg', url: `${companyInfo.website}/blogg` },
+                    { name: post.title, url: `${companyInfo.website}/blogg/${post.id}` }
+                ]}
+            />
             <Header />
 
             {/* Breadcrumb */}
