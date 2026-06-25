@@ -25,6 +25,7 @@ export default function Header() {
 
     const navLinks: NavLink[] = [
         {href: '/tjenester', label: siteText.header.nav.services},
+        {href: '/trefelling-pris', label: siteText.header.nav.pricing},
         {href: '/om-oss', label: siteText.header.nav.about},
         {href: '/faq', label: siteText.header.nav.faq},
         {href: '/blogg', label: siteText.header.nav.blog},

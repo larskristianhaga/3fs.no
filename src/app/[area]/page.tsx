@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import PreloadLink from '@/components/PreloadLink'
 import {siteText} from '@/content/text'
 import {companyInfo} from '@/config/company'
 import {colors} from '@/config/colors'
@@ -51,6 +52,13 @@ export default function LocationPage({params}: LocationPageProps) {
     if (!area) {
         notFound()
     }
+
+    const relatedCases = siteText.blog.posts
+        .filter((post) => post.category === 'Case')
+        .filter((post) => {
+            const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase()
+            return haystack.includes(area.name.toLowerCase())
+        })
 
     return (
         <div className={`min-h-screen ${colors.background.white}`}>
@@ -105,6 +113,28 @@ export default function LocationPage({params}: LocationPageProps) {
                     </div>
                 </div>
             </section>
+
+            {relatedCases.length > 0 && (
+                <section className="py-4 pb-12">
+                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-4`}>
+                            Lokale case fra {area.name}
+                        </h2>
+                        <div className="space-y-3">
+                            {relatedCases.map((post) => (
+                                <PreloadLink
+                                    key={post.id}
+                                    href={`/blogg/${post.id}`}
+                                    className={`block ${colors.background.white} border ${colors.border.gray[200]} rounded-lg p-4 ${colors.hover.background.gray[50]} transition-colors`}
+                                >
+                                    <h3 className={`font-semibold ${colors.text.gray[900]} mb-1`}>{post.title}</h3>
+                                    <p className={`${colors.text.gray[600]} text-sm`}>{post.excerpt}</p>
+                                </PreloadLink>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
 
             <Footer/>
         </div>

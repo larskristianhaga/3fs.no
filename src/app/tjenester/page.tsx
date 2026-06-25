@@ -9,15 +9,15 @@ import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
 export const metadata: Metadata = {
-    title: 'Trefelling & Trepleie Tjenester | Trefellingsspesialisten AS',
-    description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Trefelling, stubbefresing, beskjæring, tomterydding og flishugging. Gratis befaring, fullt forsikret. Over 15 års erfaring.',
-    keywords: 'trefelling, stubbefresing, beskjæring, tomterydding, flishugging, bortkjøring, trefelling oslo, trefelling ås, stubbefresing akershus, trepleie, arborist, treklatring, trefeller, trepleie norge',
+    title: 'Trefelling tjenester | Erfarne trefellere i Oslo og Akershus',
+    description: 'Profesjonelle trefellere for trefelling, stubbefresing, beskjæring, tomterydding og flishugging i Oslo, Akershus, Østfold og Buskerud.',
+    keywords: 'trefelling, trefellere, stubbefresing, stubbefjerning oslo, beskjæring, tomterydding, flishugging, trefelling oslo, trefelling follo, trepleie, arborist',
     alternates: {
         canonical: '/tjenester',
     },
     openGraph: {
-        title: 'Tjenester - Trefelling, Beskjæring og Stubbefresing | Trefellingsspesialisten AS',
-        description: 'Komplette trefellingstjenester inkludert trefelling, beskjæring, stubbefresing, tomterydding, flishugging og bortkjøring. Profesjonelle arborister i Oslo-området.',
+        title: 'Trefelling tjenester | Erfarne trefellere',
+        description: 'Komplette trefellingstjenester: felling, stubbefresing, beskjæring og opprydding.',
         images: [{
             url: '/images/tjenester/trefelling.jpg',
             width: 1200,
@@ -109,7 +109,7 @@ export default function ServicesPage() {
                         <p className={`${colors.text.gray[700]} mb-4`}>
                             Les mer om hvor vi tilbyr trefelling og trepleie.
                         </p>
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap gap-3 mb-4">
                             {siteText.locations.areas.map((area) => (
                                 <a
                                     key={area.slug}
@@ -120,6 +120,12 @@ export default function ServicesPage() {
                                 </a>
                             ))}
                         </div>
+                        <a
+                            href="/trefelling-pris"
+                            className={`inline-block px-4 py-2 rounded-md ${colors.background.primary[600]} ${colors.text.white} ${colors.hover.background.primary[700]} transition-colors font-semibold`}
+                        >
+                            Se prisguide for trefelling
+                        </a>
                     </div>
                 </div>
             </section>

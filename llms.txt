@@ -1,0 +1,26 @@
+# 3fs.no
+
+> 3fs.no is the official website for Trefellingsspesialisten AS, a Norwegian tree-felling company serving Oslo, Akershus, Ostfold, and Buskerud. This file provides a curated map of the most useful pages and source files for LLM-based assistants.
+
+Primary language is Norwegian (Bokmal). Prefer canonical website copy from `src/content/text.ts`, shared company data from `src/config/company.ts`, and shared design tokens from `src/config/colors.ts`.
+
+## Website
+
+- [Home](https://3fs.no/): Landing page with company overview and service highlights.
+- [Services](https://3fs.no/tjenester): Full service catalog and service details.
+- [About](https://3fs.no/om-oss): Company background, team, and insurance information.
+- [FAQ](https://3fs.no/faq): Frequently asked questions and answers.
+- [Contact](https://3fs.no/kontakt-oss): Contact details and inquiry form.
+
+## Source
+
+- [Content source (`text.ts`)](https://github.com/larskristianhaga/3fs.no/blob/main/src/content/text.ts): Single source of truth for site copy and labels.
+- [Company config (`company.ts`)](https://github.com/larskristianhaga/3fs.no/blob/main/src/config/company.ts): Contact details, service areas, and shared business metadata.
+- [Color config (`colors.ts`)](https://github.com/larskristianhaga/3fs.no/blob/main/src/config/colors.ts): Centralized color definitions used throughout the UI.
+- [Contact API route](https://github.com/larskristianhaga/3fs.no/blob/main/src/app/api/contact/route.ts): Form submission handler and email sending logic.
+- [Contact form component](https://github.com/larskristianhaga/3fs.no/blob/main/src/components/ContactForm.tsx): Client-side form behavior, validation, and file upload handling.
+
+## Optional
+
+- [Repository README](https://github.com/larskristianhaga/3fs.no/blob/main/README.md): Minimal local setup instructions.
+- [llms.txt specification](https://llmstxt.org): Official format and conventions for llms.txt files.

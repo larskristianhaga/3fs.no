@@ -27,6 +27,7 @@ export async function GET() {
         '## Primary URLs',
         `- Home: ${baseUrl}/`,
         `- Services: ${baseUrl}/tjenester`,
+        `- Pricing: ${baseUrl}/trefelling-pris`,
         `- About: ${baseUrl}/om-oss`,
         `- FAQ: ${baseUrl}/faq`,
         `- Blog: ${baseUrl}/blogg`,

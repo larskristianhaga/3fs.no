@@ -3,6 +3,7 @@ export const siteText = {
         nav: {
             home: 'Forside',
             services: 'Tjenester',
+            pricing: 'Trefelling pris',
             about: 'Om oss',
             faq: 'Ofte stilte spørsmål',
             blog: 'Blogg',
@@ -188,6 +189,44 @@ export const siteText = {
                 imageAlt: 'Tomterydding med moderne maskiner',
             },
         ],
+    },
+
+    pricing: {
+        title: 'Trefelling pris',
+        subtitle: 'Pris avhenger av størrelse, plassering og tilgang. Vi gir alltid gratis befaring og et tydelig pristilbud.',
+        ranges: [
+            {
+                label: 'Små trær (ca. 4-6 meter)',
+                price: 'Fra 3 000-5 000 kr',
+                details: 'Enkle forhold med god tilgang og få hindringer.',
+            },
+            {
+                label: 'Mellomstore trær (ca. 6-10 meter)',
+                price: 'Fra 5 000-10 000 kr',
+                details: 'Vanligvis behov for mer rigging og mer tid.',
+            },
+            {
+                label: 'Store trær (10+ meter)',
+                price: 'Fra 10 000-20 000+ kr',
+                details: 'Krevende felling, ofte med klatring og seksjonering.',
+            },
+        ],
+        factorsTitle: 'Hva påvirker prisen?',
+        factors: [
+            'Treets høyde, diameter og tilstand',
+            'Avstand til hus, vei, ledninger og naboer',
+            'Tilgang for utstyr og bortkjøring',
+            'Behov for stubbefresing, flishugging og opprydding',
+            'Om jobben krever ekstra sikring eller klatring',
+        ],
+        examplesTitle: 'Eksempelpriser fra typiske oppdrag',
+        examples: [
+            'Nordre Follo: Felling av gran på ca. 7 meter med god tilgang: ca. 5 500 kr.',
+            'Oslo: Felling av bjørk nær hus med rigging: ca. 8 500 kr.',
+            'Indre Østfold: Felling av stor furu i trang passasje med opprydding: ca. 14 500 kr.',
+        ],
+        ctaTitle: 'Vil du ha nøyaktig pris?',
+        ctaText: 'Send oss bilder eller bestill gratis befaring. Du får et konkret og uforpliktende pristilbud.',
     },
 
     about: {
@@ -700,6 +739,89 @@ Få en gratis befaring i dag!`,
                 publishedDate: '2023-12-20',
                 imageAlt: 'Profesjonell tomterydding prosess',
             },
+            {
+                id: 'case-trefelling-nordre-follo',
+                title: 'Case: Trefelling i Nordre Follo ved bolig og garasje',
+                excerpt: 'Slik gjennomførte vi trygg trefelling i Nordre Follo med begrenset plass og full opprydding.',
+                content: `Vi fikk henvendelse om et høyt grantre i Nordre Follo som sto tett på bolig og garasje. Kunden var bekymret for sikkerheten i sterk vind.
+
+UTFORDRING
+
+- Begrenset plass for tradisjonell felling
+- Naboeiendom tett inntil
+- Behov for rask og sikker gjennomføring
+
+LØSNING
+
+Vi brukte seksjonert nedtaking med klatrer og kontrollerte tau. Hver del av treet ble firet ned trygt for å unngå skade på bygg og uteområde.
+
+RESULTAT
+
+- Treet ble fjernet uten skader
+- Alt virke ble ryddet og kjørt bort
+- Kunden fikk dokumentert arbeid og tydelig prisgrunnlag
+
+Denne typen oppdrag er typisk for trefelling i Nordre Follo der trær ofte står tett på bebyggelse.`,
+                category: 'Case',
+                readTime: '4 min',
+                publishedDate: '2024-02-20',
+                imageAlt: 'Case fra trefelling i Nordre Follo',
+            },
+            {
+                id: 'case-stubbefresing-oslo',
+                title: 'Case: Stubbefresing i Oslo etter felling av bjørk',
+                excerpt: 'Etter trefelling i Oslo fjernet vi stubbe og røtter for å klargjøre hagen for ny plen.',
+                content: `Etter en tidligere trefelling i Oslo ønsket kunden å fjerne stubben helt for å kunne etablere ny plen og bedre adkomst i hagen.
+
+UTFORDRING
+
+- Stubben sto nær kantstein og bed
+- Viktig å minimere skader på omkringliggende område
+
+LØSNING
+
+Vi brukte beltegående stubbefreser og freste ca. 20-30 cm under bakkenivå. Synlige røtter ble fjernet, og området ble jevnet før avslutning.
+
+RESULTAT
+
+- Stubben ble helt fjernet
+- Området var klart for videre hagearbeid
+- Kunden slapp tungt manuelt arbeid og bortkjøring selv
+
+Dette er et godt eksempel på effektiv stubbefjerning i Oslo med skånsom metode.`,
+                category: 'Case',
+                readTime: '3 min',
+                publishedDate: '2024-02-12',
+                imageAlt: 'Case fra stubbefresing i Oslo',
+            },
+            {
+                id: 'case-trefelling-indre-ostfold',
+                title: 'Case: Trefelling i Indre Østfold i krevende terreng',
+                excerpt: 'Vi løste en krevende felling i Indre Østfold med trygg planlegging, klatring og effektiv opprydding.',
+                content: `På et oppdrag i Indre Østfold skulle et stort furutre fjernes i skrånende terreng med begrenset maskintilgang.
+
+UTFORDRING
+
+- Bratt terreng og vanskelig logistikk
+- Risiko for skade på gjerde og nabotomt
+- Behov for sikker håndtering av store grener
+
+LØSNING
+
+Vi planla nedtak i etapper, med taukontroll og løpende sikring av arbeidsområdet. Alt trevirke ble håndtert fortløpende for å holde området trygt gjennom hele jobben.
+
+RESULTAT
+
+- Fullført uten skader på eiendom
+- Effektiv bortkjøring av virke
+- Tydelig dokumentert sluttresultat for kunden
+
+Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kontroll.`,
+                category: 'Case',
+                readTime: '4 min',
+                publishedDate: '2024-02-05',
+                imageAlt: 'Case fra trefelling i Indre Østfold',
+            },
         ],
     },
 
@@ -833,6 +955,28 @@ Få en gratis befaring i dag!`,
                     'Erfarne fagfolk med over 15 års praksis',
                     'Beskjæring, stubbefresing og tomterydding',
                     'Effektiv gjennomføring med full forsikring'
+                ],
+            },
+            {
+                slug: 'nordre-follo',
+                name: 'Nordre Follo',
+                description: 'Trefelling i Nordre Follo for boliger, sameier og næring. Vi tilbyr trygg felling, stubbefresing og komplett opprydding.',
+                intro: 'I Nordre Follo håndterer vi mange oppdrag der trær står nær bolig, garasje eller nabogrense. Vi bruker metoder som gir kontroll i trange omgivelser.',
+                highlights: [
+                    'Kontrollert trefelling i tett boligbebyggelse',
+                    'Beskjæring og reduksjon av store trær',
+                    'Rydding, flishugging og bortkjøring'
+                ],
+            },
+            {
+                slug: 'indre-ostfold',
+                name: 'Indre Østfold',
+                description: 'Trefelling i Indre Østfold med fokus på sikkerhet, effektiv fremdrift og ryddig sluttresultat.',
+                intro: 'I Indre Østfold utfører vi oppdrag på både små boligtomter og større eiendommer. Vi tilpasser gjennomføring etter terreng, vær og tilgang.',
+                highlights: [
+                    'Trygg felling av store trær i krevende terreng',
+                    'Stubbefresing og klargjøring av tomt',
+                    'Gratis befaring med tydelig pristilbud'
                 ],
             },
         ],

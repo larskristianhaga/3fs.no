@@ -11,15 +11,15 @@ import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
 export const metadata: Metadata = {
-    title: 'Trefellingsspesialisten AS | Trefelling, Beskjæring, Tomteryddning, stubbefresing | Oslo, Akershus, Østfold, og Buskerud',
-    description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Erfarne fagfolk med over 15 års erfaring. Forsikret og sertifisert. Gratis befaring og konkurransedyktige priser.',
-    keywords: 'trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, klatring, Oslo, Akershus, Østfold, Buskerud, Ås',
+    title: 'Trefelling i Oslo og Akershus | Erfarne trefellere | Trefellingsspesialisten AS',
+    description: 'Erfarne trefellere for trygg trefelling, beskjæring og stubbefresing i Oslo, Akershus, Østfold og Buskerud. Gratis befaring, rask respons og tydelig pris.',
+    keywords: 'trefelling, trefellere, trefeller, trepleie, arborist, beskjæring, stubbefresing, tomterydding, Oslo, Akershus, Østfold, Buskerud, Ås',
     alternates: {
         canonical: '/',
     },
     openGraph: {
-        title: 'Trefellingsspesialisten AS | Profesjonelle Trefellingstjenester',
-        description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Erfarne fagfolk med over 15 års erfaring. Gratis befaring og konkurransedyktige priser.',
+        title: 'Trefelling i Oslo og Akershus | Erfarne trefellere',
+        description: 'Trygg trefelling, beskjæring og stubbefresing med erfarne trefellere. Gratis befaring og tydelig pristilbud.',
         images: [{
             url: '/images/beskjaert-tre.jpg',
             width: 1200,
@@ -302,11 +302,18 @@ export default function HomePage() {
                         </Card>
                     </div>
                     <div className="text-center mt-10">
-                        <Button asChild size="lg">
-                            <PreloadLink href="/tjenester">
-                                {siteText.home.servicesSection.allServicesButton}
-                            </PreloadLink>
-                        </Button>
+                        <div className="flex flex-col sm:flex-row justify-center gap-4">
+                            <Button asChild size="lg">
+                                <PreloadLink href="/tjenester">
+                                    {siteText.home.servicesSection.allServicesButton}
+                                </PreloadLink>
+                            </Button>
+                            <Button asChild variant="outline" size="lg">
+                                <PreloadLink href="/trefelling-pris">
+                                    Se pris for trefelling
+                                </PreloadLink>
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </section>
