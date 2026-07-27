@@ -11,7 +11,7 @@ permissions:
 jobs:
   link-checker:
     name: "Check broken links"
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-26.04-arm
     steps:
       - name: Check for broken links
         uses: ruzickap/action-my-broken-link-checker@3337ef0c9ac76042e776df6c44590dd6bf58dcaf # 3.0.1
