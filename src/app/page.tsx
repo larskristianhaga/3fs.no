@@ -45,7 +45,7 @@ export default function HomePage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
                         <div className="mb-8 lg:mb-0">
-                            <h1 className={`text-4xl font-extrabold ${colors.text.gray[900]} sm:text-5xl lg:text-6xl wrap-break-word leading-tight tracking-tight`}>
+                            <h1 className={`text-4xl font-extrabold ${colors.text.gray[900]} sm:text-4xl lg:text-5xl wrap-break-word leading-tight tracking-tight`}>
                                 {siteText.home.hero.title}
                             </h1>
                             <p className={`mt-6 text-lg sm:text-xl ${colors.text.gray[700]} max-w-3xl leading-relaxed`}>
