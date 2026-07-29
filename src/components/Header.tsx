@@ -43,7 +43,7 @@ export default function Header() {
                                 height={100}
                                 className="w-auto h-12 sm:h-14 lg:h-16 max-w-full"
                                 priority
-                                quality={90}
+                                quality={75}
                                 sizes="(max-width: 640px) 48px, (max-width: 1024px) 56px, 64px"
                             />
                         </PreloadLink>

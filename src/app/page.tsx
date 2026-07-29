@@ -86,7 +86,8 @@ export default function HomePage() {
                                 height={500}
                                 className="rounded-2xl shadow-2xl w-full h-auto relative ring-1 ring-gray-200"
                                 priority
-                                quality={85}
+                                loading="eager"
+                                quality={75}
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 370px"
                             />
                         </div>
@@ -184,7 +185,7 @@ export default function HomePage() {
                                 alt={siteText.home.ourStory.imageAlt}
                                 fill
                                 className="rounded-2xl shadow-2xl object-cover relative ring-1 ring-gray-200"
-                                quality={85}
+                                quality={75}
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 loading="lazy"
                             />
@@ -386,7 +387,7 @@ export default function HomePage() {
                                     alt="Kontakt Trefellingsspesialisten"
                                     fill
                                     className="object-cover opacity-30 lg:opacity-50"
-                                    quality={85}
+                                    quality={75}
                                     sizes="(max-width: 1024px) 100vw, 50vw"
                                     loading="lazy"
                                 />
