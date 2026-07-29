@@ -15,17 +15,24 @@ export async function POST(request: NextRequest) {
 
         const data = await request.json()
 
-        const {name, email, phone, address, postCodeAndLocation, message, attachment} = data
+        const {name, email, phone, address, postCodeAndLocation, message, attachment, attachments: incomingAttachments} = data
 
         let attachments = []
 
-        if (attachment && attachment.content) {
-            const buffer = Buffer.from(attachment.content, 'base64')
+        // Support both the new multi-file array and the legacy single-attachment shape
+        const rawAttachments = Array.isArray(incomingAttachments)
+            ? incomingAttachments
+            : attachment && attachment.content
+                ? [attachment]
+                : []
 
-            attachments.push({
-                filename: attachment.filename,
-                content: buffer,
-            })
+        for (const att of rawAttachments) {
+            if (att && att.content) {
+                attachments.push({
+                    filename: att.filename,
+                    content: Buffer.from(att.content, 'base64'),
+                })
+            }
         }
 
         await resend.emails.send({

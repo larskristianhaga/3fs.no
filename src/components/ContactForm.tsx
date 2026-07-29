@@ -12,12 +12,22 @@ export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [message, setMessage] = useState('')
 
+    const MAX_TOTAL_BYTES = 4 * 1024 * 1024 // 4 MB — kept under Vercel's ~4.5 MB request body limit
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsSubmitting(true)
 
-        const formData = new FormData(e.currentTarget)
-        const file = formData.get('attachment') as File
+        const form = e.currentTarget
+        const formData = new FormData(form)
+        const files = (formData.getAll('attachment') as File[]).filter((f) => f && f.size > 0)
+
+        const totalBytes = files.reduce((sum, f) => sum + f.size, 0)
+        if (totalBytes > MAX_TOTAL_BYTES) {
+            setMessage(siteText.contact.form.fileTooLargeMessage)
+            setIsSubmitting(false)
+            return
+        }
 
         const data: any = {
             name: formData.get('name'),
@@ -28,15 +38,17 @@ export default function ContactForm() {
             message: formData.get('message'),
         }
 
-        if (file && file.size > 0) {
-            const bytes = await file.arrayBuffer()
-            const base64 = Buffer.from(bytes).toString('base64')
-
-            data.attachment = {
-                filename: file.name,
-                content: base64,
-                contentType: file.type,
-            }
+        if (files.length > 0) {
+            data.attachments = await Promise.all(
+                files.map(async (file) => {
+                    const bytes = await file.arrayBuffer()
+                    return {
+                        filename: file.name,
+                        content: Buffer.from(bytes).toString('base64'),
+                        contentType: file.type,
+                    }
+                })
+            )
         }
 
         try {
@@ -51,7 +63,9 @@ export default function ContactForm() {
             if (response.ok) {
                 setMessage(siteText.contact.form.successMessage)
                 // Reset form
-                e.currentTarget.reset()
+                form.reset()
+            } else if (response.status === 413) {
+                setMessage(siteText.contact.form.fileTooLargeMessage)
             } else {
                 setMessage(siteText.contact.form.errorMessage)
             }
@@ -150,8 +164,13 @@ export default function ContactForm() {
                     type="file"
                     id="attachment"
                     name="attachment"
+                    accept="image/*"
+                    multiple
                     className="text-base py-3"
                 />
+                <p className={`text-sm ${colors.text.gray[500]}`}>
+                    {siteText.contact.form.attachmentHint}
+                </p>
             </div>
 
             <Button
