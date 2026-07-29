@@ -95,7 +95,7 @@ export default function AboutPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <div className=" rounded-lg p-8">
                         <a
-                            href="documents/forsikringssertifikat-ansvar-2025-2026.pdf"
+                            href="documents/forsikringssertifikat-ansvar-2026-2027.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`inline-flex items-center ${colors.background.primary[600]} ${colors.text.white} px-6 py-3 rounded-lg ${colors.hover.background.primary[700]} transition-colors font-semibold`}
