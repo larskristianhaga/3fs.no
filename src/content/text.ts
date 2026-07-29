@@ -290,7 +290,7 @@ export const siteText = {
             required: '*',
             submitButton: 'Send melding',
             submitting: 'Sender...',
-            successMessage: 'Takk! Vi ringer deg innen 24 timer med pristilbud.',
+            successMessage: 'Takk! Vi ringer deg med pristilbud.',
             errorMessage: 'Ups! Noe gikk galt. Send oss en epost på rs3felling@gmail.com eller ring oss på: 47 64 29 70',
             fileTooLargeMessage: 'Bildene er for store (maks 4 MB til sammen). Ta noen mindre bilder, eller send dem på e-post til rs3felling@gmail.com eller SMS til 47 64 29 70.',
             exitMessage: 'Før du går - du kan også ringe oss nå: 47 64 29 70',
