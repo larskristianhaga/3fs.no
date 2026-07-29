@@ -26,9 +26,12 @@ npm start               # Run production server
   - **`api/contact/`** – Email submission endpoint using Resend
   - **`layout.tsx`** – Root layout with global metadata, Analytics, SpeedInsights
 - **`src/components/`** – React components
-  - **`ui/`** – Shadcn/ui components (Button, Card, Input, Textarea, etc.)
+  - **`ui/`** – Shadcn/ui components (Button, Card, Input, Textarea, Sheet, etc.)
   - **`Header.tsx`**, **`Footer.tsx`** – Main layout components
   - **`ContactForm.tsx`** – Contact form with file upload
+  - **`*Schema.tsx`** – JSON-LD injectors (`StructuredData`, `ArticleSchema`, `ServiceSchema`, `FAQSchema`, `BreadcrumbSchema`)
+  - **`PreloadLink.tsx`**, **`BlogCard.tsx`**, **`BeforeAfterGallery.tsx`**, **`Testimonials.tsx`**
+- **`src/middleware.ts`** – Sets long-lived cache headers on `/images/*` only
 - **`src/config/`** – Centralized configuration
   - **`colors.ts`** – Tailwind color definitions (primary green, grays)
   - **`company.ts`** – Company info, contact details, service areas, `yearsOfExperience`
@@ -62,6 +65,10 @@ npm start               # Run production server
 | `/om-oss` | `src/app/om-oss/page.tsx` | About page with team and insurance info |
 | `/faq` | `src/app/faq/page.tsx` | FAQ with expandable questions |
 | `/kontakt-oss` | `src/app/kontakt-oss/page.tsx` | Contact form page |
+| `/trefelling-pris` | `src/app/trefelling-pris/page.tsx` | Pricing landing page |
+| `/blogg`, `/blogg/[id]` | `src/app/blogg/…` | Blog index and article pages |
+| `/[area]` | `src/app/[area]/page.tsx` | Per-service-area SEO landing pages, generated from `siteText.locations.areas` via `generateStaticParams()` |
+| `/robots.txt`, `/sitemap.xml`, `/llms.txt` | `robots.ts`, `sitemap.ts`, `llms.txt/route.ts` | Generated routes |
 | `/api/contact` | `src/app/api/contact/route.ts` | POST endpoint for contact form submissions |
 
 ### Key Components & Patterns
@@ -174,13 +181,13 @@ Note: Contact form endpoint currently sends to `larskhaga@gmail.com`. Update lin
 - All components properly typed
 - Form data validated on submission via HTML5 + React form handling
 
-## Recent Improvements (Latest Commits)
+### Add a Service Area
+- Add an entry to `siteText.locations.areas` in `src/content/text.ts`.
+- The `/[area]` route generates a page for it automatically via `generateStaticParams()` — do not create a new folder.
 
-Recent commits have standardized the codebase:
-- Fixed incomplete content ("Ås kommune"), capitalization issues, and grammar errors
-- Centralized experience timeline via `yearsOfExperience` constant
-- Standardized all page colors to use centralized `colors` config
-- Implemented dynamic footer services section with internal links
-- Updated all service alt text to Norwegian descriptions
+## CI
+
+- **Dependabot** PRs are auto-approved and squash-merged when the Vercel build passes (`.github/workflows/dependabot-pr.yml`).
+- A monthly **link-checker** workflow scans the live site for broken links (`.github/workflows/link-checker.yml`).
 
 When adding features, maintain these patterns: use the text config for copy, the colors config for styling, and the company config for shared data.
