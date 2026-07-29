@@ -100,8 +100,8 @@ export default function ContactForm() {
                     type="email"
                     id="email"
                     name="email"
+                    required
                     className="text-base py-3"
-                    placeholder="din@epost.no (valgfritt)"
                 />
             </div>
 
