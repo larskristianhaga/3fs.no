@@ -82,7 +82,7 @@ export default function HomePage() {
                             <Image
                                 src="/images/beskjaert-tre.jpg"
                                 alt="Profesjonell trefelling og beskjæring"
-                                width={370}
+                                width={300}
                                 height={500}
                                 className="rounded-2xl shadow-2xl w-full h-auto relative ring-1 ring-gray-200"
                                 priority
