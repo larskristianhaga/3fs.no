@@ -47,11 +47,6 @@ export async function POST(request: NextRequest) {
           <h3>Melding</h3>
           <p>${message.replace(/\n/g, '<br>')}</p>
         </div>
-
-        <hr style="margin: 30px 0;">
-        <p style="color: #6b7280; font-size: 14px;">
-          Denne meldingen er sendt fra 3fs.no, kontakt oss skjema.
-        </p>
       `,
             attachments,
         })
