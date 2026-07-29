@@ -16,14 +16,20 @@ export const metadata: Metadata = {
         title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
         description: 'Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
         images: [{
-            url: '/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg',
-            width: 1200,
-            height: 630,
+            url: '/images/tjenester/trefelling.jpg',
+            width: 1280,
+            height: 576,
             alt: 'Trefellingsspesialisten AS i arbeid',
         }],
         url: 'https://3fs.no/om-oss',
         type: 'website',
         locale: 'nb_NO',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
+        description: 'Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
+        images: ['/images/tjenester/trefelling.jpg'],
     },
 }
 

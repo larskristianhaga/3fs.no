@@ -21,6 +21,12 @@ export const metadata: Metadata = {
         type: 'website',
         locale: 'nb_NO',
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Blogg - Tips og råd om trefelling | Trefellingsspesialisten AS',
+        description: 'Artikler og guide om trefelling, trepleie og sikkerhet fra erfarne fagfolk.',
+        images: ['/images/tjenester/trefelling.jpg'],
+    },
 }
 
 export default function BlogPage() {

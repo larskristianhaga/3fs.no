@@ -32,11 +32,17 @@ export const metadata: Metadata = {
         title: 'Profesjonell Trefelling og Trepleie | Trefellingsspesialisten AS',
         description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring med trefelling, beskjæring, stubbefresing og tomterydding.',
         images: [{
-            url: '/images/beskjaert-tre.jpg',
-            width: 1200,
-            height: 630,
+            url: '/images/tjenester/trefelling.jpg',
+            width: 1280,
+            height: 576,
             alt: 'Trefellingsspesialisten AS - Profesjonell trefelling',
         }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Profesjonell Trefelling og Trepleie | Trefellingsspesialisten AS',
+        description: 'Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over 15 års erfaring med trefelling, beskjæring, stubbefresing og tomterydding.',
+        images: ['/images/tjenester/trefelling.jpg'],
     },
 }
 

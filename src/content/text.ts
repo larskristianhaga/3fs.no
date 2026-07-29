@@ -46,10 +46,9 @@ export const siteText = {
     home: {
         hero: {
             title: 'Trefellings­spesialisten',
-            description: 'Treet står vrient til? Vi håndterer de vanskeligste trefelling-jobber. Gratis befaring, ingen overraskelser i prisen – svar innen 24 timer.',
+            description: 'Treet står vrient til? Vi håndterer de vanskeligste trefelling-jobber. Gratis befaring, ingen overraskelser i prisen.',
             cta: 'Gratis befaring – Ring eller send melding',
             trustBadges: [
-                'Svar innen 24 timer',
                 'Fullt forsikret',
                 'Gratis befaring og pristilbud',
             ],

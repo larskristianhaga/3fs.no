@@ -13,6 +13,12 @@ export const metadata: Metadata = {
         type: 'website',
         locale: 'nb_NO',
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Ofte stilte spørsmål - Svar på dine spørsmål om trefelling | Trefellingsspesialisten AS',
+        description: 'Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over 15 års erfaring med profesjonell trepleie.',
+        images: ['/images/tjenester/trefelling.jpg'],
+    },
 }
 
 export default function FAQLayout({

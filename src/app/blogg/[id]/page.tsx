@@ -44,6 +44,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             type: 'article',
             locale: 'nb_NO',
         },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt,
+            images: ['/images/tjenester/trefelling.jpg'],
+        },
     }
 }
 

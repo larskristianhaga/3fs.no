@@ -17,14 +17,20 @@ export const metadata: Metadata = {
         title: `Kontakt oss - Gratis befaring og pristilbud | ${companyInfo.name}`,
         description: `Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Vi betjener ${companyInfo.serviceAreasText}. Ring ${companyInfo.contact.phone.display}.`,
         images: [{
-            url: '/images/beskjaert-tre.jpg',
-            width: 1200,
-            height: 630,
+            url: '/images/tjenester/trefelling.jpg',
+            width: 1280,
+            height: 576,
             alt: `Kontakt ${companyInfo.name}`,
         }],
         url: `${companyInfo.website}/kontakt-oss`,
         type: 'website',
         locale: 'nb_NO',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: `Kontakt oss - Gratis befaring og pristilbud | ${companyInfo.name}`,
+        description: `Få ditt gratis pristilbud for profesjonelle trefellingstjenester. Vi betjener ${companyInfo.serviceAreasText}. Ring ${companyInfo.contact.phone.display}.`,
+        images: ['/images/tjenester/trefelling.jpg'],
     },
 }
 

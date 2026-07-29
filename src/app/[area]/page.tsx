@@ -43,6 +43,12 @@ export async function generateMetadata({params}: LocationPageProps): Promise<Met
             type: 'website',
             locale: 'nb_NO',
         },
+        twitter: {
+            card: 'summary_large_image',
+            title: `Trefelling i ${area.name} | ${companyInfo.name}`,
+            description: area.description,
+            images: ['/images/tjenester/trefelling.jpg'],
+        },
     }
 }
 

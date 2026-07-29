@@ -21,15 +21,21 @@ export const metadata: Metadata = {
         title: 'Trefelling i Oslo og Akershus | Erfarne trefellere',
         description: 'Trygg trefelling, beskjæring og stubbefresing med erfarne trefellere. Gratis befaring og tydelig pristilbud.',
         images: [{
-            url: '/images/beskjaert-tre.jpg',
-            width: 1200,
-            height: 630,
+            url: '/images/tjenester/trefelling.jpg',
+            width: 1280,
+            height: 576,
             alt: 'Trefellingsspesialisten AS - Profesjonell trefelling og beskjæring',
         }],
         url: 'https://3fs.no',
         type: 'website',
         locale: 'nb_NO',
         siteName: 'Trefellingsspesialisten AS',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Trefelling i Oslo og Akershus | Erfarne trefellere',
+        description: 'Trygg trefelling, beskjæring og stubbefresing med erfarne trefellere. Gratis befaring og tydelig pristilbud.',
+        images: ['/images/tjenester/trefelling.jpg'],
     },
 }
 

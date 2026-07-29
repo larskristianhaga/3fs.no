@@ -20,6 +20,12 @@ export const metadata: Metadata = {
         type: 'website',
         locale: 'nb_NO',
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Trefelling pris | Trefellingsspesialisten AS',
+        description: 'Prisguide for trefelling med eksempler og gratis befaring.',
+        images: ['/images/tjenester/trefelling.jpg'],
+    },
 }
 
 export default function PricingPage() {

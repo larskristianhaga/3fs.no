@@ -20,13 +20,19 @@ export const metadata: Metadata = {
         description: 'Komplette trefellingstjenester: felling, stubbefresing, beskjæring og opprydding.',
         images: [{
             url: '/images/tjenester/trefelling.jpg',
-            width: 1200,
-            height: 630,
+            width: 1280,
+            height: 576,
             alt: 'Trefellingsspesialisten AS - Trefellingstjenester',
         }],
         url: 'https://3fs.no/tjenester',
         type: 'website',
         locale: 'nb_NO',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Trefelling tjenester | Erfarne trefellere',
+        description: 'Komplette trefellingstjenester: felling, stubbefresing, beskjæring og opprydding.',
+        images: ['/images/tjenester/trefelling.jpg'],
     },
 }
 
