@@ -10,9 +10,9 @@ import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
 interface PageProps {
-    params: {
+    params: Promise<{
         id: string
-    }
+    }>
 }
 
 export async function generateStaticParams() {
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const post = siteText.blog.posts.find(p => p.id === params.id)
+    const { id } = await params
+    const post = siteText.blog.posts.find(p => p.id === id)
 
     if (!post) {
         return {
@@ -53,8 +54,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 }
 
-export default function BlogPostPage({ params }: PageProps) {
-    const post = siteText.blog.posts.find(p => p.id === params.id)
+export default async function BlogPostPage({ params }: PageProps) {
+    const { id } = await params
+    const post = siteText.blog.posts.find(p => p.id === id)
 
     if (!post) {
         notFound()

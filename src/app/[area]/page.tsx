@@ -9,9 +9,9 @@ import {companyInfo} from '@/config/company'
 import {colors} from '@/config/colors'
 
 interface LocationPageProps {
-    params: {
+    params: Promise<{
         area: string
-    }
+    }>
 }
 
 function getAreaBySlug(slug: string) {
@@ -23,7 +23,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({params}: LocationPageProps): Promise<Metadata> {
-    const area = getAreaBySlug(params.area)
+    const {area: areaSlug} = await params
+    const area = getAreaBySlug(areaSlug)
 
     if (!area) {
         return {title: 'Side ikke funnet'}
@@ -52,8 +53,9 @@ export async function generateMetadata({params}: LocationPageProps): Promise<Met
     }
 }
 
-export default function LocationPage({params}: LocationPageProps) {
-    const area = getAreaBySlug(params.area)
+export default async function LocationPage({params}: LocationPageProps) {
+    const {area: areaSlug} = await params
+    const area = getAreaBySlug(areaSlug)
 
     if (!area) {
         notFound()
