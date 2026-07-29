@@ -37,8 +37,8 @@ export async function POST(request: NextRequest) {
 
         await resend.emails.send({
             from: '3fs@paal-erik.no',
-            to: ['larskhaga@gmail.com'],
-            // to: ['rs3felling@gmail.com'],
+            // to: ['larskhaga@gmail.com'],
+            to: ['rs3felling@gmail.com'],
             subject: `Ny innsending fra ${name} | 3fs.no`,
             html: `
         <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px;">
