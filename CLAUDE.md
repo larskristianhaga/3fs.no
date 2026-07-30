@@ -184,6 +184,10 @@ Note: Contact form endpoint currently sends to `larskhaga@gmail.com`. Update lin
 - Add an entry to `siteText.locations.areas` in `src/content/text.ts`.
 - The `/[area]` route generates a page for it automatically via `generateStaticParams()` — do not create a new folder.
 
+## Git Workflow
+
+- Committing and pushing directly to `main` is allowed. When asked to commit and push, do so directly on `main` — no feature branch or PR required.
+
 ## CI
 
 - **Dependabot** PRs are auto-approved and squash-merged when the Vercel build passes (`.github/workflows/dependabot-pr.yml`).
