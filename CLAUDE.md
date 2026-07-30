@@ -30,7 +30,7 @@ npm start               # Run production server
   - **`Header.tsx`**, **`Footer.tsx`** – Main layout components
   - **`ContactForm.tsx`** – Contact form with file upload
   - **`*Schema.tsx`** – JSON-LD injectors (`StructuredData`, `ArticleSchema`, `ServiceSchema`, `FAQSchema`, `BreadcrumbSchema`)
-  - **`PreloadLink.tsx`**, **`BlogCard.tsx`**, **`BeforeAfterGallery.tsx`**, **`Testimonials.tsx`**
+  - **`PreloadLink.tsx`**, **`BlogCard.tsx`**, **`Testimonials.tsx`**
 - **`src/middleware.ts`** – Sets long-lived cache headers on `/images/*` only
 - **`src/config/`** – Centralized configuration
   - **`colors.ts`** – Tailwind color definitions (primary green, grays)
@@ -172,7 +172,6 @@ Note: Contact form endpoint currently sends to `larskhaga@gmail.com`. Update lin
 - TypeScript strict mode enabled
 - Path alias `@/` maps to `src/`
 - Components use React 19 with modern hooks
-- Forms use React Hook Form patterns where applicable
 - Tailwind classes merged with `cn()` utility (clsx + tailwind-merge)
 
 ### Validation & Type Safety
