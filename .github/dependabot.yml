@@ -14,5 +14,5 @@ updates:
       default-days: 7
     schedule:
       interval: "daily"
-      time: "07:00"
+      time: "08:00"
       timezone: Europe/Oslo
