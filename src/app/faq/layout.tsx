@@ -1,14 +1,15 @@
+import {yearsOfExperience} from '@/config/company'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'Ofte stilte spørsmål - Svar på dine spørsmål om trefelling',
-    description: 'Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over 15 års erfaring med profesjonell trepleie i Oslo, Akershus, Østfold og Buskerud.',
+    description: `Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over ${yearsOfExperience} års erfaring med profesjonell trepleie i Oslo, Akershus, Østfold og Buskerud.`,
     alternates: {
         canonical: '/faq',
     },
     openGraph: {
         title: 'Ofte stilte spørsmål - Svar på dine spørsmål om trefelling | Trefellingsspesialisten AS',
-        description: 'Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over 15 års erfaring med profesjonell trepleie.',
+        description: `Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over ${yearsOfExperience} års erfaring med profesjonell trepleie.`,
         url: 'https://3fs.no/faq',
         type: 'website',
         locale: 'nb_NO',
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Ofte stilte spørsmål - Svar på dine spørsmål om trefelling | Trefellingsspesialisten AS',
-        description: 'Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over 15 års erfaring med profesjonell trepleie.',
+        description: `Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over ${yearsOfExperience} års erfaring med profesjonell trepleie.`,
         images: ['/images/tjenester/trefelling.jpg'],
     },
 }

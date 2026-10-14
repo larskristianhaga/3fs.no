@@ -4,17 +4,18 @@ import Header from "@/components/Header";
 import type {Metadata} from 'next'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
+import {yearsOfExperience} from '@/config/company'
 
 export const metadata: Metadata = {
-    title: 'Om oss - Over 15 års erfaring med trefelling',
-    description: 'Lær mer om Trefellingsspesialisten AS - Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
+    title: `Om oss - Over ${yearsOfExperience} års erfaring med trefelling`,
+    description: `Lær mer om Trefellingsspesialisten AS - Over ${yearsOfExperience} års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.`,
     keywords: 'om trefellingsfirma, profesjonelle arborister, sertifisert trefelling, erfaren trepleie, Ås, Oslo, Akershus, trefellingshistorie',
     alternates: {
         canonical: '/om-oss',
     },
     openGraph: {
-        title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
-        description: 'Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
+        title: `Om oss - Over ${yearsOfExperience} års erfaring med trefelling | Trefellingsspesialisten AS`,
+        description: `Over ${yearsOfExperience} års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.`,
         images: [{
             url: '/images/tjenester/trefelling.jpg',
             width: 1280,
@@ -27,8 +28,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Om oss - Over 15 års erfaring med trefelling | Trefellingsspesialisten AS',
-        description: 'Over 15 års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.',
+        title: `Om oss - Over ${yearsOfExperience} års erfaring med trefelling | Trefellingsspesialisten AS`,
+        description: `Over ${yearsOfExperience} års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.`,
         images: ['/images/tjenester/trefelling.jpg'],
     },
 }

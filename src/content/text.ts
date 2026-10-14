@@ -1,3 +1,5 @@
+import {yearsOfExperience} from '@/config/company'
+
 export const siteText = {
     header: {
         nav: {
@@ -56,8 +58,8 @@ export const siteText = {
         whyChooseUs: {
             title: 'Hvorfor velge oss?',
             experience: {
-                title: 'Over 15 års erfaring',
-                description: 'Vår erfarne klatrer har mer enn 15 års erfaring med klatring og trefelling av vanskelige trær.',
+                title: `Over ${yearsOfExperience} års erfaring`,
+                description: `Vår erfarne klatrer har mer enn ${yearsOfExperience} års erfaring med klatring og trefelling av vanskelige trær.`,
             },
             insured: {
                 title: 'Fullt forsikret',
@@ -79,7 +81,7 @@ export const siteText = {
                     paragraph: 'holder til i Ås kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.',
                 },
                 {
-                    paragraph: 'Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.',
+                    paragraph: `Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn ${yearsOfExperience} års erfaring er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.`,
                 },
                 {
                     paragraph: 'Trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier eller andre hindringer er ikke noe problem - vi tar jobben!',
@@ -92,7 +94,7 @@ export const siteText = {
         },
         testimonials: {
             title: 'Hva våre kunder sier',
-            subtitle: 'Over 15 år med fornøyde kunder',
+            subtitle: `Over ${yearsOfExperience} år med fornøyde kunder`,
             items: [
                 {
                     text: 'Utrolig profesjonelt arbeid. De håndterte det kompliserte treet vårt uten problemer. Anbefalte dem straks til naboene.',
@@ -154,7 +156,7 @@ export const siteText = {
             {
                 id: 'trefelling',
                 title: 'Trefelling',
-                description: 'Vi utfører felling av alle typer trær, både små og store. Hvert tre er unikt med tanke på størrelse, tilstand og plassering, og det kreves derfor ulike fellingsmetoder, for å ta ned treet på en sikker og skånsom måte. Vår erfaren klatrer med mer enn 15 års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.',
+                description: `Vi utfører felling av alle typer trær, både små og store. Hvert tre er unikt med tanke på størrelse, tilstand og plassering, og det kreves derfor ulike fellingsmetoder, for å ta ned treet på en sikker og skånsom måte. Vår erfaren klatrer med mer enn ${yearsOfExperience} års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.`,
                 imageAlt: 'Profesjonell trefelling med spesialistutstyr',
             },
             {
@@ -235,7 +237,7 @@ export const siteText = {
                 paragraph: 'Trefellingsspesialisten holder til i Ås kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud. Vi tilbyr alt innen trefelling, beskjæring, stubbefresing, flishugging, bortkjøring og oppryddning. Vi har oppdrag for stat og kommune, bedrifter og borettslag, privat- og ferie eiendommer. Vi tilbyr alltid en gratis befaring og uforpliktende pristilbud.',
             },
             {
-                paragraph: 'Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn 15 års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær. Så trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier eller andre hindringer er ikke noe problem, vi tar jobben!',
+                paragraph: `Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn ${yearsOfExperience} års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær. Så trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier eller andre hindringer er ikke noe problem, vi tar jobben!`,
             },
             {
                 paragraph: 'Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben som du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger vi alltid for å rydde opp, og forlater stedet like fint som vi fant det.',
@@ -286,13 +288,13 @@ export const siteText = {
             postCodeAndLocation: 'Postnummer og poststed',
             message: 'Melding',
             attachment: 'Vedlegg',
-            attachmentHint: 'Du kan legge ved flere bilder. Maks 4 MB til sammen.',
+            attachmentHint: 'Du kan legge ved flere bilder. De forminskes automatisk før sending.',
             required: '*',
             submitButton: 'Send melding',
             submitting: 'Sender...',
             successMessage: 'Takk! Vi ringer deg med pristilbud.',
             errorMessage: 'Ups! Noe gikk galt. Send oss en epost på rs3felling@gmail.com eller ring oss på: 47 64 29 70',
-            fileTooLargeMessage: 'Bildene er for store (maks 4 MB til sammen). Ta noen mindre bilder, eller send dem på e-post til rs3felling@gmail.com eller SMS til 47 64 29 70.',
+            fileTooLargeMessage: 'Bildene er for store til å sendes samlet. Prøv med færre bilder, eller send dem på e-post til rs3felling@gmail.com eller SMS til 47 64 29 70.',
             exitMessage: 'Før du går - du kan også ringe oss nå: 47 64 29 70',
         },
     },
@@ -848,7 +850,7 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
             },
             {
                 question: 'Kan dere felle trær som står vanskelig til?',
-                answer: 'Ja, vår erfarne klatrer med over 15 års erfaring er vant med å håndtere utfordrende situasjoner. Vi har spesialutstyr for å ta ned trær som står inneklemt mellom hus, nær ledninger, eller i andre vanskelige plasseringer.',
+                answer: `Ja, vår erfarne klatrer med over ${yearsOfExperience} års erfaring er vant med å håndtere utfordrende situasjoner. Vi har spesialutstyr for å ta ned trær som står inneklemt mellom hus, nær ledninger, eller i andre vanskelige plasseringer.`,
             },
             {
                 question: 'Er dere forsikret?',
@@ -888,7 +890,7 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
             },
             {
                 question: 'Kan jeg få referanser og før/etter bilder?',
-                answer: 'Ja, vi har gjennomført hundrevis av oppgaver de siste 15 årene. Vi kan gjerne vise deg eksempler på vårt tidligere arbeid og gi deg referanser fra fornøyde kunder. Kontakt oss for mer informasjon.',
+                answer: `Ja, vi har gjennomført hundrevis av oppgaver de siste ${yearsOfExperience} årene. Vi kan gjerne vise deg eksempler på vårt tidligere arbeid og gi deg referanser fra fornøyde kunder. Kontakt oss for mer informasjon.`,
             },
             {
                 question: 'Trenger jeg tillatelse for trefelling i Ås kommune?',
@@ -953,7 +955,7 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
                 description: 'Trefelling i Buskerud for boligeiere, borettslag og entreprenører. Vi leverer trygg trefelling, beskjæring og rydding av tomt.',
                 intro: 'I Buskerud har vi erfaring med krevende terreng og varierende tilgang. Vi setter sikkerhet først og finner en løsning som passer eiendommen din.',
                 highlights: [
-                    'Erfarne fagfolk med over 15 års praksis',
+                    `Erfarne fagfolk med over ${yearsOfExperience} års praksis`,
                     'Beskjæring, stubbefresing og tomterydding',
                     'Effektiv gjennomføring med full forsikring'
                 ],

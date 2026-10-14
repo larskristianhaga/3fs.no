@@ -66,7 +66,7 @@ export default function Testimonials({ title, subtitle, items }: TestimonialsPro
                 {/* Trust badge */}
                 <div className="text-center mt-12">
                     <p className={`text-lg font-semibold ${colors.text.gray[900]}`}>
-                        ⭐ Over 15 år med fornøyde kunder
+                        ⭐ {subtitle}
                     </p>
                 </div>
             </div>

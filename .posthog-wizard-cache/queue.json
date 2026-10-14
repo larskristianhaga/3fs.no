@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "runId": "55647a53-d0e1-4742-af4e-d0375a2d7b21",
+  "tasks": [
+    {
+      "id": "46d7ec1c-8230-4ca1-b137-c70ff146c297",
+      "type": "warehouse",
+      "status": "pending",
+      "dependsOn": [
+        "a5b60916-7f5c-43ed-b364-df1d33a7a83d",
+        "5afd34ed-37b7-4157-b5c0-23a2a5528107",
+        "715830b6-8e9a-440d-b6bb-11c3b39f7d0c",
+        "ead54fe9-2fa4-4cee-b444-1db8004acb10",
+        "ba5b96a9-01a0-4fad-b027-009d54d9f377",
+        "66fc32f2-50fa-44c4-9933-1a48f2816b0d",
+        "69ca9f5d-a26d-44c5-a847-aa0d67afae08",
+        "bc25d8f4-a7e7-4265-b1ac-3de297c0a9b6",
+        "df600c8b-7736-4026-b247-26ff3c38babd"
+      ],
+      "inputs": {
+        "sources": [
+          {
+            "kind": "Resend",
+            "label": "Resend",
+            "mode": "in-cli",
+            "matchedSignal": "found `resend` in package.json"
+          }
+        ]
+      },
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "optional": true,
+      "createdAt": "2026-10-14T21:49:22.275Z"
+    },
+    {
+      "id": "a5b60916-7f5c-43ed-b364-df1d33a7a83d",
+      "type": "install",
+      "label": "Install PostHog SDK",
+      "status": "running",
+      "dependsOn": [],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-10-14T21:49:31.170Z",
+      "startedAt": "2026-10-14T21:49:46.770Z"
+    },
+    {
+      "id": "5afd34ed-37b7-4157-b5c0-23a2a5528107",
+      "type": "init",
+      "label": "Initialize PostHog",
+      "status": "running",
+      "dependsOn": [],
+      "inputs": {},
+      "attempts": 1,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-10-14T21:49:31.186Z",
+      "startedAt": "2026-10-14T21:49:46.780Z"
+    },
+    {
+      "id": "715830b6-8e9a-440d-b6bb-11c3b39f7d0c",
+      "type": "identify",
+      "label": "Add user identification",
+      "status": "pending",
+      "dependsOn": [
+        "a5b60916-7f5c-43ed-b364-df1d33a7a83d",
+        "5afd34ed-37b7-4157-b5c0-23a2a5528107"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-10-14T21:49:33.643Z"
+    },
+    {
+      "id": "ead54fe9-2fa4-4cee-b444-1db8004acb10",
+      "type": "error-tracking",
+      "label": "Add error tracking",
+      "status": "pending",
+      "dependsOn": [
+        "a5b60916-7f5c-43ed-b364-df1d33a7a83d",
+        "5afd34ed-37b7-4157-b5c0-23a2a5528107"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-10-14T21:49:33.660Z"
+    },
+    {
+      "id": "ba5b96a9-01a0-4fad-b027-009d54d9f377",
+      "type": "capture",
+      "label": "Instrument key events",
+      "status": "pending",
+      "dependsOn": [
+        "715830b6-8e9a-440d-b6bb-11c3b39f7d0c"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-10-14T21:49:36.037Z"
+    },
+    {
+      "id": "66fc32f2-50fa-44c4-9933-1a48f2816b0d",
+      "type": "ai-observability",
+      "label": "Instrument AI calls",
+      "status": "pending",
+      "dependsOn": [
+        "ba5b96a9-01a0-4fad-b027-009d54d9f377"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "optional": true,
+      "createdAt": "2026-10-14T21:49:37.986Z"
+    },
+    {
+      "id": "69ca9f5d-a26d-44c5-a847-aa0d67afae08",
+      "type": "dashboard",
+      "label": "Build product dashboard",
+      "status": "pending",
+      "dependsOn": [
+        "ba5b96a9-01a0-4fad-b027-009d54d9f377"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-10-14T21:49:37.997Z"
+    },
+    {
+      "id": "bc25d8f4-a7e7-4265-b1ac-3de297c0a9b6",
+      "type": "logs",
+      "label": "Configure log capture",
+      "status": "pending",
+      "dependsOn": [
+        "66fc32f2-50fa-44c4-9933-1a48f2816b0d"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "optional": true,
+      "createdAt": "2026-10-14T21:49:39.979Z"
+    },
+    {
+      "id": "df600c8b-7736-4026-b247-26ff3c38babd",
+      "type": "review",
+      "label": "Review integration",
+      "status": "pending",
+      "dependsOn": [
+        "a5b60916-7f5c-43ed-b364-df1d33a7a83d",
+        "5afd34ed-37b7-4157-b5c0-23a2a5528107",
+        "715830b6-8e9a-440d-b6bb-11c3b39f7d0c",
+        "ba5b96a9-01a0-4fad-b027-009d54d9f377",
+        "ead54fe9-2fa4-4cee-b444-1db8004acb10",
+        "66fc32f2-50fa-44c4-9933-1a48f2816b0d",
+        "bc25d8f4-a7e7-4265-b1ac-3de297c0a9b6"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-10-14T21:49:42.590Z"
+    },
+    {
+      "id": "619abf83-ed6c-4f4f-8e7f-ee1d0fae1df8",
+      "type": "report",
+      "label": "Report integration results",
+      "status": "pending",
+      "dependsOn": [
+        "69ca9f5d-a26d-44c5-a847-aa0d67afae08",
+        "df600c8b-7736-4026-b247-26ff3c38babd",
+        "46d7ec1c-8230-4ca1-b137-c70ff146c297"
+      ],
+      "inputs": {},
+      "attempts": 0,
+      "maxAttempts": 2,
+      "enqueuedBy": "orchestrator",
+      "createdAt": "2026-10-14T21:49:45.173Z"
+    }
+  ]
+}

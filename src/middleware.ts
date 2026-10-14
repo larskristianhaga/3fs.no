@@ -4,11 +4,11 @@ import {NextResponse} from 'next/server'
 export function middleware(request: NextRequest) {
     const response = NextResponse.next()
 
-    // Add cache headers for static images
+    // Filenames are not content-hashed, so keep the cache short enough that replaced images show up
     if (request.nextUrl.pathname.startsWith('/images/')) {
         response.headers.set(
             'Cache-Control',
-            'public, max-age=31536000, immutable'
+            'public, max-age=86400, stale-while-revalidate=604800'
         )
     }
 

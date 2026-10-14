@@ -31,7 +31,7 @@ npm start               # Run production server
   - **`ContactForm.tsx`** – Contact form with file upload
   - **`*Schema.tsx`** – JSON-LD injectors (`StructuredData`, `ArticleSchema`, `ServiceSchema`, `FAQSchema`, `BreadcrumbSchema`)
   - **`PreloadLink.tsx`**, **`BlogCard.tsx`**, **`Testimonials.tsx`**
-- **`src/middleware.ts`** – Sets long-lived cache headers on `/images/*` only
+- **`src/middleware.ts`** – Sets a 1-day cache (plus stale-while-revalidate) on `/images/*` only. Filenames aren't content-hashed, so don't make it `immutable`
 - **`src/config/`** – Centralized configuration
   - **`colors.ts`** – Tailwind color definitions (primary green, grays)
   - **`company.ts`** – Company info, contact details, service areas, `yearsOfExperience`
@@ -80,7 +80,8 @@ npm start               # Run production server
 
 **Contact Form** (`src/components/ContactForm.tsx`):
 - Client-side form with file upload support
-- Converts file to base64 before sending
+- Downscales images in the browser (max 1600px JPEG) and converts them to base64 before sending; total upload capped at 3 MB to stay under Vercel's 4.5 MB body limit
+- Includes a hidden `website` honeypot field for spam bots
 - Submits to `/api/contact` endpoint
 - Shows success/error messages from `siteText.contact.form`
 
@@ -88,7 +89,9 @@ npm start               # Run production server
 - Uses Resend (resend.com) via `RESEND_API_KEY` environment variable
 - Sends HTML-formatted emails with contact info and message
 - Supports file attachments
-- Currently configured to send to `larskhaga@gmail.com` (change to `rs3felling@gmail.com` for production)
+- Validates required fields, HTML-escapes all user input in the email template, sets `replyTo` to the customer's email, and applies a simple per-instance rate limit
+- Sends to `rs3felling@gmail.com`
+- `/api/contact/health` sends a test email to Resend's test inbox; the weekly uptime workflow calls it
 
 ### Styling & Design System
 
@@ -110,7 +113,7 @@ Required for email functionality:
 RESEND_API_KEY=your_resend_api_key
 ```
 
-Note: Contact form endpoint currently sends to `larskhaga@gmail.com`. Update line 33 in `src/app/api/contact/route.ts` to production email when ready.
+The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `src/app/api/contact/route.ts`).
 
 ### SEO & Metadata
 
@@ -154,8 +157,7 @@ Note: Contact form endpoint currently sends to `larskhaga@gmail.com`. Update lin
 
 ### Update Contact Form
 - Form labels/validation in `siteText.contact.form` (`src/content/text.ts`)
-- Email template in `src/app/api/contact/route.ts` (line 36-55)
-- Email destination in `src/app/api/contact/route.ts` (line 33)
+- Email template and destination in `src/app/api/contact/route.ts` (`resend.emails.send` call). Always pass user input through `escapeHtml()`
 - Success/error messages in `siteText.contact.form` messages
 
 ## Important Notes
@@ -165,7 +167,7 @@ Note: Contact form endpoint currently sends to `larskhaga@gmail.com`. Update lin
 - **All content is centralized**: Changing site copy requires editing `src/content/text.ts`. Do not hardcode text in components.
 - **Colors use config**: Never add new `bg-*` or `text-*` classes directly. Use `src/config/colors.ts` and reference them in components.
 - **Metadata is per-page**: Each page defines its own metadata. Update `metadata` export if changing page titles or descriptions.
-- **Email configuration**: `src/app/api/contact/route.ts` line 33 currently sends to test email. Change to `rs3felling@gmail.com` for production.
+- **Years of experience**: Never hardcode "15 år" – use `yearsOfExperience` from `src/config/company.ts` (blog posts are dated and intentionally left as written).
 
 ### Code Style
 
