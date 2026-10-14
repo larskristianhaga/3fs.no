@@ -1,5 +1,23 @@
-import {NextRequest, NextResponse} from 'next/server'
+import {SeverityNumber} from '@opentelemetry/api-logs'
+import {after, NextRequest, NextResponse} from 'next/server'
 import {Resend} from 'resend'
+import {loggerProvider} from '@/instrumentation'
+
+const contactEmailLogger = loggerProvider?.getLogger('posthog-contact-email-exporter')
+
+function logContactEmailLifecycle(
+    body: string,
+    severityNumber: SeverityNumber,
+    attributes: Record<string, string | number>
+) {
+    contactEmailLogger?.emit({body, severityNumber, attributes})
+
+    if (contactEmailLogger) {
+        after(async () => {
+            await loggerProvider?.forceFlush()
+        })
+    }
+}
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
@@ -37,6 +55,9 @@ function asTrimmedString(value: unknown, maxLength: number) {
 export async function POST(request: NextRequest) {
     try {
         if (!resend) {
+            logContactEmailLifecycle('Contact email service is unavailable', SeverityNumber.WARN, {
+                'contact_email.outcome': 'service_unavailable',
+            })
             console.error('Resend API key not configured')
             return NextResponse.json(
                 {error: 'Email service not configured'},
@@ -118,8 +139,15 @@ export async function POST(request: NextRequest) {
             throw new Error(`Resend error: ${error.message}`)
         }
 
+        logContactEmailLifecycle('Contact email delivered', SeverityNumber.INFO, {
+            'contact_email.outcome': 'delivered',
+            attachment_count: attachments.length,
+        })
         return NextResponse.json({success: true})
     } catch (error) {
+        logContactEmailLifecycle('Contact email delivery failed', SeverityNumber.ERROR, {
+            'contact_email.outcome': 'delivery_failed',
+        })
         console.error('Error sending email:', error)
         return NextResponse.json(
             {error: 'Failed to send email'},

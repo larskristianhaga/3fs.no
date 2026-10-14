@@ -68,6 +68,7 @@ export const colors = {
       100: 'border-gray-100',
       200: 'border-gray-200',
       300: 'border-gray-300',
+      800: 'border-gray-800',
     },
   },
   

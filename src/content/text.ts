@@ -984,4 +984,50 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
             },
         ],
     },
+
+    privacy: {
+        navLabel: 'Personvern',
+        title: 'Personvernerklæring',
+        intro: 'Her forklarer vi hvilke opplysninger vi samler inn når du bruker nettsiden vår, hvorfor vi gjør det og hvilke rettigheter du har.',
+        sections: [
+            {
+                heading: 'Behandlingsansvarlig',
+                paragraphs: [
+                    'Trefellingsspesialisten AS er behandlingsansvarlig for personopplysningene som samles inn via denne nettsiden. Kontaktinformasjon finner du nederst på siden.',
+                ],
+            },
+            {
+                heading: 'Kontaktskjema',
+                paragraphs: [
+                    'Når du sender oss en henvendelse, behandler vi navn, e-post, telefonnummer, adresse, meldingen din og eventuelle bilder du laster opp. Opplysningene brukes kun til å svare på henvendelsen og gi deg et pristilbud. Behandlingsgrunnlaget er å gjennomføre tiltak før en eventuell avtale (GDPR art. 6 nr. 1 b).',
+                    'Skjemaet sendes som e-post via Resend, og henvendelsen lagres i vår e-postinnboks. Vi sletter henvendelser som ikke fører til oppdrag når de ikke lenger er nødvendige.',
+                ],
+            },
+            {
+                heading: 'Statistikk og feilsøking',
+                paragraphs: [
+                    'Vi bruker PostHog (servere i EU) og Vercel Analytics for å forstå hvordan nettsiden brukes, for eksempel hvilke sider som besøkes og om kontaktskjemaet sendes, og for å oppdage tekniske feil. Behandlingsgrunnlaget er vår berettigede interesse i å forbedre nettsiden (GDPR art. 6 nr. 1 f).',
+                    'Begge verktøyene er satt opp uten informasjonskapsler (cookies) og lagrer ingenting på enheten din. Vi bruker ikke dataene til markedsføring og deler dem ikke med andre.',
+                ],
+            },
+            {
+                heading: 'Informasjonskapsler',
+                paragraphs: [
+                    'Nettsiden bruker ikke informasjonskapsler eller lignende lagring på enheten din. Derfor ber vi heller ikke om samtykke til dette.',
+                ],
+            },
+            {
+                heading: 'Databehandlere',
+                paragraphs: [
+                    'Vi bruker Vercel (drift av nettsiden), Resend (utsending av e-post) og PostHog (statistikk og feillogging). Disse behandler opplysninger på våre vegne og er bundet av databehandleravtaler.',
+                ],
+            },
+            {
+                heading: 'Dine rettigheter',
+                paragraphs: [
+                    'Du har rett til innsyn i, retting og sletting av opplysningene vi har om deg, og til å protestere mot behandlingen. Ta kontakt med oss på e-post for å bruke rettighetene dine. Du kan også klage til Datatilsynet.',
+                ],
+            },
+        ],
+    },
 } as const

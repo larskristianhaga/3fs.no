@@ -1,6 +1,7 @@
 'use client'
 
 import {useState} from 'react'
+import posthog from 'posthog-js'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -99,6 +100,9 @@ export default function ContactForm() {
             })
 
             if (response.ok) {
+                posthog.capture('contact_form_submitted', {
+                    attachment_count: images.length,
+                })
                 setStatus({type: 'success', message: siteText.contact.form.successMessage})
                 // Reset form
                 form.reset()

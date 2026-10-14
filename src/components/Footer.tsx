@@ -1,3 +1,6 @@
+'use client'
+
+import posthog from 'posthog-js'
 import {companyInfo} from '@/config/company'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
@@ -58,6 +61,7 @@ export default function Footer() {
                                 </svg>
                                 <a
                                     href={`tel:${companyInfo.contact.phone.href}`}
+                                    onClick={() => posthog.capture('contact_phone_clicked')}
                                     className={`${colors.hover.text.primary[400]} transition-colors`}
                                 >
                                     {companyInfo.contact.phone.display}
@@ -79,6 +83,7 @@ export default function Footer() {
                                 </svg>
                                 <a
                                     href={`mailto:${companyInfo.contact.email}`}
+                                    onClick={() => posthog.capture('contact_email_clicked')}
                                     className={`${colors.hover.text.primary[400]} transition-colors`}
                                 >
                                     {companyInfo.contact.email}
@@ -101,6 +106,12 @@ export default function Footer() {
                             ))}
                         </ul>
                     </div>
+                </div>
+
+                <div className={`mt-8 pt-6 border-t ${colors.border.gray[800]} text-sm`}>
+                    <a href="/personvern" className={`${colors.hover.text.primary[400]} transition-colors`}>
+                        {siteText.privacy.navLabel}
+                    </a>
                 </div>
             </div>
         </footer>

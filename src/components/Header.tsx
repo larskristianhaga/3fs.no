@@ -3,6 +3,7 @@
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
 import Image from "next/image"
+import posthog from 'posthog-js'
 import PreloadLink from './PreloadLink'
 import {Button} from '@/components/ui/button'
 import {Sheet, SheetContent, SheetTrigger} from '@/components/ui/sheet'
@@ -65,7 +66,10 @@ export default function Header() {
                                 </PreloadLink>
                             ))}
                             <Button asChild>
-                                <PreloadLink href="/kontakt-oss">
+                                <PreloadLink
+                                    href="/kontakt-oss"
+                                    onClick={() => posthog.capture('contact_page_cta_clicked', {placement: 'header_desktop'})}
+                                >
                                     {siteText.header.nav.contact}
                                 </PreloadLink>
                             </Button>
@@ -98,7 +102,10 @@ export default function Header() {
                                     <Button asChild className="w-full">
                                         <PreloadLink
                                             href="/kontakt-oss"
-                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            onClick={() => {
+                                                setIsMobileMenuOpen(false)
+                                                posthog.capture('contact_page_cta_clicked', {placement: 'header_mobile'})
+                                            }}
                                         >
                                             {siteText.header.nav.contact}
                                         </PreloadLink>
