@@ -1,4 +1,4 @@
-name: "Weekly uptime check"
+name: "Uptime check"
 
 on:
   workflow_dispatch:
@@ -10,17 +10,28 @@ permissions:
 
 jobs:
   uptime:
-    name: "Check key pages"
+    name: "Check sitemap pages"
     runs-on: ubuntu-26.04-arm
     steps:
-      - name: Check key pages
+      - name: Check all pages in sitemap
         run: |
+          sitemap=$(curl -sfL --max-time 30 --retry 2 --retry-delay 10 "https://www.3fs.no/sitemap.xml") || {
+            echo "::error::Could not fetch sitemap.xml"
+            exit 1
+          }
+          urls=$(echo "$sitemap" | grep -o '<loc>[^<]*</loc>' | sed -e 's|<loc>||' -e 's|</loc>||')
+          if [ -z "$urls" ]; then
+            echo "::error::No URLs found in sitemap.xml"
+            exit 1
+          fi
+
+          echo "Checking $(echo "$urls" | wc -l) URLs"
           failed=0
-          for path in / /tjenester /kontakt-oss /trefelling-pris /sitemap.xml; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 --retry 2 --retry-delay 10 "https://www.3fs.no$path" || true)
-            echo "$path -> $code"
+          for url in $urls; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 --retry 2 --retry-delay 10 "$url" || true)
+            echo "$url -> $code"
             if [ "$code" != "200" ]; then
-              echo "::error::$path returned $code"
+              echo "::error::$url returned $code"
               failed=1
             fi
           done
