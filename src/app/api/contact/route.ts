@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
             }
         }
 
-        await resend.emails.send({
+        const {error} = await resend.emails.send({
             from: '3fs@paal-erik.no',
             // to: ['larskhaga@gmail.com'],
             to: ['rs3felling@gmail.com'],
@@ -57,6 +57,11 @@ export async function POST(request: NextRequest) {
       `,
             attachments,
         })
+
+        // Resend reports API failures in the result instead of throwing
+        if (error) {
+            throw new Error(`Resend error: ${error.message}`)
+        }
 
         return NextResponse.json({success: true})
     } catch (error) {

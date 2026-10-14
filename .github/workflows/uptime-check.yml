@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Check all pages in sitemap
         run: |
-          sitemap=$(curl -sfL --max-time 30 --retry 2 --retry-delay 10 "https://www.3fs.no/sitemap.xml") || {
+          sitemap=$(curl -sfL --max-time 30 --retry 2 --retry-delay 10 "https://3fs.no/sitemap.xml") || {
             echo "::error::Could not fetch sitemap.xml"
             exit 1
           }
@@ -36,3 +36,16 @@ jobs:
             fi
           done
           exit $failed
+
+      - name: Check contact form email
+        if: always()
+        run: |
+          # No -L: following a redirect would turn the POST into a GET
+          code=$(curl -s -o response.json -w '%{http_code}' -X POST --max-time 30 --retry 2 --retry-delay 10 \
+            "https://3fs.no/api/contact/health" || true)
+          echo "Email health check -> $code"
+          cat response.json 2>/dev/null; echo
+          if [ "$code" != "200" ]; then
+            echo "::error::Email health check returned $code"
+            exit 1
+          fi
