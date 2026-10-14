@@ -34,3 +34,6 @@ next-env.d.ts
 
 # PostHog Wizard run artifacts
 .posthog-wizard-cache/
+
+# PostHog Wizard cache
+.claude/skills/integration-nextjs-app-router/
