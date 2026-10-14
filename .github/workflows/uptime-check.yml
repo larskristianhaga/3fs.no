@@ -1,0 +1,27 @@
+name: "Weekly uptime check"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  uptime:
+    name: "Check key pages"
+    runs-on: ubuntu-26.04-arm
+    steps:
+      - name: Check key pages
+        run: |
+          failed=0
+          for path in / /tjenester /kontakt-oss /trefelling-pris /sitemap.xml; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 --retry 2 --retry-delay 10 "https://www.3fs.no$path" || true)
+            echo "$path -> $code"
+            if [ "$code" != "200" ]; then
+              echo "::error::$path returned $code"
+              failed=1
+            fi
+          done
+          exit $failed
