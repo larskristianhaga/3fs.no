@@ -1,0 +1,36 @@
+name: "SEO audit"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 2 * *'
+
+permissions:
+  contents: read
+
+jobs:
+  unlighthouse:
+    name: "Crawl site with Unlighthouse"
+    # x64 runner: it ships with Google Chrome, which has no Linux ARM build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      # Site URL and score budgets live in .github/unlighthouse.config.ts
+      - name: Run Unlighthouse
+        run: |
+          npx --yes -p @unlighthouse/cli@0.19.1 unlighthouse-ci \
+            --config-file .github/unlighthouse.config.ts \
+            --output-path unlighthouse-report
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: unlighthouse-report
+          path: unlighthouse-report
+          retention-days: 30
