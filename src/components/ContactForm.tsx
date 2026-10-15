@@ -1,11 +1,8 @@
 'use client'
 
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import posthog from 'posthog-js'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
+import { cn } from '@/lib/utils'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 
@@ -45,18 +42,48 @@ function toJpegFilename(name: string) {
     return name.replace(/\.[^.]+$/, '') + '.jpg'
 }
 
+// Lets other components (e.g. the services list on the home page) preselect a service in the form
+export const SELECT_SERVICE_EVENT = 'contactform:select-service'
+
+const text = siteText.contact.form
+const services = siteText.home.servicesSection.items
+const {brand} = colors
+
+const fieldLabel = 'flex flex-col gap-2 font-semibold text-[15px]'
+const fieldInput = cn(
+    'p-3.5 border rounded-md font-normal text-base',
+    brand.background.white, brand.border.field, brand.focus.outline,
+)
+
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [status, setStatus] = useState<{type: 'success' | 'error', message: string} | null>(null)
+    const [error, setError] = useState<string | null>(null)
+    const [sent, setSent] = useState<{firstName: string, phone: string, summary: string} | null>(null)
+    const [picked, setPicked] = useState<string[]>([])
+    const [fileCount, setFileCount] = useState(0)
+
+    useEffect(() => {
+        const onSelect = (e: Event) => {
+            const title = (e as CustomEvent<string>).detail
+            setPicked((p) => p.includes(title) ? p : [...p, title])
+        }
+        window.addEventListener(SELECT_SERVICE_EVENT, onSelect)
+        return () => window.removeEventListener(SELECT_SERVICE_EVENT, onSelect)
+    }, [])
+
+    const toggle = (title: string) =>
+        setPicked((p) => p.includes(title) ? p.filter((x) => x !== title) : [...p, title])
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsSubmitting(true)
-        setStatus(null)
+        setError(null)
 
         const form = e.currentTarget
         const formData = new FormData(form)
         const files = (formData.getAll('attachment') as File[]).filter((f) => f && f.size > 0)
+        const summary = picked.length ? picked.join(', ') : text.generalRequest
+        const description = String(formData.get('message') ?? '')
 
         try {
             const images = await Promise.all(
@@ -71,7 +98,7 @@ export default function ContactForm() {
 
             const totalBytes = images.reduce((sum, img) => sum + img.blob.size, 0)
             if (totalBytes > MAX_TOTAL_BYTES) {
-                setStatus({type: 'error', message: siteText.contact.form.fileTooLargeMessage})
+                setError(text.fileTooLargeMessage)
                 return
             }
 
@@ -81,7 +108,7 @@ export default function ContactForm() {
                 phone: formData.get('phone'),
                 address: formData.get('address'),
                 postCodeAndLocation: formData.get('postCodeAndLocation'),
-                message: formData.get('message'),
+                message: picked.length ? `${text.servicesPrefix}: ${summary}\n\n${description}` : description,
                 website: formData.get('website'),
                 attachments: await Promise.all(
                     images.map(async (img) => ({
@@ -102,140 +129,152 @@ export default function ContactForm() {
             if (response.ok) {
                 posthog.capture('contact_form_submitted', {
                     attachment_count: images.length,
+                    services: picked,
                 })
-                setStatus({type: 'success', message: siteText.contact.form.successMessage})
-                // Reset form
+                setSent({
+                    firstName: String(data.name ?? '').trim().split(' ')[0],
+                    phone: String(data.phone ?? ''),
+                    summary,
+                })
                 form.reset()
+                setPicked([])
+                setFileCount(0)
             } else if (response.status === 413) {
-                setStatus({type: 'error', message: siteText.contact.form.fileTooLargeMessage})
+                setError(text.fileTooLargeMessage)
             } else {
-                setStatus({type: 'error', message: siteText.contact.form.errorMessage})
+                setError(text.errorMessage)
             }
         } catch (error) {
             console.error('Error:', error)
-            setStatus({type: 'error', message: siteText.contact.form.errorMessage})
+            setError(text.errorMessage)
         } finally {
             setIsSubmitting(false)
         }
     }
 
+    if (sent) {
+        return (
+            <div role="status" className="flex flex-col gap-[18px] py-6">
+                <span className={cn('w-14 h-14 rounded-full grid place-items-center text-[26px] font-bold', brand.background.forest, brand.text.cream)} aria-hidden="true">✓</span>
+                <h3 className="m-0 font-heading stretch-condensed font-black text-[44px] leading-[.95] uppercase">
+                    {text.successTitle}, {sent.firstName}!
+                </h3>
+                <p className={cn('m-0 text-[17px] leading-relaxed', brand.text.inkSoft)}>
+                    {text.successText} {sent.phone} {text.successTextSuffix}
+                </p>
+                <p className={cn('m-0 text-[15px]', brand.text.inkMuted)}>{text.servicesPrefix}: {sent.summary}</p>
+                <button
+                    type="button"
+                    onClick={() => setSent(null)}
+                    className={cn('self-start px-5 py-3 border-[1.5px] rounded-full font-semibold cursor-pointer transition-colors', brand.border.ink, brand.hover.background.ink, brand.hover.text.cream, brand.focus.outline)}
+                >
+                    {text.newRequest}
+                </button>
+            </div>
+        )
+    }
+
     return (
-        <form onSubmit={handleSubmit} className="relative space-y-6">
-            <div className="space-y-2">
-                <Label htmlFor="name" className="text-base">
-                    {siteText.contact.form.name} {siteText.contact.form.required}
-                </Label>
-                <Input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="text-base py-3"
-                />
-            </div>
+        <form onSubmit={handleSubmit} className="relative flex flex-col gap-[26px]">
+            <fieldset className="border-0 m-0 p-0 flex flex-col gap-3">
+                <legend className="p-0 mb-3 font-semibold text-base">{text.servicesLegend}</legend>
+                <div className="flex flex-wrap gap-2">
+                    {services.map(({id, title}) => {
+                        const on = picked.includes(title)
+                        return (
+                            <button
+                                key={id}
+                                type="button"
+                                aria-pressed={on}
+                                onClick={() => toggle(title)}
+                                className={cn(
+                                    'px-4 py-2.5 rounded-full border-[1.5px] text-[15px] font-medium cursor-pointer transition-colors',
+                                    brand.focus.outline,
+                                    on
+                                        ? cn(brand.background.ink, brand.text.cream, brand.border.ink)
+                                        : cn(brand.background.white, brand.text.ink, brand.border.field),
+                                )}
+                            >
+                                {title}
+                            </button>
+                        )
+                    })}
+                </div>
+            </fieldset>
 
-            <div className="space-y-2">
-                <Label htmlFor="email" className="text-base">
-                    {siteText.contact.form.email}
-                </Label>
-                <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="text-base py-3"
-                />
-            </div>
+            <label className={fieldLabel}>
+                {text.messageLabel} {text.required}
+                <textarea name="message" rows={4} required placeholder={text.messagePlaceholder} className={cn(fieldInput, 'resize-y')}/>
+            </label>
 
-            <div className="space-y-2">
-                <Label htmlFor="phone" className="text-base">
-                    {siteText.contact.form.phone} {siteText.contact.form.required}
-                </Label>
-                <Input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    className="text-base py-3"
-                />
-            </div>
-
-            <div className="space-y-2">
-                <Label htmlFor="address" className="text-base">
-                    {siteText.contact.form.address}
-                </Label>
-                <Input
-                    type="text"
-                    id="address"
-                    name="address"
-                    className="text-base py-3"
-                />
-            </div>
-
-            <div className="space-y-2">
-                <Label htmlFor="postCodeAndLocation" className="text-base">
-                    {siteText.contact.form.postCodeAndLocation} {siteText.contact.form.required}
-                </Label>
-                <Input
-                    type="text"
-                    id="postCodeAndLocation"
-                    name="postCodeAndLocation"
-                    required
-                    className="text-base py-3"
-                />
-            </div>
-
-            <div className="space-y-2">
-                <Label htmlFor="message" className="text-base">
-                    {siteText.contact.form.message} {siteText.contact.form.required}
-                </Label>
-                <Textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="text-base py-3"
-                />
-            </div>
-
-            <div className="space-y-2">
-                <Label htmlFor="attachment" className="text-base">
-                    {siteText.contact.form.attachment}
-                </Label>
-                <Input
+            <label className={cn(fieldLabel, 'relative')}>
+                <span>
+                    {text.attachmentLabel}{' '}
+                    <span className={cn('font-normal text-sm', brand.text.inkMuted)}>{text.attachmentOptional}</span>
+                </span>
+                <span className={cn('flex items-center gap-3 p-3.5 border-[1.5px] border-dashed rounded-md font-medium cursor-pointer has-[+input:focus-visible]:outline-2 has-[+input:focus-visible]:outline-ember', brand.background.cream, brand.border.field)}>
+                    <span className={cn('px-3.5 py-2 rounded-full text-sm', brand.background.ink, brand.text.cream)}>{text.attachmentButton}</span>
+                    <span className={cn('text-[15px]', brand.text.inkSoft)}>
+                        {fileCount ? `${fileCount} ${fileCount === 1 ? text.fileSelected : text.filesSelected}` : text.noFilesSelected}
+                    </span>
+                </span>
+                <input
                     type="file"
-                    id="attachment"
                     name="attachment"
                     accept="image/*"
                     multiple
-                    className="text-base py-3"
+                    onChange={(e) => setFileCount(e.target.files?.length ?? 0)}
+                    className="absolute w-px h-px opacity-0"
                 />
-                <p className={`text-sm ${colors.text.gray[500]}`}>
-                    {siteText.contact.form.attachmentHint}
-                </p>
+                <span className={cn('font-normal text-sm', brand.text.inkMuted)}>{text.attachmentHint}</span>
+            </label>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label className={fieldLabel}>
+                    {text.addressLabel}
+                    <input name="address" autoComplete="street-address" placeholder={text.addressPlaceholder} className={fieldInput}/>
+                </label>
+                <label className={fieldLabel}>
+                    {text.postCodeAndLocation} {text.required}
+                    <input name="postCodeAndLocation" required autoComplete="postal-code" placeholder={text.postCodePlaceholder} className={fieldInput}/>
+                </label>
             </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label className={fieldLabel}>
+                    {text.name} {text.required}
+                    <input name="name" required autoComplete="name" className={fieldInput}/>
+                </label>
+                <label className={fieldLabel}>
+                    {text.phone} {text.required}
+                    <input type="tel" name="phone" required autoComplete="tel" className={fieldInput}/>
+                </label>
+            </div>
+
+            <label className={fieldLabel}>
+                {text.email} {text.required}
+                <input type="email" name="email" required autoComplete="email" className={fieldInput}/>
+            </label>
 
             {/* Honeypot for spam bots — hidden from real users */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
                 <input type="text" name="website" tabIndex={-1} autoComplete="off" />
             </div>
 
-            <Button
+            {error && (
+                <p role="alert" className={cn('m-0 px-3.5 py-3 rounded-md text-[15px]', brand.background.alert, brand.text.alert)}>
+                    {error}
+                </p>
+            )}
+
+            <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full text-base py-6"
-                size="lg"
+                className={cn('px-6 py-[18px] border-0 rounded-full font-semibold text-[17px] cursor-pointer transition-colors disabled:opacity-60 disabled:cursor-wait', brand.background.ember, brand.text.ink, brand.hover.background.emberLight, brand.focus.outline)}
             >
-                {isSubmitting ? siteText.contact.form.submitting : siteText.contact.form.submitButton}
-            </Button>
-
-            {status && (
-                <div
-                    role={status.type === 'error' ? 'alert' : 'status'}
-                    className={`p-4 rounded-md text-base ${status.type === 'error' ? `${colors.background.red[50]} ${colors.text.red[700]}` : `${colors.background.primary[50]} ${colors.text.primary[700]}`}`}>
-                    {status.message}
-                </div>
-            )}
+                {isSubmitting ? text.submitting : text.bookingSubmit}
+            </button>
+            <p className={cn('m-0 text-sm', brand.text.inkMuted)}>{text.freeNote}</p>
         </form>
     )
 }

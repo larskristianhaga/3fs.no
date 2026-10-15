@@ -5,16 +5,19 @@ import {useState} from 'react'
 import Image from "next/image"
 import posthog from 'posthog-js'
 import PreloadLink from './PreloadLink'
-import {Button} from '@/components/ui/button'
-import {Sheet, SheetContent, SheetTrigger} from '@/components/ui/sheet'
+import {Sheet, SheetContent, SheetTitle, SheetTrigger} from '@/components/ui/sheet'
 import {Menu} from 'lucide-react'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
+import {companyInfo} from '@/config/company'
+import {cn} from '@/lib/utils'
 
 interface NavLink {
     href: string
     label: string
 }
+
+const {brand} = colors
 
 export default function Header() {
     const pathname = usePathname()
@@ -26,96 +29,101 @@ export default function Header() {
 
     const navLinks: NavLink[] = [
         {href: '/tjenester', label: siteText.header.nav.services},
+        {href: '/trefelling-pris', label: siteText.header.nav.pricing},
         {href: '/om-oss', label: siteText.header.nav.about},
         {href: '/faq', label: siteText.header.nav.faq},
+        {href: '/kontakt-oss', label: siteText.header.nav.contact},
     ]
 
+    const phoneLink = (placement: string, className?: string) => (
+        <a
+            href={`tel:${companyInfo.contact.phone.href}`}
+            onClick={() => posthog.capture('contact_phone_clicked', {placement})}
+            className={cn('flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold text-[15px] no-underline transition-colors', brand.background.ink, brand.text.cream, brand.focus.outline, className)}
+        >
+            {siteText.header.callUs} {companyInfo.contact.phone.display}
+        </a>
+    )
+
     return (
-        <nav className={`${colors.background.white} shadow-md border-b ${colors.border.gray[200]} sticky top-0 z-50 backdrop-blur-sm bg-white/95`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
-                    <div className="flex items-center">
-                        <PreloadLink href="/" className={`text-2xl font-bold ${colors.text.primary[800]}`}
-                                     aria-label={siteText.header.aria.logo}>
-                            <Image
-                                src="/images/logo.png"
-                                alt="Trefellingsspesialisten AS logo"
-                                width={100}
-                                height={100}
-                                className="w-auto h-12 sm:h-14 lg:h-16 max-w-full"
-                                priority
-                                quality={75}
-                                sizes="(max-width: 640px) 48px, (max-width: 1024px) 56px, 64px"
-                            />
+        <header className={cn('sticky top-0 z-50 backdrop-blur-md border-b', brand.background.creamTranslucent, brand.border.inkSubtle, brand.text.ink)}>
+            <div className="max-w-[1280px] mx-auto px-6 py-3 flex items-center gap-6">
+                <PreloadLink href="/" className={cn('flex items-center gap-2.5 mr-auto no-underline', brand.text.ink)}
+                             aria-label={siteText.header.aria.logo}>
+                    <Image
+                        src="/images/logo.png"
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="w-10 h-10 object-contain"
+                        priority
+                        quality={75}
+                    />
+                    <span className="font-heading stretch-semi-condensed font-extrabold text-lg sm:text-xl tracking-[.01em] uppercase">
+                        {companyInfo.name.replace(/ AS$/, '')}
+                    </span>
+                </PreloadLink>
+
+                <nav className="hidden lg:flex gap-[22px] text-[15px] font-medium" aria-label={siteText.header.aria.nav}>
+                    {navLinks.map((link) => (
+                        <PreloadLink
+                            key={link.href}
+                            href={link.href}
+                            aria-current={isActive(link.href) ? 'page' : undefined}
+                            onClick={link.href === '/kontakt-oss' ? () => posthog.capture('contact_page_cta_clicked', {placement: 'header_desktop'}) : undefined}
+                            className={cn(
+                                'no-underline underline-offset-[6px] decoration-2 transition-colors',
+                                brand.hover.text.emberDark,
+                                isActive(link.href) && 'underline decoration-ember',
+                            )}
+                        >
+                            {link.label}
                         </PreloadLink>
-                    </div>
+                    ))}
+                </nav>
 
-                    <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-4">
-                            {navLinks.map((link) => (
-                                <PreloadLink
-                                    key={link.href}
-                                    href={link.href}
-                                    className={`px-3 py-2 text-sm font-semibold transition-all duration-200 rounded-md ${
-                                        isActive(link.href)
-                                            ? `${colors.text.primary[800]} ${colors.background.primary[50]}`
-                                            : `${colors.text.gray[700]} ${colors.hover.text.primary[700]} ${colors.hover.background.primary[50]}`
-                                    }`}
-                                >
-                                    {link.label}
-                                </PreloadLink>
-                            ))}
-                            <Button asChild>
-                                <PreloadLink
-                                    href="/kontakt-oss"
-                                    onClick={() => posthog.capture('contact_page_cta_clicked', {placement: 'header_desktop'})}
-                                >
-                                    {siteText.header.nav.contact}
-                                </PreloadLink>
-                            </Button>
-                        </div>
-                    </div>
+                {phoneLink('header_desktop', 'hidden sm:flex')}
 
-                    <div className="md:hidden">
-                        <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                            <SheetTrigger asChild>
-                                <Button variant="ghost" size="icon" aria-label={siteText.header.aria.menuOpen}>
-                                    <Menu className="h-6 w-6"/>
-                                </Button>
-                            </SheetTrigger>
-                            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                                <nav className="flex flex-col space-y-4 mt-8">
-                                    {navLinks.map((link) => (
-                                        <PreloadLink
-                                            key={link.href}
-                                            href={link.href}
-                                            className={`px-3 py-2 text-base font-medium transition-colors rounded-md ${
-                                                isActive(link.href)
-                                                    ? `${colors.text.primary[800]} ${colors.background.primary[50]}`
-                                                    : `${colors.text.gray[700]} ${colors.hover.text.primary[600]} ${colors.hover.background.gray[50]}`
-                                            }`}
-                                            onClick={() => setIsMobileMenuOpen(false)}
-                                        >
-                                            {link.label}
-                                        </PreloadLink>
-                                    ))}
-                                    <Button asChild className="w-full">
-                                        <PreloadLink
-                                            href="/kontakt-oss"
-                                            onClick={() => {
-                                                setIsMobileMenuOpen(false)
+                <div className="lg:hidden">
+                    <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                        <SheetTrigger asChild>
+                            <button
+                                type="button"
+                                aria-label={siteText.header.aria.menuOpen}
+                                className={cn('grid place-items-center w-11 h-11 rounded-full border-[1.5px]', brand.border.ink, brand.focus.outline)}
+                            >
+                                <Menu className="h-5 w-5"/>
+                            </button>
+                        </SheetTrigger>
+                        <SheetContent side="right" className={cn('w-[300px] sm:w-[400px]', brand.background.cream, brand.text.ink)}>
+                            <SheetTitle className="sr-only">{siteText.header.aria.nav}</SheetTitle>
+                            <nav className="flex flex-col gap-1 mt-8 px-4" aria-label={siteText.header.aria.nav}>
+                                {navLinks.map((link) => (
+                                    <PreloadLink
+                                        key={link.href}
+                                        href={link.href}
+                                        aria-current={isActive(link.href) ? 'page' : undefined}
+                                        className={cn(
+                                            'py-3 border-b font-heading stretch-semi-condensed font-extrabold text-2xl uppercase no-underline',
+                                            brand.border.inkSubtle,
+                                            isActive(link.href) ? brand.text.emberDark : brand.text.ink,
+                                        )}
+                                        onClick={() => {
+                                            setIsMobileMenuOpen(false)
+                                            if (link.href === '/kontakt-oss') {
                                                 posthog.capture('contact_page_cta_clicked', {placement: 'header_mobile'})
-                                            }}
-                                        >
-                                            {siteText.header.nav.contact}
-                                        </PreloadLink>
-                                    </Button>
-                                </nav>
-                            </SheetContent>
-                        </Sheet>
-                    </div>
+                                            }
+                                        }}
+                                    >
+                                        {link.label}
+                                    </PreloadLink>
+                                ))}
+                                {phoneLink('header_mobile', 'mt-6 justify-center')}
+                            </nav>
+                        </SheetContent>
+                    </Sheet>
                 </div>
             </div>
-        </nav>
+        </header>
     )
 }

@@ -30,7 +30,7 @@ npm start               # Run production server
   - **`Header.tsx`**, **`Footer.tsx`** – Main layout components
   - **`ContactForm.tsx`** – Contact form with file upload
   - **`*Schema.tsx`** – JSON-LD injectors (`StructuredData`, `ArticleSchema`, `ServiceSchema`, `FAQSchema`, `BreadcrumbSchema`)
-  - **`PreloadLink.tsx`**, **`BlogCard.tsx`**, **`Testimonials.tsx`**
+  - **`PreloadLink.tsx`**, **`BlogCard.tsx`**, **`ServicesShowcase.tsx`** (interactive services list on the home page)
 - **`src/middleware.ts`** – Sets a 1-day cache (plus stale-while-revalidate) on `/images/*` only. Filenames aren't content-hashed, so don't make it `immutable`
 - **`src/config/`** – Centralized configuration
   - **`colors.ts`** – Tailwind color definitions (primary green, grays)

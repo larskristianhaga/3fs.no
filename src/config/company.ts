@@ -47,6 +47,13 @@ export const companyInfo = {
   ],
   
   serviceAreasText: "Oslo, Akershus, Østfold og Buskerud",
+
+  insurance: {
+    provider: "If",
+    coverage: "14 000 000 kr",
+    coverageShort: "14 mill.",
+    certificate: "/documents/forsikringssertifikat-ansvar-2026-2027.pdf"
+  },
   
   openingHours: "Mo-Fr 08:00-17:00",
   
