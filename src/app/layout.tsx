@@ -2,8 +2,22 @@ import type {Metadata, Viewport} from 'next'
 import {companyInfo, yearsOfExperience} from '@/config/company'
 import {Analytics} from '@vercel/analytics/react'
 import {SpeedInsights} from '@vercel/speed-insights/next'
+import {Archivo, Instrument_Sans} from 'next/font/google'
 import StructuredData from '@/components/StructuredData'
 import './globals.css'
+
+const archivo = Archivo({
+    subsets: ['latin'],
+    axes: ['wdth'],
+    variable: '--font-archivo',
+    display: 'swap',
+})
+
+const instrumentSans = Instrument_Sans({
+    subsets: ['latin'],
+    variable: '--font-instrument-sans',
+    display: 'swap',
+})
 
 export const viewport: Viewport = {
     width: 'device-width',
@@ -53,7 +67,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="nb">
+        <html lang="nb" className={`${archivo.variable} ${instrumentSans.variable}`}>
         <body>
         <StructuredData/>
         {children}

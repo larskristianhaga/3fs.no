@@ -14,7 +14,9 @@ export const siteText = {
         aria: {
             logo: 'Trefellingsspesialisten AS hjem',
             menuOpen: 'Åpne hovedmeny',
+            nav: 'Hovedmeny',
         },
+        callUs: 'Ring',
     },
 
     footer: {
@@ -36,6 +38,12 @@ export const siteText = {
         contactSection: {
             title: 'Kontakt',
         },
+        safety: {
+            title: 'Trygghet',
+            certificate: 'Forsikringsbevis (PDF)',
+            insuredThrough: 'Forsikret gjennom',
+        },
+        orgNumber: 'Org.nr',
         locations: {
             title: 'Områder',
             oslo: 'Oslo',
@@ -47,54 +55,93 @@ export const siteText = {
 
     home: {
         hero: {
-            title: 'Trefellings­spesialisten',
-            description: 'Treet står vrient til? Vi håndterer de vanskeligste trefelling-jobber. Gratis befaring, ingen overraskelser i prisen.',
-            cta: 'Gratis befaring – Ring eller send melding',
-            trustBadges: [
-                'Fullt forsikret',
-                'Gratis befaring og pristilbud',
-            ],
-        },
-        whyChooseUs: {
-            title: 'Hvorfor velge oss?',
-            experience: {
-                title: `Over ${yearsOfExperience} års erfaring`,
-                description: `Vår erfarne klatrer har mer enn ${yearsOfExperience} års erfaring med klatring og trefelling av vanskelige trær.`,
-            },
-            insured: {
-                title: 'Fullt forsikret',
-                description: 'Vi har full ansvarsforsikring som dekker eventuelle skader. Trygghet for deg som kunde.',
-            },
-            fast: {
-                title: 'Raskt og effektivt',
-                description: 'Med moderne utstyr og erfarne fagfolk leverer vi raske og effektive løsninger.',
-            },
-            competitive: {
-                title: 'Konkurransedyktige priser',
-                description: 'Gratis befaring og uforpliktende pristilbud. Vi gir deg en rettferdig pris for jobben.',
+            areas: 'Oslo · Akershus · Østfold · Buskerud',
+            title: 'Trær som står vanskelig til?',
+            titleAccent: 'Det er vår spesialitet.',
+            description: 'Erfarne trefellere, egne maskiner og riktig utstyr. Vi tar ned, beskjærer og rydder — trygt, effektivt og med tydelig pris.',
+            cta: 'Bestill gratis befaring →',
+            secondaryCta: 'Se tjenester',
+            imageAlt: 'Beskåret tre i en hage',
+            insuranceBadge: {
+                title: 'Fullforsikret gjennom',
+                linkText: 'Se forsikringsbevis',
             },
         },
-        ourStory: {
-            title: 'Vår historie',
-            content: [
+        trustStrip: [
+            {title: 'Gratis befaring', description: 'Uforpliktende, hos deg'},
+            {title: 'Tydelig pris', description: 'Ingen overraskelser'},
+            {title: `Over ${yearsOfExperience} års erfaring`, description: 'Private, borettslag og kommuner'},
+            {title: 'Vi rydder etter oss', description: 'Bortkjøring på samme jobb'},
+        ],
+        servicesSection: {
+            title: 'Tjenester',
+            subtitle: 'Alt fra ett enkelt tre til hele tomten. Ofte kombinerer vi flere tjenester i samme oppdrag.',
+            quoteLink: 'Få pristilbud på',
+            allServicesLink: 'Les mer om alle tjenestene →',
+            pricingLink: 'Se priser for trefelling →',
+            items: [
                 {
-                    paragraph: 'holder til i Ås kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.',
+                    id: 'trefelling',
+                    title: 'Trefelling',
+                    description: 'Alle typer trær, store og små. Vi velger metode etter størrelse, tilstand og plassering — også tett på hus, gjerder og strømledninger.',
                 },
                 {
-                    paragraph: `Med erfarne fagfolk og korrekt utstyr feller og beskjærer vi alle typer trær på en skånsom og sikker måte. Vår erfaren klatrer med mer enn ${yearsOfExperience} års erfaring er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.`,
+                    id: 'beskjaering',
+                    title: 'Beskjæring',
+                    description: 'Fjerning av døde og tunge greiner, reduksjon og forming. Gir et sunnere tre og mer lys i hagen.',
                 },
                 {
-                    paragraph: 'Trær som står litt vrient til i hagen, inneklemt mellom hus, ledningsnett, veier eller andre hindringer er ikke noe problem - vi tar jobben!',
+                    id: 'stubbefresing',
+                    title: 'Stubbefresing',
+                    description: 'Den mest skånsomme måten å fjerne stubber på. Vi freser bort synlige røtter og hovedroten ca. 20–30 cm under bakken.',
                 },
                 {
-                    paragraph: 'Ingen oppdrag er for store eller små. Vi hjelper deg med akkurat den delen av jobben som du ikke får til eller ønsker å gjøre selv. Når jobben er ferdig sørger vi alltid for å rydde opp, og forlater stedet like fint som vi fant det.',
+                    id: 'flishugging',
+                    title: 'Flishugging',
+                    description: 'Greiner og kvist blir til flis på stedet. Behold flisa til bed og stier, eller la oss ta den med.',
+                },
+                {
+                    id: 'bortkjoring',
+                    title: 'Bortkjøring',
+                    description: 'Stammer, greiner og flis kjøres bort etter jobben, så du slipper tidkrevende rydding selv.',
+                },
+                {
+                    id: 'tomterydding',
+                    title: 'Tomterydding',
+                    description: 'Klargjøring av tomt før bygging eller ny hage. Felling, fresing og rydding i ett og samme oppdrag.',
                 },
             ],
-            imageAlt: 'Trefellingsspesialisten i arbeid',
+        },
+        insurance: {
+            eyebrow: 'Forsikring',
+            title: 'Fullforsikret for inntil 14 millioner',
+            description: 'Vi er forsikret mot skade på eiendom og personer gjennom If. Ikke alle i bransjen er det — sjekk gjerne beviset før du velger hvem som skal felle trærne dine.',
+            openButton: 'Åpne forsikringsbevis (PDF)',
+            downloadButton: 'Last ned',
+            downloadFilename: 'Forsikringsbevis-Trefellingsspesialisten.pdf',
+            card: {
+                title: 'Forsikringsbevis',
+                holderLabel: 'Forsikringstaker',
+                coverageLabel: 'Dekning',
+                coverage: 'Skade på eiendom og personer',
+                coveragePrefix: 'Inntil',
+                cta: 'Klikk for å åpne PDF →',
+            },
+        },
+        about: {
+            title: 'Fra én motorsag til eksperter på vanskelige oppdrag.',
+            description: 'Vi holder til i Ås og jobber for private, borettslag, entreprenører og kommuner. Med erfarne fagfolk og en maskin- og utstyrspark vi er stolte av, tar vi også trærne som står inneklemt mellom hus, ledningsnett og veier.',
+            tagline: 'Vår jobb — din trygghet.',
+            imageAlt: 'Utsikt ned fra tretopp over maskinene under et oppdrag',
+            link: 'Møt teamet →',
+            stats: [
+                {value: `${yearsOfExperience}+`, label: 'års erfaring'},
+                {value: '4', label: 'fylker vi dekker'},
+                {value: '14 mill.', label: 'kr i forsikringsdekning'},
+            ],
         },
         testimonials: {
-            title: 'Hva våre kunder sier',
-            subtitle: `Over ${yearsOfExperience} år med fornøyde kunder`,
+            title: 'Hva kundene sier',
             items: [
                 {
                     text: 'Utrolig profesjonelt arbeid. De håndterte det kompliserte treet vårt uten problemer. Anbefalte dem straks til naboene.',
@@ -113,41 +160,14 @@ export const siteText = {
                 },
             ],
         },
-        servicesSection: {
-            title: 'Tjenester vi tilbyr',
-            subtitle: 'Vi tilbyr et komplett spekter av trefellingstjenester',
-            treeFelling: {
-                title: 'Trefelling',
-                description: 'Vi utfører felling av alle typer trær, både små og store. Med erfarne fagfolk og riktig utstyr håndterer vi selv de mest utfordrende situasjoner.',
-                linkText: 'Les mer →',
-            },
-            stumpGrinding: {
-                title: 'Stubbefresing',
-                description: 'Den mest skånsomme og effektive måten å fjerne stubber på. Vi freser ca. 20-30 cm under bakken for å fjerne alle spor.',
-                linkText: 'Les mer →',
-            },
-            pruning: {
-                title: 'Beskjæring',
-                description: 'Store trær kan beskjæres, reduseres, formes eller toppes. Våre dyktige trefellere har gjennomført beskjæringskurs.',
-                linkText: 'Les mer →',
-            },
-            siteClearance: {
-                title: 'Tomterydding',
-                description: 'Vi har alt vi trenger for å effektivt klargjøre og rydde en eiendom for trær, busker og annen vegetasjon.',
-                linkText: 'Les mer →',
-            },
-            chipping: {
-                title: 'Flishugging',
-                description: 'Miljøvennlig og effektiv måte å rydde kvist, greiner og mindre trestammer på. Flisen egner seg godt som dekkbark.',
-                linkText: 'Les mer →',
-            },
-            removal: {
-                title: 'Bortkjøring',
-                description: 'Vi hjelper gjerne med bortkjøring av flis, greiner og trestammer etter gjennomført arbeid.',
-                linkText: 'Les mer →',
-            },
-            allServicesButton: 'Se alle tjenester',
-        }
+        booking: {
+            eyebrow: 'Gratis befaring',
+            title: 'Fortell oss om jobben',
+            description: 'Send noen linjer og gjerne et bilde. Vi tar kontakt for å avtale en uforpliktende befaring og gir deg et tydelig pristilbud.',
+            phoneLabel: 'Telefon',
+            emailLabel: 'E-post',
+            locationLabel: 'Vi holder til i',
+        },
     },
 
     services: {
@@ -296,6 +316,26 @@ export const siteText = {
             errorMessage: 'Ups! Noe gikk galt. Send oss en epost på rs3felling@gmail.com eller ring oss på: 47 64 29 70',
             fileTooLargeMessage: 'Bildene er for store til å sendes samlet. Prøv med færre bilder, eller send dem på e-post til rs3felling@gmail.com eller SMS til 47 64 29 70.',
             exitMessage: 'Før du går - du kan også ringe oss nå: 47 64 29 70',
+            servicesLegend: 'Hva trenger du hjelp med?',
+            messageLabel: 'Beskriv jobben',
+            messagePlaceholder: 'F.eks. To store bjørker nær huset, ca. 15 m høye. Ønsker stubbene fjernet.',
+            attachmentLabel: 'Bilder',
+            attachmentOptional: 'Valgfritt — hjelper oss å gi et riktig tilbud',
+            attachmentButton: 'Velg bilder',
+            noFilesSelected: 'Ingen bilder valgt',
+            fileSelected: 'bilde valgt',
+            filesSelected: 'bilder valgt',
+            addressLabel: 'Adresse for oppdraget',
+            addressPlaceholder: 'Gate og husnummer',
+            postCodePlaceholder: 'F.eks. 1430 Ås',
+            bookingSubmit: 'Send forespørsel om befaring',
+            freeNote: 'Befaring og pristilbud er gratis og uforpliktende.',
+            servicesPrefix: 'Gjelder',
+            generalRequest: 'Generell forespørsel',
+            successTitle: 'Takk',
+            successText: 'Vi har mottatt forespørselen og ringer deg på',
+            successTextSuffix: 'for å avtale befaring.',
+            newRequest: 'Send en ny forespørsel',
         },
     },
 

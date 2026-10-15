@@ -2,13 +2,13 @@ import Image from 'next/image'
 import type {Metadata} from 'next'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ContactForm from "@/components/ContactForm";
+import ServicesShowcase from "@/components/ServicesShowcase";
 import PreloadLink from "@/components/PreloadLink";
-import Testimonials from "@/components/Testimonials";
 import {companyInfo} from '@/config/company'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
     title: 'Trefelling i Oslo og Akershus | Erfarne trefellere | Trefellingsspesialisten AS',
@@ -39,369 +39,237 @@ export const metadata: Metadata = {
     },
 }
 
+const {brand} = colors
+const home = siteText.home
+
+const container = 'max-w-[1280px] mx-auto px-6'
+const displayHeading = 'm-0 font-heading stretch-condensed font-black uppercase text-balance'
+const sectionHeading = cn(displayHeading, 'text-[clamp(44px,5.5vw,80px)] leading-[.92]')
+const pillButton = cn('inline-flex items-center px-[26px] py-4 rounded-full font-semibold text-[17px] no-underline transition-colors', brand.focus.outline)
+const primaryButton = cn(pillButton, brand.background.ember, brand.text.ink, brand.hover.background.emberLight)
+
+function Eyebrow({children, className}: {children: React.ReactNode, className?: string}) {
+    return (
+        <div className={cn('flex items-center gap-2.5 text-sm font-semibold tracking-[.08em] uppercase', className)}>
+            <span className={cn('w-7 h-0.5', brand.background.ember)} aria-hidden="true"/>
+            {children}
+        </div>
+    )
+}
+
 export default function HomePage() {
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
             <Header/>
 
-            <section className={`relative overflow-hidden ${colors.background.primary[50]} py-20 sm:py-28`}>
-                {/* Decorative background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 opacity-70"></div>
-                
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                    <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-                        <div className="mb-8 lg:mb-0">
-                            <h1 className={`text-4xl font-extrabold ${colors.text.gray[900]} sm:text-4xl lg:text-5xl wrap-break-word leading-tight tracking-tight`}>
-                                {siteText.home.hero.title}
-                            </h1>
-                            <p className={`mt-6 text-lg sm:text-xl ${colors.text.gray[700]} max-w-3xl leading-relaxed`}>
-                                {siteText.home.hero.description}
-                            </p>
-
-                            {/* Trust badges */}
-                            <div className="mt-8 flex flex-wrap gap-4">
-                                {siteText.home.hero.trustBadges.map((badge, index) => (
-                                    <div key={index} className={`flex items-center gap-2 ${colors.text.primary[700]} font-medium text-sm sm:text-base`}>
-                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                        </svg>
-                                        {badge}
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                                <Button asChild variant="default" size="lg">
-                                    <PreloadLink href="/kontakt-oss">
-                                        {siteText.home.hero.cta}
-                                    </PreloadLink>
-                                </Button>
-                                <Button asChild variant="outline" size="lg">
-                                    <a href={`tel:${companyInfo.contact.phone.href}`}>
-                                        📞 {companyInfo.contact.phone.display}
-                                    </a>
-                                </Button>
-                            </div>
-                        </div>
-                        <div className="relative">
-                            <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-emerald-600 rounded-2xl blur-lg opacity-20"></div>
-                            <Image
-                                src="/images/beskjaert-tre.jpg"
-                                alt="Profesjonell trefelling og beskjæring"
-                                width={300}
-                                height={500}
-                                className="rounded-2xl shadow-2xl w-full h-auto relative ring-1 ring-gray-200"
-                                priority
-                                loading="eager"
-                                quality={75}
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 370px"
-                            />
+            <main>
+                <section className={cn(container, 'pt-14 pb-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center')}>
+                    <div className="flex flex-col gap-7">
+                        <Eyebrow className={brand.text.forest}>{home.hero.areas}</Eyebrow>
+                        <h1 className={cn(displayHeading, 'text-[clamp(52px,7.2vw,108px)] leading-[.9] tracking-[-.01em]')}>
+                            {home.hero.title} <span className={brand.text.forest}>{home.hero.titleAccent}</span>
+                        </h1>
+                        <p className={cn('m-0 max-w-[52ch] text-[19px] leading-relaxed text-pretty', brand.text.inkSoft)}>
+                            {home.hero.description}
+                        </p>
+                        <div className="flex gap-3 flex-wrap">
+                            <a href="#befaring" className={primaryButton}>{home.hero.cta}</a>
+                            <a href="#tjenester" className={cn(pillButton, 'border-[1.5px]', brand.border.ink, brand.hover.background.ink, brand.hover.text.cream)}>
+                                {home.hero.secondaryCta}
+                            </a>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className={`text-3xl font-extrabold ${colors.text.gray[900]} sm:text-4xl tracking-tight`}>
-                            {siteText.home.whyChooseUs.title}
-                        </h2>
+                    <div className="relative min-h-[420px] lg:min-h-[520px]">
+                        <Image
+                            src="/images/beskjaert-tre.jpg"
+                            alt={home.hero.imageAlt}
+                            fill
+                            priority
+                            quality={75}
+                            sizes="(max-width: 1024px) 100vw, 620px"
+                            className="object-cover rounded-md"
+                        />
+                        <a
+                            href="#forsikring"
+                            className={cn('absolute left-3 lg:-left-3 bottom-7 flex items-center gap-3.5 py-4 pl-4 pr-5 rounded-md shadow-[0_18px_40px_rgba(23,32,26,.25)] no-underline max-w-[320px] transition-transform hover:-translate-y-0.5', brand.background.cream, brand.text.ink, brand.focus.outline)}
+                        >
+                            <span className={cn('flex-none w-11 h-11 rounded-full grid place-items-center text-xl font-bold', brand.background.forest, brand.text.cream)} aria-hidden="true">✓</span>
+                            <span className="flex flex-col gap-0.5">
+                                <span className="font-semibold">{home.hero.insuranceBadge.title} {companyInfo.insurance.provider}</span>
+                                <span className={cn('text-sm', brand.text.inkSoft)}>
+                                    {home.insurance.card.coveragePrefix} {companyInfo.insurance.coverageShort} · {home.hero.insuranceBadge.linkText}
+                                </span>
+                            </span>
+                        </a>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="text-center p-8 rounded-xl hover:bg-green-50 transition-all duration-300 group">
-                            <div
-                                className={`w-20 h-20 ${colors.background.primary[100]} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                                <svg className={`w-10 h-10 ${colors.text.primary[600]}`} fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                            </div>
-                            <h3 className={`text-xl font-bold ${colors.text.gray[900]} mb-3`}>{siteText.home.whyChooseUs.experience.title}</h3>
-                            <p className={`text-base ${colors.text.gray[600]} leading-relaxed`}>
-                                {siteText.home.whyChooseUs.experience.description}
+                </section>
+
+                <section className={cn(container, 'pb-[72px]')}>
+                    <ul className={cn('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t-[1.5px] border-b', brand.border.ink)}>
+                        {home.trustStrip.map((item) => (
+                            <li key={item.title} className="py-5 pr-5 flex flex-col gap-1">
+                                <span className="font-semibold">{item.title}</span>
+                                <span className={cn('text-[15px]', brand.text.inkMuted)}>{item.description}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+
+                <section id="tjenester" className={cn('scroll-mt-[70px]', brand.background.sand)}>
+                    <div className={cn(container, 'py-[88px] flex flex-col gap-12')}>
+                        <div className="flex justify-between items-end gap-6 flex-wrap">
+                            <h2 className={sectionHeading}>{home.servicesSection.title}</h2>
+                            <p className={cn('m-0 max-w-[44ch] text-[17px] leading-relaxed', brand.text.inkSoft)}>
+                                {home.servicesSection.subtitle}
                             </p>
                         </div>
-                        <div className="text-center p-8 rounded-xl hover:bg-green-50 transition-all duration-300 group">
-                            <div
-                                className={`w-20 h-20 ${colors.background.primary[100]} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                                <svg className={`w-10 h-10 ${colors.text.primary[600]}`} fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                </svg>
-                            </div>
-                            <h3 className={`text-xl font-bold ${colors.text.gray[900]} mb-3`}>{siteText.home.whyChooseUs.insured.title}</h3>
-                            <p className={`text-base ${colors.text.gray[600]} leading-relaxed`}>
-                                {siteText.home.whyChooseUs.insured.description}
-                            </p>
-                        </div>
-                        <div className="text-center p-8 rounded-xl hover:bg-green-50 transition-all duration-300 group">
-                            <div
-                                className={`w-20 h-20 ${colors.background.primary[100]} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                                <svg className={`w-10 h-10 ${colors.text.primary[600]}`} fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                            </div>
-                            <h3 className={`text-xl font-bold ${colors.text.gray[900]} mb-3`}>{siteText.home.whyChooseUs.fast.title}</h3>
-                            <p className={`text-base ${colors.text.gray[600]} leading-relaxed`}>
-                                {siteText.home.whyChooseUs.fast.description}
-                            </p>
-                        </div>
-                        <div className="text-center p-8 rounded-xl hover:bg-green-50 transition-all duration-300 group">
-                            <div
-                                className={`w-20 h-20 ${colors.background.primary[100]} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                                <svg className={`w-10 h-10 ${colors.text.primary[600]}`} fill="none" stroke="currentColor"
-                                     viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                            </div>
-                            <h3 className={`text-xl font-bold ${colors.text.gray[900]} mb-3`}>{siteText.home.whyChooseUs.competitive.title}</h3>
-                            <p className={`text-base ${colors.text.gray[600]} leading-relaxed`}>
-                                {siteText.home.whyChooseUs.competitive.description}
-                            </p>
+                        <ServicesShowcase/>
+                        <div className="flex gap-6 flex-wrap font-semibold">
+                            <PreloadLink href="/tjenester" className={cn('underline underline-offset-4', brand.hover.text.emberDark)}>
+                                {home.servicesSection.allServicesLink}
+                            </PreloadLink>
+                            <PreloadLink href="/trefelling-pris" className={cn('underline underline-offset-4', brand.hover.text.emberDark)}>
+                                {home.servicesSection.pricingLink}
+                            </PreloadLink>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section className={`py-20 ${colors.background.primary[50]}`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                        <div className="mb-10 lg:mb-0">
-                            <h2 className={`text-3xl sm:text-4xl font-extrabold ${colors.text.gray[900]} mb-6 tracking-tight`}>
-                                {siteText.home.ourStory.title}
-                            </h2>
-                            <div className={`space-y-4 text-base sm:text-lg ${colors.text.gray[700]} leading-relaxed`}>
-                                {siteText.home.ourStory.content.map((item, index) => (
-                                    <p key={index}>
-                                        {index === 0 ? `${companyInfo.name} ${item.paragraph}` : item.paragraph}
-                                    </p>
-                                ))}
+                <section id="forsikring" className={cn('scroll-mt-[70px]', brand.background.ink, brand.text.cream)}>
+                    <div className={cn(container, 'py-24 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center')}>
+                        <div className="flex flex-col gap-6">
+                            <Eyebrow className={brand.text.ember}>{home.insurance.eyebrow}</Eyebrow>
+                            <h2 className={sectionHeading}>{home.insurance.title}</h2>
+                            <p className={cn('m-0 max-w-[50ch] text-lg leading-relaxed', brand.text.mist)}>
+                                {home.insurance.description}
+                            </p>
+                            <div className="flex gap-3 flex-wrap">
+                                <a href={companyInfo.insurance.certificate} target="_blank" rel="noopener noreferrer" className={cn(primaryButton, 'text-base')}>
+                                    {home.insurance.openButton}
+                                </a>
+                                <a href={companyInfo.insurance.certificate} download={home.insurance.downloadFilename}
+                                   className={cn(pillButton, 'text-base border-[1.5px]', brand.border.cream, brand.text.cream, brand.hover.background.cream, brand.hover.text.ink)}>
+                                    {home.insurance.downloadButton}
+                                </a>
                             </div>
                         </div>
-                        <div className="relative h-96 lg:h-[500px]">
-                            <div className="absolute -inset-2 bg-gradient-to-r from-green-400 to-emerald-600 rounded-2xl blur opacity-20"></div>
+                        <a
+                            href={companyInfo.insurance.certificate}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={home.insurance.openButton}
+                            className={cn('justify-self-center w-full max-w-[400px] no-underline -rotate-[2.5deg] transition-transform duration-300 hover:rotate-0 hover:-translate-y-1', brand.text.ink, brand.focus.outline)}
+                        >
+                            <div className={cn('rounded px-8 py-9 shadow-[0_30px_60px_rgba(0,0,0,.45)] flex flex-col gap-[18px] aspect-[1/1.3]', brand.background.paper)}>
+                                <div className="flex justify-between items-start">
+                                    <span className="font-heading stretch-semi-condensed font-extrabold text-[22px] uppercase tracking-[.02em]">
+                                        {home.insurance.card.title}
+                                    </span>
+                                    <span className={cn("font-bold text-[22px]", brand.text.insurer)}>{companyInfo.insurance.provider}</span>
+                                </div>
+                                <div className={cn('h-px', brand.background.sandDark)}/>
+                                <div className="flex flex-col gap-1 text-sm">
+                                    <span className={brand.text.inkMuted}>{home.insurance.card.holderLabel}</span>
+                                    <span className="font-semibold">{companyInfo.name}</span>
+                                    <span>{siteText.footer.orgNumber} {companyInfo.organization.number}</span>
+                                </div>
+                                <div className="flex flex-col gap-1 text-sm">
+                                    <span className={brand.text.inkMuted}>{home.insurance.card.coverageLabel}</span>
+                                    <span className="font-semibold">{home.insurance.card.coverage}</span>
+                                    <span>{home.insurance.card.coveragePrefix} {companyInfo.insurance.coverage}</span>
+                                </div>
+                                <div className="flex flex-col gap-2 mt-1.5" aria-hidden="true">
+                                    <span className={cn('h-1.5 rounded-sm', brand.background.sand)}/>
+                                    <span className={cn('h-1.5 w-[86%] rounded-sm', brand.background.sand)}/>
+                                    <span className={cn('h-1.5 w-[70%] rounded-sm', brand.background.sand)}/>
+                                </div>
+                                <span className={cn('mt-auto text-sm font-semibold', brand.text.emberDark)}>{home.insurance.card.cta}</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <section id="om-oss" className="scroll-mt-[70px]">
+                    <div className={cn(container, 'py-24 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center')}>
+                        <div className="relative aspect-[4/3]">
                             <Image
                                 src="/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg"
-                                alt={siteText.home.ourStory.imageAlt}
+                                alt={home.about.imageAlt}
                                 fill
-                                className="rounded-2xl shadow-2xl object-cover relative ring-1 ring-gray-200"
                                 quality={75}
-                                sizes="(max-width: 768px) 100vw, 50vw"
+                                sizes="(max-width: 1024px) 100vw, 620px"
                                 loading="lazy"
+                                className="object-cover rounded-md"
                             />
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className={`py-20 ${colors.background.white}`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className={`text-3xl sm:text-4xl font-extrabold ${colors.text.gray[900]} tracking-tight`}>
-                            {siteText.home.servicesSection.title}
-                        </h2>
-                        <p className={`mt-4 text-lg sm:text-xl ${colors.text.gray[600]} max-w-3xl mx-auto`}>
-                            {siteText.home.servicesSection.subtitle}
-                        </p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>{siteText.home.servicesSection.treeFelling.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <CardDescription className="text-base">
-                                    {siteText.home.servicesSection.treeFelling.description}
-                                </CardDescription>
-                            </CardContent>
-                            <CardFooter>
-                                <PreloadLink href="/tjenester#trefelling"
-                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
-                                    {siteText.home.servicesSection.treeFelling.linkText}
-                                </PreloadLink>
-                            </CardFooter>
-                        </Card>
-                        <Card className="hover:shadow-lg transition-shadow">
-                            <CardHeader>
-                                <CardTitle>{siteText.home.servicesSection.stumpGrinding.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <CardDescription className="text-base">
-                                    {siteText.home.servicesSection.stumpGrinding.description}
-                                </CardDescription>
-                            </CardContent>
-                            <CardFooter>
-                                <PreloadLink href="/tjenester#stubbefresing"
-                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
-                                    {siteText.home.servicesSection.stumpGrinding.linkText}
-                                </PreloadLink>
-                            </CardFooter>
-                        </Card>
-                        <Card className="hover:shadow-lg transition-shadow">
-                            <CardHeader>
-                                <CardTitle>{siteText.home.servicesSection.pruning.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <CardDescription className="text-base">
-                                    {siteText.home.servicesSection.pruning.description}
-                                </CardDescription>
-                            </CardContent>
-                            <CardFooter>
-                                <PreloadLink href="/tjenester#beskjaering"
-                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
-                                    {siteText.home.servicesSection.pruning.linkText}
-                                </PreloadLink>
-                            </CardFooter>
-                        </Card>
-                        <Card className="hover:shadow-lg transition-shadow">
-                            <CardHeader>
-                                <CardTitle>{siteText.home.servicesSection.siteClearance.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <CardDescription className="text-base">
-                                    {siteText.home.servicesSection.siteClearance.description}
-                                </CardDescription>
-                            </CardContent>
-                            <CardFooter>
-                                <PreloadLink href="/tjenester#tomterydding"
-                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
-                                    {siteText.home.servicesSection.siteClearance.linkText}
-                                </PreloadLink>
-                            </CardFooter>
-                        </Card>
-                        <Card className="hover:shadow-lg transition-shadow">
-                            <CardHeader>
-                                <CardTitle>{siteText.home.servicesSection.chipping.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <CardDescription className="text-base">
-                                    {siteText.home.servicesSection.chipping.description}
-                                </CardDescription>
-                            </CardContent>
-                            <CardFooter>
-                                <PreloadLink href="/tjenester#flishugging"
-                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
-                                    {siteText.home.servicesSection.chipping.linkText}
-                                </PreloadLink>
-                            </CardFooter>
-                        </Card>
-                        <Card className="hover:shadow-lg transition-shadow">
-                            <CardHeader>
-                                <CardTitle>{siteText.home.servicesSection.removal.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <CardDescription className="text-base">
-                                    {siteText.home.servicesSection.removal.description}
-                                </CardDescription>
-                            </CardContent>
-                            <CardFooter>
-                                <PreloadLink href="/tjenester#bortkjoring"
-                                      className={`${colors.text.primary[600]} hover:underline font-medium`}>
-                                    {siteText.home.servicesSection.removal.linkText}
-                                </PreloadLink>
-                            </CardFooter>
-                        </Card>
-                    </div>
-                    <div className="text-center mt-10">
-                        <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <Button asChild size="lg">
-                                <PreloadLink href="/tjenester">
-                                    {siteText.home.servicesSection.allServicesButton}
-                                </PreloadLink>
-                            </Button>
-                            <Button asChild variant="outline" size="lg">
-                                <PreloadLink href="/trefelling-pris">
-                                    Se pris for trefelling
-                                </PreloadLink>
-                            </Button>
+                        <div className="flex flex-col gap-[22px]">
+                            <h2 className={cn(displayHeading, 'text-[clamp(40px,4.6vw,68px)] leading-[.94]')}>{home.about.title}</h2>
+                            <p className={cn('m-0 text-[17px] leading-relaxed text-pretty', brand.text.inkSoft)}>{home.about.description}</p>
+                            <p className={cn('m-0 font-heading font-bold text-[22px] [font-stretch:80%]', brand.text.forest)}>{home.about.tagline}</p>
+                            <PreloadLink href="/om-oss" className={cn('self-start font-semibold underline underline-offset-4', brand.hover.text.emberDark)}>
+                                {home.about.link}
+                            </PreloadLink>
+                            <dl className={cn('grid grid-cols-3 gap-5 pt-5 border-t-[1.5px] m-0', brand.border.ink)}>
+                                {home.about.stats.map((stat) => (
+                                    <div key={stat.label} className="flex flex-col-reverse gap-0.5">
+                                        <dt className={cn('text-sm', brand.text.inkMuted)}>{stat.label}</dt>
+                                        <dd className="m-0 font-heading font-black text-[clamp(32px,4vw,44px)] leading-none [font-stretch:70%]">{stat.value}</dd>
+                                    </div>
+                                ))}
+                            </dl>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <Testimonials
-                title={siteText.home.testimonials.title}
-                subtitle={siteText.home.testimonials.subtitle}
-                items={siteText.home.testimonials.items}
-            />
+                <section className={brand.background.sand}>
+                    <div className={cn(container, 'py-[88px] flex flex-col gap-10')}>
+                        <h2 className={cn(displayHeading, 'text-[clamp(40px,4.6vw,68px)] leading-[.94]')}>{home.testimonials.title}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                            {home.testimonials.items.map((item) => (
+                                <figure key={item.author} className={cn('m-0 p-7 rounded-md flex flex-col gap-5', brand.background.cream)}>
+                                    <blockquote className="m-0 text-[17px] leading-relaxed text-pretty">«{item.text}»</blockquote>
+                                    <figcaption className="mt-auto font-semibold">
+                                        {item.author}
+                                        <span className={cn('font-normal', brand.text.inkMuted)}> · {item.location}</span>
+                                    </figcaption>
+                                </figure>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
-            <section className={`py-20 ${colors.background.white}`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`${colors.background.primary[600]} rounded-3xl shadow-2xl overflow-hidden relative`}>
-                        {/* Decorative gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-600 opacity-90"></div>
-                        
-                        <div className="lg:grid lg:grid-cols-2 lg:gap-8 relative">
-                            <div className="p-8 sm:p-10 lg:p-14">
-                                <h2 className={`text-3xl sm:text-4xl font-extrabold ${colors.text.white} mb-6 tracking-tight`}>
-                                    Kontakt oss i dag
-                                </h2>
-                                <p className={`${colors.text.primary[100]} text-lg sm:text-xl mb-8 leading-relaxed`}>
-                                    Vi tilbyr gratis befaring og uforpliktende pristilbud. Ta kontakt så hjelper vi deg!
-                                </p>
-                                <div className="space-y-5 mb-8">
-                                    <div className="flex items-center text-white">
-                                        <svg className="w-7 h-7 mr-4 flex-shrink-0" fill="none" stroke="currentColor"
-                                             viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                        </svg>
-                                        <a href={`tel:${companyInfo.contact.phone.href}`}
-                                           className="text-lg sm:text-xl hover:underline font-semibold">
-                                            {companyInfo.contact.phone.display}
-                                        </a>
-                                    </div>
-                                    <div className="flex items-center text-white">
-                                        <svg className="w-7 h-7 mr-4 flex-shrink-0" fill="none" stroke="currentColor"
-                                             viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                        </svg>
-                                        <a href={`mailto:${companyInfo.contact.email}`}
-                                           className="text-lg sm:text-xl hover:underline break-words font-semibold">
-                                            {companyInfo.contact.email}
-                                        </a>
-                                    </div>
-                                    <div className="flex items-start text-white">
-                                        <svg className="w-7 h-7 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor"
-                                             viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                        </svg>
-                                        <span className="text-lg sm:text-xl font-semibold">
-                                            {companyInfo.serviceAreasText}
-                                        </span>
-                                    </div>
+                <section id="befaring" className="scroll-mt-[70px]">
+                    <div className={cn(container, 'py-24 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-14 items-start')}>
+                        <div className="flex flex-col gap-6">
+                            <Eyebrow className={brand.text.emberDark}>{home.booking.eyebrow}</Eyebrow>
+                            <h2 className={sectionHeading}>{home.booking.title}</h2>
+                            <p className={cn('m-0 max-w-[44ch] text-[17px] leading-relaxed', brand.text.inkSoft)}>{home.booking.description}</p>
+                            <div className={cn('flex flex-col gap-3.5 pt-6 border-t-[1.5px] text-base', brand.border.ink)}>
+                                <div className="flex flex-col gap-0.5">
+                                    <span className={cn('text-sm', brand.text.inkMuted)}>{home.booking.phoneLabel}</span>
+                                    <a href={`tel:${companyInfo.contact.phone.href}`} className="font-heading stretch-semi-condensed font-extrabold text-[30px] no-underline">
+                                        {companyInfo.contact.phone.display}
+                                    </a>
                                 </div>
-                                <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto shadow-lg hover:shadow-xl">
-                                    <PreloadLink href="/kontakt-oss">
-                                        Send oss en melding
-                                    </PreloadLink>
-                                </Button>
-                            </div>
-                            <div className="relative h-80 lg:h-auto">
-                                <Image
-                                    src="/images/beskjaert-tre.jpg"
-                                    alt="Kontakt Trefellingsspesialisten"
-                                    fill
-                                    className="object-cover opacity-30 lg:opacity-50"
-                                    quality={75}
-                                    sizes="(max-width: 1024px) 100vw, 50vw"
-                                    loading="lazy"
-                                />
+                                <div className="flex flex-col gap-0.5">
+                                    <span className={cn('text-sm', brand.text.inkMuted)}>{home.booking.emailLabel}</span>
+                                    <a href={`mailto:${companyInfo.contact.email}`} className={cn('underline underline-offset-[3px]', brand.hover.text.emberDark)}>
+                                        {companyInfo.contact.email}
+                                    </a>
+                                </div>
+                                <div className="flex flex-col gap-0.5">
+                                    <span className={cn('text-sm', brand.text.inkMuted)}>{home.booking.locationLabel}</span>
+                                    <span>{companyInfo.address.locality}, {companyInfo.address.region}</span>
+                                </div>
                             </div>
                         </div>
+
+                        <div className={cn('rounded-lg p-[clamp(24px,4vw,40px)] shadow-[0_1px_0_rgba(23,32,26,.08),0_20px_50px_rgba(23,32,26,.08)]', brand.background.paper)}>
+                            <ContactForm/>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </main>
 
             <Footer/>
         </div>
