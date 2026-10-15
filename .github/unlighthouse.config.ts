@@ -14,7 +14,6 @@ export default {
       accessibility: 90,
       'best-practices': 90,
     },
-    buildStatic: true,
     reporter: 'jsonExpanded',
   },
 }

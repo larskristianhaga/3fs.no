@@ -196,6 +196,6 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 - A weekly **uptime check** requests every sitemap page (rewritten to `SITE_URL`) and the contact email health endpoint (`.github/workflows/uptime-check.yml`).
 - **Dependabot** PRs are auto-approved and squash-merged when the Vercel build passes (`.github/workflows/dependabot-pr.yml`).
 - A monthly **link-checker** workflow scans the live site for broken links (`.github/workflows/link-checker.yml`).
-- A monthly **SEO audit** crawls every page with Unlighthouse (Lighthouse SEO, accessibility and best-practices) and fails if a page scores below the budgets (`.github/workflows/seo-audit.yml`, config in `.github/unlighthouse.config.ts`). The HTML report is uploaded as the `unlighthouse-report` artifact.
+- A monthly **SEO audit** crawls every page with Unlighthouse (Lighthouse SEO, accessibility and best-practices) and fails if a page scores below the budgets (`.github/workflows/seo-audit.yml`, config in `.github/unlighthouse.config.ts`). Per-page scores and failed audits are printed in the job log and the run's job summary (`.github/scripts/unlighthouse-summary.mjs`).
 
 When adding features, maintain these patterns: use the text config for copy, the colors config for styling, and the company config for shared data.

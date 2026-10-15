@@ -29,10 +29,6 @@ jobs:
             --config-file .github/unlighthouse.config.ts \
             --output-path unlighthouse-report
 
-      - name: Upload report
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: unlighthouse-report
-          path: unlighthouse-report
-          retention-days: 30
+      - name: Show results
+        if: always() && hashFiles('unlighthouse-report/ci-result.json') != ''
+        run: node .github/scripts/unlighthouse-summary.mjs unlighthouse-report
