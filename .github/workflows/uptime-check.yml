@@ -12,14 +12,17 @@ jobs:
   uptime:
     name: "Check sitemap pages"
     runs-on: ubuntu-26.04-arm
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
     steps:
       - name: Check all pages in sitemap
         run: |
-          sitemap=$(curl -sfL --max-time 30 --retry 2 --retry-delay 10 "https://3fs.no/sitemap.xml") || {
+          sitemap=$(curl -sfL --max-time 30 --retry 2 --retry-delay 10 "$SITE_URL/sitemap.xml") || {
             echo "::error::Could not fetch sitemap.xml"
             exit 1
           }
-          urls=$(echo "$sitemap" | grep -o '<loc>[^<]*</loc>' | sed -e 's|<loc>||' -e 's|</loc>||')
+          # The sitemap lists canonical URLs; swap in SITE_URL so we check the host actually serving the app
+          urls=$(echo "$sitemap" | grep -o '<loc>[^<]*</loc>' | sed -e 's|<loc>||' -e 's|</loc>||' -e "s|^https\{0,1\}://[^/]*|$SITE_URL|")
           if [ -z "$urls" ]; then
             echo "::error::No URLs found in sitemap.xml"
             exit 1
@@ -42,7 +45,7 @@ jobs:
         run: |
           # No -L: following a redirect would turn the POST into a GET
           code=$(curl -s -o response.json -w '%{http_code}' -X POST --max-time 30 --retry 2 --retry-delay 10 \
-            "https://3fs.no/api/contact/health" || true)
+            "$SITE_URL/api/contact/health" || true)
           echo "Email health check -> $code"
           cat response.json 2>/dev/null; echo
           if [ "$code" != "200" ]; then

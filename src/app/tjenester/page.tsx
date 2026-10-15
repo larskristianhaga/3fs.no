@@ -24,7 +24,7 @@ export const metadata: Metadata = {
             height: 576,
             alt: 'Trefellingsspesialisten AS - Trefellingstjenester',
         }],
-        url: 'https://3fs.no/tjenester',
+        url: `${companyInfo.website}/tjenester`,
         type: 'website',
         locale: 'nb_NO',
     },

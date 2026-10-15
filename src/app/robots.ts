@@ -1,7 +1,8 @@
 import {MetadataRoute} from 'next'
+import {companyInfo} from '@/config/company'
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://3fs.no"
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || companyInfo.website
 
     return {
         rules: [

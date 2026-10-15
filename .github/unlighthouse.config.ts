@@ -1,6 +1,7 @@
 // Config for the SEO audit workflow (.github/workflows/seo-audit.yml)
+// SITE_URL comes from the repo variable of the same name
 export default {
-  site: 'https://3fs.vercel.app',
+  site: process.env.SITE_URL,
   scanner: {
     // Small site: scan every page instead of sampling similar routes
     dynamicSampling: false,

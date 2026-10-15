@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import type {Metadata} from 'next'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
-import {yearsOfExperience} from '@/config/company'
+import {companyInfo, yearsOfExperience} from '@/config/company'
 
 export const metadata: Metadata = {
     title: `Om oss - Over ${yearsOfExperience} års erfaring med trefelling`,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
             height: 576,
             alt: 'Trefellingsspesialisten AS i arbeid',
         }],
-        url: 'https://3fs.no/om-oss',
+        url: `${companyInfo.website}/om-oss`,
         type: 'website',
         locale: 'nb_NO',
     },

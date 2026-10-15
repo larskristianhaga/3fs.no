@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         openGraph: {
             title: post.title,
             description: post.excerpt,
-            url: `https://3fs.no/blogg/${post.id}`,
+            url: `${companyInfo.website}/blogg/${post.id}`,
             type: 'article',
             locale: 'nb_NO',
         },

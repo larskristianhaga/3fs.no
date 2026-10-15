@@ -192,6 +192,8 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 
 ## CI
 
+- **`SITE_URL`** (GitHub Actions repository variable) is the host the live checks run against — currently `https://3fs.vercel.app`, later `https://3fs.no`. Change it in the repo's Actions variables when the domain moves; no code change needed. It is separate from the canonical domain (`companyInfo.website` in `src/config/company.ts`), which the app uses for metadata, sitemap, robots and JSON-LD — never hardcode `https://3fs.no` in app code.
+- A weekly **uptime check** requests every sitemap page (rewritten to `SITE_URL`) and the contact email health endpoint (`.github/workflows/uptime-check.yml`).
 - **Dependabot** PRs are auto-approved and squash-merged when the Vercel build passes (`.github/workflows/dependabot-pr.yml`).
 - A monthly **link-checker** workflow scans the live site for broken links (`.github/workflows/link-checker.yml`).
 - A monthly **SEO audit** crawls every page with Unlighthouse (Lighthouse SEO, accessibility and best-practices) and fails if a page scores below the budgets (`.github/workflows/seo-audit.yml`, config in `.github/unlighthouse.config.ts`). The HTML report is uploaded as the `unlighthouse-report` artifact.

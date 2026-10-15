@@ -13,6 +13,8 @@ jobs:
     name: "Crawl site with Unlighthouse"
     # x64 runner: it ships with Google Chrome, which has no Linux ARM build
     runs-on: ubuntu-latest
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
     steps:
       - uses: actions/checkout@v7
 
@@ -20,7 +22,7 @@ jobs:
         with:
           node-version: 24
 
-      # Site URL and score budgets live in .github/unlighthouse.config.ts
+      # Score budgets live in .github/unlighthouse.config.ts
       - name: Run Unlighthouse
         run: |
           npx --yes -p @unlighthouse/cli@0.19.1 unlighthouse-ci \

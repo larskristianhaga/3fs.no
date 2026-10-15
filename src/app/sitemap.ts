@@ -1,5 +1,6 @@
 import {MetadataRoute} from 'next'
 import { siteText } from '@/content/text'
+import { companyInfo } from '@/config/company'
 
 // Last-modified dates for statically-rendered pages, taken from each file's
 // last real content edit (`git log -1 --format=%cI -- <file>`). Update the
@@ -19,7 +20,7 @@ const PAGE_LAST_MODIFIED = {
 } as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://3fs.no"
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || companyInfo.website
 
     const blogPosts = siteText.blog.posts.map(post => ({
         url: `${baseUrl}/blogg/${post.id}`,

@@ -1,4 +1,4 @@
-import {yearsOfExperience} from '@/config/company'
+import {companyInfo, yearsOfExperience} from '@/config/company'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Ofte stilte spørsmål - Svar på dine spørsmål om trefelling | Trefellingsspesialisten AS',
         description: `Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over ${yearsOfExperience} års erfaring med profesjonell trepleie.`,
-        url: 'https://3fs.no/faq',
+        url: `${companyInfo.website}/faq`,
         type: 'website',
         locale: 'nb_NO',
     },

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Blogg - Tips og råd om trefelling | Trefellingsspesialisten AS',
         description: 'Artikler og guide om trefelling, trepleie og sikkerhet fra erfarne fagfolk.',
-        url: 'https://3fs.no/blogg',
+        url: `${companyInfo.website}/blogg`,
         type: 'website',
         locale: 'nb_NO',
     },

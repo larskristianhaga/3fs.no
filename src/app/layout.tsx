@@ -1,5 +1,5 @@
 import type {Metadata, Viewport} from 'next'
-import {yearsOfExperience} from '@/config/company'
+import {companyInfo, yearsOfExperience} from '@/config/company'
 import {Analytics} from '@vercel/analytics/react'
 import {SpeedInsights} from '@vercel/speed-insights/next'
 import StructuredData from '@/components/StructuredData'
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
     authors: [{name: 'Trefellingsspesialisten AS'}],
     creator: 'Trefellingsspesialisten AS',
     publisher: 'Trefellingsspesialisten AS',
-    metadataBase: new URL('https://3fs.no'),
+    metadataBase: new URL(companyInfo.website),
     alternates: {
         canonical: '/',
     },
     openGraph: {
         type: 'website',
         locale: 'nb_NO',
-        url: 'https://3fs.no',
+        url: companyInfo.website,
         siteName: 'Trefellingsspesialisten AS',
         title: 'Profesjonell Trefelling og Trepleie | Trefellingsspesialisten AS',
         description: `Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over ${yearsOfExperience} års erfaring med trefelling, beskjæring, stubbefresing og tomterydding.`,
