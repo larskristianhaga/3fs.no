@@ -1,6 +1,17 @@
 import {yearsOfExperience} from '@/config/company'
 
 export const siteText = {
+    common: {
+        breadcrumbHome: 'Forside',
+        contactCta: 'Kontakt oss',
+        requestQuoteCta: 'Be om befaring',
+        requestFreeQuoteCta: 'Be om gratis befaring',
+        readMore: 'Les mer →',
+    },
+    notFound: {
+        title: 'Du er kommet til en side som ikke finnes',
+        backLink: 'Gå tilbake',
+    },
     header: {
         nav: {
             home: 'Forside',
@@ -172,6 +183,9 @@ export const siteText = {
 
     services: {
         title: 'Tjenester',
+        areasTitle: 'Tjenester i ditt område',
+        areasText: 'Les mer om hvor vi tilbyr trefelling og trepleie.',
+        pricingLink: 'Se prisguide for trefelling',
         items: [
             {
                 id: 'trefelling',
@@ -214,6 +228,7 @@ export const siteText = {
 
     pricing: {
         title: 'Trefelling pris',
+        breadcrumbLabel: 'Trefelling pris',
         subtitle: 'Pris avhenger av størrelse, plassering og tilgang. Vi gir alltid gratis befaring og et tydelig pristilbud.',
         ranges: [
             {
@@ -252,6 +267,7 @@ export const siteText = {
 
     about: {
         title: 'Om oss',
+        portraitAlt: 'Portrett av',
         intro: [
             {
                 paragraph: 'Trefellingsspesialisten holder til i Ås kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud. Vi tilbyr alt innen trefelling, beskjæring, stubbefresing, flishugging, bortkjøring og oppryddning. Vi har oppdrag for stat og kommune, bedrifter og borettslag, privat- og ferie eiendommer. Vi tilbyr alltid en gratis befaring og uforpliktende pristilbud.',
@@ -289,6 +305,8 @@ export const siteText = {
 
     contact: {
         title: 'Kontakt oss',
+        areasTitle: 'Vi dekker disse områdene',
+        areasText: 'Les mer om tjenester i ditt nærområde:',
         intro: [
             {
                 paragraph: 'Alle oppdrag er ulike, og det kan være vanskelig å gi en konkret pris før vi vet litt mer. I noen tilfeller kan vi gi en fastpris ved å se på bilder du kan legge ved i kontaktskjemaet. I andre tilfeller er det hensiktsmessig at vi møter opp på en uforpliktende befaring.',
@@ -341,6 +359,12 @@ export const siteText = {
 
     blog: {
         title: 'Blogg',
+        eyebrow: 'Blogg',
+        relatedTitle: 'Relaterte artikler',
+        ctaTitle: 'Har du spørsmål? Vi er her for å hjelpe',
+        ctaText: 'Kontakt oss direkte eller sjekk ut FAQ-siden vår for mer informasjon.',
+        articleCtaTitle: 'Trenger du profesjonell hjelp?',
+        articleCtaText: 'Kontakt oss i dag for gratis befaring og pristilbud',
         subtitle: 'Tips, råd og innsikt om trefelling og trepleie',
         posts: [
             {
@@ -870,6 +894,8 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
 
     faq: {
         title: 'Ofte stilte spørsmål',
+        moreQuestionsTitle: 'Har du andre spørsmål?',
+        moreQuestionsText: 'Hvis du ikke finner svar på det du lurer på, ta gjerne kontakt med oss!',
         subtitle: 'Her finner du svar på de mest stilte spørsmålene om våre tjenester',
         questions: [
             {
@@ -952,6 +978,8 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
     },
     locations: {
         title: 'Trefelling i',
+        highlightsTitle: 'Hva vi hjelper med',
+        casesTitle: 'Lokale case fra',
         subtitle: 'Vi tilbyr gratis befaring, trygg gjennomføring og grundig opprydding.',
         ctaTitle: 'Trenger du hjelp i ditt område?',
         ctaText: 'Kontakt oss for gratis befaring og uforpliktende pristilbud.',
@@ -1027,6 +1055,8 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
 
     privacy: {
         navLabel: 'Personvern',
+        orgLabel: 'org.nr.',
+        emailLabel: 'E-post',
         title: 'Personvernerklæring',
         intro: 'Her forklarer vi hvilke opplysninger vi samler inn når du bruker nettsiden vår, hvorfor vi gjør det og hvilke rettigheter du har.',
         sections: [

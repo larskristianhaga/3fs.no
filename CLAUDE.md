@@ -33,7 +33,8 @@ npm start               # Run production server
   - **`PreloadLink.tsx`**, **`BlogCard.tsx`**, **`ServicesShowcase.tsx`** (interactive services list on the home page)
 - **`src/middleware.ts`** – Sets a 1-day cache (plus stale-while-revalidate) on `/images/*` only. Filenames aren't content-hashed, so don't make it `immutable`
 - **`src/config/`** – Centralized configuration
-  - **`colors.ts`** – Tailwind color definitions (primary green, grays)
+  - **`colors.ts`** – `colors.brand` class references for the cream/ink/ember palette (tokens live in `globals.css` `@theme`)
+  - **`styles.ts`** – Shared layout and typography helpers (`container`, `pageHeading`, `primaryButton`, ...); `Eyebrow` lives in `components/Eyebrow.tsx`
   - **`company.ts`** – Company info, contact details, service areas, `yearsOfExperience`
 - **`src/content/`** – All text content (Norwegian)
   - **`text.ts`** – Centralized copy for all pages, forms, services, FAQ
@@ -98,7 +99,7 @@ npm start               # Run production server
 **Tailwind CSS v4** with custom configuration:
 - Modern Tailwind v4 with `@tailwindcss/postcss`
 - Colors centralized in `src/config/colors.ts`
-- All pages reference colors from config: `colors.text.gray[900]`, `colors.background.primary[50]`, etc.
+- All pages reference colors from config: `const {brand} = colors`, then `brand.text.ink`, `brand.background.cream`, etc. Add new tokens to `globals.css` `@theme` and a matching entry in `colors.brand`
 - **All new components should use color config references, not hardcoded Tailwind classes**
 
 **Hover States & Interactions**:
@@ -153,7 +154,7 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 ### Modify Colors
 - Update `src/config/colors.ts`
 - All components automatically use updated colors since they reference the config
-- Never add hardcoded `bg-green-600` or `text-gray-900` – use color config
+- Never add hardcoded `bg-green-600` or `text-gray-900` – use `colors.brand`
 
 ### Update Contact Form
 - Form labels/validation in `siteText.contact.form` (`src/content/text.ts`)

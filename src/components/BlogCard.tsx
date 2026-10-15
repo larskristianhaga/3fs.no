@@ -1,5 +1,10 @@
 import PreloadLink from '@/components/PreloadLink'
 import { colors } from '@/config/colors'
+import { subHeading } from '@/config/styles'
+import { cn } from '@/lib/utils'
+import {siteText} from '@/content/text'
+
+const { brand } = colors
 
 interface BlogCardProps {
     id: string
@@ -25,38 +30,34 @@ export default function BlogCard({
     })
 
     return (
-        <article className={`${colors.background.white} rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow`}>
-            <div className="p-6 sm:p-8">
-                <div className="flex items-center gap-3 mb-3">
-                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${colors.background.primary[100]} ${colors.text.primary[700]}`}>
-                        {category}
-                    </span>
-                    <span className={`text-sm ${colors.text.gray[500]}`}>
-                        {readTime}
-                    </span>
-                </div>
+        <article className={cn('flex flex-col rounded-md border p-6 sm:p-8', brand.background.paper, brand.border.inkSubtle)}>
+            <div className="flex items-center gap-3 mb-4 text-sm">
+                <span className={cn('font-semibold tracking-[.08em] uppercase', brand.text.emberDark)}>
+                    {category}
+                </span>
+                <span className={brand.text.inkMuted}>{readTime}</span>
+            </div>
 
-                <h3 className={`text-xl sm:text-2xl font-bold ${colors.text.gray[900]} mb-3 leading-tight`}>
-                    <PreloadLink href={`/blogg/${id}`} className={`${colors.hover.text.primary[700]} transition-colors`}>
-                        {title}
-                    </PreloadLink>
-                </h3>
+            <h3 className={cn(subHeading, 'text-[clamp(24px,2.2vw,30px)] mb-3', brand.text.ink)}>
+                <PreloadLink href={`/blogg/${id}`} className={cn('no-underline transition-colors', brand.hover.text.emberDark)}>
+                    {title}
+                </PreloadLink>
+            </h3>
 
-                <p className={`${colors.text.gray[600]} mb-4 leading-relaxed`}>
-                    {excerpt}
-                </p>
+            <p className={cn('mb-6 leading-relaxed', brand.text.inkSoft)}>
+                {excerpt}
+            </p>
 
-                <div className="flex items-center justify-between">
-                    <span className={`text-sm ${colors.text.gray[500]}`}>
-                        {formattedDate}
-                    </span>
-                    <PreloadLink
-                        href={`/blogg/${id}`}
-                        className={`inline-flex items-center gap-2 ${colors.text.primary[600]} hover:underline font-medium`}
-                    >
-                        Les mer →
-                    </PreloadLink>
-                </div>
+            <div className="mt-auto flex items-center justify-between gap-4">
+                <span className={cn('text-sm', brand.text.inkMuted)}>
+                    {formattedDate}
+                </span>
+                <PreloadLink
+                    href={`/blogg/${id}`}
+                    className={cn('inline-flex items-center gap-2 font-semibold underline underline-offset-4 transition-colors', brand.text.ink, brand.hover.text.emberDark)}
+                >
+                    {siteText.common.readMore}
+                </PreloadLink>
             </div>
         </article>
     )

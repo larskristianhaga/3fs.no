@@ -1,9 +1,12 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import Eyebrow from '@/components/Eyebrow'
 import type {Metadata} from 'next'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
 import {companyInfo} from '@/config/company'
+import {cn} from '@/lib/utils'
+import {container, pageHeading, subHeading, bodyText} from '@/config/styles'
 
 export const metadata: Metadata = {
     title: 'Personvernerklæring',
@@ -13,39 +16,40 @@ export const metadata: Metadata = {
     },
 }
 
+const {brand} = colors
+
 export default function PrivacyPage() {
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
             <Header/>
 
-            <section className="py-16">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h1 className={`text-4xl font-bold ${colors.text.gray[900]} sm:text-5xl mb-6`}>
-                        {siteText.privacy.title}
-                    </h1>
-                    <p className={`text-lg ${colors.text.gray[600]} mb-10`}>
-                        {siteText.privacy.intro}
-                    </p>
+            <main>
+                <section className={cn(container, 'pt-14 pb-[88px] max-w-[860px]')}>
+                    <div className="flex flex-col gap-6 mb-12">
+                        <Eyebrow className={brand.text.forest}>{companyInfo.name}</Eyebrow>
+                        <h1 className={pageHeading}>{siteText.privacy.title}</h1>
+                        <p className={cn(bodyText, 'text-[19px] text-pretty')}>{siteText.privacy.intro}</p>
+                    </div>
 
                     {siteText.privacy.sections.map((section) => (
-                        <div key={section.heading} className="mb-8">
-                            <h2 className={`text-2xl font-semibold ${colors.text.gray[900]} mb-3`}>
+                        <div key={section.heading} className={cn('py-8 border-t flex flex-col gap-3', brand.border.inkSubtle)}>
+                            <h2 className={cn(subHeading, 'text-[clamp(24px,2.6vw,32px)]')}>
                                 {section.heading}
                             </h2>
                             {section.paragraphs.map((paragraph) => (
-                                <p key={paragraph} className={`${colors.text.gray[600]} mb-3`}>
+                                <p key={paragraph} className={cn(bodyText, 'm-0')}>
                                     {paragraph}
                                 </p>
                             ))}
                         </div>
                     ))}
 
-                    <p className={`${colors.text.gray[600]}`}>
-                        {companyInfo.name}, org.nr. {companyInfo.organization.number}, {companyInfo.address.locality}.
-                        E-post: <a href={`mailto:${companyInfo.contact.email}`} className={`${colors.text.primary[700]} underline`}>{companyInfo.contact.email}</a>
+                    <p className={cn(bodyText, 'm-0 pt-8 border-t', brand.border.inkSubtle)}>
+                        {companyInfo.name}, {siteText.privacy.orgLabel} {companyInfo.organization.number}, {companyInfo.address.locality}.
+                        {siteText.privacy.emailLabel}: <a href={`mailto:${companyInfo.contact.email}`} className={cn('underline underline-offset-[3px]', brand.hover.text.emberDark)}>{companyInfo.contact.email}</a>
                     </p>
-                </div>
-            </section>
+                </section>
+            </main>
 
             <Footer/>
         </div>

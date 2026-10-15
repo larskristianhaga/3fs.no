@@ -7,6 +7,9 @@ import PreloadLink from '@/components/PreloadLink'
 import {siteText} from '@/content/text'
 import {companyInfo} from '@/config/company'
 import {colors} from '@/config/colors'
+import {cn} from '@/lib/utils'
+import Eyebrow from '@/components/Eyebrow'
+import {container, pageHeading, subHeading, bodyText, primaryButton} from '@/config/styles'
 
 interface LocationPageProps {
     params: Promise<{
@@ -53,6 +56,8 @@ export async function generateMetadata({params}: LocationPageProps): Promise<Met
     }
 }
 
+const {brand} = colors
+
 export default async function LocationPage({params}: LocationPageProps) {
     const {area: areaSlug} = await params
     const area = getAreaBySlug(areaSlug)
@@ -69,7 +74,7 @@ export default async function LocationPage({params}: LocationPageProps) {
         })
 
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
             <BreadcrumbSchema
                 items={[
                     {name: 'Forside', url: companyInfo.website},
@@ -78,71 +83,59 @@ export default async function LocationPage({params}: LocationPageProps) {
             />
             <Header/>
 
-            <section className={`${colors.background.primary[50]} py-16`}>
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h1 className={`text-4xl sm:text-5xl font-extrabold ${colors.text.gray[900]} mb-4`}>
-                        {siteText.locations.title} {area.name}
-                    </h1>
-                    <p className={`text-lg sm:text-xl ${colors.text.gray[600]}`}>
-                        {siteText.locations.subtitle}
-                    </p>
-                </div>
-            </section>
+            <main>
+                <section className={cn(container, 'pt-14 pb-16 flex flex-col gap-6')}>
+                    <Eyebrow className={brand.text.forest}>{companyInfo.name}</Eyebrow>
+                    <h1 className={pageHeading}>{siteText.locations.title} {area.name}</h1>
+                    <p className={cn(bodyText, 'max-w-[60ch] text-[19px] text-pretty')}>{siteText.locations.subtitle}</p>
+                </section>
 
-            <section className="py-14">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className={`text-lg ${colors.text.gray[700]} leading-relaxed mb-6`}>
-                        {area.intro}
-                    </p>
-                    <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-4`}>Hva vi hjelper med</h2>
-                    <ul className="space-y-3">
-                        {area.highlights.map((highlight) => (
-                            <li key={highlight} className={`text-base ${colors.text.gray[700]}`}>
-                                - {highlight}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-
-            <section className="py-8">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`${colors.background.primary[50]} rounded-lg p-8`}>
-                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-3`}>
-                            {siteText.locations.ctaTitle}
-                        </h2>
-                        <p className={`${colors.text.gray[700]} mb-6`}>{siteText.locations.ctaText}</p>
-                        <a
-                            href="/kontakt-oss"
-                            className={`inline-block ${colors.background.primary[600]} ${colors.text.white} px-6 py-3 rounded-lg ${colors.hover.background.primary[700]} transition-colors font-semibold`}
-                        >
-                            Kontakt oss
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            {relatedCases.length > 0 && (
-                <section className="py-4 pb-12">
-                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-4`}>
-                            Lokale case fra {area.name}
-                        </h2>
-                        <div className="space-y-3">
-                            {relatedCases.map((post) => (
-                                <PreloadLink
-                                    key={post.id}
-                                    href={`/blogg/${post.id}`}
-                                    className={`block ${colors.background.white} border ${colors.border.gray[200]} rounded-lg p-4 ${colors.hover.background.gray[50]} transition-colors`}
-                                >
-                                    <h3 className={`font-semibold ${colors.text.gray[900]} mb-1`}>{post.title}</h3>
-                                    <p className={`${colors.text.gray[600]} text-sm`}>{post.excerpt}</p>
-                                </PreloadLink>
-                            ))}
+                <section className={brand.background.sand}>
+                    <div className={cn(container, 'py-[72px] grid grid-cols-1 lg:grid-cols-2 gap-12')}>
+                        <p className={cn(bodyText, 'm-0 text-lg text-pretty')}>{area.intro}</p>
+                        <div className="flex flex-col gap-5">
+                            <h2 className={subHeading}>{siteText.locations.highlightsTitle}</h2>
+                            <ul className="m-0 p-0 list-none">
+                                {area.highlights.map((highlight) => (
+                                    <li key={highlight} className={cn(bodyText, 'py-3 border-t', brand.border.inkSubtle)}>
+                                        {highlight}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </section>
-            )}
+
+                {relatedCases.length > 0 && (
+                    <section className={container}>
+                        <div className="py-[72px] flex flex-col gap-6">
+                            <h2 className={subHeading}>{siteText.locations.casesTitle} {area.name}</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                {relatedCases.map((post) => (
+                                    <PreloadLink
+                                        key={post.id}
+                                        href={`/blogg/${post.id}`}
+                                        className={cn('block border rounded-md p-6 no-underline transition-colors', brand.background.paper, brand.border.inkSubtle, brand.hover.border.ink, brand.focus.outline)}
+                                    >
+                                        <h3 className="m-0 mb-2 text-lg font-semibold">{post.title}</h3>
+                                        <p className={cn('m-0 text-[15px] leading-relaxed', brand.text.inkSoft)}>{post.excerpt}</p>
+                                    </PreloadLink>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                )}
+
+                <section className={cn(brand.background.ink, brand.text.cream)}>
+                    <div className={cn(container, 'py-20 flex flex-col items-start gap-6')}>
+                        <h2 className={subHeading}>{siteText.locations.ctaTitle}</h2>
+                        <p className={cn('m-0 max-w-[50ch] text-lg leading-relaxed', brand.text.mist)}>{siteText.locations.ctaText}</p>
+                        <a href="/kontakt-oss" className={primaryButton}>
+                            {siteText.common.contactCta}
+                        </a>
+                    </div>
+                </section>
+            </main>
 
             <Footer/>
         </div>

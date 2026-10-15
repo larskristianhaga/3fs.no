@@ -7,6 +7,8 @@ import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { companyInfo } from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
+import { cn } from '@/lib/utils'
+import { container, pageHeading, subHeading, bodyText, primaryButton } from '@/config/styles'
 
 export const metadata: Metadata = {
     title: 'Trefelling tjenester | Erfarne trefellere i Oslo og Akershus',
@@ -36,6 +38,8 @@ export const metadata: Metadata = {
     },
 }
 
+const {brand} = colors
+
 const services = siteText.services.items.map((item) => ({
     id: item.id,
     title: item.title,
@@ -45,11 +49,11 @@ const services = siteText.services.items.map((item) => ({
 
 export default function ServicesPage() {
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
             <BreadcrumbSchema
                 items={[
-                    { name: 'Forside', url: companyInfo.website },
-                    { name: 'Tjenester', url: `${companyInfo.website}/tjenester` }
+                    { name: siteText.common.breadcrumbHome, url: companyInfo.website },
+                    { name: siteText.services.title, url: `${companyInfo.website}/tjenester` }
                 ]}
             />
             {siteText.services.items.map((service) => (
@@ -61,21 +65,15 @@ export default function ServicesPage() {
             ))}
             <Header/>
 
-            <section className="relative  py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center">
-                        <h1 className={`text-3xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
-                            {siteText.services.title}
-                        </h1>
-                    </div>
-                </div>
-            </section>
+            <main>
+                <section className={cn(container, 'pt-14 pb-10')}>
+                    <h1 className={pageHeading}>{siteText.services.title}</h1>
+                </section>
 
-            <section className="py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <section className={cn(container, 'pb-24')}>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {services.map((service, index) => (
-                            <div id={service.id} key={service.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div id={service.id} key={service.id} className={cn('scroll-mt-[70px] rounded-md overflow-hidden border', brand.background.paper, brand.border.inkSubtle)}>
                                 <div className="relative h-64">
                                     <Image
                                         src={service.image}
@@ -88,53 +86,40 @@ export default function ServicesPage() {
                                         {...(index >= 2 && { loading: "lazy" as const })}
                                     />
                                 </div>
-                                <div className="p-6 sm:p-8">
-                                    <div className="flex justify-between items-start mb-4">
-                                        <h2 className={`text-xl sm:text-2xl font-bold ${colors.text.gray[900]}`}>
-                                            {service.title}
-                                        </h2>
-                                        <span className={`${colors.text.primary[600]} font-semibold text-lg`}>
-                    </span>
-                                    </div>
-                                    <p className={`text-sm sm:text-base ${colors.text.gray[600]} mb-6 leading-relaxed`}>
-                                        {service.description}
-                                    </p>
+                                <div className="p-6 sm:p-8 flex flex-col gap-4">
+                                    <h2 className={subHeading}>{service.title}</h2>
+                                    <p className={cn(bodyText, 'm-0')}>{service.description}</p>
                                 </div>
                             </div>
                         ))}
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section className="py-8">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`${colors.background.primary[50]} rounded-lg p-6`}>
-                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-2`}>
-                            Tjenester i ditt område
-                        </h2>
-                        <p className={`${colors.text.gray[700]} mb-4`}>
-                            Les mer om hvor vi tilbyr trefelling og trepleie.
+                <section className={brand.background.sand}>
+                    <div className={cn(container, 'py-[72px] flex flex-col gap-6')}>
+                        <h2 className={subHeading}>{siteText.services.areasTitle}</h2>
+                        <p className={cn(bodyText, 'm-0 max-w-[52ch]')}>
+                            {siteText.services.areasText}
                         </p>
-                        <div className="flex flex-wrap gap-3 mb-4">
+                        <div className="flex flex-wrap gap-3">
                             {siteText.locations.areas.map((area) => (
                                 <a
                                     key={area.slug}
                                     href={`/${area.slug}`}
-                                    className={`inline-block px-4 py-2 rounded-md ${colors.background.white} ${colors.text.primary[700]} border ${colors.border.primary[200]} ${colors.hover.background.primary[100]} transition-colors`}
+                                    className={cn('inline-block px-4 py-2 rounded-md border font-semibold no-underline transition-colors', brand.background.cream, brand.border.inkSubtle, brand.hover.background.ink, brand.hover.text.cream, brand.focus.outline)}
                                 >
                                     {area.name}
                                 </a>
                             ))}
                         </div>
-                        <a
-                            href="/trefelling-pris"
-                            className={`inline-block px-4 py-2 rounded-md ${colors.background.primary[600]} ${colors.text.white} ${colors.hover.background.primary[700]} transition-colors font-semibold`}
-                        >
-                            Se prisguide for trefelling
-                        </a>
+                        <div>
+                            <a href="/trefelling-pris" className={primaryButton}>
+                                {siteText.services.pricingLink}
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </main>
 
             <Footer/>
         </div>

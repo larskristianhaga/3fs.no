@@ -5,6 +5,10 @@ import ContactForm from "@/components/ContactForm";
 import {companyInfo} from '@/config/company'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
+import {cn} from '@/lib/utils'
+import {container, pageHeading, subHeading, bodyText} from '@/config/styles'
+
+const {brand} = colors
 
 export const metadata: Metadata = {
     title: 'Kontakt oss - Gratis befaring og pristilbud',
@@ -36,62 +40,43 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
             <Header/>
 
-            <section className="relative py-4">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center">
-                        <h1 className={`text-3xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
-                            {siteText.contact.title}
-                        </h1>
-                    </div>
-                </div>
-            </section>
-
-            <section className="relative py-4">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`text-center ${colors.text.gray[900]}`}>
-                        {siteText.contact.intro.map((item) => (
-                            <div>
-                                <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
-                                    {item.paragraph}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-12">
-                <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <ContactForm/>
-                </div>
-            </section>
-
-            <section className="pb-12">
-                <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`${colors.background.primary[50]} rounded-lg p-6`}>
-                        <h2 className={`text-xl font-bold ${colors.text.gray[900]} mb-2`}>
-                            Vi dekker disse områdene
-                        </h2>
-                        <p className={`${colors.text.gray[700]} mb-4`}>
-                            Les mer om tjenester i ditt nærområde:
+            <main>
+                <section className={cn(container, 'pt-14 pb-10 flex flex-col gap-5')}>
+                    <h1 className={pageHeading}>{siteText.contact.title}</h1>
+                    {siteText.contact.intro.map((item) => (
+                        <p key={item.paragraph} className={cn(bodyText, 'm-0 max-w-[60ch] text-lg text-pretty')}>
+                            {item.paragraph}
                         </p>
-                        <div className="flex flex-wrap gap-2">
+                    ))}
+                </section>
+
+                <section className={cn(container, 'pb-24')}>
+                    <div className={cn('max-w-[720px] rounded-lg p-[clamp(24px,4vw,40px)] shadow-[0_1px_0_rgba(23,32,26,.08),0_20px_50px_rgba(23,32,26,.08)]', brand.background.paper)}>
+                        <ContactForm/>
+                    </div>
+                </section>
+
+                <section className={brand.background.sand}>
+                    <div className={cn(container, 'py-[72px] flex flex-col gap-5')}>
+                        <h2 className={subHeading}>{siteText.contact.areasTitle}</h2>
+                        <p className={cn(bodyText, 'm-0')}>{siteText.contact.areasText}</p>
+                        <div className="flex flex-wrap gap-3">
                             {siteText.locations.areas.map((area) => (
                                 <a
                                     key={area.slug}
                                     href={`/${area.slug}`}
-                                    className={`inline-block px-3 py-2 rounded-md ${colors.background.white} ${colors.text.primary[700]} border ${colors.border.primary[200]} ${colors.hover.background.primary[100]} transition-colors`}
+                                    className={cn('inline-block px-4 py-2 rounded-md border font-semibold no-underline transition-colors', brand.background.cream, brand.border.inkSubtle, brand.hover.background.ink, brand.hover.text.cream, brand.focus.outline)}
                                 >
                                     {area.name}
                                 </a>
                             ))}
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </main>
 
             <Footer/>
         </div>

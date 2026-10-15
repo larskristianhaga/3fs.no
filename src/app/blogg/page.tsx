@@ -6,6 +6,11 @@ import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 import { companyInfo } from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
+import { container, pageHeading, subHeading, bodyText, primaryButton } from '@/config/styles'
+import { cn } from '@/lib/utils'
+import Eyebrow from '@/components/Eyebrow'
+
+const { brand } = colors
 
 export const metadata: Metadata = {
     title: 'Blogg - Tips og råd om trefelling',
@@ -31,33 +36,32 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
             <BreadcrumbSchema
                 items={[
-                    { name: 'Forside', url: companyInfo.website },
-                    { name: 'Blogg', url: `${companyInfo.website}/blogg` }
+                    { name: siteText.common.breadcrumbHome, url: companyInfo.website },
+                    { name: siteText.blog.title, url: `${companyInfo.website}/blogg` }
                 ]}
             />
             <Header />
 
             {/* Hero Section */}
-            <section className={`${colors.background.primary[50]} py-16 sm:py-24`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center">
-                        <h1 className={`text-4xl sm:text-5xl font-extrabold ${colors.text.gray[900]} tracking-tight mb-4`}>
-                            {siteText.blog.title}
-                        </h1>
-                        <p className={`text-lg sm:text-xl ${colors.text.gray[600]} max-w-2xl mx-auto`}>
-                            {siteText.blog.subtitle}
-                        </p>
-                    </div>
+            <section className="py-16 sm:py-24">
+                <div className={container}>
+                    <Eyebrow className={cn('mb-5', brand.text.emberDark)}>{siteText.blog.eyebrow}</Eyebrow>
+                    <h1 className={cn(pageHeading, 'mb-6')}>
+                        {siteText.blog.title}
+                    </h1>
+                    <p className={cn(bodyText, 'text-lg sm:text-xl max-w-2xl')}>
+                        {siteText.blog.subtitle}
+                    </p>
                 </div>
             </section>
 
             {/* Blog Posts Grid */}
-            <section className="py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <section className={cn('py-16 sm:py-20', brand.background.sand)}>
+                <div className={container}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {siteText.blog.posts.map((post) => (
                             <BlogCard
                                 key={post.id}
@@ -74,19 +78,16 @@ export default function BlogPage() {
             </section>
 
             {/* CTA Section */}
-            <section className={`${colors.background.primary[50]} py-16`}>
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className={`text-2xl sm:text-3xl font-bold ${colors.text.gray[900]} mb-4`}>
-                        Har du spørsmål? Vi er her for å hjelpe
+            <section className={cn('py-16 sm:py-20', brand.background.ink, brand.text.cream)}>
+                <div className={cn(container, 'max-w-4xl text-center')}>
+                    <h2 className={cn(subHeading, 'mb-4')}>
+                        {siteText.blog.ctaTitle}
                     </h2>
-                    <p className={`${colors.text.gray[600]} mb-6 text-lg`}>
-                        Kontakt oss direkte eller sjekk ut FAQ-siden vår for mer informasjon.
+                    <p className={cn('mb-8 text-lg', brand.text.mist)}>
+                        {siteText.blog.ctaText}
                     </p>
-                    <a
-                        href="/kontakt-oss"
-                        className={`inline-block ${colors.background.primary[600]} ${colors.text.white} px-8 py-3 rounded-lg ${colors.hover.background.primary[700]} transition-colors font-semibold`}
-                    >
-                        Kontakt oss
+                    <a href="/kontakt-oss" className={primaryButton}>
+                        {siteText.common.contactCta}
                     </a>
                 </div>
             </section>

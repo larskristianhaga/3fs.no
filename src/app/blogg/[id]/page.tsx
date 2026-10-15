@@ -8,6 +8,10 @@ import ArticleSchema from '@/components/ArticleSchema'
 import { companyInfo } from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
+import { container, pageHeading, subHeading, primaryButton } from '@/config/styles'
+import { cn } from '@/lib/utils'
+
+const { brand } = colors
 
 interface PageProps {
     params: Promise<{
@@ -73,7 +77,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         .slice(0, 3)
 
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
             <ArticleSchema
                 title={post.title}
                 description={post.excerpt}
@@ -83,77 +87,76 @@ export default async function BlogPostPage({ params }: PageProps) {
             />
             <BreadcrumbSchema
                 items={[
-                    { name: 'Forside', url: companyInfo.website },
-                    { name: 'Blogg', url: `${companyInfo.website}/blogg` },
+                    { name: siteText.common.breadcrumbHome, url: companyInfo.website },
+                    { name: siteText.blog.title, url: `${companyInfo.website}/blogg` },
                     { name: post.title, url: `${companyInfo.website}/blogg/${post.id}` }
                 ]}
             />
             <Header />
 
             {/* Breadcrumb */}
-            <div className={`${colors.background.gray[50]} py-4`}>
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className={cn('border-b py-4', brand.border.inkSubtle)}>
+                <div className={cn(container, 'max-w-4xl')}>
                     <div className="flex items-center gap-2 text-sm">
-                        <PreloadLink href="/blogg" className={`${colors.text.primary[600]} hover:underline`}>
-                            Blogg
+                        <PreloadLink href="/blogg" className={cn('underline underline-offset-4', brand.text.ink, brand.hover.text.emberDark)}>
+                            {siteText.blog.title}
                         </PreloadLink>
-                        <span className={colors.text.gray[500]}>›</span>
-                        <span className={colors.text.gray[600]}>{post.title}</span>
+                        <span className={brand.text.inkMuted}>›</span>
+                        <span className={brand.text.inkSoft}>{post.title}</span>
                     </div>
                 </div>
             </div>
 
-            {/* Article Header */}
             <article className="py-16 sm:py-24">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className={cn(container, 'max-w-4xl')}>
                     <header className="mb-12">
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${colors.background.primary[100]} ${colors.text.primary[700]}`}>
+                        <div className="flex flex-wrap items-center gap-3 mb-5 text-sm">
+                            <span className={cn('font-semibold tracking-[.08em] uppercase', brand.text.emberDark)}>
                                 {post.category}
                             </span>
-                            <time className={`text-sm ${colors.text.gray[500]}`}>
+                            <time className={brand.text.inkMuted}>
                                 {formattedDate}
                             </time>
-                            <span className={`text-sm ${colors.text.gray[500]}`}>
+                            <span className={brand.text.inkMuted}>
                                 • {post.readTime}
                             </span>
                         </div>
 
-                        <h1 className={`text-4xl sm:text-5xl font-extrabold ${colors.text.gray[900]} mb-4 leading-tight`}>
+                        <h1 className={cn(pageHeading, 'mb-6')}>
                             {post.title}
                         </h1>
 
-                        <p className={`text-xl ${colors.text.gray[600]} leading-relaxed`}>
+                        <p className={cn('text-xl leading-relaxed max-w-[70ch]', brand.text.inkSoft)}>
                             {post.excerpt}
                         </p>
                     </header>
 
                     {/* Article Content */}
-                    <div className={`prose prose-lg max-w-none mb-12`}>
-                        <div className={`${colors.text.gray[700]} whitespace-pre-wrap leading-relaxed text-lg`}>
+                    <div className={cn('mb-12 pt-10 border-t', brand.border.inkSubtle)}>
+                        <div className={cn('max-w-[70ch] whitespace-pre-wrap leading-relaxed text-lg', brand.text.inkSoft)}>
                             {post.content}
                         </div>
                     </div>
 
                     {/* Related Articles */}
                     {relatedPosts.length > 0 && (
-                        <section className={`mt-16 pt-12 border-t ${colors.border.gray[200]}`}>
-                            <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-8`}>
-                                Relaterte artikler
+                        <section className={cn('mt-16 pt-12 border-t', brand.border.inkSubtle)}>
+                            <h2 className={cn(subHeading, 'mb-8')}>
+                                {siteText.blog.relatedTitle}
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {relatedPosts.map((related) => (
-                                    <article key={related.id} className={`${colors.background.gray[50]} p-6 rounded-lg hover:shadow-md transition-shadow`}>
-                                        <h3 className={`text-lg font-semibold ${colors.text.gray[900]} mb-2`}>
-                                            <PreloadLink href={`/blogg/${related.id}`} className={`${colors.hover.text.primary[700]} transition-colors`}>
+                                    <article key={related.id} className={cn('rounded-md border p-6', brand.background.paper, brand.border.inkSubtle)}>
+                                        <h3 className="text-lg font-semibold mb-2">
+                                            <PreloadLink href={`/blogg/${related.id}`} className={cn('no-underline transition-colors', brand.hover.text.emberDark)}>
                                                 {related.title}
                                             </PreloadLink>
                                         </h3>
-                                        <p className={`text-sm ${colors.text.gray[600]} mb-4`}>
+                                        <p className={cn('text-sm mb-4', brand.text.inkSoft)}>
                                             {related.excerpt}
                                         </p>
-                                        <PreloadLink href={`/blogg/${related.id}`} className={`text-sm ${colors.text.primary[600]} hover:underline font-medium`}>
-                                            Les mer →
+                                        <PreloadLink href={`/blogg/${related.id}`} className={cn('text-sm font-semibold underline underline-offset-4 transition-colors', brand.text.ink, brand.hover.text.emberDark)}>
+                                            {siteText.common.readMore}
                                         </PreloadLink>
                                     </article>
                                 ))}
@@ -162,18 +165,15 @@ export default async function BlogPostPage({ params }: PageProps) {
                     )}
 
                     {/* CTA */}
-                    <section className={`mt-16 pt-12 ${colors.background.primary[50]} px-8 py-12 rounded-lg text-center`}>
-                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-4`}>
-                            Trenger du profesjonell hjelp?
+                    <section className={cn('mt-16 px-8 py-12 rounded-md text-center', brand.background.ink, brand.text.cream)}>
+                        <h2 className={cn(subHeading, 'mb-4')}>
+                            {siteText.blog.articleCtaTitle}
                         </h2>
-                        <p className={`${colors.text.gray[600]} mb-6 text-lg`}>
-                            Kontakt oss i dag for gratis befaring og pristilbud
+                        <p className={cn('mb-8 text-lg', brand.text.mist)}>
+                            {siteText.blog.articleCtaText}
                         </p>
-                        <a
-                            href="/kontakt-oss"
-                            className={`inline-block ${colors.background.primary[600]} ${colors.text.white} px-8 py-3 rounded-lg ${colors.hover.background.primary[700]} transition-colors font-semibold`}
-                        >
-                            Be om befaring
+                        <a href="/kontakt-oss" className={primaryButton}>
+                            {siteText.common.requestQuoteCta}
                         </a>
                     </section>
                 </div>

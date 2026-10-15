@@ -4,11 +4,13 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import ServicesShowcase from "@/components/ServicesShowcase";
+import Eyebrow from "@/components/Eyebrow";
 import PreloadLink from "@/components/PreloadLink";
 import {companyInfo} from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 import { cn } from '@/lib/utils'
+import { container, displayHeading, sectionHeading, pillButton, primaryButton } from '@/config/styles'
 
 export const metadata: Metadata = {
     title: 'Trefelling i Oslo og Akershus | Erfarne trefellere | Trefellingsspesialisten AS',
@@ -41,21 +43,6 @@ export const metadata: Metadata = {
 
 const {brand} = colors
 const home = siteText.home
-
-const container = 'max-w-[1280px] mx-auto px-6'
-const displayHeading = 'm-0 font-heading stretch-condensed font-black uppercase text-balance'
-const sectionHeading = cn(displayHeading, 'text-[clamp(44px,5.5vw,80px)] leading-[.92]')
-const pillButton = cn('inline-flex items-center px-[26px] py-4 rounded-full font-semibold text-[17px] no-underline transition-colors', brand.focus.outline)
-const primaryButton = cn(pillButton, brand.background.ember, brand.text.ink, brand.hover.background.emberLight)
-
-function Eyebrow({children, className}: {children: React.ReactNode, className?: string}) {
-    return (
-        <div className={cn('flex items-center gap-2.5 text-sm font-semibold tracking-[.08em] uppercase', className)}>
-            <span className={cn('w-7 h-0.5', brand.background.ember)} aria-hidden="true"/>
-            {children}
-        </div>
-    )
-}
 
 export default function HomePage() {
     return (
