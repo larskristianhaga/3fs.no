@@ -13,8 +13,11 @@ jobs:
     name: "Check broken links"
     runs-on: ubuntu-26.04-arm
     steps:
+      # Canonical, og:url and og:image links point at https://3fs.no. While SITE_URL is
+      # another host (3fs.no still serves the old Wix site), skip them; the uptime check
+      # already verifies those pages on SITE_URL.
       - name: Check for broken links
         uses: ruzickap/action-my-broken-link-checker@3337ef0c9ac76042e776df6c44590dd6bf58dcaf # 3.0.1
         with:
           url: ${{ vars.SITE_URL }}
-          cmd_params: "--max-connections=1 --buffer-size=8192 --header='User-Agent:muffet' --timeout=30 --verbose --color=always"
+          cmd_params: "--max-connections=1 --buffer-size=8192 --header='User-Agent:muffet' --timeout=30 --verbose --color=always ${{ !contains(vars.SITE_URL, '3fs.no') && '--exclude=''^https://3fs[.]no''' || '' }}"
