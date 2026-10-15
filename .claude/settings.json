@@ -1,0 +1,7 @@
+{
+  "sandbox": {
+    "network": {
+      "allowedDomains": ["3fs.vercel.app"]
+    }
+  }
+}
