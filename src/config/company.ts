@@ -1,4 +1,4 @@
-export const yearsOfExperience = 20
+export const yearsOfExperience = 15
 
 export const companyInfo = {
   name: "Trefellingsspesialisten AS",

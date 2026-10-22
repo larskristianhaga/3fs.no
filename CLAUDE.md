@@ -172,7 +172,7 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 - **All content is centralized**: Changing site copy requires editing `src/content/text.ts`. Do not hardcode text in components.
 - **Colors use config**: Never add new `bg-*` or `text-*` classes directly. Use `src/config/colors.ts` and reference them in components.
 - **Metadata is per-page**: Each page defines its own metadata. Update `metadata` export if changing page titles or descriptions.
-- **Years of experience**: Never hardcode "15 år" – use `yearsOfExperience` from `src/config/company.ts` (blog posts are dated and intentionally left as written).
+- **Years of experience**: Never hardcode "15 år" – use `yearsOfExperience` from `src/config/company.ts` (this includes blog posts, so every page shows the same number).
 
 ### Code Style
 
