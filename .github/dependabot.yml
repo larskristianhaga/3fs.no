@@ -12,6 +12,12 @@ updates:
     open-pull-requests-limit: 5
     cooldown:
       default-days: 7
+    # One PR for all minor/patch bumps, so parallel PRs don't race on package-lock.json
+    groups:
+      npm-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
     schedule:
       interval: "daily"
       time: "08:00"
