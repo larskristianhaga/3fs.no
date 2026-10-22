@@ -25,7 +25,7 @@ npm start               # Run production server
 - **`src/app/`** – Next.js App Router (pages, layouts, API routes)
   - **`(pages)/`** – Public pages (home, services, about, FAQ, contact)
   - **`api/contact/`** – Email submission endpoint using Resend
-  - **`layout.tsx`** – Root layout with global metadata, Analytics, SpeedInsights
+  - **`layout.tsx`** – Root layout with global metadata and Vercel Speed Insights
 - **`src/components/`** – React components
   - **`Brand.tsx`** – Shared design building blocks: `styles` (container, headings, pill buttons, links, cards), `PageShell` (cream page + Header/Footer), `PageHero`, `Eyebrow`, `CtaBand`, `AreaLinks`, `ContactDetails`. Build every page from these
   - **`ui/sheet.tsx`** – Radix dialog used for the mobile menu
@@ -132,7 +132,7 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 
 - **Next.js Image Optimization**: Configured for WebP/AVIF formats with 1-year cache
 - **Turbopack**: Used for both dev and build for faster compilation
-- **Vercel Analytics** & **Speed Insights** integrated for monitoring
+- **Vercel Speed Insights** integrated for performance monitoring (Vercel Analytics was removed; PostHog handles analytics)
 - **Lazy loading**: Images lazy load with `loading="lazy"`
 
 ## Common Development Tasks
@@ -172,7 +172,7 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 - **All content is centralized**: Changing site copy requires editing `src/content/text.ts`. Do not hardcode text in components.
 - **Colors use config**: Never add new `bg-*` or `text-*` classes directly. Use `src/config/colors.ts` and reference them in components.
 - **Metadata is per-page**: Each page defines its own metadata. Update `metadata` export if changing page titles or descriptions.
-- **Years of experience**: Never hardcode "15 år" – use `yearsOfExperience` from `src/config/company.ts` (blog posts are dated and intentionally left as written).
+- **Years of experience**: Never hardcode "15 år" – use `yearsOfExperience` from `src/config/company.ts` (this includes blog posts, so every page shows the same number).
 
 ### Code Style
 

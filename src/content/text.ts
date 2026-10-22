@@ -507,7 +507,7 @@ export const siteText = {
                 id: 'treet-er-syk',
                 title: 'Treet er syk - må det fellas?',
                 excerpt: 'Hvordan identifisiere om treet ditt er syk og når det er tiden for felling versus behandling.',
-                content: `Å ha et syk tre i hagen er frustrerende. Du er usikker på om du bør behandle det, kutte det eller felle det helt. Som erfarne trefellere med over 15 års erfaring, har vi sett mange tilfeller av syke trær. I denne guiden lærer du hvordan du gjenkjenner tegn på sykdom, hva behandlingsalternativene er, og når det er tid for felling.
+                content: `Å ha et syk tre i hagen er frustrerende. Du er usikker på om du bør behandle det, kutte det eller felle det helt. Som erfarne trefellere med over ${yearsOfExperience} års erfaring, har vi sett mange tilfeller av syke trær. I denne guiden lærer du hvordan du gjenkjenner tegn på sykdom, hva behandlingsalternativene er, og når det er tid for felling.
 
 TEGN PÅ AT TREET DITT ER SIKT
 
@@ -557,7 +557,7 @@ Det er tid for felling når:
 
 GRATIS BEFARING
 
-Hvis du er usikker, kan du kontakte oss for en gratis befaring. Vi vurderer treet ditt, foreslår løsninger, og gir deg et uforpliktende pristilbud. Med over 15 års erfaring kan vi si deg raskt hva som er best for din situasjon.
+Hvis du er usikker, kan du kontakte oss for en gratis befaring. Vi vurderer treet ditt, foreslår løsninger, og gir deg et uforpliktende pristilbud. Med over ${yearsOfExperience} års erfaring kan vi si deg raskt hva som er best for din situasjon.
 
 Ikke venter for lenge - syke trær kan bli farlige. Ta kontakt med oss i dag!`,
                 category: 'Trepleie',
@@ -687,7 +687,7 @@ Førstehjelpsutstyr: I tilfelle ulykkestilfeller.
 
 TRENING OG ERFARING
 
-Vår erfarne klatrer har over 15 års erfaring. Han har:
+Vår erfarne klatrer har over ${yearsOfExperience} års erfaring. Han har:
 
 - Gjennomført sertifiseringskurser
 - Trenet med eksperter
@@ -934,7 +934,7 @@ Vi har:
 
 KONTAKT OSS I DAG
 
-Tomterydding er vår spesialitet. Med over 15 års erfaring har vi gjennomført hundrevis av tomteprosjekter i Oslo, Akershus, Østfold og Buskerud.
+Tomterydding er vår spesialitet. Med over ${yearsOfExperience} års erfaring har vi gjennomført hundrevis av tomteprosjekter i Oslo, Akershus, Østfold og Buskerud.
 
 Få en gratis befaring i dag!`,
                 category: 'Tomterydding',
@@ -1206,7 +1206,7 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
             {
                 heading: 'Statistikk og feilsøking',
                 paragraphs: [
-                    'Vi bruker PostHog (servere i EU) og Vercel Analytics for å forstå hvordan nettsiden brukes, for eksempel hvilke sider som besøkes og om kontaktskjemaet sendes, og for å oppdage tekniske feil. Behandlingsgrunnlaget er vår berettigede interesse i å forbedre nettsiden (GDPR art. 6 nr. 1 f).',
+                    'Vi bruker PostHog (servere i EU) for å forstå hvordan nettsiden brukes, for eksempel hvilke sider som besøkes og om kontaktskjemaet sendes, og for å oppdage tekniske feil. Vercel Speed Insights måler hvor raskt sidene laster. Behandlingsgrunnlaget er vår berettigede interesse i å forbedre nettsiden (GDPR art. 6 nr. 1 f).',
                     'Begge verktøyene er satt opp uten informasjonskapsler (cookies) og lagrer ingenting på enheten din. Vi bruker ikke dataene til markedsføring og deler dem ikke med andre.',
                 ],
             },
