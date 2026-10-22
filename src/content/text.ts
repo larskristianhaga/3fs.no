@@ -194,42 +194,179 @@ export const siteText = {
 
     services: {
         title: 'Tjenester',
+        readMore: 'Les mer om',
+        detailsTitle: 'Slik jobber vi',
+        faqTitle: 'Spørsmål om',
+        areasTitle: 'Her tilbyr vi',
+        areasText: 'Vi holder til i Ås og tar oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud.',
+        otherServicesTitle: 'Andre tjenester',
+        allServicesLink: 'Se alle tjenestene →',
+        ctaTitle: 'Vil du ha pris på jobben?',
+        ctaText: 'Vi kommer på gratis befaring, ser på forholdene og gir deg fastpris.',
         items: [
             {
                 id: 'trefelling',
                 title: 'Trefelling',
                 description: `Vi utfører felling av alle typer trær, både små og store. Hvert tre er unikt med tanke på størrelse, tilstand og plassering, og det kreves derfor ulike fellingsmetoder, for å ta ned treet på en sikker og skånsom måte. Vår erfaren klatrer med mer enn ${yearsOfExperience} års erfaring, er vant med å håndtere utfordrende situasjoner i høyden og har spesialutstyr for å ta ned spesielt vanskelige trær.`,
                 imageAlt: 'Profesjonell trefelling med spesialistutstyr',
+                intro: 'Alle typer trær, store og små. Vi velger metode etter størrelse, tilstand og plassering — også tett på hus, gjerder og strømledninger.',
+                metaDescription: 'Trygg trefelling i Oslo, Akershus, Østfold og Buskerud. Erfarne trefellere tar ned store og vanskelige trær tett på hus og ledninger. Gratis befaring og fastpris.',
+                details: [
+                    'Når et tre står tett på hus, gjerder, veier eller strømledninger, klatrer vi opp og tar det ned i seksjoner ovenfra og ned. Da har vi kontroll på hver del, og treet kan felles uten skade på omgivelsene. Vi planlegger jobben nøye på befaringen, så vi vet hvilken metode og hvilket utstyr som trengs før vi starter.',
+                    'Trefelling kombineres ofte med stubbefresing, flishugging og bortkjøring, så hele jobben blir gjort i samme oppdrag. Vi rydder opp etter oss, og du kan selv velge om du vil beholde noe av veden eller flisen.',
+                ],
+                faq: [
+                    {
+                        question: 'Hva koster trefelling?',
+                        answer: 'Prisen avhenger av treets høyde, diameter og tilstand, avstanden til hus, vei og ledninger, og hvor god tilgang det er for utstyr og bortkjøring. Vi kommer på gratis befaring og gir deg et uforpliktende pristilbud før arbeidet starter. I prisguiden vår finner du eksempler fra typiske oppdrag.',
+                    },
+                    {
+                        question: 'Kan dere felle trær som står vanskelig til?',
+                        answer: `Ja, vår erfarne klatrer med over ${yearsOfExperience} års erfaring er vant med å håndtere utfordrende situasjoner. Vi har spesialutstyr for å ta ned trær som står inneklemt mellom hus, nær ledninger, eller i andre vanskelige plasseringer.`,
+                    },
+                    {
+                        question: 'Trenger jeg tillatelse for å felle trær?',
+                        answer: 'I noen kommuner kreves det tillatelse for å felle trær, spesielt for større trær eller trær i vernede områder. Vi anbefaler at du sjekker med din kommune før du bestiller trefelling. Vi kan også hjelpe deg med å finne informasjon om lokale reguleringer.',
+                    },
+                    {
+                        question: 'Hvor lang tid tar det å felle et tre?',
+                        answer: 'Det avhenger av treets størrelse, plassering og om det er hindringer i nærheten. Et enkelt tre kan ta fra noen timer til en hel dag. Vi gir deg et tidsestimat ved befaring.',
+                    },
+                    {
+                        question: 'Når på året er det best å felle trær?',
+                        answer: 'Vinter og tidlig vår er ofte en god tid, fordi treet er i dvale og arbeidet blir enklere. Vi feller likevel trær hele året ved behov.',
+                    },
+                ],
             },
             {
                 id: 'stubbefresing',
                 title: 'Stubbefresing',
                 description: 'Stubbefresing er den mest skånsomme og effektive måten å fjerne stubber på som står i veien eller som du ønsker å fjerne. Vi freser bort alle synlige røtter, og ca. 20-30 cm under bakken for å frese hovedroten under stubben, slik at alle spor etter stubben og røttene er fjernet. Maskinen har belter, så vi unngår skade på plen og hage, og du sitter igjen med et flott resultat.',
                 imageAlt: 'Stubbefresing med dyktig maskinoperatør',
+                intro: 'Den mest skånsomme måten å fjerne stubber på. Vi freser bort synlige røtter og hovedroten ca. 20–30 cm under bakken.',
+                metaDescription: 'Stubbefresing i Oslo, Akershus, Østfold og Buskerud. Vi freser bort stubben og hovedroten ca. 20–30 cm under bakken, med beltemaskin som skåner plenen.',
+                details: [
+                    'Når stubben og hovedroten er frest bort, er det ingen spor igjen etter treet, og du kan bruke området som du vil, for eksempel til plen eller bed. Det er en enklere og mer skånsom løsning enn å grave opp stubben.',
+                    'Stubbefresing kan bestilles sammen med trefelling, eller som en egen jobb for stubber som allerede står i hagen. Send oss gjerne et bilde av stubbene, så får du et uforpliktende pristilbud.',
+                ],
+                faq: [
+                    {
+                        question: 'Hva er stubbefresing?',
+                        answer: 'Stubbefresing er den mest skånsomme og effektive måten å fjerne stubber på. Vi freser ca. 20-30 cm under bakken for å fjerne hovedroten og alle synlige røtter, slik at ingen spor etter stubben er igjen.',
+                    },
+                    {
+                        question: 'Blir plenen ødelagt av maskinen?',
+                        answer: 'Nei, stubbefreseren går på belter, så vi unngår skade på plen og hage.',
+                    },
+                    {
+                        question: 'Kan dere fjerne stubber etter trær som allerede er felt?',
+                        answer: 'Ja, vi freser både stubber etter trær vi feller selv og stubber som har stått i hagen en stund. Ta kontakt, gjerne med et bilde, så avtaler vi en gratis befaring.',
+                    },
+                ],
             },
             {
                 id: 'bortkjoring',
                 title: 'Bortkjøring',
                 description: 'Bortkjøring av flis, greiner og trestammer etter gjennomført arbeid er noe vi gjerne hjelper med. Etter felling kan det være mye som skal ryddes, og fjernes, noe som kan være tidskrevende å gjøre selv. Vi har et stort utvalg av kjøretøy, og hengere som gjør bortkjøringen av alt trevirke effektivt og enkelt.',
                 imageAlt: 'Effektiv bortkjøring av trevirke',
+                intro: 'Stammer, greiner og flis kjøres bort etter jobben, så du slipper tidkrevende rydding selv.',
+                metaDescription: 'Bortkjøring av trestammer, greiner og flis etter trefelling i Oslo, Akershus, Østfold og Buskerud. Vi rydder opp og tar med oss trevirket.',
+                details: [
+                    'Bortkjøringen gjøres på samme oppdrag som fellingen, så du slipper å leie henger eller kjøre mange turer selv. Vi rydder grundig og forlater stedet like fint som vi fant det.',
+                    'Du bestemmer selv hva som skal kjøres bort. Mange velger å beholde noe av materialet, for eksempel ved til brenning eller flis til dekkbark i bedet.',
+                ],
+                faq: [
+                    {
+                        question: 'Rydder dere opp etter trefelling?',
+                        answer: 'Ja, vi sørger alltid for å rydde opp grundig etter endt arbeid. Dette inkluderer bortkjøring av trevirke, kvist og flis hvis ønskelig. Vi forlater stedet like fint som vi fant det.',
+                    },
+                    {
+                        question: 'Kan jeg beholde noe av veden eller flisen?',
+                        answer: 'Ja, du kan velge å beholde noe av materialet, for eksempel flis til bruk som dekkbark eller ved til brenning. Resten kjører vi bort.',
+                    },
+                    {
+                        question: 'Er bortkjøring med i prisen?',
+                        answer: 'Behovet for bortkjøring og tilgangen for kjøretøy er med på å bestemme prisen. Vi avklarer hva som skal kjøres bort på befaringen, så det er med i pristilbudet du får.',
+                    },
+                ],
             },
             {
                 id: 'flishugging',
                 title: 'Flishugging',
                 description: 'Flishugging er en miljøvennlig og effektiv måte å rydde kvist, greiner og mindre trestammer på. Maskinen kverner trevirke til flis, og kan ta trestammer inntil 30 cm i diameter. Dette reduserer volumet av trevirke etter et trefellingsoppdrag og sparer tid på bortkjøring. Flisen fra vår flishugger egner seg godt som dekkbark i bed eller skråninger og som fyllmasse for å jevne terreng.',
                 imageAlt: 'Flishugging av trestammer og greiner',
+                intro: 'Greiner og kvist blir til flis på stedet. Behold flisa til bed og stier, eller la oss ta den med.',
+                metaDescription: 'Flishugging av greiner, kvist og stammer inntil 30 cm i Oslo, Akershus, Østfold og Buskerud. Behold flisen som dekkbark, eller la oss kjøre den bort.',
+                details: [
+                    'Vi hugger greiner og kvist til flis der vi jobber, så det blir langt mindre volum å kjøre bort etter et trefellingsoppdrag. Det sparer både tid og plass.',
+                    'Flisen kan du bruke selv som dekkbark i bed og skråninger, på stier, eller som fyllmasse for å jevne ut terreng. Vil du ikke beholde den, tar vi den med oss.',
+                ],
+                faq: [
+                    {
+                        question: 'Kan jeg få treet fliset?',
+                        answer: 'Ja, vi tilbyr flishugging som en miljøvennlig måte å håndtere kvist, greiner og mindre trestammer på. Det reduserer volumet og sparer tid på bortkjøring.',
+                    },
+                    {
+                        question: 'Hvor tykke stammer kan flishuggeren ta?',
+                        answer: 'Flishuggeren vår tar trestammer inntil 30 cm i diameter. Tykkere stammer kapper vi opp og kjører bort, eller lar ligge som ved om du ønsker det.',
+                    },
+                    {
+                        question: 'Hva kan jeg bruke flisen til?',
+                        answer: 'Flisen egner seg godt som dekkbark i bed eller skråninger, på stier og som fyllmasse for å jevne terreng.',
+                    },
+                ],
             },
             {
                 id: 'beskjaering',
                 title: 'Beskjæring',
                 description: 'Beskjæring kan være en fin løsning om treet er større eller høyere enn du ønsker, eller hvis det hindrer utsikt eller sol. Store trær kan beskjæres, reduseres, formes eller toppes, alt ettersom hva du som kunde ønsker. Våre dyktige trefellere har alle gjennomført beskjæringskurs, og har kompetanse innen beskjæring av alle typer trær, hekker og andre buskvekster.',
                 imageAlt: 'Profesjonell beskjæring av tre',
+                intro: 'Fjerning av døde og tunge greiner, reduksjon og forming. Gir et sunnere tre og mer lys i hagen.',
+                metaDescription: 'Beskjæring av trær, hekker og busker i Oslo, Akershus, Østfold og Buskerud. Vi reduserer, former og topper trær som tar sol eller utsikt.',
+                details: [
+                    'Med beskjæring kan du ofte beholde treet selv om det har blitt for stort. Vi fjerner døde og tunge greiner, reduserer kronen eller former treet, slik at du får mer lys og utsikt og et sunnere tre.',
+                    'Store trær klatrer vi opp i, så vi kommer til der det trengs. På befaringen ser vi på treet sammen med deg og anbefaler hva som bør gjøres.',
+                ],
+                faq: [
+                    {
+                        question: 'Når er det best å beskjære trær?',
+                        answer: 'Vinter og tidlig vår er vanligvis best, når treet er i dvale. Det reduserer stresset på treet og gjør arbeidet enklere. Vi kan likevel beskjære hele året ved behov.',
+                    },
+                    {
+                        question: 'Bør jeg beskjære eller felle treet?',
+                        answer: 'Er treet friskt, men større eller høyere enn du ønsker, eller tar det sol og utsikt, kan beskjæring være nok. Vi vurderer treet på en gratis befaring og gir deg en anbefaling.',
+                    },
+                    {
+                        question: 'Beskjærer dere hekker og busker også?',
+                        answer: 'Ja, trefellerne våre har gjennomført beskjæringskurs og beskjærer alle typer trær, hekker og andre buskvekster.',
+                    },
+                ],
             },
             {
                 id: 'tomterydding',
                 title: 'Tomterydding',
                 description: 'I vår maskin- og utstyrspark har vi alt vi trenger for å effektivt klargjøre og rydde en eiendom for trær, busker og annen vegetasjon. Vi har lang erfaring med tomterydding for både private kunder, entreprenører og kommuner. Våre maskiner og utstyr er beregnet på både små og store områder, og vi kan håndtere arbeid i krevende og vanskelig terreng.',
                 imageAlt: 'Tomterydding med moderne maskiner',
+                intro: 'Klargjøring av tomt før bygging eller ny hage. Felling, fresing og rydding i ett og samme oppdrag.',
+                metaDescription: 'Tomterydding i Oslo, Akershus, Østfold og Buskerud for private, entreprenører og kommuner. Felling, stubbefresing, flishugging og bortkjøring i ett oppdrag.',
+                details: [
+                    'En tomterydding samler flere tjenester i ett oppdrag: vi feller trær, freser stubber, hugger kvist til flis og kjører bort trevirket. Du får én kontakt og ett pristilbud for hele jobben.',
+                    'Vi har maskiner og utstyr for både små og store områder, også i krevende og vanskelig terreng. Tomten blir klar for bygging, ny hage eller annen bruk.',
+                ],
+                faq: [
+                    {
+                        question: 'Hva inngår i tomterydding?',
+                        answer: 'Vi tilpasser jobben etter tomten. Vanligvis inngår felling av trær og busker, stubbefresing, flishugging og bortkjøring av trevirke. Vi går gjennom hva som skal gjøres på befaringen.',
+                    },
+                    {
+                        question: 'Tar dere store tomter og krevende terreng?',
+                        answer: 'Ja, maskinene og utstyret vårt er beregnet på både små og store områder, og vi har erfaring med arbeid i krevende og vanskelig terreng.',
+                    },
+                    {
+                        question: 'Hvem gjør dere tomterydding for?',
+                        answer: 'Vi har lang erfaring med tomterydding for private kunder, entreprenører og kommuner.',
+                    },
+                ],
             },
         ],
     },

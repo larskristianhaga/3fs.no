@@ -4,7 +4,7 @@ import {companyInfo} from '@/config/company'
 export async function GET() {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || companyInfo.website
 
-    const serviceList = siteText.services.items.map((service) => `- ${service.title}`).join('\n')
+    const serviceList = siteText.services.items.map((service) => `- ${service.title}: ${baseUrl}/tjenester/${service.id}`).join('\n')
     const areaList = siteText.locations.areas
         .map((area) => `- ${area.name}: ${baseUrl}/${area.slug}`)
         .join('\n')
