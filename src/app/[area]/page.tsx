@@ -31,7 +31,8 @@ export async function generateMetadata({params}: LocationPageProps): Promise<Met
     }
 
     return {
-        title: `Trefelling i ${area.name} | ${companyInfo.name}`,
+        // The root layout's title template appends the company name
+        title: `Trefelling i ${area.name}`,
         description: area.description,
         keywords: `trefelling ${area.name.toLowerCase()}, beskjæring ${area.name.toLowerCase()}, stubbefresing ${area.name.toLowerCase()}, ${companyInfo.name}`,
         alternates: {
