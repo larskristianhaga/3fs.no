@@ -2,7 +2,7 @@ import {siteText} from '@/content/text'
 import {companyInfo} from '@/config/company'
 
 export async function GET() {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || companyInfo.website
+    const baseUrl = companyInfo.website
 
     const serviceList = siteText.services.items.map((service) => `- ${service.title}: ${baseUrl}/tjenester/${service.id}`).join('\n')
     const areaList = siteText.locations.areas

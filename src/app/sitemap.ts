@@ -21,7 +21,7 @@ const PAGE_LAST_MODIFIED = {
 } as const
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || companyInfo.website
+    const baseUrl = companyInfo.website
 
     const blogPosts = siteText.blog.posts.map(post => ({
         url: `${baseUrl}/blogg/${post.id}`,

@@ -197,7 +197,10 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 
 ## CI
 
-- **`SITE_URL`** (GitHub Actions repository variable) is the host the live checks run against — currently `https://3fs.vercel.app`, later `https://3fs.no`. Change it in the repo's Actions variables when the domain moves; no code change needed. It is separate from the canonical domain (`companyInfo.website` in `src/config/company.ts`), which the app uses for metadata, sitemap, robots and JSON-LD — never hardcode `https://3fs.no` in app code.
+- **The site runs on a temporary domain, `https://3fs.vercel.app`** (3fs.no still serves the old Wix site). Nothing in the app or the checks may point at 3fs.no until the domain moves. Two variables hold the address, and both are `https://3fs.vercel.app` today:
+  - **`NEXT_PUBLIC_BASE_URL`** (Vercel environment variable) is the site's own address. `companyInfo.website` in `src/config/company.ts` reads it (default `https://3fs.vercel.app`) and the app uses it for canonical URLs, metadata, sitemap, robots, llms.txt and JSON-LD. Never hardcode a domain in app code.
+  - **`SITE_URL`** (GitHub Actions repository variable) is the host the live checks (uptime, link checker, SEO audit) run against.
+  - When the domain moves, change both to `https://3fs.no` and redeploy; no code change needed.
 - A weekly **uptime check** requests every sitemap page (rewritten to `SITE_URL`) and the contact email health endpoint (`.github/workflows/uptime-check.yml`).
 - A **smoke test** runs `npm run test:e2e` against every successful Vercel Preview deployment (`.github/workflows/smoke-test.yml`). Previews must stay public (Vercel Deployment Protection off) for it to reach them.
 - **Dependabot** npm minor/patch updates come as one grouped PR. They are auto-approved and squash-merged when the Vercel build passes (`.github/workflows/dependabot-pr.yml`).
