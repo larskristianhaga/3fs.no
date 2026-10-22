@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
         const postCodeAndLocation = asTrimmedString(data.postCodeAndLocation, MAX_FIELD_LENGTH)
         const message = asTrimmedString(data.message, MAX_MESSAGE_LENGTH)
 
-        if (!name || !phone || !postCodeAndLocation || !message || !EMAIL_PATTERN.test(email)) {
+        if (!name || !phone || !postCodeAndLocation || !message || (email && !EMAIL_PATTERN.test(email))) {
             return NextResponse.json({error: 'Missing or invalid fields'}, {status: 400})
         }
 
@@ -114,13 +114,14 @@ export async function POST(request: NextRequest) {
         const {error} = await resend.emails.send({
             from: '3fs@paal-erik.no',
             to: ['rs3felling@gmail.com'],
-            replyTo: email,
+            // Email is optional; without it the reply goes to the sender address and the customer is phoned instead
+            ...(email ? {replyTo: email} : {}),
             subject: `Ny innsending fra ${name} | 3fs.no`,
             html: `
         <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px;">
           <h3>Kontaktinformasjon</h3>
           <p><strong>Navn:</strong> ${escapeHtml(name)}</p>
-          <p><strong>E-post:</strong> ${escapeHtml(email)}</p>
+          <p><strong>E-post:</strong> ${escapeHtml(email || 'Ikke oppgitt')}</p>
           <p><strong>Telefon:</strong> ${escapeHtml(phone)}</p>
           <p><strong>Adresse:</strong> ${escapeHtml(address)}</p>
           <p><strong>Postnummer og poststed:</strong> ${escapeHtml(postCodeAndLocation)}</p>

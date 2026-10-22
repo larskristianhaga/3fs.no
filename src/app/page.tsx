@@ -1,16 +1,13 @@
 import Image from 'next/image'
 import type {Metadata} from 'next'
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import ServicesShowcase from "@/components/ServicesShowcase";
-import Eyebrow from "@/components/Eyebrow";
 import PreloadLink from "@/components/PreloadLink";
 import {companyInfo} from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
 import { cn } from '@/lib/utils'
-import { container, displayHeading, sectionHeading, pillButton, primaryButton } from '@/config/styles'
+import {ContactDetails, Eyebrow, PageShell, styles} from '@/components/Brand'
 
 export const metadata: Metadata = {
     title: 'Trefelling i Oslo og Akershus | Erfarne trefellere | Trefellingsspesialisten AS',
@@ -43,13 +40,11 @@ export const metadata: Metadata = {
 
 const {brand} = colors
 const home = siteText.home
+const {container, sectionHeading, primaryButton, outlineButton, pillButton, displayHeading} = styles
 
 export default function HomePage() {
     return (
-        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
-            <Header/>
-
-            <main>
+        <PageShell>
                 <section className={cn(container, 'pt-14 pb-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center')}>
                     <div className="flex flex-col gap-7">
                         <Eyebrow className={brand.text.forest}>{home.hero.areas}</Eyebrow>
@@ -61,7 +56,7 @@ export default function HomePage() {
                         </p>
                         <div className="flex gap-3 flex-wrap">
                             <a href="#befaring" className={primaryButton}>{home.hero.cta}</a>
-                            <a href="#tjenester" className={cn(pillButton, 'border-[1.5px]', brand.border.ink, brand.hover.background.ink, brand.hover.text.cream)}>
+                            <a href="#tjenester" className={outlineButton}>
                                 {home.hero.secondaryCta}
                             </a>
                         </div>
@@ -211,13 +206,12 @@ export default function HomePage() {
                 <section className={brand.background.sand}>
                     <div className={cn(container, 'py-[88px] flex flex-col gap-10')}>
                         <h2 className={cn(displayHeading, 'text-[clamp(40px,4.6vw,68px)] leading-[.94]')}>{home.testimonials.title}</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                            {home.testimonials.items.map((item) => (
-                                <figure key={item.author} className={cn('m-0 p-7 rounded-md flex flex-col gap-5', brand.background.cream)}>
-                                    <blockquote className="m-0 text-[17px] leading-relaxed text-pretty">«{item.text}»</blockquote>
-                                    <figcaption className="mt-auto font-semibold">
-                                        {item.author}
-                                        <span className={cn('font-normal', brand.text.inkMuted)}> · {item.location}</span>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {home.testimonials.items.map((text) => (
+                                <figure key={text} className={cn('m-0 p-7 rounded-md flex flex-col gap-5', brand.background.cream)}>
+                                    <blockquote className="m-0 text-[17px] leading-relaxed text-pretty">«{text}»</blockquote>
+                                    <figcaption className={cn('mt-auto text-sm font-semibold', brand.text.inkMuted)}>
+                                        {home.testimonials.attribution}
                                     </figcaption>
                                 </figure>
                             ))}
@@ -231,24 +225,7 @@ export default function HomePage() {
                             <Eyebrow className={brand.text.emberDark}>{home.booking.eyebrow}</Eyebrow>
                             <h2 className={sectionHeading}>{home.booking.title}</h2>
                             <p className={cn('m-0 max-w-[44ch] text-[17px] leading-relaxed', brand.text.inkSoft)}>{home.booking.description}</p>
-                            <div className={cn('flex flex-col gap-3.5 pt-6 border-t-[1.5px] text-base', brand.border.ink)}>
-                                <div className="flex flex-col gap-0.5">
-                                    <span className={cn('text-sm', brand.text.inkMuted)}>{home.booking.phoneLabel}</span>
-                                    <a href={`tel:${companyInfo.contact.phone.href}`} className="font-heading stretch-semi-condensed font-extrabold text-[30px] no-underline">
-                                        {companyInfo.contact.phone.display}
-                                    </a>
-                                </div>
-                                <div className="flex flex-col gap-0.5">
-                                    <span className={cn('text-sm', brand.text.inkMuted)}>{home.booking.emailLabel}</span>
-                                    <a href={`mailto:${companyInfo.contact.email}`} className={cn('underline underline-offset-[3px]', brand.hover.text.emberDark)}>
-                                        {companyInfo.contact.email}
-                                    </a>
-                                </div>
-                                <div className="flex flex-col gap-0.5">
-                                    <span className={cn('text-sm', brand.text.inkMuted)}>{home.booking.locationLabel}</span>
-                                    <span>{companyInfo.address.locality}, {companyInfo.address.region}</span>
-                                </div>
-                            </div>
+                            <ContactDetails/>
                         </div>
 
                         <div className={cn('rounded-lg p-[clamp(24px,4vw,40px)] shadow-[0_1px_0_rgba(23,32,26,.08),0_20px_50px_rgba(23,32,26,.08)]', brand.background.paper)}>
@@ -256,9 +233,6 @@ export default function HomePage() {
                         </div>
                     </div>
                 </section>
-            </main>
-
-            <Footer/>
-        </div>
+        </PageShell>
     )
 }

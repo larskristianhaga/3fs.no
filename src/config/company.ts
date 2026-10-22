@@ -1,4 +1,4 @@
-export const yearsOfExperience = 15
+export const yearsOfExperience = 20
 
 export const companyInfo = {
   name: "Trefellingsspesialisten AS",
@@ -6,7 +6,7 @@ export const companyInfo = {
 
   contact: {
     phone: {
-      display: "47 64 29 70",
+      display: "476 42 970",
       href: "+4747642970"
     },
     email: "rs3felling@gmail.com"
@@ -17,6 +17,8 @@ export const companyInfo = {
   },
   
   address: {
+    street: "Stønerudveien 4",
+    postalCode: "1434",
     locality: "Ås",
     region: "Akershus",
     country: "NO"
@@ -46,6 +48,12 @@ export const companyInfo = {
     }
   ],
   
+  stats: {
+    employees: "3",
+    treesFelled: "10 000",
+    happyCustomers: "2 000"
+  },
+
   serviceAreasText: "Oslo, Akershus, Østfold og Buskerud",
 
   insurance: {

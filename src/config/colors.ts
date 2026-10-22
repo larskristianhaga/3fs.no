@@ -1,7 +1,6 @@
 /**
- * Color configuration for the application.
- * Tailwind class references for the brand palette; the tokens themselves
- * are defined in src/app/globals.css (@theme).
+ * Color configuration for the application
+ * Centralized Tailwind classes for the brand palette (tokens defined in globals.css @theme)
  */
 
 export const colors = {
@@ -49,9 +48,6 @@ export const colors = {
         ink: 'hover:bg-ink',
         cream: 'hover:bg-cream',
         emberLight: 'hover:bg-ember-light',
-      },
-      border: {
-        ink: 'hover:border-ink',
       },
     },
     focus: {

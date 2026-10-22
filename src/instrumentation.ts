@@ -7,16 +7,9 @@ import type { PostHog } from 'posthog-node'
 const projectToken = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
 const host = process.env.NEXT_PUBLIC_POSTHOG_HOST
 
-function requirePostHogConfiguration(variableName: string) {
-    if (process.env.NODE_ENV === 'development') {
-        throw new Error(`${variableName} variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once ${variableName} is configured`)
-    }
-}
-
-if (!projectToken) {
-    requirePostHogConfiguration('NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN')
-} else if (!host) {
-    requirePostHogConfiguration('NEXT_PUBLIC_POSTHOG_HOST')
+// PostHog is optional: without a token (e.g. a fresh local checkout) logs and exceptions are not exported
+if ((!projectToken || !host) && process.env.NODE_ENV === 'development') {
+    console.warn('PostHog is disabled: set NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN and NEXT_PUBLIC_POSTHOG_HOST to enable logs and exception capture')
 }
 
 export const loggerProvider = projectToken && host

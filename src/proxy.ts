@@ -1,7 +1,7 @@
 import type {NextRequest} from 'next/server'
 import {NextResponse} from 'next/server'
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const response = NextResponse.next()
 
     // Filenames are not content-hashed, so keep the cache short enough that replaced images show up

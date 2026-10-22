@@ -1,17 +1,35 @@
-import {yearsOfExperience} from '@/config/company'
+import {companyInfo, yearsOfExperience} from '@/config/company'
 
 export const siteText = {
     common: {
-        breadcrumbHome: 'Forside',
-        contactCta: 'Kontakt oss',
-        requestQuoteCta: 'Be om befaring',
-        requestFreeQuoteCta: 'Be om gratis befaring',
+        bookVisit: 'Bestill gratis befaring →',
+        contactUs: 'Kontakt oss',
         readMore: 'Les mer →',
+        areasTitle: 'Tjenester i ditt område',
+        areasText: 'Les mer om hvor vi tilbyr trefelling og trepleie.',
+        pricingGuide: 'Se prisguide for trefelling →',
+        servicesCtaTitle: 'Usikker på hva du trenger?',
+        servicesCtaText: 'Vi kommer på gratis befaring, ser på trærne og gir deg fastpris.',
+        aboutTeamTitle: 'Folka bak',
+        aboutInsuranceTitle: 'Fullforsikret gjennom If',
+        portraitOf: 'Portrett av',
+        faqCtaTitle: 'Har du andre spørsmål?',
+        faqCtaText: 'Hvis du ikke finner svar på det du lurer på, ta gjerne kontakt med oss!',
+        contactAreasTitle: 'Vi dekker disse områdene',
+        contactAreasText: 'Les mer om tjenester i ditt nærområde:',
+        blogCtaTitle: 'Har du spørsmål? Vi er her for å hjelpe',
+        blogCtaText: 'Kontakt oss direkte eller sjekk ut FAQ-siden vår for mer informasjon.',
+        relatedArticles: 'Relaterte artikler',
+        articleCtaTitle: 'Trenger du profesjonell hjelp?',
+        articleCtaText: 'Kontakt oss i dag for gratis befaring og pristilbud.',
+        areaHelpTitle: 'Hva vi hjelper med',
+        areaCasesTitle: 'Lokale case fra',
+        notFoundTitle: 'Denne siden finnes ikke',
+        notFoundText: 'Siden kan ha blitt flyttet eller slettet. Gå tilbake til forsiden, eller ring oss om du trenger hjelp med et tre.',
+        notFoundButton: 'Til forsiden',
+        breadcrumbLabel: 'Brødsmuler',
     },
-    notFound: {
-        title: 'Du er kommet til en side som ikke finnes',
-        backLink: 'Gå tilbake',
-    },
+
     header: {
         nav: {
             home: 'Forside',
@@ -55,6 +73,9 @@ export const siteText = {
             insuredThrough: 'Forsikret gjennom',
         },
         orgNumber: 'Org.nr',
+        mobileBar: {
+            contact: 'Gratis befaring',
+        },
         locations: {
             title: 'Områder',
             oslo: 'Oslo',
@@ -69,7 +90,7 @@ export const siteText = {
             areas: 'Oslo · Akershus · Østfold · Buskerud',
             title: 'Trær som står vanskelig til?',
             titleAccent: 'Det er vår spesialitet.',
-            description: 'Erfarne trefellere, egne maskiner og riktig utstyr. Vi tar ned, beskjærer og rydder — trygt, effektivt og med tydelig pris.',
+            description: 'Erfarne trefellere, egne maskiner og riktig utstyr. Vi tar ned, beskjærer og rydder — trygt, effektivt og til fastpris.',
             cta: 'Bestill gratis befaring →',
             secondaryCta: 'Se tjenester',
             imageAlt: 'Beskåret tre i en hage',
@@ -80,7 +101,7 @@ export const siteText = {
         },
         trustStrip: [
             {title: 'Gratis befaring', description: 'Uforpliktende, hos deg'},
-            {title: 'Tydelig pris', description: 'Ingen overraskelser'},
+            {title: 'Fastpris', description: 'Ingen overraskelser'},
             {title: `Over ${yearsOfExperience} års erfaring`, description: 'Private, borettslag og kommuner'},
             {title: 'Vi rydder etter oss', description: 'Bortkjøring på samme jobb'},
         ],
@@ -140,52 +161,39 @@ export const siteText = {
             },
         },
         about: {
-            title: 'Fra én motorsag til eksperter på vanskelige oppdrag.',
-            description: 'Vi holder til i Ås og jobber for private, borettslag, entreprenører og kommuner. Med erfarne fagfolk og en maskin- og utstyrspark vi er stolte av, tar vi også trærne som står inneklemt mellom hus, ledningsnett og veier.',
+            title: 'Startet med én motorsag. I dag: eksperter på vanskelige oppdrag.',
+            description: `For over ${yearsOfExperience} år siden kjøpte vi en motorsag og begynte å felle trær i skogen. I dag har vi flere dyktige trefellere og en maskin- og utstyrspark vi er stolte av. Vi holder til i Ås og jobber for private, borettslag, entreprenører og kommuner.`,
             tagline: 'Vår jobb — din trygghet.',
             imageAlt: 'Utsikt ned fra tretopp over maskinene under et oppdrag',
             link: 'Møt teamet →',
             stats: [
                 {value: `${yearsOfExperience}+`, label: 'års erfaring'},
-                {value: '4', label: 'fylker vi dekker'},
-                {value: '14 mill.', label: 'kr i forsikringsdekning'},
+                {value: companyInfo.stats.treesFelled, label: 'felte trær'},
+                {value: companyInfo.stats.happyCustomers, label: 'fornøyde kunder'},
             ],
         },
         testimonials: {
             title: 'Hva kundene sier',
+            attribution: 'Kundeanmeldelse',
             items: [
-                {
-                    text: 'Utrolig profesjonelt arbeid. De håndterte det kompliserte treet vårt uten problemer. Anbefalte dem straks til naboene.',
-                    author: 'Ole Hansen',
-                    location: 'Ås',
-                },
-                {
-                    text: 'Rask respons, fair pris, og grundig opprydding. Vi er veldig fornøyd og bruker dem når som helst vi trenger trefelling.',
-                    author: 'Kari Nilsen',
-                    location: 'Oslo',
-                },
-                {
-                    text: 'Treet var nær huset og vi var nervøs, men de var helt professjonelle. Jobben var gjort på dagen som avtalt.',
-                    author: 'Erik Johansen',
-                    location: 'Akershus',
-                },
+                'Kan på det sterkeste anbefale Trefellingsspesialisten! Ekstremt effektiv og ryddig. Rydder fint opp etter seg. Veldig profesjonell og serviceinnstilt og hele tiden med et godt smil.',
+                'Kom på befaring et par dager etter jeg hadde ringt, og jeg fikk pristilbud på stedet. Trærne sto vanskelig til, mellom hus, strømledninger, gjerder og annen beplantning. Klatret opp i trærne, og kappet ned ovenfra og ned, i et imponerende tempo, og med god presisjon. Jeg er meget fornøyd med utført jobb.',
+                'Utrolig rask til å jobbe, bra resultat og en skikkelig apekatt når det kommer til å klatre.',
+                'Utrolig flinke og effektive. Ryddet opp etter seg. Kan anbefales, vi er veldig fornøyde. 3 høye furutrær ++ fjernet og kuttet opp i løpet av et par timer.',
             ],
         },
         booking: {
             eyebrow: 'Gratis befaring',
             title: 'Fortell oss om jobben',
-            description: 'Send noen linjer og gjerne et bilde. Vi tar kontakt for å avtale en uforpliktende befaring og gir deg et tydelig pristilbud.',
+            description: 'Send noen linjer og gjerne et bilde. Vi tar kontakt for å avtale en uforpliktende befaring, og du får fastpris.',
             phoneLabel: 'Telefon',
             emailLabel: 'E-post',
-            locationLabel: 'Vi holder til i',
+            locationLabel: 'Adresse',
         },
     },
 
     services: {
         title: 'Tjenester',
-        areasTitle: 'Tjenester i ditt område',
-        areasText: 'Les mer om hvor vi tilbyr trefelling og trepleie.',
-        pricingLink: 'Se prisguide for trefelling',
         items: [
             {
                 id: 'trefelling',
@@ -228,7 +236,6 @@ export const siteText = {
 
     pricing: {
         title: 'Trefelling pris',
-        breadcrumbLabel: 'Trefelling pris',
         subtitle: 'Pris avhenger av størrelse, plassering og tilgang. Vi gir alltid gratis befaring og et tydelig pristilbud.',
         ranges: [
             {
@@ -267,7 +274,6 @@ export const siteText = {
 
     about: {
         title: 'Om oss',
-        portraitAlt: 'Portrett av',
         intro: [
             {
                 paragraph: 'Trefellingsspesialisten holder til i Ås kommune, og vi tar på oss oppdrag i Oslo, Akershus, Østfold og store deler av Buskerud. Vi tilbyr alt innen trefelling, beskjæring, stubbefresing, flishugging, bortkjøring og oppryddning. Vi har oppdrag for stat og kommune, bedrifter og borettslag, privat- og ferie eiendommer. Vi tilbyr alltid en gratis befaring og uforpliktende pristilbud.',
@@ -305,8 +311,6 @@ export const siteText = {
 
     contact: {
         title: 'Kontakt oss',
-        areasTitle: 'Vi dekker disse områdene',
-        areasText: 'Les mer om tjenester i ditt nærområde:',
         intro: [
             {
                 paragraph: 'Alle oppdrag er ulike, og det kan være vanskelig å gi en konkret pris før vi vet litt mer. I noen tilfeller kan vi gi en fastpris ved å se på bilder du kan legge ved i kontaktskjemaet. I andre tilfeller er det hensiktsmessig at vi møter opp på en uforpliktende befaring.',
@@ -331,9 +335,9 @@ export const siteText = {
             submitButton: 'Send melding',
             submitting: 'Sender...',
             successMessage: 'Takk! Vi ringer deg med pristilbud.',
-            errorMessage: 'Ups! Noe gikk galt. Send oss en epost på rs3felling@gmail.com eller ring oss på: 47 64 29 70',
-            fileTooLargeMessage: 'Bildene er for store til å sendes samlet. Prøv med færre bilder, eller send dem på e-post til rs3felling@gmail.com eller SMS til 47 64 29 70.',
-            exitMessage: 'Før du går - du kan også ringe oss nå: 47 64 29 70',
+            errorMessage: `Ups! Noe gikk galt. Send oss en epost på ${companyInfo.contact.email} eller ring oss på: ${companyInfo.contact.phone.display}`,
+            fileTooLargeMessage: `Bildene er for store til å sendes samlet. Prøv med færre bilder, eller send dem på e-post til ${companyInfo.contact.email} eller SMS til ${companyInfo.contact.phone.display}.`,
+            exitMessage: `Før du går - du kan også ringe oss nå: ${companyInfo.contact.phone.display}`,
             servicesLegend: 'Hva trenger du hjelp med?',
             messageLabel: 'Beskriv jobben',
             messagePlaceholder: 'F.eks. To store bjørker nær huset, ca. 15 m høye. Ønsker stubbene fjernet.',
@@ -343,6 +347,7 @@ export const siteText = {
             noFilesSelected: 'Ingen bilder valgt',
             fileSelected: 'bilde valgt',
             filesSelected: 'bilder valgt',
+            emailOptional: 'Valgfritt — vi ringer deg uansett',
             addressLabel: 'Adresse for oppdraget',
             addressPlaceholder: 'Gate og husnummer',
             postCodePlaceholder: 'F.eks. 1430 Ås',
@@ -359,12 +364,6 @@ export const siteText = {
 
     blog: {
         title: 'Blogg',
-        eyebrow: 'Blogg',
-        relatedTitle: 'Relaterte artikler',
-        ctaTitle: 'Har du spørsmål? Vi er her for å hjelpe',
-        ctaText: 'Kontakt oss direkte eller sjekk ut FAQ-siden vår for mer informasjon.',
-        articleCtaTitle: 'Trenger du profesjonell hjelp?',
-        articleCtaText: 'Kontakt oss i dag for gratis befaring og pristilbud',
         subtitle: 'Tips, råd og innsikt om trefelling og trepleie',
         posts: [
             {
@@ -894,8 +893,6 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
 
     faq: {
         title: 'Ofte stilte spørsmål',
-        moreQuestionsTitle: 'Har du andre spørsmål?',
-        moreQuestionsText: 'Hvis du ikke finner svar på det du lurer på, ta gjerne kontakt med oss!',
         subtitle: 'Her finner du svar på de mest stilte spørsmålene om våre tjenester',
         questions: [
             {
@@ -944,7 +941,7 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
             },
             {
                 question: 'Hvor raskt kan dere komme?',
-                answer: 'Vi prøver å tilby fleksibel tidsbestilling. For akutte tilfeller kan vi ofte komme innen kort tid. Kontakt oss direkte på 47 64 29 70 så diskuterer vi tilgjengelig tid for ditt oppdrag.',
+                answer: `Vi prøver å tilby fleksibel tidsbestilling. For akutte tilfeller kan vi ofte komme innen kort tid. Kontakt oss direkte på ${companyInfo.contact.phone.display} så diskuterer vi tilgjengelig tid for ditt oppdrag.`,
             },
             {
                 question: 'Hva skjer hvis noe går galt under arbeidet?',
@@ -978,8 +975,6 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
     },
     locations: {
         title: 'Trefelling i',
-        highlightsTitle: 'Hva vi hjelper med',
-        casesTitle: 'Lokale case fra',
         subtitle: 'Vi tilbyr gratis befaring, trygg gjennomføring og grundig opprydding.',
         ctaTitle: 'Trenger du hjelp i ditt område?',
         ctaText: 'Kontakt oss for gratis befaring og uforpliktende pristilbud.',
@@ -1055,8 +1050,6 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
 
     privacy: {
         navLabel: 'Personvern',
-        orgLabel: 'org.nr.',
-        emailLabel: 'E-post',
         title: 'Personvernerklæring',
         intro: 'Her forklarer vi hvilke opplysninger vi samler inn når du bruker nettsiden vår, hvorfor vi gjør det og hvilke rettigheter du har.',
         sections: [
