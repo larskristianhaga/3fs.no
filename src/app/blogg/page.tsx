@@ -51,6 +51,7 @@ export default function BlogPage() {
                             category={post.category}
                             readTime={post.readTime}
                             publishedDate={post.publishedDate}
+                            headingLevel="h2"
                         />
                     ))}
                 </div>

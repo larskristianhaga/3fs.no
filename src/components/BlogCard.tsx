@@ -11,6 +11,8 @@ interface BlogCardProps {
     category: string
     readTime: string
     publishedDate: string
+    // h2 when the cards sit directly under the page h1 (blog index), h3 under a section heading
+    headingLevel?: 'h2' | 'h3'
 }
 
 export default function BlogCard({
@@ -19,7 +21,8 @@ export default function BlogCard({
     excerpt,
     category,
     readTime,
-    publishedDate
+    publishedDate,
+    headingLevel: Heading = 'h3',
 }: BlogCardProps) {
     const {brand} = colors
     const formattedDate = new Date(publishedDate).toLocaleDateString('nb-NO', {
@@ -35,11 +38,11 @@ export default function BlogCard({
                 <span>{readTime}</span>
             </div>
 
-            <h3 className={styles.cardHeading}>
+            <Heading className={styles.cardHeading}>
                 <PreloadLink href={`/blogg/${id}`} className={cn('no-underline', brand.text.ink, brand.hover.text.emberDark)}>
                     {title}
                 </PreloadLink>
-            </h3>
+            </Heading>
 
             <p className={styles.body}>{excerpt}</p>
 

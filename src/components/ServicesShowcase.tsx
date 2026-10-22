@@ -20,6 +20,7 @@ export default function ServicesShowcase() {
             <ul className={cn('flex flex-col border-t-[1.5px]', brand.border.ink)}>
                 {items.map((item, i) => (
                     <li key={item.id}>
+                        {/* Inactive rows dim through muted colours, not opacity, to keep text contrast */}
                         <button
                             type="button"
                             onMouseEnter={() => setActive(i)}
@@ -27,19 +28,19 @@ export default function ServicesShowcase() {
                             onClick={() => setActive(i)}
                             aria-pressed={i === active}
                             className={cn(
-                                'w-full text-left py-[22px] border-b grid grid-cols-[52px_1fr] gap-x-3 gap-y-1 transition-opacity duration-200',
+                                'w-full text-left py-[22px] border-b grid grid-cols-[52px_1fr] gap-x-3 gap-y-1 transition-colors duration-200',
                                 brand.border.inkSubtle,
                                 brand.focus.outline,
-                                i === active ? 'opacity-100' : 'opacity-50',
+                                i === active ? brand.text.ink : brand.text.inkMuted,
                             )}
                         >
-                            <span className={cn('font-heading font-bold text-[15px] pt-2', brand.text.emberDark)}>
+                            <span className={cn('font-heading font-bold text-[15px] pt-2', i === active && brand.text.emberDark)}>
                                 {String(i + 1).padStart(2, '0')}
                             </span>
                             <h3 className="m-0 font-heading stretch-semi-condensed font-extrabold text-[28px] sm:text-[34px] uppercase leading-tight">
                                 {item.title}
                             </h3>
-                            <p className={cn('col-start-2 m-0 max-w-[52ch] text-base leading-relaxed', brand.text.inkSoft)}>
+                            <p className={cn('col-start-2 m-0 max-w-[52ch] text-base leading-relaxed', i === active && brand.text.inkSoft)}>
                                 {item.description}
                             </p>
                         </button>
