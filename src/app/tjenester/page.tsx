@@ -88,11 +88,20 @@ export default function ServicesPage() {
                                 <span className={cn('font-heading font-bold text-[15px]', brand.text.emberDark)}>
                                     {String(index + 1).padStart(2, '0')}
                                 </span>
-                                <h2 className={styles.subHeading}>{service.title}</h2>
+                                <h2 className={styles.subHeading}>
+                                    <PreloadLink href={`/tjenester/${service.id}`} className={cn('no-underline transition-colors', brand.hover.text.emberDark, brand.focus.outline)}>
+                                        {service.title}
+                                    </PreloadLink>
+                                </h2>
                                 <p className={styles.body}>{service.description}</p>
-                                <PreloadLink href="/kontakt-oss" className={cn(styles.textLink, 'self-start')}>
-                                    {siteText.home.servicesSection.quoteLink} {service.title.toLowerCase()} →
-                                </PreloadLink>
+                                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                                    <PreloadLink href={`/tjenester/${service.id}`} className={styles.textLink}>
+                                        {siteText.services.readMore} {service.title.toLowerCase()} →
+                                    </PreloadLink>
+                                    <PreloadLink href="/kontakt-oss" className={styles.textLink}>
+                                        {siteText.home.servicesSection.quoteLink} {service.title.toLowerCase()} →
+                                    </PreloadLink>
+                                </div>
                             </div>
                         </article>
                     ))}

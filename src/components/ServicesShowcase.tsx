@@ -64,7 +64,7 @@ export default function ServicesShowcase() {
                     ))}
                 </div>
                 <div className="flex justify-between items-center gap-3 flex-wrap">
-                    <a href={`/tjenester#${service.id}`} className={cn('font-semibold underline-offset-4 hover:underline', brand.text.ink)}>
+                    <a href={`/tjenester/${service.id}`} className={cn('font-semibold underline-offset-4 hover:underline', brand.text.ink)}>
                         {service.title}
                     </a>
                     <a

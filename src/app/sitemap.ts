@@ -8,14 +8,15 @@ import { companyInfo } from '@/config/company'
 // reflecting real change dates instead of every-build "now".
 const PAGE_LAST_MODIFIED = {
     home: new Date('2026-07-29T20:17:17+02:00'),
-    tjenester: new Date('2026-06-25T15:05:32+02:00'),
+    tjenester: new Date('2026-10-22T12:00:00+02:00'),
+    service: new Date('2026-10-22T12:00:00+02:00'),
     omOss: new Date('2026-07-29T18:59:41+02:00'),
     faq: new Date('2026-06-25T14:39:50+02:00'),
     blogg: new Date('2026-06-25T14:54:34+02:00'),
     trefellingPris: new Date('2026-06-25T15:05:32+02:00'),
     kontaktOss: new Date('2026-06-25T14:54:34+02:00'),
     area: new Date('2026-06-25T15:05:32+02:00'),
-    llmsTxt: new Date('2026-06-25T15:05:32+02:00'),
+    llmsTxt: new Date('2026-10-22T12:00:00+02:00'),
     personvern: new Date('2026-10-15T12:00:00+02:00'),
 } as const
 
@@ -27,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(post.publishedDate),
         changeFrequency: 'monthly' as const,
         priority: 0.6,
+    }))
+    const servicePages = siteText.services.items.map((service) => ({
+        url: `${baseUrl}/tjenester/${service.id}`,
+        lastModified: PAGE_LAST_MODIFIED.service,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
     }))
     const areaPages = siteText.locations.areas.map((area) => ({
         url: `${baseUrl}/${area.slug}`,
@@ -48,6 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.9,
         },
+        ...servicePages,
         {
             url: `${baseUrl}/om-oss`,
             lastModified: PAGE_LAST_MODIFIED.omOss,
