@@ -14,8 +14,9 @@ export default function Footer() {
     return (
         <footer className={cn('pb-20 sm:pb-0', brand.background.ink, brand.text.mist)}>
             <div className="max-w-[1280px] mx-auto px-6 pt-14 pb-8 flex flex-col gap-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 text-[15px] leading-relaxed">
-                    <div className="flex flex-col gap-1.5 lg:col-span-1">
+                {/* The company name is one long word, so on wide screens its column sizes to fit it instead of overflowing into the next */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[auto_repeat(4,minmax(0,1fr))] gap-8 text-[15px] leading-relaxed">
+                    <div className="flex flex-col gap-1.5">
                         <span className={cn('font-heading stretch-semi-condensed font-extrabold text-[22px] uppercase leading-tight', brand.text.cream)}>
                             {companyInfo.name}
                         </span>
