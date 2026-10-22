@@ -46,7 +46,7 @@ export default function Footer() {
                         <ul className="flex flex-col gap-1.5">
                             {siteText.services.items.map((service) => (
                                 <li key={service.id}>
-                                    <a href={`/tjenester#${service.id}`} className={link}>
+                                    <a href={`/tjenester/${service.id}`} className={link}>
                                         {service.title}
                                     </a>
                                 </li>

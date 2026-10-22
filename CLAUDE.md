@@ -62,7 +62,8 @@ npm start               # Run production server
 | Route | Component | Purpose |
 |-------|-----------|---------|
 | `/` | `src/app/page.tsx` | Home page: hero, services showcase, insurance, about, reviews, booking form |
-| `/tjenester` | `src/app/tjenester/page.tsx` | Full services catalog with image gallery |
+| `/tjenester` | `src/app/tjenester/page.tsx` | Full services catalog; each row keeps an `#id` anchor and links to its service page |
+| `/tjenester/[id]` | `src/app/tjenester/[id]/page.tsx` | Per-service SEO pages (description, FAQ, area links), generated from `siteText.services.items` via `generateStaticParams()` |
 | `/om-oss` | `src/app/om-oss/page.tsx` | About page with team and insurance info |
 | `/faq` | `src/app/faq/page.tsx` | FAQ with expandable questions |
 | `/kontakt-oss` | `src/app/kontakt-oss/page.tsx` | Contact form page |
@@ -148,10 +149,10 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 - No need to redeploy for simple text changes
 
 ### Add a Service
-1. Add entry to `siteText.services.items` in `src/content/text.ts`
+1. Add entry to `siteText.services.items` in `src/content/text.ts`, including the service-page fields: `intro`, `metaDescription`, `details` (extra paragraphs) and `faq` (3–5 questions)
 2. Add corresponding home page content in `siteText.home.servicesSection`
-3. Add service image to `public/images/tjenester/[id].jpg`
-4. Services automatically appear in services page, home page cards, and footer links
+3. Add service image to `public/images/tjenester/[id].jpg` (also used as the page's Open Graph image)
+4. The `/tjenester/[id]` page is generated automatically — do not create a new folder. Services automatically appear in the services page, home page showcase, footer links, sitemap and `llms.txt`
 
 ### Modify Colors
 - Update `src/config/colors.ts`
