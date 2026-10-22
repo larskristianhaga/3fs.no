@@ -1,6 +1,5 @@
 import type {Metadata, Viewport} from 'next'
 import {companyInfo, yearsOfExperience} from '@/config/company'
-import {Analytics} from '@vercel/analytics/react'
 import {SpeedInsights} from '@vercel/speed-insights/next'
 import {Archivo, Instrument_Sans} from 'next/font/google'
 import StructuredData from '@/components/StructuredData'
@@ -71,7 +70,6 @@ export default function RootLayout({
         <body>
         <StructuredData/>
         {children}
-        <Analytics/>
         <SpeedInsights/>
         </body>
         </html>
