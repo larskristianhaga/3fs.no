@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 
 const {brand} = colors
 const home = siteText.home
-const {container, sectionHeading, primaryButton, outlineButton, pillButton, displayHeading} = styles
+const {container, sectionHeading, primaryButton, outlineButton, displayHeading} = styles
 
 export default function HomePage() {
     return (
@@ -128,10 +128,6 @@ export default function HomePage() {
                             <div className="flex gap-3 flex-wrap">
                                 <a href={companyInfo.insurance.certificate} target="_blank" rel="noopener noreferrer" className={cn(primaryButton, 'text-base')}>
                                     {home.insurance.openButton}
-                                </a>
-                                <a href={companyInfo.insurance.certificate} download={home.insurance.downloadFilename}
-                                   className={cn(pillButton, 'text-base border-[1.5px]', brand.border.cream, brand.text.cream, brand.hover.background.cream, brand.hover.text.ink)}>
-                                    {home.insurance.downloadButton}
                                 </a>
                             </div>
                         </div>

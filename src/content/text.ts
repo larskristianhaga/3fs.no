@@ -149,8 +149,6 @@ export const siteText = {
             title: 'Fullforsikret for inntil 14 millioner',
             description: 'Vi er forsikret mot skade på eiendom og personer gjennom If. Ikke alle i bransjen er det — sjekk gjerne beviset før du velger hvem som skal felle trærne dine.',
             openButton: 'Åpne forsikringsbevis (PDF)',
-            downloadButton: 'Last ned',
-            downloadFilename: 'Forsikringsbevis-Trefellingsspesialisten.pdf',
             card: {
                 title: 'Forsikringsbevis',
                 holderLabel: 'Forsikringstaker',
