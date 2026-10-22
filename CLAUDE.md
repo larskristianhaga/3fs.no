@@ -25,7 +25,7 @@ npm start               # Run production server
 - **`src/app/`** – Next.js App Router (pages, layouts, API routes)
   - **`(pages)/`** – Public pages (home, services, about, FAQ, contact)
   - **`api/contact/`** – Email submission endpoint using Resend
-  - **`layout.tsx`** – Root layout with global metadata, Analytics, SpeedInsights
+  - **`layout.tsx`** – Root layout with global metadata and Vercel Speed Insights
 - **`src/components/`** – React components
   - **`Brand.tsx`** – Shared design building blocks: `styles` (container, headings, pill buttons, links, cards), `PageShell` (cream page + Header/Footer), `PageHero`, `Eyebrow`, `CtaBand`, `AreaLinks`, `ContactDetails`. Build every page from these
   - **`ui/sheet.tsx`** – Radix dialog used for the mobile menu
@@ -132,7 +132,7 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 
 - **Next.js Image Optimization**: Configured for WebP/AVIF formats with 1-year cache
 - **Turbopack**: Used for both dev and build for faster compilation
-- **Vercel Analytics** & **Speed Insights** integrated for monitoring
+- **Vercel Speed Insights** integrated for performance monitoring (Vercel Analytics was removed; PostHog handles analytics)
 - **Lazy loading**: Images lazy load with `loading="lazy"`
 
 ## Common Development Tasks
