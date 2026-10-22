@@ -16,7 +16,6 @@ const PAGE_LAST_MODIFIED = {
     trefellingPris: new Date('2026-06-25T15:05:32+02:00'),
     kontaktOss: new Date('2026-06-25T14:54:34+02:00'),
     area: new Date('2026-06-25T15:05:32+02:00'),
-    llmsTxt: new Date('2026-10-22T12:00:00+02:00'),
     personvern: new Date('2026-10-15T12:00:00+02:00'),
 } as const
 
@@ -93,12 +92,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: PAGE_LAST_MODIFIED.personvern,
             changeFrequency: 'yearly',
             priority: 0.2,
-        },
-        {
-            url: `${baseUrl}/llms.txt`,
-            lastModified: PAGE_LAST_MODIFIED.llmsTxt,
-            changeFrequency: 'monthly',
-            priority: 0.3,
         },
     ]
 }
