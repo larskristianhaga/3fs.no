@@ -1,10 +1,10 @@
 import type {Metadata} from 'next'
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import {companyInfo} from '@/config/company'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
+import {AreaLinks, ContactDetails, Eyebrow, PageShell, styles} from '@/components/Brand'
+import {cn} from '@/lib/utils'
 
 export const metadata: Metadata = {
     title: 'Kontakt oss - Gratis befaring og pristilbud',
@@ -35,65 +35,30 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
+    const {brand} = colors
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
-            <Header/>
-
-            <section className="relative py-4">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center">
-                        <h1 className={`text-3xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
-                            {siteText.contact.title}
-                        </h1>
+        <PageShell>
+            <section className={cn(styles.container, 'pt-14 pb-24 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-14 items-start')}>
+                <div className="flex flex-col gap-6">
+                    <Eyebrow className={brand.text.emberDark}>{siteText.home.booking.eyebrow}</Eyebrow>
+                    <h1 className={styles.pageTitle}>{siteText.contact.title}</h1>
+                    {siteText.contact.intro.map((item) => (
+                        <p key={item.paragraph} className={styles.body}>
+                            {item.paragraph}
+                        </p>
+                    ))}
+                    <ContactDetails/>
+                    <div className="flex flex-col gap-3 pt-4">
+                        <h2 className="m-0 font-semibold text-base">{siteText.common.contactAreasTitle}</h2>
+                        <p className={cn(styles.muted, 'm-0')}>{siteText.common.contactAreasText}</p>
+                        <AreaLinks/>
                     </div>
                 </div>
-            </section>
 
-            <section className="relative py-4">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`text-center ${colors.text.gray[900]}`}>
-                        {siteText.contact.intro.map((item) => (
-                            <div>
-                                <p className={`mt-4 text-base sm:text-xl ${colors.text.gray[600]} leading-relaxed`}>
-                                    {item.paragraph}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-12">
-                <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className={cn('rounded-lg p-[clamp(24px,4vw,40px)] shadow-[0_1px_0_rgba(23,32,26,.08),0_20px_50px_rgba(23,32,26,.08)]', brand.background.paper)}>
                     <ContactForm/>
                 </div>
             </section>
-
-            <section className="pb-12">
-                <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`${colors.background.primary[50]} rounded-lg p-6`}>
-                        <h2 className={`text-xl font-bold ${colors.text.gray[900]} mb-2`}>
-                            Vi dekker disse områdene
-                        </h2>
-                        <p className={`${colors.text.gray[700]} mb-4`}>
-                            Les mer om tjenester i ditt nærområde:
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {siteText.locations.areas.map((area) => (
-                                <a
-                                    key={area.slug}
-                                    href={`/${area.slug}`}
-                                    className={`inline-block px-3 py-2 rounded-md ${colors.background.white} ${colors.text.primary[700]} border ${colors.border.primary[200]} ${colors.hover.background.primary[100]} transition-colors`}
-                                >
-                                    {area.name}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <Footer/>
-        </div>
+        </PageShell>
     )
 }

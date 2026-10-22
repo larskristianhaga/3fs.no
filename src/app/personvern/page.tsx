@@ -1,9 +1,9 @@
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
 import type {Metadata} from 'next'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
 import {companyInfo} from '@/config/company'
+import {PageHero, PageShell, styles} from '@/components/Brand'
+import {cn} from '@/lib/utils'
 
 export const metadata: Metadata = {
     title: 'Personvernerklæring',
@@ -14,40 +14,30 @@ export const metadata: Metadata = {
 }
 
 export default function PrivacyPage() {
+    const {brand} = colors
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
-            <Header/>
+        <PageShell>
+            <PageHero title={siteText.privacy.title} intro={siteText.privacy.intro}/>
 
-            <section className="py-16">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h1 className={`text-4xl font-bold ${colors.text.gray[900]} sm:text-5xl mb-6`}>
-                        {siteText.privacy.title}
-                    </h1>
-                    <p className={`text-lg ${colors.text.gray[600]} mb-10`}>
-                        {siteText.privacy.intro}
-                    </p>
-
+            <section className={cn(styles.container, 'pb-24')}>
+                <div className={cn('max-w-[760px] flex flex-col gap-10 pt-10', styles.ruleTop)}>
                     {siteText.privacy.sections.map((section) => (
-                        <div key={section.heading} className="mb-8">
-                            <h2 className={`text-2xl font-semibold ${colors.text.gray[900]} mb-3`}>
-                                {section.heading}
-                            </h2>
+                        <div key={section.heading} className="flex flex-col gap-3">
+                            <h2 className={styles.cardHeading}>{section.heading}</h2>
                             {section.paragraphs.map((paragraph) => (
-                                <p key={paragraph} className={`${colors.text.gray[600]} mb-3`}>
+                                <p key={paragraph} className={styles.body}>
                                     {paragraph}
                                 </p>
                             ))}
                         </div>
                     ))}
 
-                    <p className={`${colors.text.gray[600]}`}>
-                        {companyInfo.name}, org.nr. {companyInfo.organization.number}, {companyInfo.address.locality}.
-                        E-post: <a href={`mailto:${companyInfo.contact.email}`} className={`${colors.text.primary[700]} underline`}>{companyInfo.contact.email}</a>
+                    <p className={styles.body}>
+                        {companyInfo.name}, org.nr. {companyInfo.organization.number}, {companyInfo.address.street}, {companyInfo.address.postalCode} {companyInfo.address.locality}.
+                        E-post: <a href={`mailto:${companyInfo.contact.email}`} className={cn('underline underline-offset-[3px]', brand.text.ink, brand.hover.text.emberDark)}>{companyInfo.contact.email}</a>
                     </p>
                 </div>
             </section>
-
-            <Footer/>
-        </div>
+        </PageShell>
     )
 }

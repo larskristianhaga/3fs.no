@@ -1,12 +1,12 @@
 import type {Metadata} from 'next'
 import {notFound} from 'next/navigation'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
-import PreloadLink from '@/components/PreloadLink'
 import {siteText} from '@/content/text'
 import {companyInfo} from '@/config/company'
 import {colors} from '@/config/colors'
+import {CtaBand, PageHero, PageShell, styles} from '@/components/Brand'
+import PreloadLink from '@/components/PreloadLink'
+import {cn} from '@/lib/utils'
 
 interface LocationPageProps {
     params: Promise<{
@@ -61,6 +61,7 @@ export default async function LocationPage({params}: LocationPageProps) {
         notFound()
     }
 
+    const {brand} = colors
     const relatedCases = siteText.blog.posts
         .filter((post) => post.category === 'Case')
         .filter((post) => {
@@ -69,74 +70,46 @@ export default async function LocationPage({params}: LocationPageProps) {
         })
 
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <PageShell>
             <BreadcrumbSchema
                 items={[
                     {name: 'Forside', url: companyInfo.website},
                     {name: area.name, url: `${companyInfo.website}/${area.slug}`}
                 ]}
             />
-            <Header/>
 
-            <section className={`${colors.background.primary[50]} py-16`}>
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h1 className={`text-4xl sm:text-5xl font-extrabold ${colors.text.gray[900]} mb-4`}>
-                        {siteText.locations.title} {area.name}
-                    </h1>
-                    <p className={`text-lg sm:text-xl ${colors.text.gray[600]}`}>
-                        {siteText.locations.subtitle}
-                    </p>
-                </div>
-            </section>
+            <PageHero title={`${siteText.locations.title} ${area.name}`} intro={siteText.locations.subtitle}/>
 
-            <section className="py-14">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p className={`text-lg ${colors.text.gray[700]} leading-relaxed mb-6`}>
-                        {area.intro}
-                    </p>
-                    <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-4`}>Hva vi hjelper med</h2>
-                    <ul className="space-y-3">
-                        {area.highlights.map((highlight) => (
-                            <li key={highlight} className={`text-base ${colors.text.gray[700]}`}>
-                                - {highlight}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </section>
-
-            <section className="py-8">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`${colors.background.primary[50]} rounded-lg p-8`}>
-                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-3`}>
-                            {siteText.locations.ctaTitle}
-                        </h2>
-                        <p className={`${colors.text.gray[700]} mb-6`}>{siteText.locations.ctaText}</p>
-                        <a
-                            href="/kontakt-oss"
-                            className={`inline-block ${colors.background.primary[600]} ${colors.text.white} px-6 py-3 rounded-lg ${colors.hover.background.primary[700]} transition-colors font-semibold`}
-                        >
-                            Kontakt oss
-                        </a>
+            <section className={cn(styles.container, 'pb-20')}>
+                <div className={cn('pt-10 grid grid-cols-1 lg:grid-cols-2 gap-14', styles.ruleTop)}>
+                    <p className={cn(styles.body, 'text-[19px]')}>{area.intro}</p>
+                    <div className="flex flex-col gap-6">
+                        <h2 className={styles.subHeading}>{siteText.common.areaHelpTitle}</h2>
+                        <ul className={cn('flex flex-col', styles.ruleTop)}>
+                            {area.highlights.map((highlight) => (
+                                <li key={highlight} className={cn('py-4 border-b flex gap-3', brand.border.inkSubtle)}>
+                                    <span className={cn('mt-3 w-4 h-0.5 flex-none', brand.background.ember)} aria-hidden="true"/>
+                                    <span className={styles.body}>{highlight}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </section>
 
             {relatedCases.length > 0 && (
-                <section className="py-4 pb-12">
-                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-4`}>
-                            Lokale case fra {area.name}
-                        </h2>
-                        <div className="space-y-3">
+                <section className={brand.background.sand}>
+                    <div className={cn(styles.container, 'py-20 flex flex-col gap-8')}>
+                        <h2 className={styles.subHeading}>{siteText.common.areaCasesTitle} {area.name}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             {relatedCases.map((post) => (
                                 <PreloadLink
                                     key={post.id}
                                     href={`/blogg/${post.id}`}
-                                    className={`block ${colors.background.white} border ${colors.border.gray[200]} rounded-lg p-4 ${colors.hover.background.gray[50]} transition-colors`}
+                                    className={cn(styles.card, 'p-7 flex flex-col gap-2 no-underline transition-transform hover:-translate-y-0.5', brand.text.ink, brand.focus.outline)}
                                 >
-                                    <h3 className={`font-semibold ${colors.text.gray[900]} mb-1`}>{post.title}</h3>
-                                    <p className={`${colors.text.gray[600]} text-sm`}>{post.excerpt}</p>
+                                    <h3 className={styles.cardHeading}>{post.title}</h3>
+                                    <p className={cn('m-0', brand.text.inkMuted)}>{post.excerpt}</p>
                                 </PreloadLink>
                             ))}
                         </div>
@@ -144,7 +117,7 @@ export default async function LocationPage({params}: LocationPageProps) {
                 </section>
             )}
 
-            <Footer/>
-        </div>
+            <CtaBand title={siteText.locations.ctaTitle} text={siteText.locations.ctaText}/>
+        </PageShell>
     )
 }

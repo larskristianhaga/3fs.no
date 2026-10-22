@@ -252,8 +252,11 @@ export default function ContactForm() {
             </div>
 
             <label className={fieldLabel}>
-                {text.email} {text.required}
-                <input type="email" name="email" required autoComplete="email" className={fieldInput}/>
+                <span>
+                    {text.email}{' '}
+                    <span className={cn('font-normal text-sm', brand.text.inkMuted)}>{text.emailOptional}</span>
+                </span>
+                <input type="email" name="email" autoComplete="email" className={fieldInput}/>
             </label>
 
             {/* Honeypot for spam bots — hidden from real users */}

@@ -1,5 +1,8 @@
-import PreloadLink from '@/components/PreloadLink'
 import { colors } from '@/config/colors'
+import {styles} from '@/components/Brand'
+import PreloadLink from '@/components/PreloadLink'
+import {siteText} from '@/content/text'
+import {cn} from '@/lib/utils'
 
 interface BlogCardProps {
     id: string
@@ -18,6 +21,7 @@ export default function BlogCard({
     readTime,
     publishedDate
 }: BlogCardProps) {
+    const {brand} = colors
     const formattedDate = new Date(publishedDate).toLocaleDateString('nb-NO', {
         year: 'numeric',
         month: 'long',
@@ -25,38 +29,25 @@ export default function BlogCard({
     })
 
     return (
-        <article className={`${colors.background.white} rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow`}>
-            <div className="p-6 sm:p-8">
-                <div className="flex items-center gap-3 mb-3">
-                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${colors.background.primary[100]} ${colors.text.primary[700]}`}>
-                        {category}
-                    </span>
-                    <span className={`text-sm ${colors.text.gray[500]}`}>
-                        {readTime}
-                    </span>
-                </div>
+        <article className={cn(styles.card, 'p-7 flex flex-col gap-4 transition-transform hover:-translate-y-0.5')}>
+            <div className={cn('flex items-center gap-3', styles.muted)}>
+                <span className={styles.tag}>{category}</span>
+                <span>{readTime}</span>
+            </div>
 
-                <h3 className={`text-xl sm:text-2xl font-bold ${colors.text.gray[900]} mb-3 leading-tight`}>
-                    <PreloadLink href={`/blogg/${id}`} className={`${colors.hover.text.primary[700]} transition-colors`}>
-                        {title}
-                    </PreloadLink>
-                </h3>
+            <h3 className={styles.cardHeading}>
+                <PreloadLink href={`/blogg/${id}`} className={cn('no-underline', brand.text.ink, brand.hover.text.emberDark)}>
+                    {title}
+                </PreloadLink>
+            </h3>
 
-                <p className={`${colors.text.gray[600]} mb-4 leading-relaxed`}>
-                    {excerpt}
-                </p>
+            <p className={styles.body}>{excerpt}</p>
 
-                <div className="flex items-center justify-between">
-                    <span className={`text-sm ${colors.text.gray[500]}`}>
-                        {formattedDate}
-                    </span>
-                    <PreloadLink
-                        href={`/blogg/${id}`}
-                        className={`inline-flex items-center gap-2 ${colors.text.primary[600]} hover:underline font-medium`}
-                    >
-                        Les mer →
-                    </PreloadLink>
-                </div>
+            <div className="mt-auto flex items-center justify-between gap-3">
+                <time dateTime={publishedDate} className={styles.muted}>{formattedDate}</time>
+                <PreloadLink href={`/blogg/${id}`} className={styles.textLink} aria-label={`${siteText.common.readMore} ${title}`}>
+                    {siteText.common.readMore}
+                </PreloadLink>
             </div>
         </article>
     )

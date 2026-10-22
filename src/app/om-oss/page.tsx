@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import Footer from '@/components/Footer'
-import Header from "@/components/Header";
 import type {Metadata} from 'next'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
 import {companyInfo, yearsOfExperience} from '@/config/company'
+import {Eyebrow, PageShell, styles} from '@/components/Brand'
+import {cn} from '@/lib/utils'
 
 export const metadata: Metadata = {
     title: `Om oss - Over ${yearsOfExperience} års erfaring med trefelling`,
@@ -41,79 +41,77 @@ const teamMembers = siteText.about.team.map((member, index) => ({
 }))
 
 export default function AboutPage() {
+    const {brand} = colors
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
-            <Header/>
-
-            <section className="relative  py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
-                        <div className="mb-8 lg:mb-0">
-                            <h1 className={`text-4xl font-bold ${colors.text.gray[900]} sm:text-5xl`}>
-                                {siteText.about.title}
-                            </h1>
-                            {siteText.about.intro.map((item) => (
-                                <p className={`mt-4 text-xl ${colors.text.gray[600]}`}>
-                                    {item.paragraph}
-                                </p>
-                            ))}
-                        </div>
-                        <div className="relative">
-                            <Image
-                                src="/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg"
-                                alt={siteText.about.imageAlt}
-                                width={600}
-                                height={400}
-                                className="rounded-lg shadow-xl"
-                                priority
-                                quality={85}
-                                sizes="(max-width: 768px) 100vw, 600px"
-                            />
-                        </div>
-                    </div>
+        <PageShell>
+            <section className={cn(styles.container, 'pt-14 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center')}>
+                <div className="flex flex-col gap-6">
+                    <Eyebrow>{siteText.home.hero.areas}</Eyebrow>
+                    <h1 className={styles.pageTitle}>{siteText.about.title}</h1>
+                    {siteText.about.intro.map((item) => (
+                        <p key={item.paragraph} className={styles.body}>
+                            {item.paragraph}
+                        </p>
+                    ))}
+                    <p className={cn('m-0 font-heading font-bold text-[22px] [font-stretch:80%]', brand.text.forest)}>
+                        {siteText.home.about.tagline}
+                    </p>
+                </div>
+                <div className="relative aspect-[4/3]">
+                    <Image
+                        src="/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg"
+                        alt={siteText.about.imageAlt}
+                        fill
+                        className="object-cover rounded-md"
+                        priority
+                        quality={80}
+                        sizes="(max-width: 1024px) 100vw, 620px"
+                    />
                 </div>
             </section>
 
-            <section className={`py-16 ${colors.background.white}`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                        {teamMembers.map((member, index) => (
-                            <div key={index} className="text-center">
-                                <div className="relative w-48 h-48 mx-auto mb-4">
+            <section className={brand.background.sand}>
+                <div className={cn(styles.container, 'py-20 flex flex-col gap-10')}>
+                    <h2 className={styles.sectionHeading}>{siteText.common.aboutTeamTitle}</h2>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {teamMembers.map((member) => (
+                            <li key={member.name} className="flex flex-col gap-2">
+                                <div className={cn('relative aspect-[4/5] rounded-md overflow-hidden mb-2', brand.background.sandDark)}>
                                     <Image
                                         src={member.image}
-                                        alt={`Portrett av ${member.name}`}
+                                        alt={`${siteText.common.portraitOf} ${member.name}`}
                                         fill
-                                        className="rounded-full object-cover shadow-lg"
-                                        quality={85}
-                                        sizes="192px"
+                                        className="object-cover"
+                                        quality={80}
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                                         loading="lazy"
                                     />
                                 </div>
-                                <h3 className={`text-xl font-semibold ${colors.text.gray[900]}`}>{member.name}</h3>
-                                <p className={`${colors.text.primary[600]} font-medium`}>{member.role}</p>
-                            </div>
+                                <h3 className={styles.cardHeading}>{member.name}</h3>
+                                <p className={cn('m-0', brand.text.inkMuted)}>{member.role}</p>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
             </section>
 
-            <section className="py-16 ">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className=" rounded-lg p-8">
-                        <a
-                            href={companyInfo.insurance.certificate}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center ${colors.background.primary[600]} ${colors.text.white} px-6 py-3 rounded-lg ${colors.hover.background.primary[700]} transition-colors font-semibold`}
-                        >
-                            {siteText.about.insurance.buttonText}
-                        </a>
-                    </div>
+            <section className={cn(brand.background.ink, brand.text.cream)}>
+                <div className={cn(styles.container, 'py-20 flex flex-col gap-6')}>
+                    <Eyebrow className={brand.text.ember}>{siteText.home.insurance.eyebrow}</Eyebrow>
+                    <h2 className={styles.sectionHeading}>{siteText.home.insurance.title}</h2>
+                    <p className={cn('m-0 max-w-[50ch] text-lg leading-relaxed', brand.text.mist)}>
+                        {siteText.home.insurance.description}
+                    </p>
+                    <a
+                        href={companyInfo.insurance.certificate}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(styles.primaryButton, 'self-start')}
+                    >
+                        {siteText.about.insurance.buttonText}
+                    </a>
                 </div>
             </section>
-
-            <Footer/>
-        </div>
+        </PageShell>
     )
 }

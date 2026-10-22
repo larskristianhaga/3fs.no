@@ -27,6 +27,8 @@ export default function StructuredData() {
                 "email": companyInfo.contact.email,
                 "address": {
                     "@type": "PostalAddress",
+                    "streetAddress": companyInfo.address.street,
+                    "postalCode": companyInfo.address.postalCode,
                     "addressLocality": companyInfo.address.locality,
                     "addressRegion": companyInfo.address.region,
                     "addressCountry": companyInfo.address.country

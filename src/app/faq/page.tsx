@@ -1,94 +1,61 @@
 'use client'
 
 import { useState } from 'react'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import FAQSchema from '@/components/FAQSchema'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
+import {CtaBand, PageHero, PageShell, styles} from '@/components/Brand'
+import {cn} from '@/lib/utils'
 
 export default function FAQPage() {
     const [openQuestion, setOpenQuestion] = useState<string | null>(null)
+    const {brand} = colors
 
     const toggleQuestion = (question: string) => {
         setOpenQuestion(openQuestion === question ? null : question)
     }
 
     return (
-        <div className={`min-h-screen ${colors.background.white}`}>
+        <PageShell>
             <FAQSchema questions={siteText.faq.questions} />
-            <Header />
 
-            <section className="py-16">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <h1 className={`text-4xl font-bold ${colors.text.gray[900]} sm:text-5xl mb-4`}>
-                            {siteText.faq.title}
-                        </h1>
-                        <p className={`text-xl ${colors.text.gray[600]}`}>
-                            {siteText.faq.subtitle}
-                        </p>
-                    </div>
+            <PageHero title={siteText.faq.title} intro={siteText.faq.subtitle}/>
 
-                    <div className="space-y-4">
-                        {siteText.faq.questions.map((item) => (
-                            <div
-                                key={item.question}
-                                className={`border ${colors.border.gray[200]} rounded-lg overflow-hidden`}
-                            >
+            <section className={cn(styles.container, 'pb-20')}>
+                <ul className={cn('max-w-[880px] flex flex-col', styles.ruleTop)}>
+                    {siteText.faq.questions.map((item, index) => {
+                        const isOpen = openQuestion === item.question
+                        return (
+                            <li key={item.question} className={cn('border-b', brand.border.inkSubtle)}>
                                 <button
+                                    type="button"
                                     onClick={() => toggleQuestion(item.question)}
-                                    className={`w-full px-6 py-4 text-left ${colors.background.white} ${colors.hover.background.gray[50]} transition-colors flex justify-between items-center`}
-                                    aria-expanded={openQuestion === item.question}
+                                    aria-expanded={isOpen}
+                                    aria-controls={`faq-answer-${index}`}
+                                    className={cn('w-full py-6 text-left flex justify-between items-start gap-6 cursor-pointer', brand.hover.text.emberDark, brand.focus.outline)}
                                 >
-                                    <span className={`text-lg font-semibold ${colors.text.gray[900]}`}>
+                                    <span className="font-heading stretch-semi-condensed font-extrabold uppercase text-[22px] sm:text-[26px] leading-tight">
                                         {item.question}
                                     </span>
-                                    <svg
-                                        className={`w-6 h-6 ${colors.text.primary[600]} transition-transform ${
-                                            openQuestion === item.question ? 'rotate-180' : ''
-                                        }`}
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
+                                    <span
+                                        aria-hidden="true"
+                                        className={cn('flex-none grid place-items-center w-9 h-9 rounded-full border-[1.5px] text-xl leading-none transition-transform', brand.border.ink, isOpen && 'rotate-45')}
                                     >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M19 9l-7 7-7-7"
-                                        />
-                                    </svg>
+                                        +
+                                    </span>
                                 </button>
-                                {openQuestion === item.question && (
-                                    <div className={`px-6 py-4 ${colors.background.primary[50]}`}>
-                                        <p className={`${colors.text.gray[700]} leading-relaxed`}>
-                                            {item.answer}
-                                        </p>
-                                    </div>
+                                {isOpen && (
+                                    <p id={`faq-answer-${index}`} className={cn(styles.body, 'pb-6 max-w-[70ch]')}>
+                                        {item.answer}
+                                    </p>
                                 )}
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className={`mt-12 text-center p-6 ${colors.background.primary[50]} rounded-lg`}>
-                        <h2 className={`text-2xl font-bold ${colors.text.gray[900]} mb-2`}>
-                            Har du andre spørsmål?
-                        </h2>
-                        <p className={`${colors.text.gray[600]} mb-4`}>
-                            Hvis du ikke finner svar på det du lurer på, ta gjerne kontakt med oss!
-                        </p>
-                        <a
-                            href="/kontakt-oss"
-                            className={`inline-block ${colors.background.primary[600]} ${colors.text.white} px-6 py-3 rounded-lg ${colors.hover.background.primary[700]} transition-colors font-semibold`}
-                        >
-                            Kontakt oss
-                        </a>
-                    </div>
-                </div>
+                            </li>
+                        )
+                    })}
+                </ul>
             </section>
 
-            <Footer />
-        </div>
+            <CtaBand title={siteText.common.faqCtaTitle} text={siteText.common.faqCtaText} label={siteText.common.contactUs}/>
+        </PageShell>
     )
 }
