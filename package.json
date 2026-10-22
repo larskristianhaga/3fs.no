@@ -19,7 +19,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.57.0",
-    "next": "16.4.0",
+    "next": "16.4.1",
     "posthog-js": "^1.438.10",
     "posthog-node": "^5.56.1",
     "react": "^19.3.1",
