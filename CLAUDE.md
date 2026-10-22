@@ -16,7 +16,8 @@ npm start               # Run production server
 ```
 
 ### Build & Testing
-- No tests currently configured. Changes require manual verification via `npm run dev` and build verification via `npm run build`.
+- No unit tests. Changes require manual verification via `npm run dev` and build verification via `npm run build`.
+- `npm run test:e2e` is a Playwright smoke test (`e2e/pages.spec.ts`) that loads every sitemap page and fails on a non-200 or a console error. Point it at a deployment with `BASE_URL=https://3fs.vercel.app npm run test:e2e` (defaults to `localhost:3000`).
 
 ## Architecture Overview
 
@@ -198,7 +199,8 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 
 - **`SITE_URL`** (GitHub Actions repository variable) is the host the live checks run against — currently `https://3fs.vercel.app`, later `https://3fs.no`. Change it in the repo's Actions variables when the domain moves; no code change needed. It is separate from the canonical domain (`companyInfo.website` in `src/config/company.ts`), which the app uses for metadata, sitemap, robots and JSON-LD — never hardcode `https://3fs.no` in app code.
 - A weekly **uptime check** requests every sitemap page (rewritten to `SITE_URL`) and the contact email health endpoint (`.github/workflows/uptime-check.yml`).
-- **Dependabot** PRs are auto-approved and squash-merged when the Vercel build passes (`.github/workflows/dependabot-pr.yml`).
+- A **smoke test** runs `npm run test:e2e` against every successful Vercel Preview deployment (`.github/workflows/smoke-test.yml`). Previews must stay public (Vercel Deployment Protection off) for it to reach them.
+- **Dependabot** npm minor/patch updates come as one grouped PR. They are auto-approved and squash-merged when the Vercel build passes (`.github/workflows/dependabot-pr.yml`).
 - A monthly **link-checker** workflow scans the live site for broken links (`.github/workflows/link-checker.yml`).
 - A monthly **SEO audit** crawls every page with Unlighthouse (Lighthouse SEO, accessibility and best-practices) and fails if a page scores below the budgets (`.github/workflows/seo-audit.yml`, config in `.github/unlighthouse.config.ts`). Per-page scores and failed audits are printed in the job log and the run's job summary (`.github/scripts/unlighthouse-summary.mjs`).
 

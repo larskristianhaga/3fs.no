@@ -38,3 +38,7 @@ next-env.d.ts
 
 # PostHog Wizard cache
 .claude/skills/integration-nextjs-app-router/
+
+# Playwright
+/test-results/
+/playwright-report/
