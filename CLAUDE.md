@@ -26,16 +26,16 @@ npm start               # Run production server
   - **`api/contact/`** – Email submission endpoint using Resend
   - **`layout.tsx`** – Root layout with global metadata, Analytics, SpeedInsights
 - **`src/components/`** – React components
-  - **`ui/`** – Shadcn/ui components (Button, Card, Input, Textarea, Sheet, etc.)
-  - **`Header.tsx`**, **`Footer.tsx`** – Main layout components
+  - **`Brand.tsx`** – Shared design building blocks: `styles` (container, headings, pill buttons, links, cards), `PageShell` (cream page + Header/Footer), `PageHero`, `Eyebrow`, `CtaBand`, `AreaLinks`, `ContactDetails`. Build every page from these
+  - **`ui/sheet.tsx`** – Radix dialog used for the mobile menu
+  - **`Header.tsx`**, **`Footer.tsx`** – Main layout components (the footer also renders the phone-only call bar pinned to the bottom)
   - **`ContactForm.tsx`** – Contact form with file upload
   - **`*Schema.tsx`** – JSON-LD injectors (`StructuredData`, `ArticleSchema`, `ServiceSchema`, `FAQSchema`, `BreadcrumbSchema`)
   - **`PreloadLink.tsx`**, **`BlogCard.tsx`**, **`ServicesShowcase.tsx`** (interactive services list on the home page)
-- **`src/middleware.ts`** – Sets a 1-day cache (plus stale-while-revalidate) on `/images/*` only. Filenames aren't content-hashed, so don't make it `immutable`
+- **`src/proxy.ts`** – Next.js proxy (formerly middleware). Sets a 1-day cache (plus stale-while-revalidate) on `/images/*` only. Filenames aren't content-hashed, so don't make it `immutable`
 - **`src/config/`** – Centralized configuration
-  - **`colors.ts`** – `colors.brand` class references for the cream/ink/ember palette (tokens live in `globals.css` `@theme`)
-  - **`styles.ts`** – Shared layout and typography helpers (`container`, `pageHeading`, `primaryButton`, ...); `Eyebrow` lives in `components/Eyebrow.tsx`
-  - **`company.ts`** – Company info, contact details, service areas, `yearsOfExperience`
+  - **`colors.ts`** – `colors.brand` Tailwind classes for the brand palette (ink, cream, sand, forest, ember)
+  - **`company.ts`** – Company info, contact details, address, service areas, stats, insurance, `yearsOfExperience`
 - **`src/content/`** – All text content (Norwegian)
   - **`text.ts`** – Centralized copy for all pages, forms, services, FAQ
 - **`src/lib/`** – Utilities
@@ -61,7 +61,7 @@ npm start               # Run production server
 
 | Route | Component | Purpose |
 |-------|-----------|---------|
-| `/` | `src/app/page.tsx` | Home page with hero, services overview, testimonials |
+| `/` | `src/app/page.tsx` | Home page: hero, services showcase, insurance, about, reviews, booking form |
 | `/tjenester` | `src/app/tjenester/page.tsx` | Full services catalog with image gallery |
 | `/om-oss` | `src/app/om-oss/page.tsx` | About page with team and insurance info |
 | `/faq` | `src/app/faq/page.tsx` | FAQ with expandable questions |
@@ -74,10 +74,10 @@ npm start               # Run production server
 
 ### Key Components & Patterns
 
-**UI Components** use Shadcn-style components with Radix UI primitives:
-- All components support `className` prop and use `cn()` utility for merging Tailwind classes
-- Button variants defined in `src/components/ui/button.tsx` with consistent hover states
-- Card components for layout structure
+**Design system** (from the Claude Design "Trefellingsspesialisten" project):
+- Cream pages, sand and ink (dark) section bands, condensed uppercase Archivo headings (`font-heading stretch-condensed font-black uppercase`), Instrument Sans body text, pill-shaped buttons (ember primary, ink outline)
+- Use `styles`, `PageShell`, `PageHero` and `CtaBand` from `src/components/Brand.tsx` rather than re-creating these classes
+- Merge classes with `cn()`; it registers the custom `font-heading` family so tailwind-merge doesn't drop it
 
 **Contact Form** (`src/components/ContactForm.tsx`):
 - Client-side form with file upload support
@@ -90,28 +90,30 @@ npm start               # Run production server
 - Uses Resend (resend.com) via `RESEND_API_KEY` environment variable
 - Sends HTML-formatted emails with contact info and message
 - Supports file attachments
-- Validates required fields, HTML-escapes all user input in the email template, sets `replyTo` to the customer's email, and applies a simple per-instance rate limit
+- Validates required fields, HTML-escapes all user input in the email template, sets `replyTo` to the customer's email when given (email is optional; name, phone, postcode and message are required), and applies a simple per-instance rate limit
 - Sends to `rs3felling@gmail.com`
 - `/api/contact/health` sends a test email to Resend's test inbox; the weekly uptime workflow calls it
 
 ### Styling & Design System
 
 **Tailwind CSS v4** with custom configuration:
-- Modern Tailwind v4 with `@tailwindcss/postcss`
-- Colors centralized in `src/config/colors.ts`
-- All pages reference colors from config: `const {brand} = colors`, then `brand.text.ink`, `brand.background.cream`, etc. Add new tokens to `globals.css` `@theme` and a matching entry in `colors.brand`
+- Brand tokens (colors and fonts) are defined in `src/app/globals.css` under `@theme`, e.g. `--color-ember` → `bg-ember`, `--font-heading` → `font-heading`
+- Fonts load via `next/font` in `src/app/layout.tsx` (Archivo with its width axis, Instrument Sans). Archivo widths come from `.stretch-condensed` / `.stretch-semi-condensed`
+- Components reference colors through `colors.brand` in `src/config/colors.ts`: `colors.brand.text.ink`, `colors.brand.background.sand`, etc.
 - **All new components should use color config references, not hardcoded Tailwind classes**
 
 **Hover States & Interactions**:
-- Buttons use `hover:scale-105` for consistent feedback
-- Cards use `hover:shadow-lg` or `hover:bg-gray-50`
-- All transitions use `transition-all` or `transition-colors`
+- Primary buttons lighten (`hover:bg-ember-light`), outline buttons fill with ink (`hover:bg-ink hover:text-cream`)
+- Links turn ember-dark on hover; cards lift slightly (`hover:-translate-y-0.5`)
+- Every interactive element gets `colors.brand.focus.outline` for a visible keyboard focus ring
 
 ### Environment Variables
 
-Required for email functionality:
+Copy `.env.example` to `.env.local`. Every variable is optional locally:
 ```
-RESEND_API_KEY=your_resend_api_key
+RESEND_API_KEY=your_resend_api_key                 # contact form email; without it submissions return an error
+NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN=...              # PostHog analytics, logs and exception capture
+NEXT_PUBLIC_POSTHOG_HOST=...                       # without both, PostHog is disabled with a dev warning
 ```
 
 The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `src/app/api/contact/route.ts`).
@@ -153,8 +155,8 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 
 ### Modify Colors
 - Update `src/config/colors.ts`
-- All components automatically use updated colors since they reference the config
-- Never add hardcoded `bg-green-600` or `text-gray-900` – use `colors.brand`
+- Change a token's value in `globals.css` to restyle everything that uses it; add new classes to `colors.brand`
+- Never add hardcoded `bg-[#…]` or palette classes like `text-gray-900` – add a token in `globals.css` and reference it via `colors.brand`
 
 ### Update Contact Form
 - Form labels/validation in `siteText.contact.form` (`src/content/text.ts`)

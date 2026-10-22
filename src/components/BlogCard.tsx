@@ -1,10 +1,8 @@
-import PreloadLink from '@/components/PreloadLink'
 import { colors } from '@/config/colors'
-import { subHeading } from '@/config/styles'
-import { cn } from '@/lib/utils'
+import {styles} from '@/components/Brand'
+import PreloadLink from '@/components/PreloadLink'
 import {siteText} from '@/content/text'
-
-const { brand } = colors
+import {cn} from '@/lib/utils'
 
 interface BlogCardProps {
     id: string
@@ -23,6 +21,7 @@ export default function BlogCard({
     readTime,
     publishedDate
 }: BlogCardProps) {
+    const {brand} = colors
     const formattedDate = new Date(publishedDate).toLocaleDateString('nb-NO', {
         year: 'numeric',
         month: 'long',
@@ -30,32 +29,23 @@ export default function BlogCard({
     })
 
     return (
-        <article className={cn('flex flex-col rounded-md border p-6 sm:p-8', brand.background.paper, brand.border.inkSubtle)}>
-            <div className="flex items-center gap-3 mb-4 text-sm">
-                <span className={cn('font-semibold tracking-[.08em] uppercase', brand.text.emberDark)}>
-                    {category}
-                </span>
-                <span className={brand.text.inkMuted}>{readTime}</span>
+        <article className={cn(styles.card, 'p-7 flex flex-col gap-4 transition-transform hover:-translate-y-0.5')}>
+            <div className={cn('flex items-center gap-3', styles.muted)}>
+                <span className={styles.tag}>{category}</span>
+                <span>{readTime}</span>
             </div>
 
-            <h3 className={cn(subHeading, 'text-[clamp(24px,2.2vw,30px)] mb-3', brand.text.ink)}>
-                <PreloadLink href={`/blogg/${id}`} className={cn('no-underline transition-colors', brand.hover.text.emberDark)}>
+            <h3 className={styles.cardHeading}>
+                <PreloadLink href={`/blogg/${id}`} className={cn('no-underline', brand.text.ink, brand.hover.text.emberDark)}>
                     {title}
                 </PreloadLink>
             </h3>
 
-            <p className={cn('mb-6 leading-relaxed', brand.text.inkSoft)}>
-                {excerpt}
-            </p>
+            <p className={styles.body}>{excerpt}</p>
 
-            <div className="mt-auto flex items-center justify-between gap-4">
-                <span className={cn('text-sm', brand.text.inkMuted)}>
-                    {formattedDate}
-                </span>
-                <PreloadLink
-                    href={`/blogg/${id}`}
-                    className={cn('inline-flex items-center gap-2 font-semibold underline underline-offset-4 transition-colors', brand.text.ink, brand.hover.text.emberDark)}
-                >
+            <div className="mt-auto flex items-center justify-between gap-3">
+                <time dateTime={publishedDate} className={styles.muted}>{formattedDate}</time>
+                <PreloadLink href={`/blogg/${id}`} className={styles.textLink} aria-label={`${siteText.common.readMore} ${title}`}>
                     {siteText.common.readMore}
                 </PreloadLink>
             </div>

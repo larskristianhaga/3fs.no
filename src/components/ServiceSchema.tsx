@@ -23,6 +23,8 @@ export default function ServiceSchema({
             "telephone": companyInfo.contact.phone.href,
             "address": {
                 "@type": "PostalAddress",
+                "streetAddress": companyInfo.address.street,
+                "postalCode": companyInfo.address.postalCode,
                 "addressLocality": companyInfo.address.locality,
                 "addressRegion": companyInfo.address.region,
                 "addressCountry": companyInfo.address.country

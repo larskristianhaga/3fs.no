@@ -1,12 +1,9 @@
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import Eyebrow from '@/components/Eyebrow'
 import type {Metadata} from 'next'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
 import {companyInfo} from '@/config/company'
+import {PageHero, PageShell, styles} from '@/components/Brand'
 import {cn} from '@/lib/utils'
-import {container, pageHeading, subHeading, bodyText} from '@/config/styles'
 
 export const metadata: Metadata = {
     title: 'Personvernerklæring',
@@ -16,42 +13,31 @@ export const metadata: Metadata = {
     },
 }
 
-const {brand} = colors
-
 export default function PrivacyPage() {
+    const {brand} = colors
     return (
-        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
-            <Header/>
+        <PageShell>
+            <PageHero title={siteText.privacy.title} intro={siteText.privacy.intro}/>
 
-            <main>
-                <section className={cn(container, 'pt-14 pb-[88px] max-w-[860px]')}>
-                    <div className="flex flex-col gap-6 mb-12">
-                        <Eyebrow className={brand.text.forest}>{companyInfo.name}</Eyebrow>
-                        <h1 className={pageHeading}>{siteText.privacy.title}</h1>
-                        <p className={cn(bodyText, 'text-[19px] text-pretty')}>{siteText.privacy.intro}</p>
-                    </div>
-
+            <section className={cn(styles.container, 'pb-24')}>
+                <div className={cn('max-w-[760px] flex flex-col gap-10 pt-10', styles.ruleTop)}>
                     {siteText.privacy.sections.map((section) => (
-                        <div key={section.heading} className={cn('py-8 border-t flex flex-col gap-3', brand.border.inkSubtle)}>
-                            <h2 className={cn(subHeading, 'text-[clamp(24px,2.6vw,32px)]')}>
-                                {section.heading}
-                            </h2>
+                        <div key={section.heading} className="flex flex-col gap-3">
+                            <h2 className={styles.cardHeading}>{section.heading}</h2>
                             {section.paragraphs.map((paragraph) => (
-                                <p key={paragraph} className={cn(bodyText, 'm-0')}>
+                                <p key={paragraph} className={styles.body}>
                                     {paragraph}
                                 </p>
                             ))}
                         </div>
                     ))}
 
-                    <p className={cn(bodyText, 'm-0 pt-8 border-t', brand.border.inkSubtle)}>
-                        {companyInfo.name}, {siteText.privacy.orgLabel} {companyInfo.organization.number}, {companyInfo.address.locality}.
-                        {siteText.privacy.emailLabel}: <a href={`mailto:${companyInfo.contact.email}`} className={cn('underline underline-offset-[3px]', brand.hover.text.emberDark)}>{companyInfo.contact.email}</a>
+                    <p className={styles.body}>
+                        {companyInfo.name}, org.nr. {companyInfo.organization.number}, {companyInfo.address.street}, {companyInfo.address.postalCode} {companyInfo.address.locality}.
+                        E-post: <a href={`mailto:${companyInfo.contact.email}`} className={cn('underline underline-offset-[3px]', brand.text.ink, brand.hover.text.emberDark)}>{companyInfo.contact.email}</a>
                     </p>
-                </section>
-            </main>
-
-            <Footer/>
-        </div>
+                </div>
+            </section>
+        </PageShell>
     )
 }

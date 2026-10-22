@@ -1,9 +1,9 @@
-import PreloadLink from '@/components/PreloadLink'
 import type {Metadata} from 'next'
-import {colors} from '@/config/colors'
-import {cn} from '@/lib/utils'
+import {PageHero, PageShell, styles} from '@/components/Brand'
+import PreloadLink from '@/components/PreloadLink'
 import {siteText} from '@/content/text'
-import {container, subHeading, primaryButton} from '@/config/styles'
+import {companyInfo} from '@/config/company'
+import {cn} from '@/lib/utils'
 
 export const metadata: Metadata = {
     title: 'Siden ble ikke funnet - 404',
@@ -14,17 +14,19 @@ export const metadata: Metadata = {
     },
 }
 
-const {brand} = colors
-
 export default function NotFound() {
     return (
-        <div className={cn('min-h-screen flex items-center justify-center', brand.background.cream, brand.text.ink)}>
-            <div className={cn(container, 'flex flex-col items-center text-center gap-6')}>
-                <h2 className={subHeading}>{siteText.notFound.title}</h2>
-                <PreloadLink href="/" className={primaryButton}>
-                    Gå tilbake
-                </PreloadLink>
-            </div>
-        </div>
+        <PageShell>
+            <PageHero eyebrow="404" title={siteText.common.notFoundTitle} intro={siteText.common.notFoundText}>
+                <div className="flex gap-3 flex-wrap pb-12">
+                    <PreloadLink href="/" className={styles.primaryButton}>
+                        {siteText.common.notFoundButton}
+                    </PreloadLink>
+                    <a href={`tel:${companyInfo.contact.phone.href}`} className={cn(styles.outlineButton)}>
+                        {siteText.header.callUs} {companyInfo.contact.phone.display}
+                    </a>
+                </div>
+            </PageHero>
+        </PageShell>
     )
 }

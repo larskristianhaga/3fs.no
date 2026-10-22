@@ -1,17 +1,14 @@
 import type {Metadata} from 'next'
 import { notFound } from 'next/navigation'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import PreloadLink from '@/components/PreloadLink'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 import ArticleSchema from '@/components/ArticleSchema'
 import { companyInfo } from '@/config/company'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
-import { container, pageHeading, subHeading, primaryButton } from '@/config/styles'
-import { cn } from '@/lib/utils'
-
-const { brand } = colors
+import {CtaBand, PageShell, styles} from '@/components/Brand'
+import PreloadLink from '@/components/PreloadLink'
+import BlogCard from '@/components/BlogCard'
+import {cn} from '@/lib/utils'
 
 interface PageProps {
     params: Promise<{
@@ -66,6 +63,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         notFound()
     }
 
+    const {brand} = colors
     const formattedDate = new Date(post.publishedDate).toLocaleDateString('nb-NO', {
         year: 'numeric',
         month: 'long',
@@ -77,7 +75,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         .slice(0, 3)
 
     return (
-        <div className={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
+        <PageShell>
             <ArticleSchema
                 title={post.title}
                 description={post.excerpt}
@@ -87,99 +85,62 @@ export default async function BlogPostPage({ params }: PageProps) {
             />
             <BreadcrumbSchema
                 items={[
-                    { name: siteText.common.breadcrumbHome, url: companyInfo.website },
-                    { name: siteText.blog.title, url: `${companyInfo.website}/blogg` },
+                    { name: 'Forside', url: companyInfo.website },
+                    { name: 'Blogg', url: `${companyInfo.website}/blogg` },
                     { name: post.title, url: `${companyInfo.website}/blogg/${post.id}` }
                 ]}
             />
-            <Header />
 
-            {/* Breadcrumb */}
-            <div className={cn('border-b py-4', brand.border.inkSubtle)}>
-                <div className={cn(container, 'max-w-4xl')}>
-                    <div className="flex items-center gap-2 text-sm">
-                        <PreloadLink href="/blogg" className={cn('underline underline-offset-4', brand.text.ink, brand.hover.text.emberDark)}>
+            <article className={cn(styles.container, 'pt-10 pb-20')}>
+                <div className="max-w-[820px] flex flex-col gap-6">
+                    <nav className="flex items-center gap-2 text-sm" aria-label={siteText.common.breadcrumbLabel}>
+                        <PreloadLink href="/blogg" className={styles.textLink}>
                             {siteText.blog.title}
                         </PreloadLink>
-                        <span className={brand.text.inkMuted}>›</span>
-                        <span className={brand.text.inkSoft}>{post.title}</span>
-                    </div>
-                </div>
-            </div>
+                        <span className={brand.text.inkMuted} aria-hidden="true">›</span>
+                        <span className={cn(brand.text.inkMuted, 'line-clamp-1')}>{post.title}</span>
+                    </nav>
 
-            <article className="py-16 sm:py-24">
-                <div className={cn(container, 'max-w-4xl')}>
-                    <header className="mb-12">
-                        <div className="flex flex-wrap items-center gap-3 mb-5 text-sm">
-                            <span className={cn('font-semibold tracking-[.08em] uppercase', brand.text.emberDark)}>
-                                {post.category}
-                            </span>
-                            <time className={brand.text.inkMuted}>
-                                {formattedDate}
-                            </time>
-                            <span className={brand.text.inkMuted}>
-                                • {post.readTime}
-                            </span>
+                    <header className="flex flex-col gap-5">
+                        <div className={cn('flex flex-wrap items-center gap-3', styles.muted)}>
+                            <span className={styles.tag}>{post.category}</span>
+                            <time dateTime={post.publishedDate}>{formattedDate}</time>
+                            <span>• {post.readTime}</span>
                         </div>
-
-                        <h1 className={cn(pageHeading, 'mb-6')}>
+                        <h1 className={cn(styles.displayHeading, 'text-[clamp(40px,5vw,72px)] leading-[.95]')}>
                             {post.title}
                         </h1>
-
-                        <p className={cn('text-xl leading-relaxed max-w-[70ch]', brand.text.inkSoft)}>
-                            {post.excerpt}
-                        </p>
+                        <p className={styles.lead}>{post.excerpt}</p>
                     </header>
 
-                    {/* Article Content */}
-                    <div className={cn('mb-12 pt-10 border-t', brand.border.inkSubtle)}>
-                        <div className={cn('max-w-[70ch] whitespace-pre-wrap leading-relaxed text-lg', brand.text.inkSoft)}>
-                            {post.content}
-                        </div>
+                    <div className={cn('pt-8 whitespace-pre-wrap text-[18px] leading-relaxed', styles.ruleTop, brand.text.inkSoft)}>
+                        {post.content}
                     </div>
-
-                    {/* Related Articles */}
-                    {relatedPosts.length > 0 && (
-                        <section className={cn('mt-16 pt-12 border-t', brand.border.inkSubtle)}>
-                            <h2 className={cn(subHeading, 'mb-8')}>
-                                {siteText.blog.relatedTitle}
-                            </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                {relatedPosts.map((related) => (
-                                    <article key={related.id} className={cn('rounded-md border p-6', brand.background.paper, brand.border.inkSubtle)}>
-                                        <h3 className="text-lg font-semibold mb-2">
-                                            <PreloadLink href={`/blogg/${related.id}`} className={cn('no-underline transition-colors', brand.hover.text.emberDark)}>
-                                                {related.title}
-                                            </PreloadLink>
-                                        </h3>
-                                        <p className={cn('text-sm mb-4', brand.text.inkSoft)}>
-                                            {related.excerpt}
-                                        </p>
-                                        <PreloadLink href={`/blogg/${related.id}`} className={cn('text-sm font-semibold underline underline-offset-4 transition-colors', brand.text.ink, brand.hover.text.emberDark)}>
-                                            {siteText.common.readMore}
-                                        </PreloadLink>
-                                    </article>
-                                ))}
-                            </div>
-                        </section>
-                    )}
-
-                    {/* CTA */}
-                    <section className={cn('mt-16 px-8 py-12 rounded-md text-center', brand.background.ink, brand.text.cream)}>
-                        <h2 className={cn(subHeading, 'mb-4')}>
-                            {siteText.blog.articleCtaTitle}
-                        </h2>
-                        <p className={cn('mb-8 text-lg', brand.text.mist)}>
-                            {siteText.blog.articleCtaText}
-                        </p>
-                        <a href="/kontakt-oss" className={primaryButton}>
-                            {siteText.common.requestQuoteCta}
-                        </a>
-                    </section>
                 </div>
             </article>
 
-            <Footer />
-        </div>
+            {relatedPosts.length > 0 && (
+                <section className={brand.background.sand}>
+                    <div className={cn(styles.container, 'py-20 flex flex-col gap-10')}>
+                        <h2 className={styles.subHeading}>{siteText.common.relatedArticles}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                            {relatedPosts.map((related) => (
+                                <BlogCard
+                                    key={related.id}
+                                    id={related.id}
+                                    title={related.title}
+                                    excerpt={related.excerpt}
+                                    category={related.category}
+                                    readTime={related.readTime}
+                                    publishedDate={related.publishedDate}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            <CtaBand title={siteText.common.articleCtaTitle} text={siteText.common.articleCtaText}/>
+        </PageShell>
     )
 }
