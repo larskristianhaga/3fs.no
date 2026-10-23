@@ -1,13 +1,19 @@
 import type {Metadata, Viewport} from 'next'
 import {companyInfo, yearsOfExperience} from '@/config/company'
 import {SpeedInsights} from '@vercel/speed-insights/next'
-import {Archivo, Instrument_Sans} from 'next/font/google'
+import {Instrument_Sans} from 'next/font/google'
+import localFont from 'next/font/local'
 import StructuredData from '@/components/StructuredData'
 import './globals.css'
 
-const archivo = Archivo({
-    subsets: ['latin'],
-    axes: ['wdth'],
+// Archivo's Google Fonts latin file, cut down with fontTools to the axis ranges the site uses
+// (weight 700–900, width 68–100%). That halves it to ~43 KB, and it renders the LCP heading.
+// Using a lighter weight or wider stretch with font-heading needs a new cut of the file.
+const archivo = localFont({
+    src: './fonts/archivo-latin-bold-condensed.woff2',
+    weight: '700 900',
+    style: 'normal',
+    declarations: [{prop: 'font-stretch', value: '68% 100%'}],
     variable: '--font-archivo',
     display: 'swap',
 })

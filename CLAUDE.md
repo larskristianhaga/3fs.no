@@ -100,7 +100,8 @@ npm start               # Run production server
 
 **Tailwind CSS v4** with custom configuration:
 - Brand tokens (colors and fonts) are defined in `src/app/globals.css` under `@theme`, e.g. `--color-ember` → `bg-ember`, `--font-heading` → `font-heading`
-- Fonts load via `next/font` in `src/app/layout.tsx` (Archivo with its width axis, Instrument Sans). Archivo widths come from `.stretch-condensed` / `.stretch-semi-condensed`
+- Fonts load via `next/font` in `src/app/layout.tsx`: Instrument Sans from Google, Archivo self-hosted from `src/app/fonts/` (`next/font/local`, OFL license alongside). Archivo widths come from `.stretch-condensed` / `.stretch-semi-condensed`
+- The Archivo file is cut down to weight 700–900 and width 68–100% to halve its size. `font-heading` with `font-semibold` or lighter, or a wider stretch, falls back to synthesized or clamped rendering. To widen the range, re-cut Google's Archivo latin file with `fonttools varLib.instancer` (e.g. `wght=600:900 wdth=68:100`) and update `weight` / `font-stretch` in `layout.tsx`
 - Components reference colors through `colors.brand` in `src/config/colors.ts`: `colors.brand.text.ink`, `colors.brand.background.sand`, etc.
 - **All new components should use color config references, not hardcoded Tailwind classes**
 
