@@ -48,6 +48,8 @@ export const SELECT_SERVICE_EVENT = 'contactform:select-service'
 const text = siteText.contact.form
 const services = siteText.home.servicesSection.items
 const {brand} = colors
+const agentTool = text.agentTool
+const agentToolDescription = `${agentTool.description} ${services.map((s) => s.title).join(', ')}.`
 
 const fieldLabel = 'flex flex-col gap-2 font-semibold text-[15px]'
 const fieldInput = cn(
@@ -74,12 +76,19 @@ export default function ContactForm() {
     const toggle = (title: string) =>
         setPicked((p) => p.includes(title) ? p.filter((x) => x !== title) : [...p, title])
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const result = submit(e.currentTarget)
+        // WebMCP: when an AI agent submitted the form, tell it how it went
+        const event = e.nativeEvent as SubmitEvent
+        if (event.agentInvoked) event.respondWith?.(result)
+    }
+
+    // Resolves with the message shown to the user, which is also the response to an AI agent
+    const submit = async (form: HTMLFormElement): Promise<string> => {
         setIsSubmitting(true)
         setError(null)
 
-        const form = e.currentTarget
         const formData = new FormData(form)
         const files = (formData.getAll('attachment') as File[]).filter((f) => f && f.size > 0)
         const summary = picked.length ? picked.join(', ') : text.generalRequest
@@ -99,7 +108,7 @@ export default function ContactForm() {
             const totalBytes = images.reduce((sum, img) => sum + img.blob.size, 0)
             if (totalBytes > MAX_TOTAL_BYTES) {
                 setError(text.fileTooLargeMessage)
-                return
+                return text.fileTooLargeMessage
             }
 
             const data = {
@@ -139,14 +148,15 @@ export default function ContactForm() {
                 form.reset()
                 setPicked([])
                 setFileCount(0)
-            } else if (response.status === 413) {
-                setError(text.fileTooLargeMessage)
-            } else {
-                setError(text.errorMessage)
+                return `${text.successText} ${data.phone} ${text.successTextSuffix}`
             }
+            const message = response.status === 413 ? text.fileTooLargeMessage : text.errorMessage
+            setError(message)
+            return message
         } catch (error) {
             console.error('Error:', error)
             setError(text.errorMessage)
+            return text.errorMessage
         } finally {
             setIsSubmitting(false)
         }
@@ -175,7 +185,7 @@ export default function ContactForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="relative flex flex-col gap-[26px]">
+        <form onSubmit={handleSubmit} toolname="bestill_befaring" tooldescription={agentToolDescription} className="relative flex flex-col gap-[26px]">
             <fieldset className="border-0 m-0 p-0 flex flex-col gap-3">
                 <legend className="p-0 mb-3 font-semibold text-base">{text.servicesLegend}</legend>
                 <div className="flex flex-wrap gap-2">
@@ -204,7 +214,7 @@ export default function ContactForm() {
 
             <label className={fieldLabel}>
                 {text.messageLabel} {text.required}
-                <textarea name="message" rows={4} required placeholder={text.messagePlaceholder} className={cn(fieldInput, 'resize-y')}/>
+                <textarea name="message" toolparamdescription={agentTool.params.message} rows={4} required placeholder={text.messagePlaceholder} className={cn(fieldInput, 'resize-y')}/>
             </label>
 
             <label className={cn(fieldLabel, 'relative')}>
@@ -232,22 +242,22 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <label className={fieldLabel}>
                     {text.addressLabel}
-                    <input name="address" autoComplete="street-address" placeholder={text.addressPlaceholder} className={fieldInput}/>
+                    <input name="address" toolparamdescription={agentTool.params.address} autoComplete="street-address" placeholder={text.addressPlaceholder} className={fieldInput}/>
                 </label>
                 <label className={fieldLabel}>
                     {text.postCodeAndLocation} {text.required}
-                    <input name="postCodeAndLocation" required autoComplete="postal-code" placeholder={text.postCodePlaceholder} className={fieldInput}/>
+                    <input name="postCodeAndLocation" toolparamdescription={agentTool.params.postCodeAndLocation} required autoComplete="postal-code" placeholder={text.postCodePlaceholder} className={fieldInput}/>
                 </label>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <label className={fieldLabel}>
                     {text.name} {text.required}
-                    <input name="name" required autoComplete="name" className={fieldInput}/>
+                    <input name="name" toolparamdescription={agentTool.params.name} required autoComplete="name" className={fieldInput}/>
                 </label>
                 <label className={fieldLabel}>
                     {text.phone} {text.required}
-                    <input type="tel" name="phone" required autoComplete="tel" className={fieldInput}/>
+                    <input type="tel" name="phone" toolparamdescription={agentTool.params.phone} required autoComplete="tel" className={fieldInput}/>
                 </label>
             </div>
 
@@ -256,12 +266,12 @@ export default function ContactForm() {
                     {text.email}{' '}
                     <span className={cn('font-normal text-sm', brand.text.inkMuted)}>{text.emailOptional}</span>
                 </span>
-                <input type="email" name="email" autoComplete="email" className={fieldInput}/>
+                <input type="email" name="email" toolparamdescription={agentTool.params.email} autoComplete="email" className={fieldInput}/>
             </label>
 
             {/* Honeypot for spam bots — hidden from real users */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
-                <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                <input type="text" name="website" toolparamdescription={agentTool.params.website} tabIndex={-1} autoComplete="off" />
             </div>
 
             {error && (
