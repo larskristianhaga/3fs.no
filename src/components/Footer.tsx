@@ -1,6 +1,6 @@
 'use client'
 
-import posthog from 'posthog-js'
+import {capture} from '@/lib/analytics'
 import {companyInfo} from '@/config/company'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
@@ -28,14 +28,14 @@ export default function Footer() {
                         <span className={heading}>{siteText.footer.contactSection.title}</span>
                         <a
                             href={`tel:${companyInfo.contact.phone.href}`}
-                            onClick={() => posthog.capture('contact_phone_clicked')}
+                            onClick={() => capture('contact_phone_clicked')}
                             className={link}
                         >
                             {companyInfo.contact.phone.display}
                         </a>
                         <a
                             href={`mailto:${companyInfo.contact.email}`}
-                            onClick={() => posthog.capture('contact_email_clicked')}
+                            onClick={() => capture('contact_email_clicked')}
                             className={link}
                         >
                             {companyInfo.contact.email}
@@ -89,14 +89,14 @@ export default function Footer() {
             <div className={cn('sm:hidden fixed inset-x-0 bottom-0 z-40 flex gap-2 p-3 border-t backdrop-blur-md', brand.background.creamTranslucent, brand.border.inkSubtle)}>
                 <a
                     href={`tel:${companyInfo.contact.phone.href}`}
-                    onClick={() => posthog.capture('contact_phone_clicked', {placement: 'mobile_call_bar'})}
+                    onClick={() => capture('contact_phone_clicked', {placement: 'mobile_call_bar'})}
                     className={cn('flex-1 flex items-center justify-center py-3 rounded-full font-semibold text-[15px]', brand.background.ink, brand.text.cream, brand.focus.outline)}
                 >
                     {siteText.header.callUs} {companyInfo.contact.phone.display}
                 </a>
                 <a
                     href="/kontakt-oss"
-                    onClick={() => posthog.capture('contact_page_cta_clicked', {placement: 'mobile_call_bar'})}
+                    onClick={() => capture('contact_page_cta_clicked', {placement: 'mobile_call_bar'})}
                     className={cn('flex-1 flex items-center justify-center py-3 rounded-full font-semibold text-[15px]', brand.background.ember, brand.text.ink, brand.focus.outline)}
                 >
                     {siteText.footer.mobileBar.contact}

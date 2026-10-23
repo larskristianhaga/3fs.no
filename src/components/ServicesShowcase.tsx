@@ -13,7 +13,14 @@ const {items, quoteLink} = siteText.home.servicesSection
 // Numbered service list; hovering, focusing or tapping a row swaps the sticky image beside it
 export default function ServicesShowcase() {
     const [active, setActive] = useState(0)
+    // Only the first photo loads up front; the rest are mounted once the visitor interacts with the list
+    const [engaged, setEngaged] = useState(false)
     const service = items[active]
+
+    const select = (i: number) => {
+        setActive(i)
+        setEngaged(true)
+    }
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -23,9 +30,9 @@ export default function ServicesShowcase() {
                         {/* Inactive rows dim through muted colours, not opacity, to keep text contrast */}
                         <button
                             type="button"
-                            onMouseEnter={() => setActive(i)}
-                            onFocus={() => setActive(i)}
-                            onClick={() => setActive(i)}
+                            onMouseEnter={() => select(i)}
+                            onFocus={() => select(i)}
+                            onClick={() => select(i)}
                             aria-pressed={i === active}
                             className={cn(
                                 'w-full text-left py-[22px] border-b grid grid-cols-[52px_1fr] gap-x-3 gap-y-1 transition-colors duration-200',
@@ -50,7 +57,7 @@ export default function ServicesShowcase() {
 
             <div className="lg:sticky lg:top-24 flex flex-col gap-3.5">
                 <div className={cn('relative aspect-[4/5] rounded-md overflow-hidden', brand.background.sandDark)}>
-                    {items.map((item, i) => (
+                    {items.map((item, i) => (engaged || i === 0) && (
                         <Image
                             key={item.id}
                             src={`/images/tjenester/${item.id}.jpg`}

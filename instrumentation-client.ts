@@ -1,20 +1,25 @@
-import posthog from 'posthog-js'
+import {loadPostHog} from '@/lib/analytics'
 
 const projectToken = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
 const host = process.env.NEXT_PUBLIC_POSTHOG_HOST
 
-// PostHog is optional: without a token (e.g. a fresh local checkout) analytics are skipped
 if (!projectToken || !host) {
     if (process.env.NODE_ENV === 'development') {
         console.warn('PostHog is disabled: set NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN and NEXT_PUBLIC_POSTHOG_HOST to enable analytics')
     }
 } else {
-    posthog.init(projectToken, {
-        api_host: host,
-        defaults: '2026-01-30',
-        // No cookies/localStorage, so no consent banner is needed under ekomloven § 3-15
-        cookieless_mode: 'always',
-        capture_exceptions: true,
-        debug: process.env.NODE_ENV === 'development',
-    })
+    // Start analytics once the page has loaded and the browser is idle, so it never delays the first paint
+    const start = () => {
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => void loadPostHog(), {timeout: 3000})
+        } else {
+            setTimeout(() => void loadPostHog(), 1)
+        }
+    }
+
+    if (document.readyState === 'complete') {
+        start()
+    } else {
+        window.addEventListener('load', start, {once: true})
+    }
 }

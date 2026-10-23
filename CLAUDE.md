@@ -134,6 +134,8 @@ The contact form endpoint sends to `rs3felling@gmail.com` (the `to` field in `sr
 - **Turbopack**: Used for both dev and build for faster compilation
 - **Vercel Speed Insights** integrated for performance monitoring (Vercel Analytics was removed; PostHog handles analytics)
 - **Lazy loading**: Images lazy load with `loading="lazy"`
+- **PostHog loads after the page**: `posthog-js` (~100 KB gzipped) is imported on demand by `src/lib/analytics.ts` once the page is idle. Track events with `capture()` / `captureException()` from there; never `import posthog from 'posthog-js'` in a component, or it lands back in every page's initial bundle
+- **Mobile menu loads on first tap**: `MobileMenu.tsx` (the Radix dialog) is a `next/dynamic` import in `Header.tsx`
 
 ## Common Development Tasks
 
