@@ -494,6 +494,19 @@ export const siteText = {
             successText: 'Vi har mottatt forespørselen og ringer deg på',
             successTextSuffix: 'for å avtale befaring.',
             newRequest: 'Send en ny forespørsel',
+            // WebMCP: describes the form as a tool for AI agents in the visitor's browser
+            agentTool: {
+                description: `Send en forespørsel om gratis og uforpliktende befaring og pristilbud til ${companyInfo.name}, som feller og beskjærer trær i ${companyInfo.serviceAreasText}. Firmaet ringer kunden tilbake for å avtale befaring. Brukeren ser over skjemaet og sender det selv. Skriv i meldingen hvilke tjenester det gjelder:`,
+                params: {
+                    message: 'Beskrivelse av jobben: hvilke tjenester det gjelder, antall trær, treslag, omtrentlig høyde, hvor de står (f.eks. nær hus eller ledninger) og om stubber eller kvister skal fjernes.',
+                    address: 'Gateadresse der jobben skal gjøres. Valgfritt.',
+                    postCodeAndLocation: 'Postnummer og poststed der jobben skal gjøres, f.eks. «1430 Ås».',
+                    name: 'Kundens fulle navn.',
+                    phone: 'Kundens telefonnummer. Firmaet ringer dette nummeret for å avtale befaring.',
+                    email: 'Kundens e-postadresse. Valgfritt.',
+                    website: 'Skal alltid stå tomt.',
+                },
+            },
         },
     },
 
