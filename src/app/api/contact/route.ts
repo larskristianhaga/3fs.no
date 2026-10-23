@@ -113,7 +113,7 @@ export async function POST(request: NextRequest) {
 
         const {error} = await resend.emails.send({
             from: '3fs@paal-erik.no',
-            to: ['rs3felling@gmail.com'],
+            to: ['larskhaga@gmail.com'],
             // Email is optional; without it the reply goes to the sender address and the customer is phoned instead
             ...(email ? {replyTo: email} : {}),
             subject: `Ny innsending fra ${name} | 3fs.no`,
