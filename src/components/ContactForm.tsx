@@ -1,7 +1,7 @@
 'use client'
 
 import {useEffect, useState} from 'react'
-import posthog from 'posthog-js'
+import {capture} from '@/lib/analytics'
 import { cn } from '@/lib/utils'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
@@ -127,7 +127,7 @@ export default function ContactForm() {
             })
 
             if (response.ok) {
-                posthog.capture('contact_form_submitted', {
+                capture('contact_form_submitted', {
                     attachment_count: images.length,
                     services: picked,
                 })

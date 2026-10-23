@@ -66,9 +66,11 @@ export default function HomePage() {
                             src="/images/beskjaert-tre.jpg"
                             alt={home.hero.imageAlt}
                             fill
-                            priority
+                            // Eager but not preloaded: on phones the LCP is the heading above, and a high-priority
+                            // preload of this photo would compete with the heading's font on a slow connection
+                            loading="eager"
                             quality={75}
-                            sizes="(max-width: 1024px) 100vw, 620px"
+                            sizes="(max-width: 1024px) calc(100vw - 48px), 620px"
                             className="object-cover rounded-md"
                         />
                         <a
