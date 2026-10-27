@@ -246,7 +246,7 @@ export default function ContactForm() {
                 </label>
                 <label className={fieldLabel}>
                     {text.postCodeAndLocation} {text.required}
-                    <input name="postCodeAndLocation" toolparamdescription={agentTool.params.postCodeAndLocation} required autoComplete="postal-code" placeholder={text.postCodePlaceholder} className={fieldInput}/>
+                    <input name="postCodeAndLocation" toolparamdescription={agentTool.params.postCodeAndLocation} required placeholder={text.postCodePlaceholder} className={fieldInput}/>
                 </label>
             </div>
 

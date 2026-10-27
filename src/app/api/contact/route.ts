@@ -33,6 +33,10 @@ const recentRequests = new Map<string, number[]>()
 
 function isRateLimited(ip: string) {
     const now = Date.now()
+    // Drop IPs whose requests have all expired so the map doesn't grow forever on long-lived instances
+    for (const [key, times] of recentRequests) {
+        if (times.every((t) => now - t >= RATE_LIMIT_WINDOW_MS)) recentRequests.delete(key)
+    }
     const timestamps = (recentRequests.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS)
     timestamps.push(now)
     recentRequests.set(ip, timestamps)

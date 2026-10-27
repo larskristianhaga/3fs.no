@@ -451,7 +451,7 @@ export const siteText = {
                 paragraph: 'Alle oppdrag er ulike, og det kan være vanskelig å gi en konkret pris før vi vet litt mer. I noen tilfeller kan vi gi en fastpris ved å se på bilder du kan legge ved i kontaktskjemaet. I andre tilfeller er det hensiktsmessig at vi møter opp på en uforpliktende befaring.',
             },
             {
-                paragraph: 'Vi hjelper deg gjerne, send oss en e-post i dag, så vil du bli kontaktet fortløpende for en uforpliktende samtale eller avtale om en gratis befaring.',
+                paragraph: 'Vi hjelper deg gjerne. Fyll ut skjemaet i dag, så tar vi kontakt fortløpende for en uforpliktende samtale eller avtale om en gratis befaring.',
             },
             {
                 paragraph: 'Ikke nøl med å ta kontakt med oss om du har noen spørsmål knyttet til vårt arbeid eller tjenester!',
