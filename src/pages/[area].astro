@@ -1,0 +1,78 @@
+---
+import BreadcrumbSchema from '@/components/BreadcrumbSchema.astro'
+import CtaBand from '@/components/CtaBand.astro'
+import PageHero from '@/components/PageHero.astro'
+import {colors} from '@/config/colors'
+import {companyInfo} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+export function getStaticPaths() {
+    return siteText.locations.areas.map((area) => ({params: {area: area.slug}, props: {area}}))
+}
+
+const {area} = Astro.props
+const {brand} = colors
+const relatedCases = siteText.blog.posts
+    .filter((post) => post.category === 'Case')
+    .filter((post) => {
+        const haystack = `${post.title} ${post.excerpt} ${post.content}`.toLowerCase()
+        return haystack.includes(area.name.toLowerCase())
+    })
+const areaName = area.name.toLowerCase()
+---
+<BaseLayout
+    fullTitle={`Trefelling i ${area.name} | ${companyInfo.name}`}
+    description={area.description}
+    keywords={`trefelling ${areaName}, beskjæring ${areaName}, stubbefresing ${areaName}, ${companyInfo.name}`}
+    path={`/${area.slug}`}
+>
+    <BreadcrumbSchema
+        items={[
+            {name: 'Forside', url: companyInfo.website},
+            {name: area.name, url: `${companyInfo.website}/${area.slug}`},
+        ]}
+    />
+
+    <PageHero title={`${siteText.locations.title} ${area.name}`} intro={siteText.locations.subtitle} />
+
+    <section class={cn(styles.container, 'pb-20')}>
+        <div class={cn('pt-10 grid grid-cols-1 lg:grid-cols-2 gap-14', styles.ruleTop)}>
+            <p class={cn(styles.body, 'text-[19px]')}>{area.intro}</p>
+            <div class="flex flex-col gap-6">
+                <h2 class={styles.subHeading}>{siteText.common.areaHelpTitle}</h2>
+                <ul class={cn('flex flex-col', styles.ruleTop)}>
+                    {area.highlights.map((highlight) => (
+                        <li class={cn('py-4 border-b flex gap-3', brand.border.inkSubtle)}>
+                            <span class={cn('mt-3 w-4 h-0.5 flex-none', brand.background.ember)} aria-hidden="true"></span>
+                            <span class={styles.body}>{highlight}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    {relatedCases.length > 0 && (
+        <section class={brand.background.sand}>
+            <div class={cn(styles.container, 'py-20 flex flex-col gap-8')}>
+                <h2 class={styles.subHeading}>{siteText.common.areaCasesTitle} {area.name}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {relatedCases.map((post) => (
+                        <a
+                            href={`/blogg/${post.id}`}
+                            class={cn(styles.card, 'p-7 flex flex-col gap-2 no-underline transition-transform hover:-translate-y-0.5', brand.text.ink, brand.focus.outline)}
+                        >
+                            <h3 class={styles.cardHeading}>{post.title}</h3>
+                            <p class={cn('m-0', brand.text.inkMuted)}>{post.excerpt}</p>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )}
+
+    <CtaBand title={siteText.locations.ctaTitle} text={siteText.locations.ctaText} />
+</BaseLayout>

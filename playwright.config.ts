@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test'
 
-// Smoke tests run against a deployed site: BASE_URL is the Vercel preview URL in CI
+// Smoke tests run against a running site: BASE_URL is the deployment under test (defaults to the local server)
 export default defineConfig({
     testDir: './e2e',
     timeout: 5 * 60_000,

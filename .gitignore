@@ -9,8 +9,8 @@
 
 /coverage
 
-/.next/
-/out/
+/dist/
+/.astro/
 
 /build
 
@@ -25,19 +25,14 @@ yarn-error.log*
 .env*
 !.env.example
 
-.vercel
 
 *.tsbuildinfo
-next-env.d.ts
 
 .idea/*
 .env
 
 # PostHog Wizard run artifacts
 .posthog-wizard-cache/
-
-# PostHog Wizard cache
-.claude/skills/integration-nextjs-app-router/
 
 # Playwright
 /test-results/

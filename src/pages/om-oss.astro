@@ -1,0 +1,100 @@
+---
+import {Image} from 'astro:assets'
+import Eyebrow from '@/components/Eyebrow.astro'
+import {colors} from '@/config/colors'
+import {companyInfo, yearsOfExperience} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {imageFor} from '@/lib/images'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+const {brand} = colors
+
+const teamMembers = siteText.about.team.map((member, index) => ({
+    name: member.name,
+    role: member.role,
+    image: imageFor(`/images/om-oss/portrett-${index === 0 ? 'pe' : index === 1 ? 'ruud' : index === 2 ? 'olli' : 'bobby'}.jpg`),
+}))
+---
+<BaseLayout
+    title={`Om oss - Over ${yearsOfExperience} års erfaring med trefelling`}
+    description={`Lær mer om Trefellingsspesialisten AS - Over ${yearsOfExperience} års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.`}
+    keywords="om trefellingsfirma, profesjonelle arborister, sertifisert trefelling, erfaren trepleie, Ås, Oslo, Akershus, trefellingshistorie"
+    path="/om-oss"
+    ogTitle={`Om oss - Over ${yearsOfExperience} års erfaring med trefelling | Trefellingsspesialisten AS`}
+    ogDescription={`Over ${yearsOfExperience} års erfaring med profesjonell trepleie og trefelling. Vi holder til i Ås og betjener Oslo, Akershus, Østfold og Buskerud. Fullt forsikret og sertifiserte arborister.`}
+    ogImageAlt="Trefellingsspesialisten AS i arbeid"
+>
+    <section class={cn(styles.container, 'pt-14 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center')}>
+        <div class="flex flex-col gap-6">
+            <Eyebrow>{siteText.home.hero.areas}</Eyebrow>
+            <h1 class={styles.pageTitle}>{siteText.about.title}</h1>
+            {siteText.about.intro.map((item) => (
+                <p class={styles.body}>
+                    {item.paragraph}
+                </p>
+            ))}
+            <p class={cn('m-0 font-heading font-bold text-[22px] [font-stretch:80%]', brand.text.forest)}>
+                {siteText.home.about.tagline}
+            </p>
+        </div>
+        <div class="relative aspect-[4/3]">
+            <Image
+                src={imageFor('/images/om-oss/fugleperspektiv-maskiner-fra-tre.jpg')}
+                alt={siteText.about.imageAlt}
+                widths={[640, 1000, 1240]}
+                sizes="(max-width: 1024px) 100vw, 620px"
+                format="webp"
+                quality={80}
+                loading="eager"
+                fetchpriority="high"
+                class="absolute inset-0 w-full h-full object-cover rounded-md"
+            />
+        </div>
+    </section>
+
+    <section class={brand.background.sand}>
+        <div class={cn(styles.container, 'py-20 flex flex-col gap-10')}>
+            <h2 class={styles.sectionHeading}>{siteText.common.aboutTeamTitle}</h2>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {teamMembers.map((member) => (
+                    <li class="flex flex-col gap-2">
+                        <div class={cn('relative aspect-[4/5] rounded-md overflow-hidden mb-2', brand.background.sandDark)}>
+                            <Image
+                                src={member.image}
+                                alt={`${siteText.common.portraitOf} ${member.name}`}
+                                widths={[300, 600, 900]}
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
+                                format="webp"
+                                quality={80}
+                                loading="lazy"
+                                class="absolute inset-0 w-full h-full object-cover"
+                            />
+                        </div>
+                        <h3 class={styles.cardHeading}>{member.name}</h3>
+                        <p class={cn('m-0', brand.text.inkMuted)}>{member.role}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+    <section class={cn(brand.background.ink, brand.text.cream)}>
+        <div class={cn(styles.container, 'py-20 flex flex-col gap-6')}>
+            <Eyebrow class={brand.text.ember}>{siteText.home.insurance.eyebrow}</Eyebrow>
+            <h2 class={styles.sectionHeading}>{siteText.home.insurance.title}</h2>
+            <p class={cn('m-0 max-w-[50ch] text-lg leading-relaxed', brand.text.mist)}>
+                {siteText.home.insurance.description}
+            </p>
+            <a
+                href={companyInfo.insurance.certificate}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={cn(styles.primaryButton, 'self-start')}
+            >
+                {siteText.about.insurance.buttonText}
+            </a>
+        </div>
+    </section>
+</BaseLayout>

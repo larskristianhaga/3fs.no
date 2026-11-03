@@ -1,0 +1,46 @@
+---
+import {colors} from '@/config/colors'
+import {siteText} from '@/content/text'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+interface Props {
+    id: string
+    title: string
+    excerpt: string
+    category: string
+    readTime: string
+    publishedDate: string
+    // h2 when the cards sit directly under the page h1 (blog index), h3 under a section heading
+    headingLevel?: 'h2' | 'h3'
+}
+
+const {id, title, excerpt, category, readTime, publishedDate, headingLevel: Heading = 'h3'} = Astro.props
+const {brand} = colors
+const formattedDate = new Date(publishedDate).toLocaleDateString('nb-NO', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+})
+---
+<article class={cn(styles.card, 'p-7 flex flex-col gap-4 transition-transform hover:-translate-y-0.5')}>
+    <div class={cn('flex items-center gap-3', styles.muted)}>
+        <span class={styles.tag}>{category}</span>
+        <span>{readTime}</span>
+    </div>
+
+    <Heading class={styles.cardHeading}>
+        <a href={`/blogg/${id}`} class={cn('no-underline', brand.text.ink, brand.hover.text.emberDark)}>
+            {title}
+        </a>
+    </Heading>
+
+    <p class={styles.body}>{excerpt}</p>
+
+    <div class="mt-auto flex items-center justify-between gap-3">
+        <time datetime={publishedDate} class={styles.muted}>{formattedDate}</time>
+        <a href={`/blogg/${id}`} class={styles.textLink} aria-label={`${siteText.common.readMore} ${title}`}>
+            {siteText.common.readMore}
+        </a>
+    </div>
+</article>

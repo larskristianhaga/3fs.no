@@ -1,0 +1,15 @@
+---
+import {colors} from '@/config/colors'
+import {cn} from '@/lib/utils'
+
+interface Props {
+    class?: string
+}
+
+const {class: className} = Astro.props
+const {brand} = colors
+---
+<div class={cn('flex items-center gap-2.5 text-sm font-semibold tracking-[.08em] uppercase', brand.text.forest, className)}>
+    <span class={cn('w-7 h-0.5 flex-none', brand.background.ember)} aria-hidden="true"></span>
+    <slot />
+</div>

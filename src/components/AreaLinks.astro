@@ -1,0 +1,11 @@
+---
+import {siteText} from '@/content/text'
+import {styles} from '@/lib/styles'
+---
+<div class="flex flex-wrap gap-2">
+    {siteText.locations.areas.map((area) => (
+        <a href={`/${area.slug}`} class={styles.chip}>
+            {area.name}
+        </a>
+    ))}
+</div>

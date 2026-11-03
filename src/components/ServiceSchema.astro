@@ -1,0 +1,38 @@
+---
+import {companyInfo} from '@/config/company'
+
+interface Props {
+    serviceName: string
+    serviceDescription: string
+    areaServed?: string[]
+}
+
+const {serviceName, serviceDescription, areaServed = ['Oslo', 'Akershus', 'Østfold', 'Buskerud']} = Astro.props
+
+const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": serviceName,
+    "description": serviceDescription,
+    "provider": {
+        "@type": "LocalBusiness",
+        "name": companyInfo.name,
+        "url": companyInfo.website,
+        "telephone": companyInfo.contact.phone.href,
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": companyInfo.address.street,
+            "postalCode": companyInfo.address.postalCode,
+            "addressLocality": companyInfo.address.locality,
+            "addressRegion": companyInfo.address.region,
+            "addressCountry": companyInfo.address.country
+        }
+    },
+    "areaServed": areaServed.map(area => ({
+        "@type": "City",
+        "name": area
+    })),
+    "priceRange": "$$"
+}
+---
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />

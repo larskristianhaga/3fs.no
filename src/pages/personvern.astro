@@ -1,0 +1,38 @@
+---
+import PageHero from '@/components/PageHero.astro'
+import {colors} from '@/config/colors'
+import {companyInfo} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+const {brand} = colors
+---
+<BaseLayout
+    title="Personvernerklæring"
+    description={`Hvordan ${companyInfo.name} behandler personopplysninger på nettsiden.`}
+    path="/personvern"
+>
+    <PageHero title={siteText.privacy.title} intro={siteText.privacy.intro} />
+
+    <section class={cn(styles.container, 'pb-24')}>
+        <div class={cn('max-w-[760px] flex flex-col gap-10 pt-10', styles.ruleTop)}>
+            {siteText.privacy.sections.map((section) => (
+                <div class="flex flex-col gap-3">
+                    <h2 class={styles.cardHeading}>{section.heading}</h2>
+                    {section.paragraphs.map((paragraph) => (
+                        <p class={styles.body}>
+                            {paragraph}
+                        </p>
+                    ))}
+                </div>
+            ))}
+
+            <p class={styles.body}>
+                {companyInfo.name}, org.nr. {companyInfo.organization.number}, {companyInfo.address.street}, {companyInfo.address.postalCode} {companyInfo.address.locality}.
+                E-post: <a href={`mailto:${companyInfo.contact.email}`} class={cn('underline underline-offset-[3px]', brand.text.ink, brand.hover.text.emberDark)}>{companyInfo.contact.email}</a>
+            </p>
+        </div>
+    </section>
+</BaseLayout>

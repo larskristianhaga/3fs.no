@@ -1,0 +1,24 @@
+---
+import PageHero from '@/components/PageHero.astro'
+import {companyInfo} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {styles} from '@/lib/styles'
+---
+<BaseLayout
+    title="Siden ble ikke funnet - 404"
+    description="Siden du leter etter finnes ikke. Gå tilbake til forsiden for å finne informasjon om våre trefellingstjenester i Oslo, Akershus, Østfold og Buskerud."
+    path="/404"
+    noindex
+>
+    <PageHero eyebrow="404" title={siteText.common.notFoundTitle} intro={siteText.common.notFoundText}>
+        <div class="flex gap-3 flex-wrap pb-12">
+            <a href="/" class={styles.primaryButton}>
+                {siteText.common.notFoundButton}
+            </a>
+            <a href={`tel:${companyInfo.contact.phone.href}`} class={styles.outlineButton}>
+                {siteText.header.callUs} {companyInfo.contact.phone.display}
+            </a>
+        </div>
+    </PageHero>
+</BaseLayout>

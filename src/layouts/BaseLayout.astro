@@ -1,0 +1,113 @@
+---
+import '@fontsource-variable/instrument-sans/wght.css'
+import '@/styles/global.css'
+import archivoUrl from '@/assets/fonts/archivo-latin-bold-condensed.woff2?url'
+import {getImage} from 'astro:assets'
+import Footer from '@/components/Footer.astro'
+import Header from '@/components/Header.astro'
+import StructuredData from '@/components/StructuredData.astro'
+import {colors} from '@/config/colors'
+import {companyInfo, yearsOfExperience} from '@/config/company'
+import {imageFor} from '@/lib/images'
+import {cn} from '@/lib/utils'
+
+interface Props {
+    // Gets " | Trefellingsspesialisten AS" appended, like the page titles always have
+    title?: string
+    // Used as is, for titles that already end with the company name
+    fullTitle?: string
+    description?: string
+    keywords?: string
+    // Canonical path, e.g. "/faq"
+    path?: string
+    ogTitle?: string
+    ogDescription?: string
+    // Public path of the share image, e.g. "/images/tjenester/trefelling.jpg"
+    ogImage?: string
+    ogImageAlt?: string
+    ogType?: 'website' | 'article'
+    noindex?: boolean
+}
+
+const siteName = 'Trefellingsspesialisten AS'
+const defaultTitle = 'Profesjonell Trefelling og Trepleie | Trefellingsspesialisten AS'
+const defaultDescription = `Profesjonelle trefellingstjenester i Oslo, Akershus, Østfold og Buskerud. Over ${yearsOfExperience} års erfaring med trefelling, beskjæring, stubbefresing og tomterydding. Forsikret og sertifisert.`
+
+const {
+    title,
+    fullTitle,
+    description = defaultDescription,
+    keywords = 'trefelling, trepleie, arborist, beskjæring, stubbefresing, tomterydding, trefeller, Oslo, Akershus, Østfold, Buskerud',
+    path = '/',
+    ogTitle,
+    ogDescription,
+    ogImage = '/images/tjenester/trefelling.jpg',
+    ogImageAlt = 'Trefellingsspesialisten AS - Profesjonell trefelling',
+    ogType = 'website',
+    noindex = false,
+} = Astro.props
+
+const documentTitle = fullTitle ?? (title ? `${title} | ${siteName}` : defaultTitle)
+const canonical = new URL(path, companyInfo.website).href
+// Share images are resized once at build time and linked by their absolute URL
+const shareImage = await getImage({src: imageFor(ogImage), format: 'jpg', width: 1200})
+const shareImageUrl = new URL(shareImage.src, companyInfo.website).href
+
+const {brand} = colors
+---
+<!doctype html>
+<html lang="nb">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <title>{documentTitle}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={siteName} />
+        <meta name="creator" content={siteName} />
+        <meta name="publisher" content={siteName} />
+        {noindex && <meta name="robots" content="noindex, follow" />}
+        <link rel="canonical" href={canonical} />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="preload" href={archivoUrl} as="font" type="font/woff2" crossorigin />
+
+        <meta property="og:type" content={ogType} />
+        <meta property="og:locale" content="nb_NO" />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:title" content={ogTitle ?? documentTitle} />
+        <meta property="og:description" content={ogDescription ?? description} />
+        <meta property="og:image" content={shareImageUrl} />
+        <meta property="og:image:alt" content={ogImageAlt} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={ogTitle ?? documentTitle} />
+        <meta name="twitter:description" content={ogDescription ?? description} />
+        <meta name="twitter:image" content={shareImageUrl} />
+
+        <StructuredData />
+    </head>
+    <body>
+        <div class={cn('min-h-screen', brand.background.cream, brand.text.ink)}>
+            <Header />
+            <main>
+                <slot />
+            </main>
+            <Footer />
+        </div>
+
+        <script>
+            import {capture, startAnalytics} from '@/lib/analytics'
+
+            startAnalytics()
+
+            // Links mark the event they report with data-capture, so no page needs its own click handler
+            document.addEventListener('click', (event) => {
+                const element = (event.target as Element).closest<HTMLElement>('[data-capture]')
+                if (!element) return
+                const placement = element.dataset.capturePlacement
+                capture(element.dataset.capture!, placement ? {placement} : undefined)
+            })
+        </script>
+    </body>
+</html>

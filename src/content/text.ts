@@ -43,6 +43,7 @@ export const siteText = {
         aria: {
             logo: 'Trefellingsspesialisten AS hjem',
             menuOpen: 'Åpne hovedmeny',
+            menuClose: 'Lukk meny',
             nav: 'Hovedmeny',
         },
         callUs: 'Ring',
@@ -1217,7 +1218,7 @@ Slik jobber vi med trefelling i Indre Østfold når forholdene krever ekstra kon
             {
                 heading: 'Statistikk og feilsøking',
                 paragraphs: [
-                    'Vi bruker PostHog (servere i EU) for å forstå hvordan nettsiden brukes, for eksempel hvilke sider som besøkes og om kontaktskjemaet sendes, og for å oppdage tekniske feil. Vercel Speed Insights måler hvor raskt sidene laster. Behandlingsgrunnlaget er vår berettigede interesse i å forbedre nettsiden (GDPR art. 6 nr. 1 f).',
+                    'Vi bruker PostHog (servere i EU) for å forstå hvordan nettsiden brukes, for eksempel hvilke sider som besøkes og om kontaktskjemaet sendes, og for å oppdage tekniske feil. Behandlingsgrunnlaget er vår berettigede interesse i å forbedre nettsiden (GDPR art. 6 nr. 1 f).',
                     'Begge verktøyene er satt opp uten informasjonskapsler (cookies) og lagrer ingenting på enheten din. Vi bruker ikke dataene til markedsføring og deler dem ikke med andre.',
                 ],
             },

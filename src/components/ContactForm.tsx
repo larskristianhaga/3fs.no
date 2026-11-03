@@ -1,7 +1,6 @@
-'use client'
-
-import {useEffect, useState} from 'react'
+import {useEffect, useState, type FormEvent} from 'react'
 import {capture} from '@/lib/analytics'
+import {SELECT_SERVICE_EVENT} from '@/lib/events'
 import { cn } from '@/lib/utils'
 import { siteText } from '@/content/text'
 import { colors } from '@/config/colors'
@@ -9,7 +8,7 @@ import { colors } from '@/config/colors'
 // Phone photos are often 3–5 MB, so images are downscaled in the browser before upload
 const MAX_IMAGE_DIMENSION = 1600
 const JPEG_QUALITY = 0.8
-// Base64 inflates size by ~33%, so cap the raw total at 3 MB to stay under Vercel's ~4.5 MB request body limit
+// Base64 inflates size by ~33%, so cap the raw total at 3 MB to keep the JSON request body around 4 MB
 const MAX_TOTAL_BYTES = 3 * 1024 * 1024
 
 async function compressImage(file: File): Promise<Blob> {
@@ -42,9 +41,6 @@ function toJpegFilename(name: string) {
     return name.replace(/\.[^.]+$/, '') + '.jpg'
 }
 
-// Lets other components (e.g. the services list on the home page) preselect a service in the form
-export const SELECT_SERVICE_EVENT = 'contactform:select-service'
-
 const text = siteText.contact.form
 const services = siteText.home.servicesSection.items
 const {brand} = colors
@@ -76,7 +72,7 @@ export default function ContactForm() {
     const toggle = (title: string) =>
         setPicked((p) => p.includes(title) ? p.filter((x) => x !== title) : [...p, title])
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const result = submit(e.currentTarget)
         // WebMCP: when an AI agent submitted the form, tell it how it went

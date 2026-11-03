@@ -1,0 +1,95 @@
+---
+import {companyInfo} from '@/config/company'
+import {siteText} from '@/content/text'
+import {colors} from '@/config/colors'
+import {cn} from '@/lib/utils'
+
+const {brand} = colors
+const heading = cn('font-semibold', brand.text.cream)
+const link = cn('transition-colors', brand.text.mist, brand.hover.text.cream)
+---
+<footer class={cn('pb-20 sm:pb-0', brand.background.ink, brand.text.mist)}>
+    <div class="max-w-[1280px] mx-auto px-6 pt-14 pb-8 flex flex-col gap-10">
+        {/* The company name is one long word, so on wide screens its column sizes to fit it instead of overflowing into the next */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[auto_repeat(4,minmax(0,1fr))] gap-8 text-[15px] leading-relaxed">
+            <div class="flex flex-col gap-1.5">
+                <span class={cn('font-heading stretch-semi-condensed font-extrabold text-[22px] uppercase leading-tight', brand.text.cream)}>
+                    {companyInfo.name}
+                </span>
+                <span>{companyInfo.address.street}, {companyInfo.address.postalCode} {companyInfo.address.locality}</span>
+                <span>{siteText.footer.orgNumber} {companyInfo.organization.number}</span>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <span class={heading}>{siteText.footer.contactSection.title}</span>
+                <a href={`tel:${companyInfo.contact.phone.href}`} data-capture="contact_phone_clicked" class={link}>
+                    {companyInfo.contact.phone.display}
+                </a>
+                <a href={`mailto:${companyInfo.contact.email}`} data-capture="contact_email_clicked" class={link}>
+                    {companyInfo.contact.email}
+                </a>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <span class={heading}>{siteText.footer.services.title}</span>
+                <ul class="flex flex-col gap-1.5">
+                    {siteText.services.items.map((service) => (
+                        <li>
+                            <a href={`/tjenester/${service.id}`} class={link}>
+                                {service.title}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <span class={heading}>{siteText.footer.locations.title}</span>
+                <ul class="flex flex-col gap-1.5">
+                    {siteText.locations.areas.map((area) => (
+                        <li>
+                            <a href={`/${area.slug}`} class={link}>
+                                {area.name}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+                <span class={heading}>{siteText.footer.safety.title}</span>
+                <a href={companyInfo.insurance.certificate} target="_blank" rel="noopener noreferrer" class={link}>
+                    {siteText.footer.safety.certificate}
+                </a>
+                <span>{siteText.footer.safety.insuredThrough} {companyInfo.insurance.provider}</span>
+            </div>
+        </div>
+
+        <div class={cn('pt-5 border-t flex flex-wrap justify-between gap-4 text-sm', brand.border.creamSubtle, brand.text.inkFaint)}>
+            <span>© {new Date().getFullYear()} {companyInfo.name}</span>
+            <a href="/personvern" class={cn('transition-colors', brand.hover.text.cream)}>
+                {siteText.privacy.navLabel}
+            </a>
+        </div>
+    </div>
+
+    {/* Phones hide the header's call button, so keep call and contact one tap away */}
+    <div class={cn('sm:hidden fixed inset-x-0 bottom-0 z-40 flex gap-2 p-3 border-t backdrop-blur-md', brand.background.creamTranslucent, brand.border.inkSubtle)}>
+        <a
+            href={`tel:${companyInfo.contact.phone.href}`}
+            data-capture="contact_phone_clicked"
+            data-capture-placement="mobile_call_bar"
+            class={cn('flex-1 flex items-center justify-center py-3 rounded-full font-semibold text-[15px]', brand.background.ink, brand.text.cream, brand.focus.outline)}
+        >
+            {siteText.header.callUs} {companyInfo.contact.phone.display}
+        </a>
+        <a
+            href="/kontakt-oss"
+            data-capture="contact_page_cta_clicked"
+            data-capture-placement="mobile_call_bar"
+            class={cn('flex-1 flex items-center justify-center py-3 rounded-full font-semibold text-[15px]', brand.background.ember, brand.text.ink, brand.focus.outline)}
+        >
+            {siteText.footer.mobileBar.contact}
+        </a>
+    </div>
+</footer>
