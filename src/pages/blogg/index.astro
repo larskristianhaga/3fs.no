@@ -1,0 +1,46 @@
+---
+import BlogCard from '@/components/BlogCard.astro'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema.astro'
+import CtaBand from '@/components/CtaBand.astro'
+import PageHero from '@/components/PageHero.astro'
+import {companyInfo} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+---
+<BaseLayout
+    title="Blogg - Tips og råd om trefelling"
+    description="Lesestoffet på Trefellingsspesialisten sin blogg om trefelling, trepleie, sikkerhet og best practices. Artikler skrevet av erfarne trefellere."
+    keywords="trefelling blogg, trepleie tips, trefelling sikkerhet, tomterydding guide, træer sykdommer, trefellingstips"
+    path="/blogg"
+    ogTitle="Blogg - Tips og råd om trefelling | Trefellingsspesialisten AS"
+    ogDescription="Artikler og guide om trefelling, trepleie og sikkerhet fra erfarne fagfolk."
+>
+    <BreadcrumbSchema
+        items={[
+            {name: 'Forside', url: companyInfo.website},
+            {name: 'Blogg', url: `${companyInfo.website}/blogg`},
+        ]}
+    />
+
+    <PageHero title={siteText.blog.title} intro={siteText.blog.subtitle} />
+
+    <section class={cn(styles.container, 'pb-24')}>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {siteText.blog.posts.map((post) => (
+                <BlogCard
+                    id={post.id}
+                    title={post.title}
+                    excerpt={post.excerpt}
+                    category={post.category}
+                    readTime={post.readTime}
+                    publishedDate={post.publishedDate}
+                    headingLevel="h2"
+                />
+            ))}
+        </div>
+    </section>
+
+    <CtaBand title={siteText.common.blogCtaTitle} text={siteText.common.blogCtaText} label={siteText.common.contactUs} />
+</BaseLayout>

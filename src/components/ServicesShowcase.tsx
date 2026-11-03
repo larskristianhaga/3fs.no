@@ -1,8 +1,5 @@
-'use client'
-
 import {useState} from 'react'
-import Image from 'next/image'
-import {SELECT_SERVICE_EVENT} from '@/components/ContactForm'
+import {SELECT_SERVICE_EVENT} from '@/lib/events'
 import {siteText} from '@/content/text'
 import {colors} from '@/config/colors'
 import {cn} from '@/lib/utils'
@@ -10,8 +7,14 @@ import {cn} from '@/lib/utils'
 const {brand} = colors
 const {items, quoteLink} = siteText.home.servicesSection
 
-// Numbered service list; hovering, focusing or tapping a row swaps the sticky image beside it
-export default function ServicesShowcase() {
+interface ServiceImage {
+    src: string
+    srcSet: string
+}
+
+// Numbered service list; hovering, focusing or tapping a row swaps the sticky image beside it.
+// `images` are the optimised photos, in the same order as the services.
+export default function ServicesShowcase({images}: {images: ServiceImage[]}) {
     const [active, setActive] = useState(0)
     // Only the first photo loads up front; the rest are mounted once the visitor interacts with the list
     const [engaged, setEngaged] = useState(false)
@@ -58,15 +61,17 @@ export default function ServicesShowcase() {
             <div className="lg:sticky lg:top-24 flex flex-col gap-3.5">
                 <div className={cn('relative aspect-[4/5] rounded-md overflow-hidden', brand.background.sandDark)}>
                     {items.map((item, i) => (engaged || i === 0) && (
-                        <Image
+                        <img
                             key={item.id}
-                            src={`/images/tjenester/${item.id}.jpg`}
-                            alt={i === active ? item.title : ''}
-                            fill
+                            src={images[i].src}
+                            srcSet={images[i].srcSet}
                             sizes="(max-width: 1024px) 100vw, 600px"
-                            quality={75}
+                            alt={i === active ? item.title : ''}
+                            width={600}
+                            height={750}
                             loading="lazy"
-                            className={cn('object-cover transition-opacity duration-300', i === active ? 'opacity-100' : 'opacity-0')}
+                            decoding="async"
+                            className={cn('absolute inset-0 w-full h-full object-cover transition-opacity duration-300', i === active ? 'opacity-100' : 'opacity-0')}
                         />
                     ))}
                 </div>

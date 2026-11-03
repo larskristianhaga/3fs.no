@@ -1,0 +1,68 @@
+---
+import BreadcrumbSchema from '@/components/BreadcrumbSchema.astro'
+import CtaBand from '@/components/CtaBand.astro'
+import PageHero from '@/components/PageHero.astro'
+import {colors} from '@/config/colors'
+import {companyInfo} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+const {brand} = colors
+const lists = [
+    {title: siteText.pricing.factorsTitle, items: siteText.pricing.factors},
+    {title: siteText.pricing.examplesTitle, items: siteText.pricing.examples},
+]
+---
+<BaseLayout
+    title="Trefelling pris | Hva koster trefelling i 2026?"
+    description="Se pris for trefelling med konkrete prisintervaller, faktorer og eksempeloppdrag i Oslo, Nordre Follo, Akershus og Østfold. Gratis befaring og pristilbud."
+    keywords="trefelling pris, hva koster trefelling, pris trefelling oslo, trefelling nordre follo, stubbefjerning pris"
+    path="/trefelling-pris"
+    ogTitle="Trefelling pris | Trefellingsspesialisten AS"
+    ogDescription="Prisguide for trefelling med eksempler og gratis befaring."
+>
+    <BreadcrumbSchema
+        items={[
+            {name: 'Forside', url: companyInfo.website},
+            {name: 'Trefelling pris', url: `${companyInfo.website}/trefelling-pris`},
+        ]}
+    />
+
+    <PageHero title={siteText.pricing.title} intro={siteText.pricing.subtitle} />
+
+    <section class={cn(styles.container, 'pb-20')}>
+        <ul class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {siteText.pricing.ranges.map((range) => (
+                <li class={cn(styles.card, 'p-7 flex flex-col gap-3 border-t-4', brand.border.ink)}>
+                    <h2 class="m-0 font-semibold text-base">{range.label}</h2>
+                    <p class="m-0 font-heading stretch-semi-condensed font-extrabold text-[30px] leading-tight">{range.price}</p>
+                    <p class={cn('m-0', brand.text.inkMuted)}>{range.details}</p>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <section class={brand.background.sand}>
+        <div class={cn(styles.container, 'py-20 grid grid-cols-1 lg:grid-cols-2 gap-14')}>
+            {lists.map((list) => (
+                <div class="flex flex-col gap-6">
+                    <h2 class={styles.subHeading}>{list.title}</h2>
+                    <ul class={cn('flex flex-col', styles.ruleTop)}>
+                        {list.items.map((item, index) => (
+                            <li class={cn('py-4 border-b grid grid-cols-[40px_1fr] gap-3', brand.border.inkSubtle)}>
+                                <span class={cn('font-heading font-bold text-[15px] pt-0.5', brand.text.emberDark)}>
+                                    {String(index + 1).padStart(2, '0')}
+                                </span>
+                                <span class={styles.body}>{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <CtaBand title={siteText.pricing.ctaTitle} text={siteText.pricing.ctaText} />
+</BaseLayout>

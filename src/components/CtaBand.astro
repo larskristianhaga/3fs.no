@@ -1,0 +1,30 @@
+---
+import Eyebrow from '@/components/Eyebrow.astro'
+import {siteText} from '@/content/text'
+import {colors} from '@/config/colors'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+interface Props {
+    title: string
+    text: string
+    href?: string
+    label?: string
+}
+
+// Dark closing band that points visitors to a free site visit (befaring)
+const {title, text, href = '/kontakt-oss', label = siteText.common.bookVisit} = Astro.props
+const {brand} = colors
+---
+<section class={cn(brand.background.ink, brand.text.cream)}>
+    <div class={cn(styles.container, 'py-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8')}>
+        <div class="flex flex-col gap-5">
+            <Eyebrow class={brand.text.ember}>{siteText.home.booking.eyebrow}</Eyebrow>
+            <h2 class={styles.sectionHeading}>{title}</h2>
+            <p class={cn('m-0 max-w-[50ch] text-lg leading-relaxed', brand.text.mist)}>{text}</p>
+        </div>
+        <a href={href} class={cn(styles.primaryButton, 'self-start lg:self-auto')}>
+            {label}
+        </a>
+    </div>
+</section>

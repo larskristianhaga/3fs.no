@@ -1,0 +1,101 @@
+---
+import ArticleSchema from '@/components/ArticleSchema.astro'
+import BlogCard from '@/components/BlogCard.astro'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema.astro'
+import CtaBand from '@/components/CtaBand.astro'
+import {colors} from '@/config/colors'
+import {companyInfo} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+export function getStaticPaths() {
+    return siteText.blog.posts.map((post) => ({params: {id: post.id}, props: {post}}))
+}
+
+const {post} = Astro.props
+const {brand} = colors
+const formattedDate = new Date(post.publishedDate).toLocaleDateString('nb-NO', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+})
+
+const relatedPosts = siteText.blog.posts
+    .filter((p) => p.id !== post.id && p.category === post.category)
+    .slice(0, 3)
+---
+<BaseLayout
+    title={`${post.title} | Trefellingsspesialisten Blogg`}
+    description={post.excerpt}
+    keywords={`trefelling, trepleie, ${post.category.toLowerCase()}, ${post.title.toLowerCase()}`}
+    path={`/blogg/${post.id}`}
+    ogTitle={post.title}
+    ogType="article"
+>
+    <ArticleSchema
+        title={post.title}
+        description={post.excerpt}
+        url={`${companyInfo.website}/blogg/${post.id}`}
+        datePublished={post.publishedDate}
+        category={post.category}
+    />
+    <BreadcrumbSchema
+        items={[
+            {name: 'Forside', url: companyInfo.website},
+            {name: 'Blogg', url: `${companyInfo.website}/blogg`},
+            {name: post.title, url: `${companyInfo.website}/blogg/${post.id}`},
+        ]}
+    />
+
+    <article class={cn(styles.container, 'pt-10 pb-20')}>
+        <div class="max-w-[820px] flex flex-col gap-6">
+            <nav class="flex items-center gap-2 text-sm" aria-label={siteText.common.breadcrumbLabel}>
+                <a href="/blogg" class={styles.textLink}>
+                    {siteText.blog.title}
+                </a>
+                <span class={brand.text.inkMuted} aria-hidden="true">›</span>
+                <span class={cn(brand.text.inkMuted, 'line-clamp-1')}>{post.title}</span>
+            </nav>
+
+            <header class="flex flex-col gap-5">
+                <div class={cn('flex flex-wrap items-center gap-3', styles.muted)}>
+                    <span class={styles.tag}>{post.category}</span>
+                    <time datetime={post.publishedDate}>{formattedDate}</time>
+                    <span>• {post.readTime}</span>
+                </div>
+                <h1 class={cn(styles.displayHeading, 'text-[clamp(40px,5vw,72px)] leading-[.95]')}>
+                    {post.title}
+                </h1>
+                <p class={styles.lead}>{post.excerpt}</p>
+            </header>
+
+            <div class={cn('pt-8 whitespace-pre-wrap text-[18px] leading-relaxed', styles.ruleTop, brand.text.inkSoft)}>
+                {post.content}
+            </div>
+        </div>
+    </article>
+
+    {relatedPosts.length > 0 && (
+        <section class={brand.background.sand}>
+            <div class={cn(styles.container, 'py-20 flex flex-col gap-10')}>
+                <h2 class={styles.subHeading}>{siteText.common.relatedArticles}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {relatedPosts.map((related) => (
+                        <BlogCard
+                            id={related.id}
+                            title={related.title}
+                            excerpt={related.excerpt}
+                            category={related.category}
+                            readTime={related.readTime}
+                            publishedDate={related.publishedDate}
+                        />
+                    ))}
+                </div>
+            </div>
+        </section>
+    )}
+
+    <CtaBand title={siteText.common.articleCtaTitle} text={siteText.common.articleCtaText} />
+</BaseLayout>

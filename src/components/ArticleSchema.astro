@@ -1,0 +1,35 @@
+---
+import {companyInfo} from '@/config/company'
+
+interface Props {
+    title: string
+    description: string
+    url: string
+    datePublished: string
+    category: string
+}
+
+const {title, description, url, datePublished, category} = Astro.props
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "datePublished": datePublished,
+    "dateModified": datePublished,
+    "mainEntityOfPage": url,
+    "articleSection": category,
+    "inLanguage": "nb-NO",
+    "author": {
+        "@type": "Organization",
+        "name": companyInfo.name
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": companyInfo.name,
+        "url": companyInfo.website
+    }
+}
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

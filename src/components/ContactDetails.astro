@@ -1,0 +1,28 @@
+---
+import {siteText} from '@/content/text'
+import {companyInfo} from '@/config/company'
+import {colors} from '@/config/colors'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+const {booking} = siteText.home
+const {brand} = colors
+---
+<div class={cn('flex flex-col gap-3.5 pt-6 text-base', styles.ruleTop)}>
+    <div class="flex flex-col gap-0.5">
+        <span class={styles.muted}>{booking.phoneLabel}</span>
+        <a href={`tel:${companyInfo.contact.phone.href}`} class={cn('font-heading stretch-semi-condensed font-extrabold text-[30px] no-underline', brand.text.ink, brand.hover.text.emberDark)}>
+            {companyInfo.contact.phone.display}
+        </a>
+    </div>
+    <div class="flex flex-col gap-0.5">
+        <span class={styles.muted}>{booking.emailLabel}</span>
+        <a href={`mailto:${companyInfo.contact.email}`} class={cn('underline underline-offset-[3px]', brand.hover.text.emberDark)}>
+            {companyInfo.contact.email}
+        </a>
+    </div>
+    <div class="flex flex-col gap-0.5">
+        <span class={styles.muted}>{booking.locationLabel}</span>
+        <span>{companyInfo.address.street}, {companyInfo.address.postalCode} {companyInfo.address.locality}</span>
+    </div>
+</div>

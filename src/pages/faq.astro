@@ -1,0 +1,50 @@
+---
+import CtaBand from '@/components/CtaBand.astro'
+import FAQSchema from '@/components/FAQSchema.astro'
+import PageHero from '@/components/PageHero.astro'
+import {colors} from '@/config/colors'
+import {yearsOfExperience} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+const {brand} = colors
+---
+<BaseLayout
+    title="Ofte stilte spørsmål - Svar på dine spørsmål om trefelling"
+    description={`Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over ${yearsOfExperience} års erfaring med profesjonell trepleie i Oslo, Akershus, Østfold og Buskerud.`}
+    path="/faq"
+    ogTitle="Ofte stilte spørsmål - Svar på dine spørsmål om trefelling | Trefellingsspesialisten AS"
+    ogDescription={`Finn svar på ofte stilte spørsmål om trefelling, stubbefresing, beskjæring og andre tjenester. Vi har over ${yearsOfExperience} års erfaring med profesjonell trepleie.`}
+>
+    <FAQSchema questions={siteText.faq.questions} />
+
+    <PageHero title={siteText.faq.title} intro={siteText.faq.subtitle} />
+
+    <section class={cn(styles.container, 'pb-20')}>
+        <ul class={cn('max-w-[880px] flex flex-col', styles.ruleTop)}>
+            {siteText.faq.questions.map((item) => (
+                <li class={cn('border-b', brand.border.inkSubtle)}>
+                    {/* Native disclosure; the shared name makes the browser keep one answer open at a time */}
+                    <details name="faq" class="group">
+                        <summary class={cn('list-none [&::-webkit-details-marker]:hidden py-6 flex justify-between items-start gap-6 cursor-pointer', brand.hover.text.emberDark, brand.focus.outline)}>
+                            <span class="font-heading stretch-semi-condensed font-extrabold uppercase text-[22px] sm:text-[26px] leading-tight">
+                                {item.question}
+                            </span>
+                            <span
+                                aria-hidden="true"
+                                class={cn('flex-none grid place-items-center w-9 h-9 rounded-full border-[1.5px] text-xl leading-none transition-transform group-open:rotate-45', brand.border.ink)}
+                            >
+                                +
+                            </span>
+                        </summary>
+                        <p class={cn(styles.body, 'pb-6 max-w-[70ch]')}>{item.answer}</p>
+                    </details>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <CtaBand title={siteText.common.faqCtaTitle} text={siteText.common.faqCtaText} label={siteText.common.contactUs} />
+</BaseLayout>

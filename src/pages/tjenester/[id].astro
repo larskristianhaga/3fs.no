@@ -1,0 +1,134 @@
+---
+import {Image} from 'astro:assets'
+import AreaLinks from '@/components/AreaLinks.astro'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema.astro'
+import CtaBand from '@/components/CtaBand.astro'
+import FAQSchema from '@/components/FAQSchema.astro'
+import PageHero from '@/components/PageHero.astro'
+import ServiceSchema from '@/components/ServiceSchema.astro'
+import {colors} from '@/config/colors'
+import {companyInfo} from '@/config/company'
+import {siteText} from '@/content/text'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import {imageFor} from '@/lib/images'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+export function getStaticPaths() {
+    return siteText.services.items.map((service) => ({params: {id: service.id}, props: {service}}))
+}
+
+const {service} = Astro.props
+const {brand} = colors
+const text = siteText.services
+const otherServices = text.items.filter((item) => item.id !== service.id)
+
+const title = `${service.title} i Oslo og Akershus`
+const name = service.title.toLowerCase()
+---
+<BaseLayout
+    title={title}
+    description={service.metaDescription}
+    keywords={`${name}, ${name} oslo, ${name} akershus, ${name} østfold, ${name} buskerud, ${companyInfo.name}`}
+    path={`/tjenester/${service.id}`}
+    ogTitle={`${title} | ${companyInfo.name}`}
+    ogImage={`/images/tjenester/${service.id}.jpg`}
+    ogImageAlt={service.imageAlt}
+>
+    <BreadcrumbSchema
+        items={[
+            {name: 'Forside', url: companyInfo.website},
+            {name: 'Tjenester', url: `${companyInfo.website}/tjenester`},
+            {name: service.title, url: `${companyInfo.website}/tjenester/${service.id}`},
+        ]}
+    />
+    <ServiceSchema serviceName={service.title} serviceDescription={service.description} />
+    <FAQSchema questions={service.faq} />
+
+    <PageHero title={service.title} intro={service.intro}>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="/kontakt-oss" class={styles.primaryButton}>
+                {siteText.common.bookVisit}
+            </a>
+            <a href="/tjenester" class={styles.textLink}>
+                {text.allServicesLink}
+            </a>
+        </div>
+    </PageHero>
+
+    <section class={cn(styles.container, 'pb-20')}>
+        <div class={cn('pt-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start', styles.ruleTop)}>
+            <div class={cn('relative aspect-[4/3] rounded-md overflow-hidden', brand.background.sandDark)}>
+                <Image
+                    src={imageFor(`/images/tjenester/${service.id}.jpg`)}
+                    alt={service.imageAlt}
+                    widths={[640, 1000, 1240]}
+                    sizes="(max-width: 1024px) 100vw, 620px"
+                    format="webp"
+                    quality={80}
+                    loading="eager"
+                    fetchpriority="high"
+                    class="absolute inset-0 w-full h-full object-cover"
+                />
+            </div>
+            <div class="flex flex-col gap-5">
+                <h2 class={styles.subHeading}>{text.detailsTitle}</h2>
+                <p class={styles.body}>{service.description}</p>
+                {service.details.map((paragraph) => (
+                    <p class={styles.body}>{paragraph}</p>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <section class={cn(styles.container, 'pb-20')}>
+        <div class="max-w-[880px] flex flex-col gap-6">
+            <h2 class={styles.subHeading}>{text.faqTitle} {service.title.toLowerCase()}</h2>
+            <ul class={cn('flex flex-col', styles.ruleTop)}>
+                {service.faq.map((item) => (
+                    <li class={cn('border-b', brand.border.inkSubtle)}>
+                        <details class="group">
+                            <summary class={cn('list-none [&::-webkit-details-marker]:hidden py-6 flex justify-between items-start gap-6 cursor-pointer', brand.hover.text.emberDark, brand.focus.outline)}>
+                                <h3 class="m-0 font-heading stretch-semi-condensed font-extrabold uppercase text-[22px] sm:text-[26px] leading-tight">
+                                    {item.question}
+                                </h3>
+                                <span
+                                    aria-hidden="true"
+                                    class={cn('flex-none grid place-items-center w-9 h-9 rounded-full border-[1.5px] text-xl leading-none transition-transform group-open:rotate-45', brand.border.ink)}
+                                >
+                                    +
+                                </span>
+                            </summary>
+                            <p class={cn(styles.body, 'pb-6 max-w-[70ch]')}>{item.answer}</p>
+                        </details>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+    <section class={brand.background.sand}>
+        <div class={cn(styles.container, 'py-16 grid grid-cols-1 lg:grid-cols-2 gap-12')}>
+            <div class="flex flex-col gap-5">
+                <h2 class={styles.subHeading}>{text.areasTitle} {service.title.toLowerCase()}</h2>
+                <p class={styles.body}>{text.areasText}</p>
+                <AreaLinks />
+                <a href="/trefelling-pris" class={cn(styles.textLink, 'self-start')}>
+                    {siteText.common.pricingGuide}
+                </a>
+            </div>
+            <div class="flex flex-col gap-5">
+                <h2 class={styles.subHeading}>{text.otherServicesTitle}</h2>
+                <div class="flex flex-wrap gap-2">
+                    {otherServices.map((item) => (
+                        <a href={`/tjenester/${item.id}`} class={styles.chip}>
+                            {item.title}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <CtaBand title={text.ctaTitle} text={text.ctaText} />
+</BaseLayout>

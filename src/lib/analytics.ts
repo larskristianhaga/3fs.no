@@ -1,7 +1,7 @@
 import type {PostHog} from 'posthog-js'
 
-const projectToken = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
-const host = process.env.NEXT_PUBLIC_POSTHOG_HOST
+const projectToken = import.meta.env.PUBLIC_POSTHOG_PROJECT_TOKEN
+const host = import.meta.env.PUBLIC_POSTHOG_HOST
 
 let client: Promise<PostHog> | null = null
 
@@ -20,7 +20,7 @@ export function loadPostHog(): Promise<PostHog> | null {
             // No cookies/localStorage, so no consent banner is needed under ekomloven § 3-15
             cookieless_mode: 'always',
             capture_exceptions: true,
-            debug: process.env.NODE_ENV === 'development',
+            debug: import.meta.env.DEV,
         })
         return posthog
     })
@@ -28,10 +28,30 @@ export function loadPostHog(): Promise<PostHog> | null {
     return client
 }
 
-export function capture(event: string, properties?: Record<string, unknown>) {
-    void loadPostHog()?.then((posthog) => posthog.capture(event, properties))
+// Starts analytics once the page has loaded and the browser is idle, so it never delays the first paint
+export function startAnalytics() {
+    if (!projectToken || !host) {
+        if (import.meta.env.DEV) {
+            console.warn('PostHog is disabled: set PUBLIC_POSTHOG_PROJECT_TOKEN and PUBLIC_POSTHOG_HOST to enable analytics')
+        }
+        return
+    }
+
+    const start = () => {
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => void loadPostHog(), {timeout: 3000})
+        } else {
+            setTimeout(() => void loadPostHog(), 1)
+        }
+    }
+
+    if (document.readyState === 'complete') {
+        start()
+    } else {
+        window.addEventListener('load', start, {once: true})
+    }
 }
 
-export function captureException(error: unknown) {
-    void loadPostHog()?.then((posthog) => posthog.captureException(error))
+export function capture(event: string, properties?: Record<string, unknown>) {
+    void loadPostHog()?.then((posthog) => posthog.capture(event, properties))
 }

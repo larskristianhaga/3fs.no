@@ -10,15 +10,15 @@ When something breaks, start here:
 
 | What | Where | Notes |
 |------|-------|-------|
-| Hosting (Vercel) | https://vercel.com/dashboard | Deployments, build logs, env vars, Analytics & Speed Insights |
+| Hosting | _not chosen yet_ | The site is an Astro Node server (see `Dockerfile`); it can run on any host that runs Node or containers |
 | Email (Resend) | https://resend.com/emails | Contact form delivery, logs, API keys |
 
 ### Common issues
 
-- **Contact form not sending email** → check [Resend dashboard](https://resend.com/emails) for failed sends and verify `RESEND_API_KEY` is set in Vercel. Sender is `3fs@paal-erik.no`, recipient is set in `src/app/api/contact/route.ts` (~line 33).
-- **Build/deploy failing** → check [Vercel deployment logs](https://vercel.com/dashboard). Build uses Turbopack (`next build --turbopack`).
+- **Contact form not sending email** → check [Resend dashboard](https://resend.com/emails) for failed sends and verify `RESEND_API_KEY` is set on the server. Sender is `3fs@paal-erik.no`, recipient is set in `src/pages/api/contact.ts`.
+- **Build/deploy failing** → run `npm run build` locally (`astro build`) and read the error; the host's build log shows the same output.
 - **Broken links reported** → see the [link-checker workflow](https://github.com/larskristianhaga/3fs.no/actions) in GitHub Actions.
-- **Checks hitting the wrong site** → the uptime, link-checker and SEO audit workflows run against the `SITE_URL` [Actions variable](https://github.com/larskristianhaga/3fs.no/settings/variables/actions). Update it, and the `NEXT_PUBLIC_BASE_URL` Vercel variable that sets the site's canonical address, when the domain moves from `3fs.vercel.app` to `3fs.no`.
+- **Checks hitting the wrong site** → the uptime, link-checker and SEO audit workflows run against the `SITE_URL` [Actions variable](https://github.com/larskristianhaga/3fs.no/settings/variables/actions). Update it, and the `PUBLIC_BASE_URL` build variable that sets the site's canonical address, when the domain moves from `3fs.vercel.app` to `3fs.no`.
 - **Dependency PRs** → handled by Dependabot (`.github/dependabot.yml` + `dependabot-pr.yml`).
 
 ---
@@ -27,17 +27,17 @@ When something breaks, start here:
 
 | Service | Purpose | Dashboard |
 |---------|---------|-----------|
-| **Vercel** | Hosting, deployments, Analytics, Speed Insights | https://vercel.com/dashboard |
+| **Hosting** | Runs the Astro server | _not chosen yet_ |
 | **Resend** | Transactional email (contact form) | https://resend.com |
 | **GitHub** | Source, CI (Actions), Dependabot | https://github.com/larskristianhaga/3fs.no |
 
 ## Environment variables
 
-Set these in Vercel (and `.env` locally):
+Set these on the host (and in `.env` locally). `PUBLIC_*` values are read at build time, the rest at runtime:
 
 ```
 RESEND_API_KEY=...          # Resend email API key
-NEXT_PUBLIC_BASE_URL=...    # the site's own address; https://3fs.vercel.app until the domain moves (also the default)
+PUBLIC_BASE_URL=...         # the site's own address; https://3fs.vercel.app until the domain moves (also the default)
 ```
 
 ---
@@ -46,20 +46,22 @@ NEXT_PUBLIC_BASE_URL=...    # the site's own address; https://3fs.vercel.app unt
 
 ```bash
 npm install
-npm run dev      # dev server on http://localhost:3000 (Turbopack)
+npm run dev      # dev server on http://localhost:3000
 ```
 
 Other scripts:
 
 ```bash
-npm run build    # production build (Turbopack)
-npm start        # run production build
+npm run build    # production build into dist/
+npm start        # run the production build (node dist/server/entry.mjs)
 ```
 
 ## Project layout
 
-- `src/app/` — pages, layouts and the `/api/contact` route (App Router)
-- `src/components/` — React + Shadcn/ui components
+- `src/pages/` — pages (`.astro`), the `/api/contact` route, sitemap, robots and llms.txt
+- `src/layouts/` — the base layout (head, header, footer)
+- `src/components/` — Astro components, plus two React islands (`ContactForm`, `ServicesShowcase`)
+- `src/assets/` — photos and the Archivo font; Astro resizes the photos at build time
 - `src/config/` — `company.ts` (company info), `colors.ts` (theme)
 - `src/content/text.ts` — all Norwegian site copy (single source of truth)
 - `src/lib/` — utilities

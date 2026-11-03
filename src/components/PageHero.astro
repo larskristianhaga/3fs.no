@@ -1,0 +1,20 @@
+---
+import Eyebrow from '@/components/Eyebrow.astro'
+import {siteText} from '@/content/text'
+import {styles} from '@/lib/styles'
+import {cn} from '@/lib/utils'
+
+interface Props {
+    title: string
+    eyebrow?: string
+    intro?: string
+}
+
+const {title, eyebrow = siteText.home.hero.areas, intro} = Astro.props
+---
+<section class={cn(styles.container, 'pt-14 pb-12 flex flex-col gap-6')}>
+    <Eyebrow>{eyebrow}</Eyebrow>
+    <h1 class={styles.pageTitle}>{title}</h1>
+    {intro && <p class={styles.lead}>{intro}</p>}
+    <slot />
+</section>

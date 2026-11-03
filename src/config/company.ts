@@ -66,6 +66,6 @@ export const companyInfo = {
   openingHours: "Mo-Fr 08:00-17:00",
   
   // The site's own address, used for canonical URLs, sitemap, robots, llms.txt and JSON-LD.
-  // Set NEXT_PUBLIC_BASE_URL in Vercel; it stays on the temporary domain until 3fs.no moves off Wix.
-  website: process.env.NEXT_PUBLIC_BASE_URL || "https://3fs.vercel.app"
+  // Set PUBLIC_BASE_URL at build time; it stays on the temporary domain until 3fs.no moves off Wix.
+  website: import.meta.env.PUBLIC_BASE_URL || "https://3fs.vercel.app"
 } as const
