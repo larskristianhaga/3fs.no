@@ -19,6 +19,7 @@ npm start                # Run the production server (node dist/server/entry.mjs
 - No unit tests. Changes require manual verification via `npm run dev` and build verification via `npm run build`.
 - `npm run test:e2e` is a Playwright smoke test (`e2e/pages.spec.ts`) that loads every sitemap page and fails on a non-200 or a console error. Point it at a deployment with `BASE_URL=https://3fs.vercel.app npm run test:e2e` (defaults to `localhost:3000`).
 - `Dockerfile` builds the site and runs the Node server; it is the portable way to deploy.
+- `astro.config.mjs` picks the adapter: `@astrojs/vercel` when `VERCEL` is set (Vercel builds, `vercel.json` sets the Astro preset), otherwise `@astrojs/node`.
 
 ## Architecture Overview
 

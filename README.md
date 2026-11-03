@@ -10,7 +10,7 @@ When something breaks, start here:
 
 | What | Where | Notes |
 |------|-------|-------|
-| Hosting | _not chosen yet_ | The site is an Astro Node server (see `Dockerfile`); it can run on any host that runs Node or containers |
+| Hosting | Vercel for now (temporary) | Vercel builds use `@astrojs/vercel`; elsewhere the site is an Astro Node server (see `Dockerfile`) that runs on any host with Node or containers |
 | Email (Resend) | https://resend.com/emails | Contact form delivery, logs, API keys |
 
 ### Common issues
