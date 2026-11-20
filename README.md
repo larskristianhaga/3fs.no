@@ -19,6 +19,7 @@ When something breaks, start here:
 - **Build/deploy failing** → run `npm run build` locally (`astro build`) and read the error; the host's build log shows the same output.
 - **Broken links reported** → see the [link-checker workflow](https://github.com/larskristianhaga/3fs.no/actions) in GitHub Actions.
 - **Checks hitting the wrong site** → the uptime, link-checker and SEO audit workflows run against the `SITE_URL` [Actions variable](https://github.com/larskristianhaga/3fs.no/settings/variables/actions). It should be `https://www.3fs.no`, the same address as the `PUBLIC_BASE_URL` build variable (the site's canonical address, defaulting to `https://www.3fs.no`).
+- **SEO audit failing** → the monthly [SEO audit](.github/workflows/seo-audit.yml) crawls every page with Unlighthouse. Per-page scores and failed audits are in the job log and the run's job summary (`.github/scripts/unlighthouse-summary.mjs`); budgets are in `.github/unlighthouse.config.ts`.
 - **Dependency PRs** → handled by Dependabot (`.github/dependabot.yml` + `dependabot-pr.yml`).
 
 ---
@@ -27,8 +28,9 @@ When something breaks, start here:
 
 | Service | Purpose | Dashboard |
 |---------|---------|-----------|
-| **Hosting** | Runs the Astro server | _not chosen yet_ |
+| **Hosting** | Runs the Astro site (Vercel, DNS at Gigahost) | https://vercel.com |
 | **Resend** | Transactional email (contact form) | https://resend.com |
+| **PostHog** | Analytics and exception capture | https://posthog.com |
 | **GitHub** | Source, CI (Actions), Dependabot | https://github.com/larskristianhaga/3fs.no |
 
 ## Environment variables
@@ -38,6 +40,8 @@ Set these on the host (and in `.env` locally). `PUBLIC_*` values are read at bui
 ```
 RESEND_API_KEY=...          # Resend email API key
 PUBLIC_BASE_URL=...         # the site's own address; defaults to https://www.3fs.no
+PUBLIC_POSTHOG_PROJECT_TOKEN=...  # PostHog analytics (build time)
+PUBLIC_POSTHOG_HOST=...           # PostHog host; without both, PostHog is disabled
 ```
 
 ---
@@ -54,6 +58,7 @@ Other scripts:
 ```bash
 npm run build    # production build into dist/
 npm start        # run the production build (node dist/server/entry.mjs)
+npm run test:e2e # Playwright smoke test of every sitemap page (BASE_URL=... to target a deployment)
 ```
 
 ## Project layout
