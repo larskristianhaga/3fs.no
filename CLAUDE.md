@@ -17,7 +17,7 @@ npm start                # Run the production server (node dist/server/entry.mjs
 
 ### Build & Testing
 - No unit tests. Changes require manual verification via `npm run dev` and build verification via `npm run build`.
-- `npm run test:e2e` is a Playwright smoke test (`e2e/pages.spec.ts`) that loads every sitemap page and fails on a non-200 or a console error. Point it at a deployment with `BASE_URL=https://3fs.vercel.app npm run test:e2e` (defaults to `localhost:3000`).
+- `npm run test:e2e` is a Playwright smoke test (`e2e/pages.spec.ts`) that loads every sitemap page and fails on a non-200 or a console error. Point it at a deployment with `BASE_URL=https://www.3fs.no npm run test:e2e` (defaults to `localhost:3000`).
 - `Dockerfile` builds the site and runs the Node server; it is the portable way to deploy.
 - `astro.config.mjs` picks the adapter: `@astrojs/vercel` when `VERCEL` is set (Vercel builds, `vercel.json` sets the Astro preset), otherwise `@astrojs/node`.
 
@@ -120,7 +120,7 @@ npm start                # Run the production server (node dist/server/entry.mjs
 
 Copy `.env.example` to `.env`. Every variable is optional locally:
 ```
-PUBLIC_BASE_URL=https://3fs.vercel.app             # the site's own address; read at build time
+PUBLIC_BASE_URL=https://www.3fs.no                 # the site's own address (the default); read at build time
 RESEND_API_KEY=your_resend_api_key                 # contact form email, read at runtime; without it submissions return an error
 PUBLIC_POSTHOG_PROJECT_TOKEN=...                   # PostHog analytics and exception capture, read at build time
 PUBLIC_POSTHOG_HOST=...                            # without both, PostHog is disabled with a dev warning
@@ -200,10 +200,9 @@ The contact form endpoint sends to `Rs3felling@gmail.com` (the `to` field in `sr
 
 ## CI
 
-- **The site runs on a temporary domain, `https://3fs.vercel.app`** (3fs.no still serves the old Wix site). Nothing in the app or the checks may point at 3fs.no until the domain moves. Two variables hold the address, and both are `https://3fs.vercel.app` today:
-  - **`PUBLIC_BASE_URL`** (build-time environment variable) is the site's own address. `companyInfo.website` in `src/config/company.ts` reads it (default `https://3fs.vercel.app`) and `astro.config.mjs` uses it as `site`. The app uses it for canonical URLs, metadata, sitemap, robots, llms.txt and JSON-LD. Never hardcode a domain in app code.
-  - **`SITE_URL`** (GitHub Actions repository variable) is the host the live checks (uptime, link checker, SEO audit) run against.
-  - When the domain moves, change both to `https://3fs.no` and redeploy; no code change needed.
+- **The site runs on `https://www.3fs.no`**, served by Vercel (DNS at Gigahost); `3fs.no` redirects to `www`, as the old Wix site did. The old Wix site is gone, and `3fs.vercel.app` is no longer the canonical address. Two variables hold the address:
+  - **`PUBLIC_BASE_URL`** (build-time environment variable) is the site's own address. `companyInfo.website` in `src/config/company.ts` reads it (default `https://www.3fs.no`) and `astro.config.mjs` uses it as `site`. The app uses it for canonical URLs, metadata, sitemap, robots, llms.txt and JSON-LD. Never hardcode a domain in app code.
+  - **`SITE_URL`** (GitHub Actions repository variable) is the host the live checks (uptime, link checker, SEO audit) run against. It should be `https://www.3fs.no`.
 - A weekly **uptime check** requests every sitemap page (rewritten to `SITE_URL`) and the contact email health endpoint (`.github/workflows/uptime-check.yml`).
 - A **smoke test** runs `npm run test:e2e` against every successful Vercel Preview deployment (`.github/workflows/smoke-test.yml`). This workflow is tied to Vercel's `deployment_status` events and needs rewriting once the new host is chosen.
 - **Dependabot** npm minor/patch updates come as one grouped PR. They are auto-approved and squash-merged when the checks pass (`.github/workflows/dependabot-pr.yml`).
