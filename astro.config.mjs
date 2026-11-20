@@ -5,7 +5,7 @@ import vercel from '@astrojs/vercel'
 import tailwindcss from '@tailwindcss/vite'
 
 // The site's own address, also read by src/config/company.ts as PUBLIC_BASE_URL.
-const site = process.env.PUBLIC_BASE_URL || 'https://3fs.no'
+const site = process.env.PUBLIC_BASE_URL || 'https://www.3fs.no'
 
 // Vercel sets VERCEL during its builds; everywhere else the site runs as a plain Node server
 const adapter = process.env.VERCEL ? vercel() : node({mode: 'standalone'})

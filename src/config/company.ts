@@ -67,5 +67,5 @@ export const companyInfo = {
   
   // The site's own address, used for canonical URLs, sitemap, robots, llms.txt and JSON-LD.
   // PUBLIC_BASE_URL (read at build time) overrides it, e.g. for a staging host.
-  website: import.meta.env.PUBLIC_BASE_URL || "https://3fs.no"
+  website: import.meta.env.PUBLIC_BASE_URL || "https://www.3fs.no"
 } as const
