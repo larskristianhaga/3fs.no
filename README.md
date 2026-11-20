@@ -18,7 +18,7 @@ When something breaks, start here:
 - **Contact form not sending email** → check [Resend dashboard](https://resend.com/emails) for failed sends and verify `RESEND_API_KEY` is set on the server. Sender is `3fs@paal-erik.no`, recipient is set in `src/pages/api/contact.ts`.
 - **Build/deploy failing** → run `npm run build` locally (`astro build`) and read the error; the host's build log shows the same output.
 - **Broken links reported** → see the [link-checker workflow](https://github.com/larskristianhaga/3fs.no/actions) in GitHub Actions.
-- **Checks hitting the wrong site** → the uptime, link-checker and SEO audit workflows run against the `SITE_URL` [Actions variable](https://github.com/larskristianhaga/3fs.no/settings/variables/actions). Update it, and the `PUBLIC_BASE_URL` build variable that sets the site's canonical address, when the domain moves from `3fs.vercel.app` to `3fs.no`.
+- **Checks hitting the wrong site** → the uptime, link-checker and SEO audit workflows run against the `SITE_URL` [Actions variable](https://github.com/larskristianhaga/3fs.no/settings/variables/actions). It should be `https://3fs.no`, the same address as the `PUBLIC_BASE_URL` build variable (the site's canonical address, defaulting to `https://3fs.no`).
 - **Dependency PRs** → handled by Dependabot (`.github/dependabot.yml` + `dependabot-pr.yml`).
 
 ---
@@ -37,7 +37,7 @@ Set these on the host (and in `.env` locally). `PUBLIC_*` values are read at bui
 
 ```
 RESEND_API_KEY=...          # Resend email API key
-PUBLIC_BASE_URL=...         # the site's own address; https://3fs.vercel.app until the domain moves (also the default)
+PUBLIC_BASE_URL=...         # the site's own address; defaults to https://3fs.no
 ```
 
 ---
