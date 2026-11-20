@@ -101,7 +101,7 @@ export const POST: APIRoute = async ({request, clientAddress}) => {
 
         const {error} = await resend.emails.send({
             from: '3fs@paal-erik.no',
-            to: ['larskhaga@gmail.com'],
+            to: ['Rs3felling@gmail.com'],
             // Email is optional; without it the reply goes to the sender address and the customer is phoned instead
             ...(email ? {replyTo: email} : {}),
             subject: `Ny innsending fra ${name} | 3fs.no`,

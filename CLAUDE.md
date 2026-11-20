@@ -99,7 +99,7 @@ npm start                # Run the production server (node dist/server/entry.mjs
 - Sends HTML-formatted emails with contact info and message
 - Supports file attachments
 - Validates required fields, HTML-escapes all user input in the email template, sets `replyTo` to the customer's email when given (email is optional; name, phone, postcode and message are required), and applies a simple per-process rate limit
-- Sends to `larskhaga@gmail.com`
+- Sends to `Rs3felling@gmail.com`
 - `/api/contact/health` sends a test email to Resend's test inbox; the weekly uptime workflow calls it
 
 ### Styling & Design System
@@ -126,7 +126,7 @@ PUBLIC_POSTHOG_PROJECT_TOKEN=...                   # PostHog analytics and excep
 PUBLIC_POSTHOG_HOST=...                            # without both, PostHog is disabled with a dev warning
 ```
 
-The contact form endpoint sends to `larskhaga@gmail.com` (the `to` field in `src/pages/api/contact.ts`).
+The contact form endpoint sends to `Rs3felling@gmail.com` (the `to` field in `src/pages/api/contact.ts`).
 
 ### SEO & Metadata
 
