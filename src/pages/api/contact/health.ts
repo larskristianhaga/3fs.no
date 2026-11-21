@@ -24,7 +24,7 @@ export const POST: APIRoute = async () => {
 
     const resend = new Resend(key)
     const {data, error} = await resend.emails.send({
-        from: '3fs@paal-erik.no',
+        from: 'Kontaktskjema 3fs.no <kontaktskjema@3fs.no>',
         to: ['delivered@resend.dev'],
         subject: 'Health check | 3fs.no',
         text: 'Automated health check of the contact form email path.',
