@@ -41,6 +41,29 @@ function asTrimmedString(value: unknown, maxLength: number) {
     return typeof value === 'string' ? value.trim().slice(0, maxLength) : ''
 }
 
+// Records a lead in PostHog from the server, so ad blockers can't hide it. No personal data is sent.
+// Awaited (with a timeout) because serverless hosts may stop the process once the response is sent.
+async function captureLead(attachmentCount: number) {
+    const token = import.meta.env.PUBLIC_POSTHOG_PROJECT_TOKEN
+    const host = import.meta.env.PUBLIC_POSTHOG_HOST
+    if (!token || !host) return
+    try {
+        await fetch(`${host.replace(/\/$/, '')}/capture/`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                api_key: token,
+                event: 'lead_submitted',
+                distinct_id: 'contact-form',
+                properties: {attachment_count: attachmentCount, $process_person_profile: false},
+            }),
+            signal: AbortSignal.timeout(2000),
+        })
+    } catch (error) {
+        console.warn('PostHog lead capture failed:', error)
+    }
+}
+
 const json = (body: unknown, status = 200) => Response.json(body, {status})
 
 export const POST: APIRoute = async ({request, clientAddress}) => {
@@ -127,6 +150,8 @@ export const POST: APIRoute = async ({request, clientAddress}) => {
         if (error) {
             throw new Error(`Resend error: ${error.message}`)
         }
+
+        await captureLead(attachments.length)
 
         console.info(`Contact email delivered (${attachments.length} attachments)`)
         return json({success: true})
