@@ -48,6 +48,7 @@ export const GET: APIRoute = () => {
         link(siteText.blog.title, '/blogg', siteText.blog.subtitle),
         link(siteText.privacy.title, '/personvern'),
         link('Sitemap', '/sitemap.xml'),
+        link('Hele nettstedet som én tekstfil', '/llms-full.txt'),
         '',
     ].join('\n')
 
