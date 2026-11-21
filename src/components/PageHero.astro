@@ -8,13 +8,14 @@ interface Props {
     title: string
     eyebrow?: string
     intro?: string
+    titleClass?: string
 }
 
-const {title, eyebrow = siteText.home.hero.areas, intro} = Astro.props
+const {title, eyebrow = siteText.home.hero.areas, intro, titleClass} = Astro.props
 ---
 <section class={cn(styles.container, 'pt-14 pb-12 flex flex-col gap-6')}>
     <Eyebrow>{eyebrow}</Eyebrow>
-    <h1 class={styles.pageTitle}>{title}</h1>
+    <h1 class={cn(styles.pageTitle, titleClass)}>{title}</h1>
     {intro && <p class={styles.lead}>{intro}</p>}
     <slot />
 </section>
