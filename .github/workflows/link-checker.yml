@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-26.04-arm
     steps:
       - name: Check for broken links
-        uses: ruzickap/action-my-broken-link-checker@02d608dab6d54f73b6a0a04f7a9ad928d49eb2b2 # 3.0.4
+        uses: ruzickap/action-my-broken-link-checker@973e61c81036a180b3df2c60360e03920b0dc5d3 # 3.1.0
         with:
           url: ${{ vars.SITE_URL }}
           cmd_params: "--max-connections=1 --buffer-size=8192 --header='User-Agent:muffet' --timeout=30 --verbose --color=always"
